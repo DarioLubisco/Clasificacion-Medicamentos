@@ -1,0 +1,121 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+import pyodbc
+import json
+import urllib.request
+import time
+
+CONN_STR = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER=100.94.5.108\\efficacis3;DATABASE=EnterpriseAdmin_AMC;UID=sa;PWD={os.getenv("DB_PASSWORD")};TrustServerCertificate=yes;Encrypt=yes;'
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+def obtener_lote_aleatorio(limite=25):
+    conn = pyodbc.connect(CONN_STR)
+    cursor = conn.cursor()
+    # Random selection from the table (not sequential)
+    query = f"""
+    SELECT TOP {limite} codbarras, descrip1art
+    FROM Procurement.por_aprobacion_equivalencias 
+    ORDER BY NEWID()
+    """
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    
+    lote = []
+    for r in rows:
+        lote.append({
+            "registro": {"codigo": r[0], "codbarras": r[0], "descripcion_original": r[1], "ciclos_reproceso": 0},
+            "atributos_ya_encontrados": {}
+        })
+    conn.close()
+    return lote
+
+def llamar_openrouter(batch_json_str, model):
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    prompt = f"""
+    Actúa como el Agente Investigador Farmacéutico. Recibirás un lote de productos.
+    Tu único objetivo es la PRECISIÓN ABSOLUTA (Zero-Tolerance). Extraer un dato que no está explícitamente en la descripción o que no se deduce inequívocamente es un ERROR CRÍTICO. Ante la menor duda, o si el dato no existe, debes devolver null.
+
+    Para cada producto, extrae los siguientes atributos basándote ÚNICAMENTE en la descripción:
+    - dominio (string OBLIGATORIO: "MEDICAMENTO_ALOPATICO", "PRODUCTO_NATURAL_HOMEOPATICO", "SUPLEMENTO_VITAMINICO", "COSMETICO_CUIDADO_PERSONAL", "MATERIAL_MEDICO_INSUMO", "MISCELANEO")
+    - principio_activo (string o null si no aplica/es insumo)
+    - concentracion (string o null)
+    - forma_farmaceutica (string o null)
+    - cantidad_presentacion (int o null, ej. 30 para "30 pastillas", o 1 para un envase único como un jarabe o tubo de crema)
+    - contenido_neto (float o null, ej. 120 para "120ml")
+    - contenido_neto_unidad_Des (string o null, ej. 'ml', 'g')
+    - fabricante (string o null)
+    - marca (string o null)
+    - codigo_atc (string o null)
+    - blister (1 o 0, si viene en blister explícitamente)
+    - generico (1 o 0, si dice genérico explícitamente)
+
+    REGLAS ESTRICTAS ANTI-ALUCINACIÓN:
+    1. ATC: NO deduzcas el código ATC a partir del principio activo. Solo extráelo si aparece explícitamente en el texto.
+    2. Contenido Neto vs Concentración: La concentración del PA (ej. 500mg) NO es el contenido neto. El contenido neto es el volumen/peso total del envase (ej. 120ml).
+    3. Marca / Fabricante: Si no hay una marca o fabricante explícito en el texto, usa null. NO asumas 'Genérico' como marca, ni adivines laboratorios.
+    4. Segmento Etario: NO lo deduzcas a menos que haya palabras clave claras (infantil, niños, pediátrico, adulto, forte). Ante la duda, null.
+
+    IMPORTANTE: 
+    - En "atributos_ya_encontrados" te informamos qué datos ya extrajimos antes. Puedes corregirlos si son contradictorios o parecen inventados, si no, consérvalos.
+    - Debes generar una llave "razonamiento" con una breve cadena de pensamiento explicando tu análisis (qué ves en el texto, qué extraes y qué falta).
+    
+    Devuelve ÚNICAMENTE un array JSON válido con este formato:
+    [
+      {{
+        "registro": {{"codigo": "...", "codbarras": "...", "descripcion_original": "...", "ciclos_reproceso": 0}},
+        "atributos_ya_encontrados": {{}},
+        "atributos_nuevos_consolidados": {{"razonamiento": "...", "dominio": "...", "principio_activo": "...", "concentracion": "...", "forma_farmaceutica": "...", "requiere_recipe": 1, "segmento_etario": null, "origen": "IA", "fabricante": null, "marca": null, "codigo_atc": null, "cantidad_presentacion": null, "contenido_neto": null, "contenido_neto_unidad_Des": null, "blister": 0, "generico": 0, "clasificacion_insumo_Des": null}}
+      }}
+    ]
+
+    LOTE A PROCESAR:
+    {batch_json_str}
+    """
+    
+    data = {
+        "model": model, 
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.1,
+        "max_tokens": 8192
+    }
+    
+    req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=120) as response:
+            result = json.loads(response.read().decode())
+            content = result['choices'][0]['message']['content']
+            if content.startswith("```json"): content = content[7:]
+            if content.endswith("```"): content = content[:-3]
+            return json.loads(content.strip())
+    except Exception as e:
+        print(f"Error {model}: {e}")
+        return None
+
+if __name__ == "__main__":
+    print("Obteniendo 25 productos aleatorios...")
+    lote = obtener_lote_aleatorio(25)
+    batch_json_str = json.dumps(lote, indent=2)
+    
+    modelos = [
+        "google/gemini-2.5-pro",
+        "mistralai/mixtral-8x22b-instruct",
+        "qwen/qwen-2.5-72b-instruct",
+        "minimax/minimax-m3"
+    ]
+    
+    resultados = {}
+    for mod in modelos:
+        print(f"\n[{mod}] Analizando los 25 productos con Zero-Tolerance...")
+        res = llamar_openrouter(batch_json_str, mod)
+        resultados[mod] = res
+        time.sleep(2)
+        
+    with open('/home/synapse/source/repos/Clasificacion Medicamentos/scratch/benchmark_zero_tolerance_25.json', 'w', encoding='utf-8') as f:
+        json.dump({"lote_original": lote, "resultados": resultados}, f, indent=2, ensure_ascii=False)
+    print("\nBenchmark completado. Datos guardados.")

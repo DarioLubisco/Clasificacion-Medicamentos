@@ -1,0 +1,335 @@
+[
+  {
+    "registro": {
+      "codigo": "0000000016940",
+      "codbarras": "0000000016940",
+      "descripcion_original": "Cat\u00e9ter intravenoso Jelco Veincare 20G, caja de 50 unidades.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {
+      "marca": "Jelco Veincare",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "cantidad_presentacion": 50,
+      "segmento_etario": "NO_DEFINIDO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "NO_DEFINIDO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "Jelco Veincare",
+      "codigo_atc": null,
+      "cantidad_presentacion": 50,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0000000016964",
+      "codbarras": "0000000016964",
+      "descripcion_original": "Cat\u00e9ter intravenoso Jelco Veincare 24G, caja de 50 unidades.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {
+      "marca": "Jelco Veincare",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "cantidad_presentacion": 50,
+      "segmento_etario": "NO_DEFINIDO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "NO_DEFINIDO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "Jelco Veincare",
+      "codigo_atc": null,
+      "cantidad_presentacion": 50,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0000000030373",
+      "codbarras": "0000000030373",
+      "descripcion_original": "DISCOLAYTE POLVO 69.7 G X 10 SOBRES",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {
+      "forma_farmaceutica": "Polvo",
+      "marca": "DISCOLAYTE",
+      "clasificacion_insumo_Des": "Suplemento Alimenticio",
+      "cantidad_presentacion": 10,
+      "segmento_etario": "NO_DEFINIDO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Polvo",
+      "requiere_recipe": 0,
+      "segmento_etario": "NO_DEFINIDO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "DISCOLAYTE",
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": 69.7,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Suplemento Alimenticio"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0000000040341",
+      "codbarras": "0000000040341",
+      "descripcion_original": "Adhesivo de papel Pharmamed en carrete de 1.25 cm x 4.55 m, 1 unidad, Ref. 124550 Pharmaplast.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {
+      "marca": "Pharmamed",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "cantidad_presentacion": 1,
+      "segmento_etario": "NO_DEFINIDO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "NO_DEFINIDO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Pharmaplast",
+      "marca": "Pharmamed",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 4.55,
+      "contenido_neto_unidad_Des": "m",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0000000072410",
+      "codbarras": "0000000072410",
+      "descripcion_original": "Amoxicilina/\u00c1cido Clavul\u00e1nico 875 mg/125 mg x 10 tabletas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {
+      "principio_activo": "Amoxicilina/\u00c1cido Clavul\u00e1nico",
+      "concentracion": "875 mg/125 mg",
+      "forma_farmaceutica": "Tableta",
+      "clasificacion_insumo_Des": "Medicamento",
+      "cantidad_presentacion": 10,
+      "segmento_etario": "NO_DEFINIDO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "Amoxicilina/\u00c1cido Clavul\u00e1nico",
+      "concentracion": "875 mg/125 mg",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Medicamento"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "3582910028055",
+      "codbarras": "3582910028055",
+      "descripcion_original": "Enoxaparina S\u00f3dica 40mg/0.4ml (Clexane) jeringas prellenadas",
+      "ciclos_reproceso": 2
+    },
+    "atributos_ya_encontrados": {
+      "principio_activo": "Enoxaparina S\u00f3dica",
+      "concentracion": "40 mg/0.4 ml",
+      "forma_farmaceutica": "Jeringas prellenadas",
+      "marca": "Clexane",
+      "codigo_atc": "B01AB05",
+      "clasificacion_insumo_Des": "Medicamento",
+      "requiere_recipe": true,
+      "blister": false,
+      "generico": false,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 0.4,
+      "contenido_neto_unidad_Des": "ml",
+      "segmento_etario": "GENERAL"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "Enoxaparina S\u00f3dica",
+      "concentracion": "40 mg/0.4 ml",
+      "forma_farmaceutica": "Jeringas prellenadas",
+      "requiere_recipe": 1,
+      "segmento_etario": "GENERAL",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "Clexane",
+      "codigo_atc": "B01AB05",
+      "cantidad_presentacion": 1,
+      "contenido_neto": 0.4,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Medicamento"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "36596",
+      "codbarras": "36596",
+      "descripcion_original": "JER  10CC 21 X 1 CC X 100  GAESCA",
+      "ciclos_reproceso": 2
+    },
+    "atributos_ya_encontrados": {
+      "forma_farmaceutica": "Jeringa",
+      "marca": "GAESCA",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "requiere_recipe": false,
+      "cantidad_presentacion": 100,
+      "contenido_neto": 10.0,
+      "contenido_neto_unidad_Des": "cc",
+      "segmento_etario": "GENERAL"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Jeringa",
+      "requiere_recipe": 0,
+      "segmento_etario": "GENERAL",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "GAESCA",
+      "marca": "GAESCA",
+      "codigo_atc": null,
+      "cantidad_presentacion": 100,
+      "contenido_neto": 10.0,
+      "contenido_neto_unidad_Des": "cc",
+      "blister": 1,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "3699090335016",
+      "codbarras": "3699090335016",
+      "descripcion_original": "TETERO S/ASA 260ML BERNICE",
+      "ciclos_reproceso": 2
+    },
+    "atributos_ya_encontrados": {
+      "marca": "BERNICE",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "requiere_recipe": false,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 260.0,
+      "contenido_neto_unidad_Des": "ml",
+      "segmento_etario": "NEONATAL"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Tetero",
+      "requiere_recipe": 0,
+      "segmento_etario": "NEONATAL",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "BERNICE",
+      "marca": "BERNICE",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 260.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "3M9971",
+      "codbarras": "3M9971",
+      "descripcion_original": "ADHESIVO MICRO 1/2\"YD BLANCO (3M)",
+      "ciclos_reproceso": 2
+    },
+    "atributos_ya_encontrados": {
+      "fabricante": "3M",
+      "marca": "3M",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "requiere_recipe": false,
+      "cantidad_presentacion": 1,
+      "segmento_etario": "GENERAL"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Cinta adhesiva",
+      "requiere_recipe": 0,
+      "segmento_etario": "GENERAL",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "3M",
+      "marca": "3M",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "4005800041495",
+      "codbarras": "4005800041495",
+      "descripcion_original": "Preservativos Duo G Sensation x 3 unidades Duopharma",
+      "ciclos_reproceso": 2
+    },
+    "atributos_ya_encontrados": {
+      "fabricante": "Duopharma",
+      "marca": "Duo G Sensation",
+      "clasificacion_insumo_Des": "Material M\u00e9dico",
+      "requiere_recipe": false,
+      "cantidad_presentacion": 3,
+      "segmento_etario": "ADULTO"
+    },
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Preservativo",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Duopharma",
+      "marca": "Duo G Sensation",
+      "codigo_atc": null,
+      "cantidad_presentacion": 3,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 1,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Material M\u00e9dico"
+    }
+  }
+]

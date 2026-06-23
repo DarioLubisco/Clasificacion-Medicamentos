@@ -1,0 +1,6994 @@
+[
+  {
+    "registro": {
+      "codigo": "1254896321544",
+      "codbarras": "1254896321544",
+      "descripcion_original": "RINGER LACTATO SOL 500ML ZAKIMED"
+    },
+    "atributos": {
+      "principio_activo": "Ringer Lactato",
+      "concentracion": "500ML",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZAKIMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "3582910027768",
+      "codbarras": "3582910027768",
+      "descripcion_original": "APROVEL 150MG X14 COMP SANOFI"
+    },
+    "atributos": {
+      "principio_activo": "Irbesartan",
+      "concentracion": "150MG",
+      "forma_farmaceutica": "COMPRIMIDOS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "SANOFI",
+      "marca": "APROVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "4104480705113",
+      "codbarras": "4104480705113",
+      "descripcion_original": "PROSPAN JBE X 100 ML"
+    },
+    "atributos": {
+      "principio_activo": "Extracto seco de hoja de hiedra",
+      "concentracion": "100 ML",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PROSPAN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5600360011637",
+      "codbarras": "5600360011637",
+      "descripcion_original": "CLAVOXILIN 250mg-62.5/5ml"
+    },
+    "atributos": {
+      "principio_activo": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+      "concentracion": "250mg-62.5/5ml",
+      "forma_farmaceutica": "SUSPENSION ORAL",
+      "requiere_recipe": 1,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CLAVOXILIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5600360011644",
+      "codbarras": "5600360011644",
+      "descripcion_original": "CLAVOXILIN 500MG-125MG X 16 COMP ATRAL"
+    },
+    "atributos": {
+      "principio_activo": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+      "concentracion": "500MG-125MG",
+      "forma_farmaceutica": "COMPRIMIDOS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ATRAL",
+      "marca": "CLAVOXILIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5600360014072",
+      "codbarras": "5600360014072",
+      "descripcion_original": "CLAVOXILIN 875MG-125MG X 16 COMP"
+    },
+    "atributos": {
+      "principio_activo": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+      "concentracion": "875MG-125MG",
+      "forma_farmaceutica": "COMPRIMIDOS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CLAVOXILIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5600360014089",
+      "codbarras": "5600360014089",
+      "descripcion_original": "CLAVOXILIN 400-5ML"
+    },
+    "atributos": {
+      "principio_activo": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+      "concentracion": "400/5ML",
+      "forma_farmaceutica": "SUSPENSION ORAL",
+      "requiere_recipe": 1,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CLAVOXILIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5600360014096",
+      "codbarras": "5600360014096",
+      "descripcion_original": "CLAVOXILIN 600/5ML X100ML"
+    },
+    "atributos": {
+      "principio_activo": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+      "concentracion": "600/5ML",
+      "forma_farmaceutica": "SUSPENSION ORAL",
+      "requiere_recipe": 1,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CLAVOXILIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "5941230143257",
+      "codbarras": "5941230143257",
+      "descripcion_original": "SOLUCION FISIOLOGICA 0.09%X500ML BIOMEDI"
+    },
+    "atributos": {
+      "principio_activo": "Cloruro de Sodio",
+      "concentracion": "0.09%X500ML",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOMEDI",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6811291256816",
+      "codbarras": "6811291256816",
+      "descripcion_original": "CENTRUM ADVANCE BLUE X 30 GRAGEAS"
+    },
+    "atributos": {
+      "principio_activo": "Multivitaminas y Multiminerales",
+      "concentracion": null,
+      "forma_farmaceutica": "GRAGEAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CENTRUM ADVANCE BLUE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6905127114019",
+      "codbarras": "6905127114019",
+      "descripcion_original": "SOLUCION RINGER LACTATO 500 ML"
+    },
+    "atributos": {
+      "principio_activo": "Ringer Lactato",
+      "concentracion": "500 ML",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6921875009179",
+      "codbarras": "6921875009179",
+      "descripcion_original": "COMPLEJO B X 3 AMP I.V./I.M ZAKIMED"
+    },
+    "atributos": {
+      "principio_activo": "Complejo B",
+      "concentracion": null,
+      "forma_farmaceutica": "AMPOLLAS INYECTABLES",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZAKIMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6921875009889",
+      "codbarras": "6921875009889",
+      "descripcion_original": "PENICILINA G 1.200.000 UN FAHD"
+    },
+    "atributos": {
+      "principio_activo": "Penicilina G",
+      "concentracion": "1.200.000 UN",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FAHD",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6921875009896",
+      "codbarras": "6921875009896",
+      "descripcion_original": "BENCILPENICILINA BENZATICA 2400000 AMP"
+    },
+    "atributos": {
+      "principio_activo": "Bencilpenicilina Benzat\u00ednica",
+      "concentracion": "2400000 UN",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6921875010793",
+      "codbarras": "6921875010793",
+      "descripcion_original": "CEFEPIME 1 GR  AMP KMPLUS"
+    },
+    "atributos": {
+      "principio_activo": "Cefepime",
+      "concentracion": "1 GR",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "KMPLUS",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6921875011400",
+      "codbarras": "6921875011400",
+      "descripcion_original": "BROMURO DE IPATROPIO 20MCG X 200 DOSIS"
+    },
+    "atributos": {
+      "principio_activo": "Bromuro de Ipratropio",
+      "concentracion": "20MCG",
+      "forma_farmaceutica": "AEROSOL",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822115",
+      "codbarras": "6922954822115",
+      "descripcion_original": "PRESERVATIVO M.ZONE NATURAL X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M.ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822122",
+      "codbarras": "6922954822122",
+      "descripcion_original": "PRESERVATIVO M.ZONE TEXTURIZADO X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M.ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822139",
+      "codbarras": "6922954822139",
+      "descripcion_original": "PRESERVATIVO M.ZONE ACANALADO X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M.ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822146",
+      "codbarras": "6922954822146",
+      "descripcion_original": "PRESERVATIVO M.ZONE ANATOMICO X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M.ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822153",
+      "codbarras": "6922954822153",
+      "descripcion_original": "M-ZONE UND RETARDANTE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M-ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822160",
+      "codbarras": "6922954822160",
+      "descripcion_original": "M-ZONE 4 UND HOT"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M-ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822177",
+      "codbarras": "6922954822177",
+      "descripcion_original": "M-ZONE 4 UND SABORES"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M-ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6922954822184",
+      "codbarras": "6922954822184",
+      "descripcion_original": "M-ZONE 4 UND SENSIBLE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "M-ZONE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6924565912636",
+      "codbarras": "6924565912636",
+      "descripcion_original": "AFEITADORA MAX 3 COMFORTABLE X 1 PCS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "MAX 3 COMFORTABLE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6924565919000",
+      "codbarras": "6924565919000",
+      "descripcion_original": "AFEITADORA MAX 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "MAX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6924565920020",
+      "codbarras": "6924565920020",
+      "descripcion_original": "AFEITADORA MAX X 3PCS PLATINUM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "MAX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6924565920181",
+      "codbarras": "6924565920181",
+      "descripcion_original": "AFEITADORA QUOTTRO ROSADA X 2 PCS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "QUOTTRO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6924565920198",
+      "codbarras": "6924565920198",
+      "descripcion_original": "AFEITADORA QUOTTRO NARANJA X 2 PCS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "QUOTTRO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6936097102485",
+      "codbarras": "6936097102485",
+      "descripcion_original": "TALCO SBOOK 100G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "100G",
+      "forma_farmaceutica": "TALCO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HIGIENE PERSONAL",
+      "fabricante": null,
+      "marca": "SBOOK",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6936292193912",
+      "codbarras": "6936292193912",
+      "descripcion_original": "CEFTRIAZONA 1G"
+    },
+    "atributos": {
+      "principio_activo": "CEFTRIAZONA",
+      "concentracion": "1G",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6940907039014",
+      "codbarras": "6940907039014",
+      "descripcion_original": "FEMENINA TOALLAS NOCTURNA X10"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6942189211362",
+      "codbarras": "6942189211362",
+      "descripcion_original": "SOL RINGER LACTATO X500ML KMPLUS"
+    },
+    "atributos": {
+      "principio_activo": "RINGER LACTATO",
+      "concentracion": "500ML",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "KMPLUS",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6942189530357",
+      "codbarras": "6942189530357",
+      "descripcion_original": "EMPAGLIFOZINA 10MG X 30 TAB KMPLUS"
+    },
+    "atributos": {
+      "principio_activo": "EMPAGLIFOZINA",
+      "concentracion": "10MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "KMPLUS",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6944977122126",
+      "codbarras": "6944977122126",
+      "descripcion_original": "CREMA DE ZAPATO CHEERY NEGRO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "CHEERY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6948122306027",
+      "codbarras": "6948122306027",
+      "descripcion_original": "CEPILLO DENTAL COBOR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CEPILLO DENTAL",
+      "fabricante": null,
+      "marca": "COBOR",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6950769301204",
+      "codbarras": "6950769301204",
+      "descripcion_original": "AFEITADORA MAX 3 COMFORTABLE X 1 PCS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "AFEITADORA",
+      "fabricante": null,
+      "marca": "MAX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6955143918290",
+      "codbarras": "6955143918290",
+      "descripcion_original": "CHUPON DE BEBE BERNICE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "CHUPON",
+      "fabricante": null,
+      "marca": "BERNICE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6970205630132",
+      "codbarras": "6970205630132",
+      "descripcion_original": "HISOPOS COTTON SWABS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HISOPOS",
+      "fabricante": null,
+      "marca": "COTTON SWABS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610161",
+      "codbarras": "6971077610161",
+      "descripcion_original": "BISTURI HOJA # 11"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610178",
+      "codbarras": "6971077610178",
+      "descripcion_original": "LLAVE 3 VIAS DIPHOCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHOCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610277",
+      "codbarras": "6971077610277",
+      "descripcion_original": "SONDA FOLEY LATEX N\u00ba18 DIPHOCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "N\u00ba18",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHOCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610376",
+      "codbarras": "6971077610376",
+      "descripcion_original": "SONDA FLOLEY 2 VIAS DE SILICONA N 16"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "N 16",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610802",
+      "codbarras": "6971077610802",
+      "descripcion_original": "KIT DE NEBULIZADOR ADULTO DIPHOCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHOCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610871",
+      "codbarras": "6971077610871",
+      "descripcion_original": "GASA 4X4 ESTERIL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "4X4",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077610888",
+      "codbarras": "6971077610888",
+      "descripcion_original": "COMPRESA LAPAROTOMIA X5 DIPHCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077611533",
+      "codbarras": "6971077611533",
+      "descripcion_original": "TERMOMETRO DIGITAL (DIPHOCARE)"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHOCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077612493",
+      "codbarras": "6971077612493",
+      "descripcion_original": "CATETER VALEMEDIC N 22 X1"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "N 22",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "VALEMEDIC",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077612509",
+      "codbarras": "6971077612509",
+      "descripcion_original": "CATETER N 24 VALEMEDIC X1"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "N 24",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "VALEMEDIC",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971077612806",
+      "codbarras": "6971077612806",
+      "descripcion_original": "MICROGOTERO DIPHOCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL MEDICO",
+      "fabricante": "DIPHOCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6971594732797",
+      "codbarras": "6971594732797",
+      "descripcion_original": "ACEITE BERENICE BEBE 100ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "ACEITE_BEBE",
+      "fabricante": null,
+      "marca": "BERENICE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972559540372",
+      "codbarras": "6972559540372",
+      "descripcion_original": "SUTURA CROMICO 4-0 SH AGUJA CIRCULAR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "SUTURA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972559546053",
+      "codbarras": "6972559546053",
+      "descripcion_original": "SUTURA PROLENE 2-0KS AGUJA RECTA CORTANT"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "SUTURA",
+      "fabricante": null,
+      "marca": "PROLENE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972598197407",
+      "codbarras": "6972598197407",
+      "descripcion_original": "SUN SCREEN 90SPF PROTECTOR SOLAR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR_SOLAR",
+      "fabricante": null,
+      "marca": "SUN SCREEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972598197414",
+      "codbarras": "6972598197414",
+      "descripcion_original": "PROTECTOR SOLAR SOF90 MLUNDO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR_SOLAR",
+      "fabricante": null,
+      "marca": "SOF90 MLUNDO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972718560043",
+      "codbarras": "6972718560043",
+      "descripcion_original": "AZITROBLU 500MG X6 CAP BLUE MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": "AZITROMICINA",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "CAPSULAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BLUE MEDICAL",
+      "marca": "AZITROBLU",
+      "codigo_atc": "J01FA10",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972718560074",
+      "codbarras": "6972718560074",
+      "descripcion_original": "CLOPIDROGREL 75MG X30 TABL BLE MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": "CLOPIDOGREL",
+      "concentracion": "75MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BLE MEDICAL",
+      "marca": "CLOPIDROGREL",
+      "codigo_atc": "B01AC04",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6972718560180",
+      "codbarras": "6972718560180",
+      "descripcion_original": "SOLUCION 0.9% BLUE MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": "CLORURO DE SODIO",
+      "concentracion": "0.9%",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "IA",
+      "fabricante": "BLUE MEDICAL",
+      "marca": null,
+      "codigo_atc": "B05XA03",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6973042912546",
+      "codbarras": "6973042912546",
+      "descripcion_original": "REMOVEDOR TUMAX X 50 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REMOVEDOR",
+      "fabricante": null,
+      "marca": "TUMAX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6973715250081",
+      "codbarras": "6973715250081",
+      "descripcion_original": "JERINGA 1CC 27 G X1/2 MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "JERINGA",
+      "fabricante": "MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6973715250203",
+      "codbarras": "6973715250203",
+      "descripcion_original": "RECOLECTOR DE ORINA PEDIATRICO BOLSA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "RECOLECTOR_ORINA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6973715250210",
+      "codbarras": "6973715250210",
+      "descripcion_original": "BOLSA DE ORINA ADULTO 2000ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "BOLSA_ORINA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6974546560400",
+      "codbarras": "6974546560400",
+      "descripcion_original": "METFORM 500      MG + SITAGLIPTI 50    "
+    },
+    "atributos": {
+      "principio_activo": "METFORMINA + SITAGLIPTINA",
+      "concentracion": "500MG + 50MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "METFORM",
+      "codigo_atc": "A10BD07",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6974546561070",
+      "codbarras": "6974546561070",
+      "descripcion_original": "DOSPIRINA 81MG X100TABL 2N"
+    },
+    "atributos": {
+      "principio_activo": "\u00c1CIDO ACETILSALIC\u00cdLICO",
+      "concentracion": "81MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": "DOSPIRINA",
+      "codigo_atc": "B01AC06",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6974546561094",
+      "codbarras": "6974546561094",
+      "descripcion_original": "LAGRIMAX FORTE 0.3/0.1 10 ML ZN"
+    },
+    "atributos": {
+      "principio_activo": "CARBOXIMETILCELULOSA S\u00d3DICA + GLICERINA",
+      "concentracion": "0.3%/0.1%",
+      "forma_farmaceutica": "SOLUCION OFTALMICA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZN",
+      "marca": "LAGRIMAX FORTE",
+      "codigo_atc": "S01XA20",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6975207581277",
+      "codbarras": "6975207581277",
+      "descripcion_original": "AGUA OXIGENADA VOL 20 X 100ML AMG"
+    },
+    "atributos": {
+      "principio_activo": "PER\u00d3XIDO DE HIDR\u00d3GENO",
+      "concentracion": "20 VOL",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "IA",
+      "fabricante": "AMG",
+      "marca": null,
+      "codigo_atc": "D08AX01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6977234270018",
+      "codbarras": "6977234270018",
+      "descripcion_original": "VITAMINA E 400UI X10 CAP 2N"
+    },
+    "atributos": {
+      "principio_activo": "VITAMINA E",
+      "concentracion": "400UI",
+      "forma_farmaceutica": "CAPSULAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": null,
+      "codigo_atc": "A11HA03",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6977234270339",
+      "codbarras": "6977234270339",
+      "descripcion_original": "DOSPIRINA 81MG X 100 TAB 2N"
+    },
+    "atributos": {
+      "principio_activo": "\u00c1CIDO ACETILSALIC\u00cdLICO",
+      "concentracion": "81MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": "DOSPIRINA",
+      "codigo_atc": "B01AC06",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6977234270391",
+      "codbarras": "6977234270391",
+      "descripcion_original": "VITAMINA C PEDIATRICA EN 120ML 2N"
+    },
+    "atributos": {
+      "principio_activo": "VITAMINA C",
+      "concentracion": null,
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": null,
+      "codigo_atc": "A11GA01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6977234270438",
+      "codbarras": "6977234270438",
+      "descripcion_original": "RINAGRIP NOCHE 650MG+ 4MG  X 10 TAB 2N"
+    },
+    "atributos": {
+      "principio_activo": "PARACETAMOL + CLORFENAMINA",
+      "concentracion": "650MG + 4MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": "RINAGRIP NOCHE",
+      "codigo_atc": "N02BE51",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6977234270698",
+      "codbarras": "6977234270698",
+      "descripcion_original": "TENSOLM OLMEARTAN 40MG X 30 TAB 2N"
+    },
+    "atributos": {
+      "principio_activo": "OLMESART\u00c1N",
+      "concentracion": "40MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": "TENSOLM OLMEARTAN",
+      "codigo_atc": "C09CA08",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6990785880017",
+      "codbarras": "6990785880017",
+      "descripcion_original": "PEINE SACA PIOJOS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PEINE",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "707150",
+      "codbarras": "707150",
+      "descripcion_original": "BIOSULFIL SULFADAZINA DE PLATA CREMA 30G"
+    },
+    "atributos": {
+      "principio_activo": "SULFADIAZINA DE PLATA",
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "BIOSULFIL",
+      "codigo_atc": "D06BA01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "71120",
+      "codbarras": "71120",
+      "descripcion_original": "ADHESIVO DE TELA LEUKOPLAST 3\"X10YDS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ADHESIVO_TELA",
+      "fabricante": null,
+      "marca": "LEUKOPLAST",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7112001",
+      "codbarras": "7112001",
+      "descripcion_original": "ADHESIVO DE TELA LEUKOPLAST 4\"X10YDS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ADHESIVO_TELA",
+      "fabricante": null,
+      "marca": "LEUKOPLAST",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "72230",
+      "codbarras": "72230",
+      "descripcion_original": "ADHESIVO MICROPORE 1\"X10YD COLOR PIEL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ADHESIVO",
+      "fabricante": null,
+      "marca": "MICROPORE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "723592772581",
+      "codbarras": "723592772581",
+      "descripcion_original": "BOLSA RECOLECTORA DE ORINA X100ML PED"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "BOLSA_RECOLECTORA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "723592772611",
+      "codbarras": "723592772611",
+      "descripcion_original": "BOLSA DE ORINA 2000ML BRIUTCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "BOLSA_RECOLECTORA",
+      "fabricante": "BRIUTCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "723592772697",
+      "codbarras": "723592772697",
+      "descripcion_original": "ADHESIVO DE TELA 2X10 YARDAS BRIUTCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ADHESIVO",
+      "fabricante": "BRIUTCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "726529638561",
+      "codbarras": "726529638561",
+      "descripcion_original": "REMOVEDOR DE ESMALTE KELBION 120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "KELBION",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "728417501001",
+      "codbarras": "728417501001",
+      "descripcion_original": "TOALLITAS HUM CHICCO X 72"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS_HUMEDAS",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "730170649012",
+      "codbarras": "730170649012",
+      "descripcion_original": "MONTELUKAS 10 MG X 10 TAB KMPLUS"
+    },
+    "atributos": {
+      "principio_activo": "MONTELUKAS",
+      "concentracion": "10 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "KMPLUS",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "730170649500",
+      "codbarras": "730170649500",
+      "descripcion_original": "IBUPROFE 600MG/TIOCOLCHI 4MG X 10 TAB KM"
+    },
+    "atributos": {
+      "principio_activo": "IBUPROFENO, TIOCOLCHICOSIDO",
+      "concentracion": "600MG/4MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "KM",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "731946648482",
+      "codbarras": "731946648482",
+      "descripcion_original": "LOSARTAN POT TAB 50      MG X10"
+    },
+    "atributos": {
+      "principio_activo": "LOSARTAN POTASICO",
+      "concentracion": "50 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "731946648529",
+      "codbarras": "731946648529",
+      "descripcion_original": "LEVOFLOXACINO 500MG X 10 TAB ARTE MEDIC"
+    },
+    "atributos": {
+      "principio_activo": "LEVOFLOXACINO",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ARTE MEDIC",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "732064572864",
+      "codbarras": "732064572864",
+      "descripcion_original": "BACIPORI CREMA TRIPLE ANTIBIO X28.0G"
+    },
+    "atributos": {
+      "principio_activo": "BACITRACINA, POLIMIXINA B, NEOMICINA",
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "BACIPORI",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "733739014801",
+      "codbarras": "733739014801",
+      "descripcion_original": "SELENIUM 100 MCG NOW 100 TAB"
+    },
+    "atributos": {
+      "principio_activo": "SELENIO",
+      "concentracion": "100 MCG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "NOW",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "736372692191",
+      "codbarras": "736372692191",
+      "descripcion_original": "LEVONORGESTREI 1.5MG X 1 TAB H"
+    },
+    "atributos": {
+      "principio_activo": "LEVONORGESTREL",
+      "concentracion": "1.5MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "736372692627",
+      "codbarras": "736372692627",
+      "descripcion_original": "ESPECULO VAGINAL TALLA S X1 MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "736372722294",
+      "codbarras": "736372722294",
+      "descripcion_original": "DICLOFENA POTASICO 100MG X 20 TAB H"
+    },
+    "atributos": {
+      "principio_activo": "DICLOFENACO POTASICO",
+      "concentracion": "100MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "742033994689",
+      "codbarras": "742033994689",
+      "descripcion_original": "CURITAS CLASICAS BRUITCARE X 20 UNDS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CURITAS",
+      "fabricante": "BRUITCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "742033994696",
+      "codbarras": "742033994696",
+      "descripcion_original": "CURITAS CIRCULARES X 1 UNIDAD  BRIUTCARE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CURITAS",
+      "fabricante": "BRIUTCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "742033994726",
+      "codbarras": "742033994726",
+      "descripcion_original": "CURITAS FLEX BRIUTCARE X 20 (DETALLADA)"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CURITAS",
+      "fabricante": "BRIUTCARE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501033204920",
+      "codbarras": "7501033204920",
+      "descripcion_original": "SPEED STICK NIGHT CREMA 30GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "SPEED STICK",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501037608946",
+      "codbarras": "7501037608946",
+      "descripcion_original": "SCHICK EXACTA 2 /SENSIBLE RISTRA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "SCHICK",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501054549796",
+      "codbarras": "7501054549796",
+      "descripcion_original": "NIVEA CREMA CORPORAL MILK NUTRI X 100ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "NIVEA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501054549819",
+      "codbarras": "7501054549819",
+      "descripcion_original": "NIVEA SOFT MILK X100ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "NIVEA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501054549826",
+      "codbarras": "7501054549826",
+      "descripcion_original": "NIVEA EXPRESS HYDRATIONX100ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "NIVEA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082721676",
+      "codbarras": "7501082721676",
+      "descripcion_original": "NUVEL CREMA MIEL Y AVENA 750ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082721683",
+      "codbarras": "7501082721683",
+      "descripcion_original": "NUVEL CREMA MANTECA DE KARITE 750ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "COSMETICO",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082721690",
+      "codbarras": "7501082721690",
+      "descripcion_original": "NUVEL CREMA PIEL SECA 750ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082721706",
+      "codbarras": "7501082721706",
+      "descripcion_original": "NUVEL CREMA EXTRA ARANTA 750 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082725261",
+      "codbarras": "7501082725261",
+      "descripcion_original": "NUVEL CREMA ACLARADO IDEAL 750ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082740011",
+      "codbarras": "7501082740011",
+      "descripcion_original": "NUVEL QUITA X 125 NUVEL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082770704",
+      "codbarras": "7501082770704",
+      "descripcion_original": "NUVEL BLOQUEADOR KIDS 50FPS X120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501082770803",
+      "codbarras": "7501082770803",
+      "descripcion_original": "NUVEL BLOQUEADOR SOLAR 50FPS X120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NUVEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501298225500",
+      "codbarras": "7501298225500",
+      "descripcion_original": "EUTHYROX 25 MICROG X 50 TAB MERCK"
+    },
+    "atributos": {
+      "principio_activo": "LEVOTIROXINA SODICA",
+      "concentracion": "25 MCG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MERCK",
+      "marca": "EUTHYROX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501298225517",
+      "codbarras": "7501298225517",
+      "descripcion_original": "EUTHYROX 50MCG X50 TABLETAS MERCK"
+    },
+    "atributos": {
+      "principio_activo": "LEVOTIROXINA SODICA",
+      "concentracion": "50 MCG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MERCK",
+      "marca": "EUTHYROX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7501298225524",
+      "codbarras": "7501298225524",
+      "descripcion_original": "EUTHYROX 100 MICRG X 50 TAB MERCK"
+    },
+    "atributos": {
+      "principio_activo": "LEVOTIROXINA SODICA",
+      "concentracion": "100 MCG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MERCK",
+      "marca": "EUTHYROX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7503026029626",
+      "codbarras": "7503026029626",
+      "descripcion_original": "OFF ESTRA DURACION SPRAY 177ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "SPRAY",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "OFF",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546052588",
+      "codbarras": "7509546052588",
+      "descripcion_original": "DES SPEDD STICK ROLL-ON"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "ROLL-ON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "SPEED STICK",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546057521",
+      "codbarras": "7509546057521",
+      "descripcion_original": "LADY SPEED STICK 50 ML ROLL ON"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "ROLL-ON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "LADY SPEED STICK",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546075013",
+      "codbarras": "7509546075013",
+      "descripcion_original": "JABON PALMOLIVE NEUTRO BALANCE 100GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546650098",
+      "codbarras": "7509546650098",
+      "descripcion_original": "SH PALMOLIVE OPT KRATIN 10ML SOBRES"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "SHAMPOO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546658223",
+      "codbarras": "7509546658223",
+      "descripcion_original": "CEPILLO COLGATE ZZ CHARCOAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "CEPILLO",
+      "fabricante": null,
+      "marca": "COLGATE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546676982",
+      "codbarras": "7509546676982",
+      "descripcion_original": "JABON PALMOLIVE OLIVA-ALOE 110GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546677019",
+      "codbarras": "7509546677019",
+      "descripcion_original": "PALMOLIVE AVENA Y AZUCAR MORENA 110GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546679525",
+      "codbarras": "7509546679525",
+      "descripcion_original": "ENJ BUC PLAX ODOR CONTROL X250ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "ENJUAGUE BUCAL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PLAX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546690254",
+      "codbarras": "7509546690254",
+      "descripcion_original": "PALMOLIVE MANDARINA/ROMERO X3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7509546690261",
+      "codbarras": "7509546690261",
+      "descripcion_original": "JABON PALMOLIVE MANDARINA 110G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PALMOLIVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162023",
+      "codbarras": "7590005162023",
+      "descripcion_original": "LOC EVERY NIGHT HIDRA MAX 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162047",
+      "codbarras": "7590005162047",
+      "descripcion_original": "LOC EVERY NIGHT HIDRA PROF 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162085",
+      "codbarras": "7590005162085",
+      "descripcion_original": "LOC EVERY NIGHT HIDRA SUAVE 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162108",
+      "codbarras": "7590005162108",
+      "descripcion_original": "CREM EV NIGHT PIEL EX SE CACAO FRU 200C"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162801",
+      "codbarras": "7590005162801",
+      "descripcion_original": "DES EVERY NIGTH BABY PINK 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "DESODORANTE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162818",
+      "codbarras": "7590005162818",
+      "descripcion_original": "DES EVERY NIGTH NATURELLE 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162825",
+      "codbarras": "7590005162825",
+      "descripcion_original": "DES EVERY NIGTH SPRING FRESH 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162832",
+      "codbarras": "7590005162832",
+      "descripcion_original": "DES EVERY NIGTH POWDER 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005162849",
+      "codbarras": "7590005162849",
+      "descripcion_original": "DES EVERY NIGTH COLONIA 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168179",
+      "codbarras": "7590005168179",
+      "descripcion_original": "GEL FIJ EVERY EXT/FUERT AZUL X 100"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "EVERY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168186",
+      "codbarras": "7590005168186",
+      "descripcion_original": "GEL FIJADOR EVERY NIGHT FRESH 100G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168209",
+      "codbarras": "7590005168209",
+      "descripcion_original": "GEL FIJ EVERY NIGTH POWER 100G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168216",
+      "codbarras": "7590005168216",
+      "descripcion_original": "GEL FIJ EVERY  WINNER"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "EVERY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168223",
+      "codbarras": "7590005168223",
+      "descripcion_original": "GEL EVERY NIGTH  FRESH 250G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168810",
+      "codbarras": "7590005168810",
+      "descripcion_original": "DES EVERY NIGHT FOR MEN SPORT 90G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005168834",
+      "codbarras": "7590005168834",
+      "descripcion_original": "DES EVERY NIGHT FOR MEN FRESH ROLLON"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "ROLL-ON",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "DESODORANTE",
+      "fabricante": null,
+      "marca": "EVERY NIGHT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005183066",
+      "codbarras": "7590005183066",
+      "descripcion_original": "LOC CORP DERMOX MILK 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CUIDADO_PERSONAL",
+      "fabricante": null,
+      "marca": "DERMOX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005183080",
+      "codbarras": "7590005183080",
+      "descripcion_original": "LOCION DERMOX ANTIEDAD 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "CUIDADO_PERSONAL",
+      "fabricante": null,
+      "marca": "DERMOX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590005183189",
+      "codbarras": "7590005183189",
+      "descripcion_original": "LOC DERMOX CORPORAL HUMECT X 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CUIDADO_PERSONAL",
+      "fabricante": null,
+      "marca": "DERMOX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7590027000495",
+      "codbarras": "7590027000495",
+      "descripcion_original": "DICLOFENAC GEL X 15 GR 1,16% SPEFA"
+    },
+    "atributos": {
+      "principio_activo": "DICLOFENAC",
+      "concentracion": "1.16%",
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "SPEFA",
+      "marca": null,
+      "codigo_atc": "M02AA15",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "75903565",
+      "codbarras": "75903565",
+      "descripcion_original": "HOJ SCHICK SUPER CHROMIUM 10 X 3."
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HOJILLAS_AFEITAR",
+      "fabricante": "SCHICK",
+      "marca": "SUPER CHROMIUM",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591005981102",
+      "codbarras": "7591005981102",
+      "descripcion_original": "MR COCINA LIMP PODEROSA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRODUCTO_LIMPIEZA",
+      "fabricante": null,
+      "marca": "MR COCINA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591005996632",
+      "codbarras": "7591005996632",
+      "descripcion_original": "OFF FAMILY CREMA 60 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REPELENTE",
+      "fabricante": null,
+      "marca": "OFF FAMILY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020005319",
+      "codbarras": "7591020005319",
+      "descripcion_original": "ALPRAM TAB 2      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": "ALPRAZOLAM",
+      "concentracion": "2 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ALPRAM",
+      "codigo_atc": "N05BA12",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020009454",
+      "codbarras": "7591020009454",
+      "descripcion_original": "ATOEVASTATINA 20MG X 30 TAB VALMORCA"
+    },
+    "atributos": {
+      "principio_activo": "ATORVASTATINA",
+      "concentracion": "20MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "VALMORCA",
+      "marca": null,
+      "codigo_atc": "C10AA05",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020080538",
+      "codbarras": "7591020080538",
+      "descripcion_original": "ESQUIDONE TAB 1      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": "RISPERIDONA",
+      "concentracion": "1 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ESQUIDONE",
+      "codigo_atc": "N05AX08",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020080668",
+      "codbarras": "7591020080668",
+      "descripcion_original": "TRACEVAL TAB REC 325/37.5      MG X20"
+    },
+    "atributos": {
+      "principio_activo": "TRAMADOL/PARACETAMOL",
+      "concentracion": "325/37.5 MG",
+      "forma_farmaceutica": "TABLETA RECUBIERTA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "TRACEVAL",
+      "codigo_atc": "N02AJ13",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020080750",
+      "codbarras": "7591020080750",
+      "descripcion_original": "CLONZEP 0.5 MG 30 TAB VALMORCA"
+    },
+    "atributos": {
+      "principio_activo": "CLONAZEPAM",
+      "concentracion": "0.5 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "VALMORCA",
+      "marca": "CLONZEP",
+      "codigo_atc": "N03AE01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020080767",
+      "codbarras": "7591020080767",
+      "descripcion_original": "CLONAZEPAN (CLONZEP) 2MG X 30 TAB VALMOR"
+    },
+    "atributos": {
+      "principio_activo": "CLONAZEPAM",
+      "concentracion": "2MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "VALMOR",
+      "marca": "CLONZEP",
+      "codigo_atc": "N03AE01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591020080804",
+      "codbarras": "7591020080804",
+      "descripcion_original": "CANDER 32      MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "CANDESARTAN",
+      "concentracion": "32 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CANDER",
+      "codigo_atc": "C09CA06",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061400005",
+      "codbarras": "7591061400005",
+      "descripcion_original": "CHICCO TOALLAS HUMEDAD  X 72"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640081",
+      "codbarras": "7591061640081",
+      "descripcion_original": "CHICCO ORIGINAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640258",
+      "codbarras": "7591061640258",
+      "descripcion_original": "CHICCO COTONCITOS 100 UND PHARSANA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "COTONCITOS",
+      "fabricante": "PHARSANA",
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640272",
+      "codbarras": "7591061640272",
+      "descripcion_original": "COTONCITOS X 60 UNI  CHICCO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "COTONCITOS",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640319",
+      "codbarras": "7591061640319",
+      "descripcion_original": "CHICCO COTONCITOS 60UNID PROMO 3X2"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "COTONCITOS",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640463",
+      "codbarras": "7591061640463",
+      "descripcion_original": "AMY TOALLAS HUMED AGUA 24 PIEZA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "AMY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061640481",
+      "codbarras": "7591061640481",
+      "descripcion_original": "CHICCO TALCO X 100 GR PHARMASANA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "POLVO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": "PHARMASANA",
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061647264",
+      "codbarras": "7591061647264",
+      "descripcion_original": "CHICCO COLONIA NI\u00d1O 110CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "COLONIA",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591061650462",
+      "codbarras": "7591061650462",
+      "descripcion_original": "CHICCO COLONIA 100CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "COLONIA",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "CHICCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591062000181",
+      "codbarras": "7591062000181",
+      "descripcion_original": "TALZIC 10MG X 10 TAB ELMOR"
+    },
+    "atributos": {
+      "principio_activo": "TALZIC",
+      "concentracion": "10MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ELMOR",
+      "marca": "TALZIC",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591062013389",
+      "codbarras": "7591062013389",
+      "descripcion_original": "LIOLACTIL TAB X 20"
+    },
+    "atributos": {
+      "principio_activo": "LIOLACTIL",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "LIOLACTIL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591062018650",
+      "codbarras": "7591062018650",
+      "descripcion_original": "ULCENOL TAB 40      MG X 20"
+    },
+    "atributos": {
+      "principio_activo": "ULCENOL",
+      "concentracion": "40 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ULCENOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591062900948",
+      "codbarras": "7591062900948",
+      "descripcion_original": "TACHIFORTE TAB 1 G X 20"
+    },
+    "atributos": {
+      "principio_activo": "TACHIFORTE",
+      "concentracion": "1 G",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "TACHIFORTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591066701015",
+      "codbarras": "7591066701015",
+      "descripcion_original": "MAQ XTREME 3 P/SENSIB BLISTER X 8"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MAQUINILLA_AFEITAR",
+      "fabricante": null,
+      "marca": "XTREME 3",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591096000102",
+      "codbarras": "7591096000102",
+      "descripcion_original": "MATERNAVIT TAB BLDA X  30"
+    },
+    "atributos": {
+      "principio_activo": "MATERNAVIT",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA BLANDA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "MATERNAVIT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591096000393",
+      "codbarras": "7591096000393",
+      "descripcion_original": "OXINORM TAB X 30"
+    },
+    "atributos": {
+      "principio_activo": "OXINORM",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "OXINORM",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591096000416",
+      "codbarras": "7591096000416",
+      "descripcion_original": "FERRONORM TAB X 30"
+    },
+    "atributos": {
+      "principio_activo": "FERRONORM",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "FERRONORM",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591138073552",
+      "codbarras": "7591138073552",
+      "descripcion_original": "JAB SANALO ANTIBACTERIAL X 85 GR"
+    },
+    "atributos": {
+      "principio_activo": "ANTIBACTERIAL",
+      "concentracion": null,
+      "forma_farmaceutica": "JABON",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "SANALO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591138077208",
+      "codbarras": "7591138077208",
+      "descripcion_original": "ALCOHOL ANTISEPTICO 1L SANOL"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": null,
+      "forma_farmaceutica": "LIQUIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ANTISEPTICO",
+      "fabricante": null,
+      "marca": "SANOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591138077239",
+      "codbarras": "7591138077239",
+      "descripcion_original": "ALCOHOL ANTISEPTICO 500ML SANOL"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": null,
+      "forma_farmaceutica": "LIQUIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ANTISEPTICO",
+      "fabricante": null,
+      "marca": "SANOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591138077260",
+      "codbarras": "7591138077260",
+      "descripcion_original": "ALCOHOL ANTISEPTICO 240 ML SANOL"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": null,
+      "forma_farmaceutica": "LIQUIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ANTISEPTICO",
+      "fabricante": null,
+      "marca": "SANOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591138077291",
+      "codbarras": "7591138077291",
+      "descripcion_original": "ALCOHOL ANTISEPTICO 120ML SANOL"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": null,
+      "forma_farmaceutica": "LIQUIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ANTISEPTICO",
+      "fabricante": null,
+      "marca": "SANOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196000873",
+      "codbarras": "7591196000873",
+      "descripcion_original": "TOBRASOL UNG OFT X 7,5 GR"
+    },
+    "atributos": {
+      "principio_activo": "TOBRASOL",
+      "concentracion": null,
+      "forma_farmaceutica": "UNG\u00dcENTO OFTALMICO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "TOBRASOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196001146",
+      "codbarras": "7591196001146",
+      "descripcion_original": "MELOXICAN 15MG X 10 TAB MEDIGEN"
+    },
+    "atributos": {
+      "principio_activo": "MELOXICAM",
+      "concentracion": "15MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MEDIGEN",
+      "marca": "MELOXICAN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196002211",
+      "codbarras": "7591196002211",
+      "descripcion_original": "OFTERRA UNG OFT X 7 GR"
+    },
+    "atributos": {
+      "principio_activo": "OFTERRA",
+      "concentracion": null,
+      "forma_farmaceutica": "UNG\u00dcENTO OFTALMICO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "OFTERRA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196002792",
+      "codbarras": "7591196002792",
+      "descripcion_original": "AIRON TAB MAST PED 5      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "5 MG",
+      "forma_farmaceutica": "TABLETA MASTICABLE",
+      "requiere_recipe": 1,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "AIRON",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196003201",
+      "codbarras": "7591196003201",
+      "descripcion_original": "VITAVISION TAB X 30       OFTALMI"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "OFTALMI",
+      "marca": "VITAVISION",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196004222",
+      "codbarras": "7591196004222",
+      "descripcion_original": "AZACARD 81MG X 100 TAB OFTALMI"
+    },
+    "atributos": {
+      "principio_activo": "\u00c1CIDO ACETILSALIC\u00cdLICO",
+      "concentracion": "81MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "OFTALMI",
+      "marca": "AZACARD",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196006110",
+      "codbarras": "7591196006110",
+      "descripcion_original": "MOXIDEX GOTAS 5ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GOTAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "MOXIDEX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591196006301",
+      "codbarras": "7591196006301",
+      "descripcion_original": "APIRET FLU NOCHE GRANULADO 8GX1"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GRANULADO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "APIRET FLU NOCHE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243802108",
+      "codbarras": "7591243802108",
+      "descripcion_original": "ARESAN 40      MG X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "40 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ARESAN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243817782",
+      "codbarras": "7591243817782",
+      "descripcion_original": "FLENOX JARABE PED 120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "FLENOX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243817829",
+      "codbarras": "7591243817829",
+      "descripcion_original": "FLENOX JARABE ADU 120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "FLENOX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243830507",
+      "codbarras": "7591243830507",
+      "descripcion_original": "LISIN-BE JARABE 120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "LISIN-BE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243830705",
+      "codbarras": "7591243830705",
+      "descripcion_original": "LITONATE CREMA X15 GR BIOTECH"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOTECH",
+      "marca": "LITONATE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243856743",
+      "codbarras": "7591243856743",
+      "descripcion_original": "YONALIN 4MG/ML X15ML SOL  GOTAS BIOTECH"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "4MG/ML",
+      "forma_farmaceutica": "SOLUCI\u00d3N GOTAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOTECH",
+      "marca": "YONALIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591248510503",
+      "codbarras": "7591248510503",
+      "descripcion_original": "MIMADITO COLONIA 90ML X1 UND"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "MIMADITO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591248611309",
+      "codbarras": "7591248611309",
+      "descripcion_original": "ACEITE MIMADITO CREMOSO X 200ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "MIMADITO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591248811105",
+      "codbarras": "7591248811105",
+      "descripcion_original": "MOTAS DE ALGODON X50 MIMADITO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "MIMADITO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309000042",
+      "codbarras": "7591309000042",
+      "descripcion_original": "DES DIOXOG ROLL-ON ANTIS X 90 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "DIOXOG",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309000066",
+      "codbarras": "7591309000066",
+      "descripcion_original": "DES DIOXOG ROLL-ON ANT C/TALX 90GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "DIOXOG",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309000080",
+      "codbarras": "7591309000080",
+      "descripcion_original": "DES DIOXOG ROLL-ON ALOE X 90 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "DIOXOG",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309000219",
+      "codbarras": "7591309000219",
+      "descripcion_original": "DES DIOXOG ROLL-ON C/BICARB X 90GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "DIOXOG",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309001049",
+      "codbarras": "7591309001049",
+      "descripcion_original": "DENCORUB ICE GEL X 40 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "DENCORUB ICE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591309902667",
+      "codbarras": "7591309902667",
+      "descripcion_original": "GEL  ANTIBACTERIAL  REFRESCANTE  50ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353515004",
+      "codbarras": "7591353515004",
+      "descripcion_original": "PA\u00d1 SECURREZZA INCONT MED CLAS X6"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PA\u00d1AL",
+      "fabricante": null,
+      "marca": "SECURREZZA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353515103",
+      "codbarras": "7591353515103",
+      "descripcion_original": "SECUREZA COMFORT TALLA  M 1 X 6"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PA\u00d1AL",
+      "fabricante": null,
+      "marca": "SECUREZA COMFORT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353680542",
+      "codbarras": "7591353680542",
+      "descripcion_original": "ACTIVA SEC/ABUNDANTE X 10 UNIDADES"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "ACTIVA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353699018",
+      "codbarras": "7591353699018",
+      "descripcion_original": "PA\u00d1ALES ADULTO SIEMPRE SECO TALLA G X6"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PA\u00d1AL",
+      "fabricante": null,
+      "marca": "SIEMPRE SECO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353700059",
+      "codbarras": "7591353700059",
+      "descripcion_original": "TOA CLINICAS SECUREZZA POST PARTO 1"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "SECUREZZA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591353701858",
+      "codbarras": "7591353701858",
+      "descripcion_original": "FRIENDS TOALLAS SANITARIAS  X14 C/ALAS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "FRIENDS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591415011772",
+      "codbarras": "7591415011772",
+      "descripcion_original": "PROCTETOR LAB/MANTECA DE CACAO  4.2GR"
+    },
+    "atributos": {
+      "principio_activo": "Manteca de Cacao",
+      "concentracion": "4.2GR",
+      "forma_farmaceutica": "B\u00e1lsamo labial",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591442000046",
+      "codbarras": "7591442000046",
+      "descripcion_original": "ALG ALVE X 10 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "ALVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591442000053",
+      "codbarras": "7591442000053",
+      "descripcion_original": "ALG ALVE X 25 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "ALVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591442000060",
+      "codbarras": "7591442000060",
+      "descripcion_original": "ALG ALVE X 50 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "ALVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591442000107",
+      "codbarras": "7591442000107",
+      "descripcion_original": "MOTAS ALGODON ALVE BLANCO X 50"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "ALVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591487000162",
+      "codbarras": "7591487000162",
+      "descripcion_original": "ALCOHOL ALVA 240ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol",
+      "concentracion": "240ML",
+      "forma_farmaceutica": "L\u00edquido",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ALVA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591487000186",
+      "codbarras": "7591487000186",
+      "descripcion_original": "ALCOHOL ISOPROP ALVE X 1000ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol Isoprop\u00edlico",
+      "concentracion": "1000ML",
+      "forma_farmaceutica": "L\u00edquido",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ALVE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "75914870062",
+      "codbarras": "75914870062",
+      "descripcion_original": "ALCOHOL ALVA 240ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol",
+      "concentracion": "240ML",
+      "forma_farmaceutica": "L\u00edquido",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ALVA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591501000017",
+      "codbarras": "7591501000017",
+      "descripcion_original": "ALG HIDEVEN X 10 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "HIDEVEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591501000024",
+      "codbarras": "7591501000024",
+      "descripcion_original": "ALG HIDEVEN X 25 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "HIDEVEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591501000031",
+      "codbarras": "7591501000031",
+      "descripcion_original": "ALG HIDEVEN X 50 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "ALGODON",
+      "fabricante": null,
+      "marca": "HIDEVEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519000092",
+      "codbarras": "7591519000092",
+      "descripcion_original": "TORIVAS 100      MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "Torvastatina",
+      "concentracion": "100 MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "TORIVAS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519051698",
+      "codbarras": "7591519051698",
+      "descripcion_original": "LOSARTAN P CLX TAB 50      MG X30"
+    },
+    "atributos": {
+      "principio_activo": "Losart\u00e1n",
+      "concentracion": "50 MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519051872",
+      "codbarras": "7591519051872",
+      "descripcion_original": "ANTAAR 2,5      MG X 30 TABLETAS"
+    },
+    "atributos": {
+      "principio_activo": "Anastrozol",
+      "concentracion": "2,5 MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ANTAAR",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519317329",
+      "codbarras": "7591519317329",
+      "descripcion_original": "LEVOFLOXACINO 750 MG X 5 TAB CALOX"
+    },
+    "atributos": {
+      "principio_activo": "Levofloxacino",
+      "concentracion": "750 MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "CALOX",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519317565",
+      "codbarras": "7591519317565",
+      "descripcion_original": "GARDENAL  100MG X 30 TAB MCK"
+    },
+    "atributos": {
+      "principio_activo": "Fenobarbital",
+      "concentracion": "100MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MCK",
+      "marca": "GARDENAL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519317589",
+      "codbarras": "7591519317589",
+      "descripcion_original": "DIPLOZ 1MG X 30 TAB MCK"
+    },
+    "atributos": {
+      "principio_activo": "Clonazepam",
+      "concentracion": "1MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MCK",
+      "marca": "DIPLOZ",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591519317671",
+      "codbarras": "7591519317671",
+      "descripcion_original": "BIOCOR AMLO 20MG-5MG X 10 TAB MCK"
+    },
+    "atributos": {
+      "principio_activo": "Amlodipino",
+      "concentracion": "20MG-5MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MCK",
+      "marca": "BIOCOR AMLO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585117885",
+      "codbarras": "7591585117885",
+      "descripcion_original": "KETOREL 30MG X 4 TAB  LETI"
+    },
+    "atributos": {
+      "principio_activo": "Ketorolaco",
+      "concentracion": "30MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "LETI",
+      "marca": "KETOREL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585119100",
+      "codbarras": "7591585119100",
+      "descripcion_original": "DIGLET 200UI GOTAS X20ML BANANA LETI"
+    },
+    "atributos": {
+      "principio_activo": "Vitamina D",
+      "concentracion": "200UI",
+      "forma_farmaceutica": "Gotas",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": "LETI",
+      "marca": "DIGLET",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585119131",
+      "codbarras": "7591585119131",
+      "descripcion_original": "GYNOMET CREMA VAGx40g"
+    },
+    "atributos": {
+      "principio_activo": "Metronidazol",
+      "concentracion": "40g",
+      "forma_farmaceutica": "Crema Vaginal",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "GYNOMET",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585213365",
+      "codbarras": "7591585213365",
+      "descripcion_original": "NEUROMIX 30 TAB LETI"
+    },
+    "atributos": {
+      "principio_activo": "Vitaminas del complejo B",
+      "concentracion": null,
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "LETI",
+      "marca": "NEUROMIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585214850",
+      "codbarras": "7591585214850",
+      "descripcion_original": "LETISAN MASTICABLE X10 TAB UVA LETI"
+    },
+    "atributos": {
+      "principio_activo": "Vitaminas y Minerales",
+      "concentracion": null,
+      "forma_farmaceutica": "Tabletas Masticables",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "LETI",
+      "marca": "LETISAN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585217639",
+      "codbarras": "7591585217639",
+      "descripcion_original": "DAYZOL IBUPRO 600MG TIOCOL 4MG X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": "Ibuprofeno, Tiocolchic\u00f3sido",
+      "concentracion": "600MG, 4MG",
+      "forma_farmaceutica": "Tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "DAYZOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585313355",
+      "codbarras": "7591585313355",
+      "descripcion_original": "ASARAP 10MG X 10 TAB LETI"
+    },
+    "atributos": {
+      "principio_activo": "ASARAP",
+      "concentracion": "10MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "LETI",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585318794",
+      "codbarras": "7591585318794",
+      "descripcion_original": "OLMECAR 20      MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "OLMECAR",
+      "concentracion": "20 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585514875",
+      "codbarras": "7591585514875",
+      "descripcion_original": "LETISAN TAB MASTICABLE X 10"
+    },
+    "atributos": {
+      "principio_activo": "LETISAN",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA MASTICABLE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591616001466",
+      "codbarras": "7591616001466",
+      "descripcion_original": "ACIDO BORICO 20 GR SOB X 12 BIOFAR"
+    },
+    "atributos": {
+      "principio_activo": "ACIDO BORICO",
+      "concentracion": "20 GR",
+      "forma_farmaceutica": "SOBRE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOFAR",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591616001510",
+      "codbarras": "7591616001510",
+      "descripcion_original": "AZUFRE EN POLVO  20G  BIOFARCO"
+    },
+    "atributos": {
+      "principio_activo": "AZUFRE",
+      "concentracion": "20G",
+      "forma_farmaceutica": "POLVO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOFARCO",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619000244",
+      "codbarras": "7591619000244",
+      "descripcion_original": "ORLIDIET TAB 120      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": "ORLIDIET",
+      "concentracion": "120 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619001067",
+      "codbarras": "7591619001067",
+      "descripcion_original": "DORIXINA FLEX 5 TAB"
+    },
+    "atributos": {
+      "principio_activo": "DORIXINA FLEX",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619001081",
+      "codbarras": "7591619001081",
+      "descripcion_original": "MIGRADORIXINA 125MG-1MG X5 TAB MEGALAB"
+    },
+    "atributos": {
+      "principio_activo": "MIGRADORIXINA",
+      "concentracion": "125MG-1MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MEGALAB",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "75916191630311",
+      "codbarras": "75916191630311",
+      "descripcion_original": "AFOKLIN GOTAS 10MG/ML"
+    },
+    "atributos": {
+      "principio_activo": "AFOKLIN",
+      "concentracion": "10MG/ML",
+      "forma_farmaceutica": "GOTAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619517834",
+      "codbarras": "7591619517834",
+      "descripcion_original": "BETARRETIN GEL 0,025%"
+    },
+    "atributos": {
+      "principio_activo": "BETARRETIN",
+      "concentracion": "0,025%",
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619517841",
+      "codbarras": "7591619517841",
+      "descripcion_original": "BETARRETIN CREMA 0,025%"
+    },
+    "atributos": {
+      "principio_activo": "BETARRETIN",
+      "concentracion": "0,025%",
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619517865",
+      "codbarras": "7591619517865",
+      "descripcion_original": "BETARRETIN H 30G CREMA"
+    },
+    "atributos": {
+      "principio_activo": "BETARRETIN H",
+      "concentracion": "30G",
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591619520797",
+      "codbarras": "7591619520797",
+      "descripcion_original": "PINAVIX 100MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "PINAVIX",
+      "concentracion": "100MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000105",
+      "codbarras": "7591635000105",
+      "descripcion_original": "SHAM AVISPA X 120 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "SHAMPOO",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000136",
+      "codbarras": "7591635000136",
+      "descripcion_original": "SHAM AVISPA X 60 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "SHAMPOO",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000181",
+      "codbarras": "7591635000181",
+      "descripcion_original": "REPELENTE AVISPA LOC X 110 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "LOCION",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REPELENTE",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000198",
+      "codbarras": "7591635000198",
+      "descripcion_original": "REPELENTE AVISPA EN CREM X 100 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REPELENTE",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000204",
+      "codbarras": "7591635000204",
+      "descripcion_original": "REPELENTE AVISPA TUBO X 100 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TUBO",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REPELENTE",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635000228",
+      "codbarras": "7591635000228",
+      "descripcion_original": "REPELENTE AVISPA X 220 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "REPELENTE",
+      "fabricante": null,
+      "marca": "AVISPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635910244",
+      "codbarras": "7591635910244",
+      "descripcion_original": "PROTECTOR LAB NEVADA CEREZA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR LABIAL",
+      "fabricante": null,
+      "marca": "NEVADA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635910251",
+      "codbarras": "7591635910251",
+      "descripcion_original": "PROTECTOR LABIAL NEVADA 4G FRESA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR LABIAL",
+      "fabricante": null,
+      "marca": "NEVADA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635910268",
+      "codbarras": "7591635910268",
+      "descripcion_original": "PROTECTOR LABIAL NEVADA 4G MANZANA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR LABIAL",
+      "fabricante": null,
+      "marca": "NEVADA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591635910275",
+      "codbarras": "7591635910275",
+      "descripcion_original": "PROTECTOR LAB NEVADA COCO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR LABIAL",
+      "fabricante": null,
+      "marca": "NEVADA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "7591635910282",
+      "descripcion_original": "PROTECTOR LABIAL NEVADA 4G COCO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PROTECTOR LABIAL",
+      "fabricante": null,
+      "marca": "NEVADA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591651002015",
+      "codbarras": "7591651002015",
+      "descripcion_original": "EMPAGLIFOZINA 10MG X 30 TAB ZUOZ"
+    },
+    "atributos": {
+      "principio_activo": "EMPAGLIFOZINA",
+      "concentracion": "10MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZUOZ",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591664000046",
+      "codbarras": "7591664000046",
+      "descripcion_original": "PEGA LOKA 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591756150248",
+      "codbarras": "7591756150248",
+      "descripcion_original": "AGUA OXIGENA EL GUARDIAN 1000 ML"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591818000120",
+      "codbarras": "7591818000120",
+      "descripcion_original": "COFADORYN DICLOF POTASIC 50MG X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": "Diclofenaco pot\u00e1sico",
+      "concentracion": "50MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "COFADORYN",
+      "codigo_atc": "M01AB05",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591818251386",
+      "codbarras": "7591818251386",
+      "descripcion_original": "MIOVIT X 60 TAB COFASA"
+    },
+    "atributos": {
+      "principio_activo": "Vitaminas",
+      "concentracion": null,
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "COFASA",
+      "marca": "MIOVIT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821210837",
+      "codbarras": "7591821210837",
+      "descripcion_original": "FARMA D 5000 UI - VIT D X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": "Vitamina D",
+      "concentracion": "5000 UI",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMA",
+      "marca": "FARMA D",
+      "codigo_atc": "A11CC05",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821210882",
+      "codbarras": "7591821210882",
+      "descripcion_original": "BRASARTAN 160MG/12.5MG X 30 TAB FARMA"
+    },
+    "atributos": {
+      "principio_activo": "Valsart\u00e1n/Hidroclorotiazida",
+      "concentracion": "160MG/12.5MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMA",
+      "marca": "BRASARTAN",
+      "codigo_atc": "C09DA03",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821901858",
+      "codbarras": "7591821901858",
+      "descripcion_original": "MACRODANTINA TAB 50      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": "Nitrofuranto\u00edna",
+      "concentracion": "50 MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "MACRODANTINA",
+      "codigo_atc": "J01XE01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821901995",
+      "codbarras": "7591821901995",
+      "descripcion_original": "VALPRON 500MG X 60 TAB FARMA"
+    },
+    "atributos": {
+      "principio_activo": "\u00c1cido valproico",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMA",
+      "marca": "VALPRON",
+      "codigo_atc": "N03AG01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821904002",
+      "codbarras": "7591821904002",
+      "descripcion_original": "LIPACOMB TAB 10      MG - 20      MG X"
+    },
+    "atributos": {
+      "principio_activo": "Atorvastatina/Ezetimiba",
+      "concentracion": "10 MG - 20 MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "LIPACOMB",
+      "codigo_atc": "C10BA05",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591821904323",
+      "codbarras": "7591821904323",
+      "descripcion_original": "FITEX TAB 5      MG X 10"
+    },
+    "atributos": {
+      "principio_activo": "Finasteride",
+      "concentracion": "5 MG",
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "FITEX",
+      "codigo_atc": "G04CB01",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591838000025",
+      "codbarras": "7591838000025",
+      "descripcion_original": "GERDEX DESINFECTANTE X 240 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "L\u00edquido",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "GERDEX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591838000117",
+      "codbarras": "7591838000117",
+      "descripcion_original": "GERDEX DESIFECTANTE SPRAY X 240ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Spray",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "GERDEX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591844000439",
+      "codbarras": "7591844000439",
+      "descripcion_original": "ADEMINA PLUS CREM CORP X 30 G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Crema",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ADEMINA PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591844000446",
+      "codbarras": "7591844000446",
+      "descripcion_original": "ADEMINA PLUS CREM CORP X 60 G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Crema",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ADEMINA PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591928000034",
+      "codbarras": "7591928000034",
+      "descripcion_original": "TOA SANIT CLINICAS X 10 LARGE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591929000071",
+      "codbarras": "7591929000071",
+      "descripcion_original": "MULTI PLUS LD SOL 120 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "MULTI PLUS LD",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591929000156",
+      "codbarras": "7591929000156",
+      "descripcion_original": "MULTI PLUS ULTRA X 120 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "MULTI PLUS ULTRA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591929232021",
+      "codbarras": "7591929232021",
+      "descripcion_original": "SOL ACOND 20/20 X 120 ML   ALGOL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "ALGOL",
+      "marca": "SOL ACOND 20/20",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591929727015",
+      "codbarras": "7591929727015",
+      "descripcion_original": "MULTI PLUS SOL X 360 ML ALGOL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "ALGOL",
+      "marca": "MULTI PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591929828026",
+      "codbarras": "7591929828026",
+      "descripcion_original": "7591929828026"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591948156018",
+      "codbarras": "7591948156018",
+      "descripcion_original": "TAPONES PARA OIDOS RIGA X2"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "RIGA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591949528012",
+      "codbarras": "7591949528012",
+      "descripcion_original": "REM VALMY ORIGINAL 50 ML VIDRIO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "VALMY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591949610014",
+      "codbarras": "7591949610014",
+      "descripcion_original": "REM VALMY ORIGINAL 50 ML PLASTICO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "VALMY",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591955001257",
+      "codbarras": "7591955001257",
+      "descripcion_original": "FERGANIC TAB X 24"
+    },
+    "atributos": {
+      "principio_activo": "Hierro",
+      "concentracion": null,
+      "forma_farmaceutica": "Tableta",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "FERGANIC",
+      "codigo_atc": "B03AA",
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591956110217",
+      "codbarras": "7591956110217",
+      "descripcion_original": "AGUA OXIGENADA EL GUARDIAN  X 120 CC"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": null,
+      "forma_farmaceutica": "Soluci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591956110224",
+      "codbarras": "7591956110224",
+      "descripcion_original": "AGUA OXIGENADA EL GUARDIAN   240ML"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": "240ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591956110231",
+      "codbarras": "7591956110231",
+      "descripcion_original": "AGUA OXIGENADA DE 500ML"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": "500ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591956110248",
+      "codbarras": "7591956110248",
+      "descripcion_original": "AGUA OXIGENA EL GUARDIAN  X 1000 CC"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": "1000 CC",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592040000113",
+      "codbarras": "7592040000113",
+      "descripcion_original": "ALCOHOL EL GUARDIAN 1000ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "1000ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044000083",
+      "codbarras": "7592044000083",
+      "descripcion_original": "ALCOHOL GUARDIAN 120ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "120ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044000090",
+      "codbarras": "7592044000090",
+      "descripcion_original": "ALCOHOL GUARDIAN 240ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "240ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044000106",
+      "codbarras": "7592044000106",
+      "descripcion_original": "ALCOHOL GUARDIAN 500ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "500ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044000113",
+      "codbarras": "7592044000113",
+      "descripcion_original": "ALCOHOL GUARDIAN 1000ML"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "1000ML",
+      "forma_farmaceutica": "Soluci\u00f3n t\u00f3pica",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044002407",
+      "codbarras": "7592044002407",
+      "descripcion_original": "GEL ANTIBACTERIAL X60ML EL GUARDIAN"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "60ML",
+      "forma_farmaceutica": "Gel",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044002643",
+      "codbarras": "7592044002643",
+      "descripcion_original": "ALCOHOL ATOMIZADOL X  120ML EL GUARDIAN"
+    },
+    "atributos": {
+      "principio_activo": "Alcohol et\u00edlico",
+      "concentracion": "120ML",
+      "forma_farmaceutica": "Spray",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592044002681",
+      "codbarras": "7592044002681",
+      "descripcion_original": "AGUA OXIGENADA X120ML SPRAY EL GUARDIAN"
+    },
+    "atributos": {
+      "principio_activo": "Per\u00f3xido de hidr\u00f3geno",
+      "concentracion": "120ML",
+      "forma_farmaceutica": "Spray",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "EL GUARDIAN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592074000060",
+      "codbarras": "7592074000060",
+      "descripcion_original": "JARABE LAMEDOR COMPU X 125 ML BIONE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "125 ML",
+      "forma_farmaceutica": "Jarabe",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIONE",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592074000411",
+      "codbarras": "7592074000411",
+      "descripcion_original": "ACEITE DE ALMENDRAS X 30 ML BIONECTAR"
+    },
+    "atributos": {
+      "principio_activo": "Aceite de almendras",
+      "concentracion": "30 ML",
+      "forma_farmaceutica": "Aceite",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIONECTAR",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592074000497",
+      "codbarras": "7592074000497",
+      "descripcion_original": "ACEITE DE COCO X 30ML BIONECTAR"
+    },
+    "atributos": {
+      "principio_activo": "Aceite de coco",
+      "concentracion": "30ML",
+      "forma_farmaceutica": "Aceite",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIONECTAR",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592074000558",
+      "codbarras": "7592074000558",
+      "descripcion_original": "ACEITE DE RECINO 30 ML"
+    },
+    "atributos": {
+      "principio_activo": "Aceite de ricino",
+      "concentracion": "30 ML",
+      "forma_farmaceutica": "Aceite",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090000037",
+      "codbarras": "7592090000037",
+      "descripcion_original": "BRUCEN  CREMA NUTRITIVA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Crema",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090000075",
+      "codbarras": "7592090000075",
+      "descripcion_original": "BRUCEN ADULTC CREMA RESTAU 30G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "30G",
+      "forma_farmaceutica": "Crema",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090000334",
+      "codbarras": "7592090000334",
+      "descripcion_original": "BRUCEN ADULTCARE LOCION 250ml"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "250ml",
+      "forma_farmaceutica": "Loci\u00f3n",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090000495",
+      "codbarras": "7592090000495",
+      "descripcion_original": "BRUCETIN KIDS UNGUENTO CORPORAL BRUPHARM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Ung\u00fcento",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": "BRUPHARM",
+      "marca": "BRUCETIN KIDS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090001447",
+      "codbarras": "7592090001447",
+      "descripcion_original": "BRUCEN ENJUAGUE BUCAL X250ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "250ML",
+      "forma_farmaceutica": "Enjuague bucal",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090001454",
+      "codbarras": "7592090001454",
+      "descripcion_original": "BRUCEN ENJUAGUE BUCAL COOL X 250ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "250ML",
+      "forma_farmaceutica": "Enjuague bucal",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090001461",
+      "codbarras": "7592090001461",
+      "descripcion_original": "BRUCEN ENJUAGUE HIERBA BUENA X250 ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "250 ML",
+      "forma_farmaceutica": "Enjuague bucal",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRUCEN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592090001546",
+      "codbarras": "7592090001546",
+      "descripcion_original": "BRUCETIN KIDS BODY LO 200"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "200ML",
+      "forma_farmaceutica": "Loci\u00f3n corporal",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "BRUCETIN KIDS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592229003229",
+      "codbarras": "7592229003229",
+      "descripcion_original": "UROCIT TAB LP 10      MG X 100"
+    },
+    "atributos": {
+      "principio_activo": "UROCIT",
+      "concentracion": "10 MG",
+      "forma_farmaceutica": "Tableta de liberaci\u00f3n prolongada",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592247000217",
+      "codbarras": "7592247000217",
+      "descripcion_original": "SAITO VENDAS ELASTICAS 8CM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "VENDAS",
+      "fabricante": "SAITO",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592247000224",
+      "codbarras": "7592247000224",
+      "descripcion_original": "SAITO VENDAS ELASTICAS 10CM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "VENDAS",
+      "fabricante": "SAITO",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592247000248",
+      "codbarras": "7592247000248",
+      "descripcion_original": "SAITO VENDAS ELASTICAS 15CM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "VENDAS",
+      "fabricante": "SAITO",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592247000255",
+      "codbarras": "7592247000255",
+      "descripcion_original": "SAITO VENDAS ELASTICAS 20CM"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "VENDAS",
+      "fabricante": "SAITO",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592285001207",
+      "codbarras": "7592285001207",
+      "descripcion_original": "JER 20 CC  21 X 1 1/2 X 50 GAESCA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "INYECTADORAS",
+      "fabricante": "GAESCA",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592340000114",
+      "codbarras": "7592340000114",
+      "descripcion_original": "WIKI-WIKI AZUL COLEGIAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "WIKI-WIKI",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592340000213",
+      "codbarras": "7592340000213",
+      "descripcion_original": "WIKI-WIKI NEGRO DETALLADO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "WIKI-WIKI",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592340000275",
+      "codbarras": "7592340000275",
+      "descripcion_original": "WIKI-WIKI NEGRO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "WIKI-WIKI",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592348227513",
+      "codbarras": "7592348227513",
+      "descripcion_original": "POLIFIX PVO DENT X 56 GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "56 GR",
+      "forma_farmaceutica": "POLVO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "POLIFIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592348647113",
+      "codbarras": "7592348647113",
+      "descripcion_original": "POLIFIX 40GR CREMA ADHESIVO DENTALES"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "40GR",
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "POLIFIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592348647526",
+      "codbarras": "7592348647526",
+      "descripcion_original": "POLIFIX 30GR POLVO FIJADOR DENTALES"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "30GR",
+      "forma_farmaceutica": "POLVO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "POLIFIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592349001167",
+      "codbarras": "7592349001167",
+      "descripcion_original": "LIT ENEMA ADULTO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "ENEMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "LIT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592349723557",
+      "codbarras": "7592349723557",
+      "descripcion_original": "BIPROLIL 5      MG X15 TAB"
+    },
+    "atributos": {
+      "principio_activo": "BIPROLIL",
+      "concentracion": "5 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592430002646",
+      "codbarras": "7592430002646",
+      "descripcion_original": "ACEITE DE OREGANO GOTAS X30ML PREMIUM"
+    },
+    "atributos": {
+      "principio_activo": "ACEITE DE OREGANO",
+      "concentracion": "30ML",
+      "forma_farmaceutica": "GOTAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PREMIUM",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592432005508",
+      "codbarras": "7592432005508",
+      "descripcion_original": "CUTICLIN TAB BLANDAS 10      MG X 30"
+    },
+    "atributos": {
+      "principio_activo": "CUTICLIN",
+      "concentracion": "10 MG",
+      "forma_farmaceutica": "TABLETAS BLANDAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592432006123",
+      "codbarras": "7592432006123",
+      "descripcion_original": "METROVAX TAB BLDA 500        MG X 15 V"
+    },
+    "atributos": {
+      "principio_activo": "METROVAX",
+      "concentracion": "500 MG",
+      "forma_farmaceutica": "TABLETAS BLANDAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592432007427",
+      "codbarras": "7592432007427",
+      "descripcion_original": "MELOVAX TAB BLDA 15      MG X 10"
+    },
+    "atributos": {
+      "principio_activo": "MELOVAX",
+      "concentracion": "15 MG",
+      "forma_farmaceutica": "TABLETAS BLANDAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592432009728",
+      "codbarras": "7592432009728",
+      "descripcion_original": "CARVIX TAB BLANDAS X 30"
+    },
+    "atributos": {
+      "principio_activo": "CARVIX",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETAS BLANDAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454000789",
+      "codbarras": "7592454000789",
+      "descripcion_original": "ANALPER NAX TAB 250      MG X 10"
+    },
+    "atributos": {
+      "principio_activo": "ANALPER NAX",
+      "concentracion": "250 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454000796",
+      "codbarras": "7592454000796",
+      "descripcion_original": "ANALPER PLUS TAB 500      MG X 10"
+    },
+    "atributos": {
+      "principio_activo": "ANALPER PLUS",
+      "concentracion": "500 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454004053",
+      "codbarras": "7592454004053",
+      "descripcion_original": "TALYSTOR 5MG X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": "TALYSTOR",
+      "concentracion": "5MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454004060",
+      "codbarras": "7592454004060",
+      "descripcion_original": "TALYSTOR 5MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "TALYSTOR",
+      "concentracion": "5MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454889315",
+      "codbarras": "7592454889315",
+      "descripcion_original": "ESOZ TAB 40      MG X28"
+    },
+    "atributos": {
+      "principio_activo": "ESOZ",
+      "concentracion": "40 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592454889995",
+      "codbarras": "7592454889995",
+      "descripcion_original": "LEVOSUPIRIDE 25      MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": "LEVOSUPIRIDE",
+      "concentracion": "25 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "7592467000011",
+      "descripcion_original": "PRESERVATIVOS KRISTEL X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVOS",
+      "fabricante": null,
+      "marca": "KRISTEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592467001025",
+      "codbarras": "7592467001025",
+      "descripcion_original": "PRESER KRISTEL COLORES X 3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRESERVATIVOS",
+      "fabricante": null,
+      "marca": "KRISTEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592467001032",
+      "codbarras": "7592467001032",
+      "descripcion_original": "PRESER KRISTEL TEXTURIZADO x3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "KRISTEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592467001049",
+      "codbarras": "7592467001049",
+      "descripcion_original": "PRESER KRISTEL EXTRA FUERTE x3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "KRISTEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592467001056",
+      "codbarras": "7592467001056",
+      "descripcion_original": "PRESER KRISTEL ULTRA DELGAD x3"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "PRESERVATIVO",
+      "fabricante": null,
+      "marca": "KRISTEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601000327",
+      "codbarras": "7592601000327",
+      "descripcion_original": "BUTAL BETAHISTINA 8 MG X 20 TAB MEYER"
+    },
+    "atributos": {
+      "principio_activo": "BETAHISTINA",
+      "concentracion": "8 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "MEYER",
+      "marca": "BUTAL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601001188",
+      "codbarras": "7592601001188",
+      "descripcion_original": "IBUTANCOL TAB 600      MG -4      MG X"
+    },
+    "atributos": {
+      "principio_activo": "IBUPROFENO",
+      "concentracion": "600 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "IBUTANCOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601100218",
+      "codbarras": "7592601100218",
+      "descripcion_original": "BENDAMEN TAB 100      MG X 6"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "100 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "BENDAMEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601100423",
+      "codbarras": "7592601100423",
+      "descripcion_original": "HEPAFOL TAB X 30"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "HEPAFOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601100676",
+      "codbarras": "7592601100676",
+      "descripcion_original": "ASCAFYL PLUS TAB X 10"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ASCAFYL PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601100874",
+      "codbarras": "7592601100874",
+      "descripcion_original": "BENZODIAZOL TAB X TUTTI FRUTI X16"
+    },
+    "atributos": {
+      "principio_activo": "BENZODIAZOL",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "BENZODIAZOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601101161",
+      "codbarras": "7592601101161",
+      "descripcion_original": "DIFEN PLUS TAB X 10"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "DIFEN PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601300014",
+      "codbarras": "7592601300014",
+      "descripcion_original": "ACIDO FOLICO TAB 5      MG X 20 DALIOL"
+    },
+    "atributos": {
+      "principio_activo": "ACIDO FOLICO",
+      "concentracion": "5 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "DALIOL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601301714",
+      "codbarras": "7592601301714",
+      "descripcion_original": "CORBIS 5      MG X 30 TAB"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "5 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CORBIS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601301820",
+      "codbarras": "7592601301820",
+      "descripcion_original": "PERTEN 1% GEL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "1%",
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "PERTEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601301851",
+      "codbarras": "7592601301851",
+      "descripcion_original": "HEPAFOL FORTE JARABE 120ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "HEPAFOL FORTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601303145",
+      "codbarras": "7592601303145",
+      "descripcion_original": "APLACAL750MG X10 TAB MAST FRAMBUESA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "750MG",
+      "forma_farmaceutica": "TABLETA MASTICABLE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "APLACAL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601303152",
+      "codbarras": "7592601303152",
+      "descripcion_original": "APLACAL 750MG X 10 TAB MAST MENTA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "750MG",
+      "forma_farmaceutica": "TABLETA MASTICABLE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "APLACAL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592601303169",
+      "codbarras": "7592601303169",
+      "descripcion_original": "APLACAL 750MGX 10 TAB MAST MANDARINA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "750MG",
+      "forma_farmaceutica": "TABLETA MASTICABLE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "APLACAL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592782000901",
+      "codbarras": "7592782000901",
+      "descripcion_original": "ALCOHOL AL70% 60ML SOLUCION  SPRAY"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": "70%",
+      "forma_farmaceutica": "SOLUCION SPRAY",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002205",
+      "codbarras": "7592871002205",
+      "descripcion_original": "ROLDA GEL FIJADOR ANTICASPA AZUL X120 G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002212",
+      "codbarras": "7592871002212",
+      "descripcion_original": "ROLDA GEL FIJADOR AZUL 250GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002243",
+      "codbarras": "7592871002243",
+      "descripcion_original": "ROLDA GEL FIJAD EXT BOTANICO BLANCO 120G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002250",
+      "codbarras": "7592871002250",
+      "descripcion_original": "ROLDA GEL EXT BOTANI BLANCO 250G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002281",
+      "codbarras": "7592871002281",
+      "descripcion_original": "GEL FIJAD EXT BOTANICO AZUL 120GM ROLDA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002298",
+      "codbarras": "7592871002298",
+      "descripcion_original": "ROLDA GEL FIJADOR EXT BOTAN AZUL 250GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871002724",
+      "codbarras": "7592871002724",
+      "descripcion_original": "ROLDA GEL FIJADO ANTICAI BLANCO X 120G"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "PRODUCTO_CAPILAR",
+      "fabricante": null,
+      "marca": "ROLDA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592904000017",
+      "codbarras": "7592904000017",
+      "descripcion_original": "LUBRIX LUBRICANTE INTIMO X 60 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "LUBRICANTE",
+      "fabricante": null,
+      "marca": "LUBRIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592904000031",
+      "codbarras": "7592904000031",
+      "descripcion_original": "LUBRIX LUBRICANTE INTIMO X 120 ESP"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "LUBRICANTE",
+      "fabricante": null,
+      "marca": "LUBRIX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592904000079",
+      "codbarras": "7592904000079",
+      "descripcion_original": "ACUAGEL 250 CC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GEL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "GEL",
+      "fabricante": null,
+      "marca": "ACUAGEL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7594001450337",
+      "codbarras": "7594001450337",
+      "descripcion_original": "ALCOHOL ABSOLUTO 120 ML RECETEMARK"
+    },
+    "atributos": {
+      "principio_activo": "ALCOHOL",
+      "concentracion": "ABSOLUTO",
+      "forma_farmaceutica": "LIQUIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "RECETEMARK",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7599336000356",
+      "codbarras": "7599336000356",
+      "descripcion_original": "TIRAS DE PRUEBA PARA GLUCOSA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "TIRAS_DE_PRUEBA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7702314700449",
+      "codbarras": "7702314700449",
+      "descripcion_original": "PROQUIDENT CREMA ADHESIVA DENTAL X 40GR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "ADHESIVO_DENTAL",
+      "fabricante": "PROQUIDENT",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7702425807648",
+      "codbarras": "7702425807648",
+      "descripcion_original": "KOTE NOCTURNA DISCRETA X 8"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "TOALLAS_SANITARIAS",
+      "fabricante": null,
+      "marca": "KOTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8904464205129",
+      "codbarras": "8904464205129",
+      "descripcion_original": "ACIDO MEFENAMICO 500MG X 10 TAB 2N"
+    },
+    "atributos": {
+      "principio_activo": "ACIDO MEFENAMICO",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "2N",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906005119292",
+      "codbarras": "8906005119292",
+      "descripcion_original": "DIAPOST X 1 TAB DROTAFARMA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "DROTAFARMA",
+      "marca": "DIAPOST",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906045361545",
+      "codbarras": "8906045361545",
+      "descripcion_original": "GLICACIDA 60      MG X 30 TAB ZUZU "
+    },
+    "atributos": {
+      "principio_activo": "GLICLAZIDA",
+      "concentracion": "60 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZUZU",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906082150973",
+      "codbarras": "8906082150973",
+      "descripcion_original": "CLOPIDROGREL 75MG X 20 TAB FARMAMED"
+    },
+    "atributos": {
+      "principio_activo": "CLOPIDOGREL",
+      "concentracion": "75MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMAMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906109691236",
+      "codbarras": "8906109691236",
+      "descripcion_original": "LEVOFLOXACIN 500      MG X 10 TAB "
+    },
+    "atributos": {
+      "principio_activo": "LEVOFLOXACINO",
+      "concentracion": "500 MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906120990059",
+      "codbarras": "8906120990059",
+      "descripcion_original": "ACIDO VALPROICO 500MG X 30 TAB GEAGAR"
+    },
+    "atributos": {
+      "principio_activo": "ACIDO VALPROICO",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "GEAGAR",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906130232170",
+      "codbarras": "8906130232170",
+      "descripcion_original": "CREMA PARA HEMORROIDES BRIXMEDIC"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "CREMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRIXMEDIC",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8906142160904",
+      "codbarras": "8906142160904",
+      "descripcion_original": "VITAMIX FORTE TAB 1 X 10 TAB"
+    },
+    "atributos": {
+      "principio_activo": "MULTIVITAMINICO",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "VITAMIX FORTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8908020242856",
+      "codbarras": "8908020242856",
+      "descripcion_original": "IBUPROFE-TIOCOL 600MG-4MG X 10 TAB FARMA"
+    },
+    "atributos": {
+      "principio_activo": "IBUPROFENO, TIOCOLCHICOSIDO",
+      "concentracion": "600MG-4MG",
+      "forma_farmaceutica": "TABLETA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMA",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "9890023813111",
+      "codbarras": "9890023813111",
+      "descripcion_original": "CEPILLO DENTAL BERENICE GOLD"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "CEPILLO_DENTAL",
+      "fabricante": null,
+      "marca": "BERENICE GOLD",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "999",
+      "codbarras": "999",
+      "descripcion_original": "ELECTRODO ADULTO X 1UNDIDAD"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "ELECTRODO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  }
+]

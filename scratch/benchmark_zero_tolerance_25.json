@@ -1,0 +1,861 @@
+{
+  "lote_original": [
+    {
+      "registro": {
+        "codigo": "7591243807332",
+        "codbarras": "7591243807332",
+        "descripcion_original": "Bromexina 4mg/5ml jarabe pediátrico 120ml (Broflema Biotech)",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "17595751000909",
+        "codbarras": "17595751000909",
+        "descripcion_original": "Cepillo dental GALA AXISMED, pack de 12 unidades.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7591519001747",
+        "codbarras": "7591519001747",
+        "descripcion_original": "Dexketoprofeno 25 mg/10 ml solución oral, 20 sobres, Calox",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "75926012002215",
+        "codbarras": "75926012002215",
+        "descripcion_original": "IBUTAN 200 mg 10 tabletas",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7592946005964",
+        "codbarras": "7592946005964",
+        "descripcion_original": "Ñame Salvaje 300 mg x 60 cápsulas Arco Iris",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "739835010846",
+        "codbarras": "739835010846",
+        "descripcion_original": "Dalan JL Pepino 400ml",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "MQ00899",
+        "codbarras": "MQ00899",
+        "descripcion_original": "Pera vaginal con cánula flexible",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "0000000163750",
+        "codbarras": "0000000163750",
+        "descripcion_original": "Metronidazol 500 mg x 10 tabletas",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "645748578680",
+        "codbarras": "645748578680",
+        "descripcion_original": "Pera para ducha vaginal Natalcare/Briutcare, caja por 1 unidad.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "MQ00958",
+        "codbarras": "MQ00958",
+        "descripcion_original": "Sutura Vicryl Rapid 3-0 con aguja 3/8 circular cortante, referencia W9923 (Devax), vencimiento 10/2027.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7598981003705",
+        "codbarras": "7598981003705",
+        "descripcion_original": "Venda de yeso 10 cm x 2.7 m (1 unidad)",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7597478001071",
+        "codbarras": "7597478001071",
+        "descripcion_original": "Sutura Vicryl Poliglactina 910, 2-0, 1/2 circular, 75 cm, 30 mm.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "SINT-CRISTMEDICAL-MISC0733",
+        "codbarras": "SINT-CRISTMEDICAL-MISC0733",
+        "descripcion_original": "Preservativo estimulante sabor frambuesa, caja de 3 unidades.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "SINT-CRISTMEDICAL-MQ00899",
+        "codbarras": "SINT-CRISTMEDICAL-MQ00899",
+        "descripcion_original": "Pera vaginal con cánula flexible",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "6922954826441",
+        "codbarras": "6922954826441",
+        "descripcion_original": "Anillo vibrador M-Zone con 2 preservativos.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7598484000034",
+        "codbarras": "7598484000034",
+        "descripcion_original": "Bromexina 4 mg/5 ml jarabe 120 ml Quim-Far",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "6974265598661",
+        "codbarras": "6974265598661",
+        "descripcion_original": "Catéter intravenoso 18G, caja de 50 unidades.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7598176000878",
+        "codbarras": "7598176000878",
+        "descripcion_original": "Zultina (Nitazoxanida) 100mg/5ml suspensión oral sabor naranja 30ml",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "MQ00677",
+        "codbarras": "MQ00677",
+        "descripcion_original": "Mono de cirujano desechable de 40g, talla M, con fecha de vencimiento 06/2028.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "000255254340",
+        "codbarras": "000255254340",
+        "descripcion_original": "Jabón íntimo femenino Eternal de 8 onzas",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7599457000051",
+        "codbarras": "7599457000051",
+        "descripcion_original": "Adhesivo micropore blanco de 2 x 10 yd (Health Medical)",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "4048846003508",
+        "codbarras": "4048846003508",
+        "descripcion_original": "Micardis Amlo 80mg/5mg 28 Comprimidos",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7702037800068",
+        "codbarras": "7702037800068",
+        "descripcion_original": "Esponja Eterna en cuña, unidad.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "0011344403228",
+        "codbarras": "0011344403228",
+        "descripcion_original": "Alcohol absoluto extrafino Farmagenik 500 ml",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    },
+    {
+      "registro": {
+        "codigo": "7591955001301",
+        "codbarras": "7591955001301",
+        "descripcion_original": "Gulaper Carboximetilcisteína 50 mg/mL solución pediátrica en gotas, 30 mL.",
+        "ciclos_reproceso": 0
+      },
+      "atributos_ya_encontrados": {}
+    }
+  ],
+  "resultados": {
+    "google/gemini-2.5-pro": null,
+    "mistralai/mixtral-8x22b-instruct": null,
+    "qwen/qwen-2.5-72b-instruct": [
+      {
+        "registro": {
+          "codigo": "7591243807332",
+          "codbarras": "7591243807332",
+          "descripcion_original": "Bromexina 4mg/5ml jarabe pediátrico 120ml (Broflema Biotech)",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, contenido neto, y fabricante.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Bromexina",
+          "concentracion": "4mg/5ml",
+          "forma_farmaceutica": "jarabe",
+          "cantidad_presentacion": null,
+          "contenido_neto": 120,
+          "contenido_neto_unidad_Des": "ml",
+          "fabricante": "Broflema Biotech",
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "17595751000909",
+          "codbarras": "17595751000909",
+          "descripcion_original": "Cepillo dental GALA AXISMED, pack de 12 unidades.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con marca y cantidad de presentación.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 12,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "GALA AXISMED",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7591519001747",
+          "codbarras": "7591519001747",
+          "descripcion_original": "Dexketoprofeno 25 mg/10 ml solución oral, 20 sobres, Calox",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, cantidad de presentación, y marca.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Dexketoprofeno",
+          "concentracion": "25 mg/10 ml",
+          "forma_farmaceutica": "solución oral",
+          "cantidad_presentacion": 20,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "Calox",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "75926012002215",
+          "codbarras": "75926012002215",
+          "descripcion_original": "IBUTAN 200 mg 10 tabletas",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, y cantidad de presentación.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "IBUTAN",
+          "concentracion": "200 mg",
+          "forma_farmaceutica": "tabletas",
+          "cantidad_presentacion": 10,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7592946005964",
+          "codbarras": "7592946005964",
+          "descripcion_original": "Ñame Salvaje 300 mg x 60 cápsulas Arco Iris",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto natural/homeopático con principio activo, concentración, forma farmacéutica, cantidad de presentación, y marca.",
+          "dominio": "PRODUCTO_NATURAL_HOMEOPATICO",
+          "principio_activo": "Ñame Salvaje",
+          "concentracion": "300 mg",
+          "forma_farmaceutica": "cápsulas",
+          "cantidad_presentacion": 60,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "Arco Iris",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "739835010846",
+          "codbarras": "739835010846",
+          "descripcion_original": "Dalan JL Pepino 400ml",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con marca, contenido neto, y unidad de medida.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": 400,
+          "contenido_neto_unidad_Des": "ml",
+          "fabricante": null,
+          "marca": "Dalan JL",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "MQ00899",
+          "codbarras": "MQ00899",
+          "descripcion_original": "Pera vaginal con cánula flexible",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo sin marca ni fabricante.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "0000000163750",
+          "codbarras": "0000000163750",
+          "descripcion_original": "Metronidazol 500 mg x 10 tabletas",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, y cantidad de presentación.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Metronidazol",
+          "concentracion": "500 mg",
+          "forma_farmaceutica": "tabletas",
+          "cantidad_presentacion": 10,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "645748578680",
+          "codbarras": "645748578680",
+          "descripcion_original": "Pera para ducha vaginal Natalcare/Briutcare, caja por 1 unidad.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con marca y cantidad de presentación.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 1,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "Natalcare/Briutcare",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "MQ00958",
+          "codbarras": "MQ00958",
+          "descripcion_original": "Sutura Vicryl Rapid 3-0 con aguja 3/8 circular cortante, referencia W9923 (Devax), vencimiento 10/2027.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con fabricante y detalles de la sutura.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": "Devax",
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7598981003705",
+          "codbarras": "7598981003705",
+          "descripcion_original": "Venda de yeso 10 cm x 2.7 m (1 unidad)",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con detalles de la venda y cantidad de presentación.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 1,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7597478001071",
+          "codbarras": "7597478001071",
+          "descripcion_original": "Sutura Vicryl Poliglactina 910, 2-0, 1/2 circular, 75 cm, 30 mm.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con detalles de la sutura.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "SINT-CRISTMEDICAL-MISC0733",
+          "codbarras": "SINT-CRISTMEDICAL-MISC0733",
+          "descripcion_original": "Preservativo estimulante sabor frambuesa, caja de 3 unidades.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con cantidad de presentación.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 3,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "SINT-CRISTMEDICAL-MQ00899",
+          "codbarras": "SINT-CRISTMEDICAL-MQ00899",
+          "descripcion_original": "Pera vaginal con cánula flexible",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo sin marca ni fabricante.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "6922954826441",
+          "codbarras": "6922954826441",
+          "descripcion_original": "Anillo vibrador M-Zone con 2 preservativos.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con marca y cantidad de presentación.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 1,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "M-Zone",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7598484000034",
+          "codbarras": "7598484000034",
+          "descripcion_original": "Bromexina 4 mg/5 ml jarabe 120 ml Quim-Far",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, contenido neto, y fabricante.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Bromexina",
+          "concentracion": "4 mg/5 ml",
+          "forma_farmaceutica": "jarabe",
+          "cantidad_presentacion": null,
+          "contenido_neto": 120,
+          "contenido_neto_unidad_Des": "ml",
+          "fabricante": "Quim-Far",
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "6974265598661",
+          "codbarras": "6974265598661",
+          "descripcion_original": "Catéter intravenoso 18G, caja de 50 unidades.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con cantidad de presentación.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 50,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7598176000878",
+          "codbarras": "7598176000878",
+          "descripcion_original": "Zultina (Nitazoxanida) 100mg/5ml suspensión oral sabor naranja 30ml",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, contenido neto, y marca.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Nitazoxanida",
+          "concentracion": "100mg/5ml",
+          "forma_farmaceutica": "suspensión oral",
+          "cantidad_presentacion": null,
+          "contenido_neto": 30,
+          "contenido_neto_unidad_Des": "ml",
+          "fabricante": null,
+          "marca": "Zultina",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "MQ00677",
+          "codbarras": "MQ00677",
+          "descripcion_original": "Mono de cirujano desechable de 40g, talla M, con fecha de vencimiento 06/2028.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con detalles del mono de cirujano.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "000255254340",
+          "codbarras": "000255254340",
+          "descripcion_original": "Jabón íntimo femenino Eternal de 8 onzas",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con marca, contenido neto, y unidad de medida.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": 8,
+          "contenido_neto_unidad_Des": "onzas",
+          "fabricante": null,
+          "marca": "Eternal",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7599457000051",
+          "codbarras": "7599457000051",
+          "descripcion_original": "Adhesivo micropore blanco de 2 x 10 yd (Health Medical)",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con fabricante y detalles del adhesivo.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": "Health Medical",
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "4048846003508",
+          "codbarras": "4048846003508",
+          "descripcion_original": "Micardis Amlo 80mg/5mg 28 Comprimidos",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, y cantidad de presentación.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Micardis Amlo",
+          "concentracion": "80mg/5mg",
+          "forma_farmaceutica": "comprimidos",
+          "cantidad_presentacion": 28,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7702037800068",
+          "codbarras": "7702037800068",
+          "descripcion_original": "Esponja Eterna en cuña, unidad.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un material médico/insumo con marca y cantidad de presentación.",
+          "dominio": "MATERIAL_MEDICO_INSUMO",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": 1,
+          "contenido_neto": null,
+          "contenido_neto_unidad_Des": null,
+          "fabricante": null,
+          "marca": "Eterna",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "0011344403228",
+          "codbarras": "0011344403228",
+          "descripcion_original": "Alcohol absoluto extrafino Farmagenik 500 ml",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un producto de cuidado personal con fabricante, contenido neto, y unidad de medida.",
+          "dominio": "COSMETICO_CUIDADO_PERSONAL",
+          "principio_activo": null,
+          "concentracion": null,
+          "forma_farmaceutica": null,
+          "cantidad_presentacion": null,
+          "contenido_neto": 500,
+          "contenido_neto_unidad_Des": "ml",
+          "fabricante": "Farmagenik",
+          "marca": null,
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      },
+      {
+        "registro": {
+          "codigo": "7591955001301",
+          "codbarras": "7591955001301",
+          "descripcion_original": "Gulaper Carboximetilcisteína 50 mg/mL solución pediátrica en gotas, 30 mL.",
+          "ciclos_reproceso": 0
+        },
+        "atributos_ya_encontrados": {},
+        "atributos_nuevos_consolidados": {
+          "razonamiento": "Se identifica un medicamento alopático con principio activo, concentración, forma farmacéutica, contenido neto, y segmento etario.",
+          "dominio": "MEDICAMENTO_ALOPATICO",
+          "principio_activo": "Carboximetilcisteína",
+          "concentracion": "50 mg/mL",
+          "forma_farmaceutica": "solución pediátrica en gotas",
+          "cantidad_presentacion": null,
+          "contenido_neto": 30,
+          "contenido_neto_unidad_Des": "mL",
+          "fabricante": null,
+          "marca": "Gulaper",
+          "codigo_atc": null,
+          "blister": 0,
+          "generico": 0,
+          "clasificacion_insumo_Des": null
+        }
+      }
+    ],
+    "minimax/minimax-m3": null
+  }
+}

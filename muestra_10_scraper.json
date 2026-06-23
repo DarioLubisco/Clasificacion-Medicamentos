@@ -1,0 +1,272 @@
+[
+  {
+    "registro": {
+      "codigo": "3401353789500",
+      "codbarras": "3401353789500",
+      "descripcion_original": "PROTECTOR SOLAR BIODERMA MAX  40ML",
+      "fuente_web_consultada": "N/A (Insumo)"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "codigo_atc": null,
+      "requiere_recipe": null,
+      "generico": null,
+      "segmento_etario": null,
+      "clasificacion_insumo": "Protector Solar",
+      "blister": 0,
+      "origen": null,
+      "marca": "BIODERMA",
+      "fabricante": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": "40ML",
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "5803",
+      "codbarras": "5803",
+      "descripcion_original": "DIPIRONA AMP 1GR 2ML  X 1",
+      "fuente_web_consultada": "N/A (Código Interno)"
+    },
+    "atributos": {
+      "principio_activo": "Metamizol",
+      "concentracion": "1GR/2ML",
+      "forma_farmaceutica": "Solución Inyectable",
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 1,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": null,
+      "fabricante": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": "2ML",
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6811291256816",
+      "codbarras": "6811291256816",
+      "descripcion_original": "CENTRUM ADVANCE BLUE X 30 GRAGEAS",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "GRAGEAS",
+      "codigo_atc": null,
+      "requiere_recipe": null,
+      "generico": null,
+      "segmento_etario": null,
+      "clasificacion_insumo": "Multivitamínico",
+      "blister": 0,
+      "origen": null,
+      "marca": "CENTRUM",
+      "fabricante": null,
+      "cantidad_presentacion": 30,
+      "contenido_neto": null,
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6921875009179",
+      "codbarras": "6921875009179",
+      "descripcion_original": "COMPLEJO B X 3 AMP I.V./I.M ZAKIMED",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": "Complejo B",
+      "concentracion": null,
+      "forma_farmaceutica": "AMP I.V./I.M",
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 0,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": "ZAKIMED",
+      "fabricante": null,
+      "cantidad_presentacion": 3,
+      "contenido_neto": null,
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6936292193912",
+      "codbarras": "6936292193912",
+      "descripcion_original": "CEFTRIAZONA 1G",
+      "fuente_web_consultada": "https://www.tuasaude.com/es/ceftriaxona/"
+    },
+    "atributos": {
+      "principio_activo": "Ceftriaxona",
+      "concentracion": "1g",
+      "forma_farmaceutica": "inyectable",
+      "codigo_atc": null,
+      "requiere_recipe": 1,
+      "generico": 1,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": "Ceftriaxona",
+      "fabricante": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "url_imagen": "https://image.tuasaude.com/media/article/oo/xe/ceftriaxona-rocefin_27270.jpg"
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "6974546560363",
+      "descripcion_original": "SULFATO FERROSO+ACIDO FOLICO 200MG/0.25M",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": "SULFATO FERROSO; ACIDO FOLICO",
+      "concentracion": "200MG/0.25MG",
+      "forma_farmaceutica": null,
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 1,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": null,
+      "fabricante": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6977234270391",
+      "codbarras": "6977234270391",
+      "descripcion_original": "VITAMINA C PEDIATRICA EN 120ML 2N",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": "VITAMINA C",
+      "concentracion": null,
+      "forma_farmaceutica": "solucion",
+      "codigo_atc": null,
+      "requiere_recipe": null,
+      "generico": null,
+      "segmento_etario": "pediatrico",
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": null,
+      "fabricante": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": "120ML",
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6977234270469",
+      "codbarras": "6977234270469",
+      "descripcion_original": "BACITRACINAUNG X 15GR 2N",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": "BACITRACINA",
+      "concentracion": null,
+      "forma_farmaceutica": "UNGÜENTO",
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 0,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": null,
+      "fabricante": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": "15GR",
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6977234270629",
+      "codbarras": "6977234270629",
+      "descripcion_original": "COFLUX /FLUCONAZOL 150MG X1 TABL 2N",
+      "fuente_web_consultada": "https://www.farmatodo.com.ve/producto/112321351-fluconazol-150mg-2-capsulas"
+    },
+    "atributos": {
+      "principio_activo": "FLUCONAZOL",
+      "concentracion": "150MG",
+      "forma_farmaceutica": "TABLETA",
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 0,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": "COFLUX",
+      "fabricante": "Colmed",
+      "cantidad_presentacion": 2,
+      "contenido_neto": null,
+      "url_imagen": "https://lh3.googleusercontent.com/_x3734qPT4uKiev4ykMOrA7lMNutzedSsLYA4UrgIW9qBgOjMnk-UFZcCf46R_04pBzE8x67FM-kUM1cCsWr-NAGHXrmFCdIoM7h4vsgogB0g6mp"
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  },
+  {
+    "registro": {
+      "codigo": "6977234270780",
+      "codbarras": "6977234270780",
+      "descripcion_original": "CIZTAMIN CETIRIZINA 5MG/5ML EN 60ML",
+      "fuente_web_consultada": "No se encontraron URLs"
+    },
+    "atributos": {
+      "principio_activo": "CETIRIZINA",
+      "concentracion": "5MG/5ML",
+      "forma_farmaceutica": "JARABE",
+      "codigo_atc": null,
+      "requiere_recipe": 0,
+      "generico": 0,
+      "segmento_etario": null,
+      "clasificacion_insumo": null,
+      "blister": 0,
+      "origen": null,
+      "marca": "CIZTAMIN",
+      "fabricante": null,
+      "cantidad_presentacion": 60,
+      "contenido_neto": "60ML",
+      "url_imagen": null
+    },
+    "investigacion_exitosa": true,
+    "es_medicamento": 1
+  }
+]

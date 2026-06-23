@@ -1,0 +1,1465 @@
+[
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "6566987892996",
+      "descripcion_original": "ROWATINEX 50MG X 20 CAP ROWA"
+    },
+    "atributos": {
+      "principio_activo": "ROWATINEX",
+      "concentracion": "50MG",
+      "forma_farmaceutica": "CAPSULAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ROWA",
+      "marca": "ROWATINEX",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "6974546560363",
+      "descripcion_original": "SULFATO FERROSO+ACIDO FOLICO 200MG/0.25M"
+    },
+    "atributos": {
+      "principio_activo": "SULFATO FERROSO+ACIDO FOLICO",
+      "concentracion": "200MG/0.25M",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "7592349003352",
+      "descripcion_original": "LOSARTAN/HIDROCLORTIAZIDA 100/12.5 G.C"
+    },
+    "atributos": {
+      "principio_activo": "LOSARTAN/HIDROCLORTIAZIDA",
+      "concentracion": "100/12.5",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "G.C",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "77593090000324",
+      "descripcion_original": "PERLAVIS FEMME BA\u00d1O INT FCX200"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "HIGIENE_PERSONAL",
+      "fabricante": null,
+      "marca": "PERLAVIS FEMME",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "810100050498",
+      "descripcion_original": "BURETA ESTERIL 100ML X 1 PASCUR"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "PASCUR",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "810100050504",
+      "descripcion_original": "BURETA 150ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "81179",
+      "descripcion_original": "JELCO # 24"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": "JELCO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333012400",
+      "descripcion_original": "APLICADORES ALGODON X 100"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333012547",
+      "descripcion_original": "VENDAS YESO 15CMX3.6M KX"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "KX",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333013605",
+      "descripcion_original": "ASPIRADOR NASAL 30ML KX MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "ASPIRADOR_NASAL",
+      "fabricante": "KX MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333013957",
+      "descripcion_original": "ESPECULO VAGINAL TALLA M X 1 MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333014541",
+      "descripcion_original": "MACROGOTERO KX MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "KX MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "813333014695",
+      "descripcion_original": "COMPRESA FRIO/CALOR X2 KX MEDICAL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": "KX MEDICAL",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "81880",
+      "descripcion_original": "ESPECULO VAGINAL POR UNIDAD"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "83009",
+      "descripcion_original": "BATA DESECHABLE PARA PACIENTE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "83446",
+      "descripcion_original": "SONDA FOLEY DE 2 VIAS #18"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "83601",
+      "descripcion_original": "MICROGOTEROS EQUIPO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MATERIAL_MEDICO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232010",
+      "descripcion_original": "TETERO 90Z AMAZING 250ML PLASTICO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "AMAZING",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232027",
+      "descripcion_original": "TETEROS 50Z AMAZING"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "AMAZING",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232034",
+      "descripcion_original": "TETERO 90Z AMAZING 250ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "AMAZING",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232041",
+      "descripcion_original": "TETERO 110Z SMILE 320ML PLASTICO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232058",
+      "descripcion_original": "TETERO 250 ML PLASTICO SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232065",
+      "descripcion_original": "TETERO50Z SMILE 150ML PLASTICO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232089",
+      "descripcion_original": "TETERO CON CUCHARILLA 125 ML PLASTICO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "TETEROS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232188",
+      "descripcion_original": "MAMILA PEQUE\u00d1A X 2 UNID"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "MAMILAS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232195",
+      "descripcion_original": "MAMILA PEQUE\u00d1A X 3 UNID SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MAMILA",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232201",
+      "descripcion_original": "MAMILA GRANDE X 2UND SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MAMILA",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232218",
+      "descripcion_original": "MAMILA GRANDE X3 UNIDADES SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MAMILA",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232225",
+      "descripcion_original": "MAMILA PEQUE\u00d1A X 6UNIDADES SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "MAMILA",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232232",
+      "descripcion_original": "CHUPON SILICON SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CHUPON",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232256",
+      "descripcion_original": "KIT DE CHUPON + 3 MANILA 3UNID SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CHUPON",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232270",
+      "descripcion_original": "RASCA ENCIAS SILICON SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8678920232294",
+      "descripcion_original": "CHUPONES X 2 UNID SMILE"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CHUPON",
+      "fabricante": null,
+      "marca": "SMILE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8684577400450",
+      "descripcion_original": "MIMLOT TOALLAS HUMEDAD X72 ALOE VERA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "MIMLOT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8697420536244",
+      "descripcion_original": "MIMLOT TOLLAS/HUMEDAD ALOE VERAX25UNDS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "MIMLOT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8697420536251",
+      "descripcion_original": "MIMLOT TOALLAS HUMEDAD CREMA X25UNDS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "MIMLOT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8697420538538",
+      "descripcion_original": "MIMLOT TOALLAS HUMEDAD X72 FRESH"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TOALLAS",
+      "fabricante": null,
+      "marca": "MIMLOT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8699525014344",
+      "descripcion_original": "CANDEXIL PLUS 16/12.5 X 28 DOROPHARMA"
+    },
+    "atributos": {
+      "principio_activo": "CANDESARTAN CILEXETILO/HIDROCLOROTIAZIDA",
+      "concentracion": "16MG/12.5MG",
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "DOROPHARMA",
+      "marca": "CANDEXIL PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8699525014351",
+      "descripcion_original": "CANDEXIL PLUS 32/12.5 X28 DOROPHARMA"
+    },
+    "atributos": {
+      "principio_activo": "CANDESARTAN CILEXETILO/HIDROCLOROTIAZIDA",
+      "concentracion": "32MG/12.5MG",
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "DOROPHARMA",
+      "marca": "CANDEXIL PLUS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "88",
+      "descripcion_original": "GUATA X 20 CM SERIS"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "GUATA",
+      "fabricante": null,
+      "marca": "SERIS",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8850217041004",
+      "descripcion_original": "ASPIRADOR NASAL TOMI TIPI MOD 504100"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "ASPIRADOR NASAL",
+      "fabricante": null,
+      "marca": "TOMI TIPI",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8902297024603",
+      "descripcion_original": "METRONIDAZOL 250 MG / 5 ML DROTAF"
+    },
+    "atributos": {
+      "principio_activo": "METRONIDAZOL",
+      "concentracion": "250MG/5ML",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "DROTAF",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8902297024955",
+      "descripcion_original": "FIN-AL-GRIP FORTE X 10 TAB DROTAFARMA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "DROTAFARMA",
+      "marca": "FIN-AL-GRIP FORTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8903703000020",
+      "descripcion_original": "ENOXAPARINA 40MGX1 AMP NEOPARIN"
+    },
+    "atributos": {
+      "principio_activo": "ENOXAPARINA",
+      "concentracion": "40MG",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "NEOPARIN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904159415178",
+      "descripcion_original": "ONDASENTRON 8 MG X 10 TAB ADN"
+    },
+    "atributos": {
+      "principio_activo": "ONDANSETRON",
+      "concentracion": "8MG",
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ADN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904159499772",
+      "descripcion_original": "VITAMINA C 1GR/ML I.V/I.M. ADN"
+    },
+    "atributos": {
+      "principio_activo": "VITAMINA C",
+      "concentracion": "1GR/ML",
+      "forma_farmaceutica": "SOLUCION INYECTABLE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ADN",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904187829596",
+      "descripcion_original": "METOTREXATO 2.5MG X 10 TAB VICENTI"
+    },
+    "atributos": {
+      "principio_activo": "METOTREXATO",
+      "concentracion": "2.5MG",
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "VICENTI",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904187863088",
+      "descripcion_original": "FEMIGYNA 50MG/5MG X1 AMP OVEROL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "50MG/5MG",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "OVEROL",
+      "marca": "FEMIGYNA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904187879874",
+      "descripcion_original": "DIFEHIDRAMINA 25 MG X 10 TAB VINCETI"
+    },
+    "atributos": {
+      "principio_activo": "DIFENHIDRAMINA",
+      "concentracion": "25MG",
+      "forma_farmaceutica": "COMPRIMIDO",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "VINCETI",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904187897274",
+      "descripcion_original": "FLEMOXON 250MG/5ML JAB X100 ML BIOHAB"
+    },
+    "atributos": {
+      "principio_activo": "AMOXICILINA",
+      "concentracion": "250MG/5ML",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 1,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": "BIOHAB",
+      "marca": "FLEMOXON",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904210808505",
+      "descripcion_original": "BRIOSPA SUSP ORAL 200ML BIOHLAB"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "SUSPENSION ORAL",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOHLAB",
+      "marca": "BRIOSPA",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904210808512",
+      "descripcion_original": "GASTRODUL 75MG X100 ML JAB BIOHLAB"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "75MG",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BIOHLAB",
+      "marca": "GASTRODUL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904271594652",
+      "descripcion_original": "ENEMA-PEDIATRICO 66.6ML FAHD"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "66.6ML",
+      "forma_farmaceutica": "ENEMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "PEDIATRICO",
+      "origen": "IA",
+      "fabricante": "FAHD",
+      "marca": "ENEMA-PEDIATRICO",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904278589552",
+      "descripcion_original": "METOTREXATE 2.5 MG X 30 TAB COAST"
+    },
+    "atributos": {
+      "principio_activo": "METOTREXATE",
+      "concentracion": "2.5 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "COAST",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904278594648",
+      "descripcion_original": "ENEMAX-A ADULTO 133ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": "133ML",
+      "forma_farmaceutica": "ENEMA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ENEMAX-A",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904306501013",
+      "descripcion_original": "METOTREXATO 2.5 MG X 10 TABL PRISMATREX"
+    },
+    "atributos": {
+      "principio_activo": "METOTREXATO",
+      "concentracion": "2.5 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "PRISMATREX",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904307708411",
+      "descripcion_original": "SOLUCION CLORURO DE MAGNESIO 0.9%X 500ML"
+    },
+    "atributos": {
+      "principio_activo": "CLORURO DE MAGNESIO",
+      "concentracion": "0.9%",
+      "forma_farmaceutica": "SOLUCION",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904324102308",
+      "descripcion_original": "BROMEXINA 4MG /5ML X120ML ZAKIMED"
+    },
+    "atributos": {
+      "principio_activo": "BROMEXINA",
+      "concentracion": "4MG /5ML",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZAKIMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8904324102315",
+      "descripcion_original": "BROMEXINA 8MG/5ML EN 120ML ZAKIMED"
+    },
+    "atributos": {
+      "principio_activo": "BROMEXINA",
+      "concentracion": "8MG/5ML",
+      "forma_farmaceutica": "JARABE",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "ZAKIMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8906130231",
+      "descripcion_original": "BLI_SILDEN 100 MG X 4 TABL BRIXMEDICA"
+    },
+    "atributos": {
+      "principio_activo": "SILDENAFIL",
+      "concentracion": "100 MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRIXMEDICA",
+      "marca": "BLI_SILDEN",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8906156850440",
+      "descripcion_original": "CLAVUMED/AMOXICILINA/AC 600MG/5ML X60ML"
+    },
+    "atributos": {
+      "principio_activo": "AMOXICILINA/ACIDO CLAVULANICO",
+      "concentracion": "600MG/5ML",
+      "forma_farmaceutica": "SUSPENSION",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "CLAVUMED",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8907601021415",
+      "descripcion_original": "MINOXIL 5 SOL TOPICA SPRAY BHIO-MED"
+    },
+    "atributos": {
+      "principio_activo": "MINOXIDIL",
+      "concentracion": "5%",
+      "forma_farmaceutica": "SOLUCION TOPICA SPRAY",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BHIO-MED",
+      "marca": "MINOXIL",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "8908020242924",
+      "descripcion_original": "SECNIDAZOL 500MGX 4 TABL FARMAMED"
+    },
+    "atributos": {
+      "principio_activo": "SECNIDAZOL",
+      "concentracion": "500MG",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "FARMAMED",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "92321",
+      "descripcion_original": "TUBO VACUTAINER TAPA MORADA"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TUBO DE ENSAYO",
+      "fabricante": null,
+      "marca": "VACUTAINER",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "93766",
+      "descripcion_original": "TUBO VACUTAINER TAPA AZUL"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TUBO DE ENSAYO",
+      "fabricante": null,
+      "marca": "VACUTAINER",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "959595",
+      "descripcion_original": "TAPA BOCA KN95 NEGRO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "TAPABOCAS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "9604056831499",
+      "descripcion_original": "FITOMENADIONA AMPOLLA X 1 - 10 MG IIM/IV"
+    },
+    "atributos": {
+      "principio_activo": "FITOMENADIONA",
+      "concentracion": "10 MG",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "97217",
+      "descripcion_original": "BOLSA RECOLECTORA DE ORINA DESCH 2000ML"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "BOLSAS RECOLECTORAS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "98521",
+      "descripcion_original": "CENTRO DE CAMA DESCARTABLE X 10"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": "CENTROS DE CAMA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "AMP_COMPLE_B",
+      "descripcion_original": "COMPLEJO B (DETALLADO) AMP I.V/I.M"
+    },
+    "atributos": {
+      "principio_activo": "COMPLEJO B",
+      "concentracion": null,
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "AMP_DEXAME_4MG",
+      "descripcion_original": "DEXAMETAXONA 4      MG /1ML AMP I.V/I."
+    },
+    "atributos": {
+      "principio_activo": "DEXAMETASONA",
+      "concentracion": "4 MG /1ML",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "AMP_NEOSTI_05",
+      "descripcion_original": "NEOSTIGIMINA AMP 0.5      MG /ML "
+    },
+    "atributos": {
+      "principio_activo": "NEOSTIGMINA",
+      "concentracion": "0.5 MG /ML",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "AMP_VITAB1",
+      "descripcion_original": "VITAMINA B1 50MG/2ML TIAMINA AMP I.V/I.M"
+    },
+    "atributos": {
+      "principio_activo": "TIAMINA",
+      "concentracion": "50MG/2ML",
+      "forma_farmaceutica": "AMPOLLA",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "ANNSIN",
+      "descripcion_original": "APOSITOS OCULAR OVALADO ADULTO"
+    },
+    "atributos": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "APOSITOS",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "B1325",
+      "descripcion_original": "VITAMINA B COMPLE X 10 TAB BRIXMEDIC"
+    },
+    "atributos": {
+      "principio_activo": "VITAMINA B COMPLEJO",
+      "concentracion": null,
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "BRIXMEDIC",
+      "marca": null,
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "BLI-TACHIF1G",
+      "descripcion_original": "TACHIFORTE 1 G X 5TAB DETALLADO"
+    },
+    "atributos": {
+      "principio_activo": "PARACETAMOL",
+      "concentracion": "1 G",
+      "forma_farmaceutica": "TABLETAS",
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "TACHIFORTE",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": null,
+      "codbarras": "BLI_ANTIAC",
+      "descripcion_original": "ULTRA ANTIFLAT MAGALD 800MG SIMETI40G AR"
+    },
+    "atributos": {
+      "principio_activo": "MAGALDRATO, SIMETICONA",
+      "concentracion": "800MG, 40MG",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": "ULTRA ANTIFLAT",
+      "codigo_atc": null,
+      "url_imagen": null
+    }
+  }
+]

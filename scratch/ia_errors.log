@@ -1,0 +1,20 @@
+--- ERROR EAN 0000000030373 (google/gemma-4-26b-a4b-it) ---
+{
+  "error": "JSON mal formado simulado para el test de fallback"
+
+
+--- ERROR EAN 0000000107839 (google/gemma-4-26b-a4b-it) ---
+None
+
+--- ERROR EAN 0000000184885 (google/gemma-4-26b-a4b-it) ---
+None
+
+--- ERROR EAN 0000000184885 (google/gemma-4-31b-it) ---
+None
+
+--- ERROR EAN 0000025526479 (google/gemma-4-26b-a4b-it) ---
+None
+
+--- ERROR EAN 0000025526479 (google/gemma-4-31b-it) ---
+None
+

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  scrapling-mcp:
+    build: .
+    container_name: scrapling-mcp-Scrapling
+    restart: unless-stopped
+    ports:
+      - "8005:8000"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1536M

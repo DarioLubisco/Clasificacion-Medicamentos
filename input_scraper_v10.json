@@ -1,0 +1,3307 @@
+[
+  {
+    "codigo": "00001",
+    "codbarras": "00001",
+    "descrip1art": "NEBULIZADOR PORTATIL ADULTO MASCARILLA"
+  },
+  {
+    "codigo": "00002",
+    "codbarras": "00002",
+    "descrip1art": "NEBULIZADOR CON MASCARA BRIXMEDICA"
+  },
+  {
+    "codigo": "00003",
+    "codbarras": "00003",
+    "descrip1art": "CORTA UÑA PEQUEÑO"
+  },
+  {
+    "codigo": "0012",
+    "codbarras": "0012",
+    "descrip1art": "OXIMETRO DE PULSO"
+  },
+  {
+    "codigo": "002435",
+    "codbarras": "002435",
+    "descrip1art": "ADHESIVO MICROPORE 1/2X10YD BLANCO"
+  },
+  {
+    "codigo": "00456",
+    "codbarras": "00456",
+    "descrip1art": "TORNIQUETE 46X2.5CM DYNREX"
+  },
+  {
+    "codigo": "00770",
+    "codbarras": "00770",
+    "descrip1art": "SONDA NELATON # 16"
+  },
+  {
+    "codigo": "00810965020452",
+    "codbarras": "00810965020452",
+    "descrip1art": "BOLSA DE ORINA ADULT 2000ML SEBIS"
+  },
+  {
+    "codigo": "0100338",
+    "codbarras": "0100338",
+    "descrip1art": "TERMOMETRO ORAL"
+  },
+  {
+    "codigo": "0101",
+    "codbarras": "0101",
+    "descrip1art": "PASTILLERO DE 7 COMPARTIMIENTO VITALCLIN"
+  },
+  {
+    "codigo": "0124865423948",
+    "codbarras": "0124865423948",
+    "descrip1art": "SOLUCION 0.9% 500 ML ZAKIMED"
+  },
+  {
+    "codigo": "0277",
+    "codbarras": "0277",
+    "descrip1art": "SONDA DE FOLEY 2 VIAS N°14"
+  },
+  {
+    "codigo": "039800014023",
+    "codbarras": "039800014023",
+    "descrip1art": "PILAS ENERGIZER MAX AA"
+  },
+  {
+    "codigo": "039800014030",
+    "codbarras": "039800014030",
+    "descrip1art": "PILAS ENERGIZER MAX AAA"
+  },
+  {
+    "codigo": "0617529189101",
+    "codbarras": "0617529189101",
+    "descrip1art": "COMPRESA DE LAPARATOMIA 18X 18"
+  },
+  {
+    "codigo": "0617529192293",
+    "codbarras": "0617529192293",
+    "descrip1art": "BURETA 150 ML CALIBRADA"
+  },
+  {
+    "codigo": "09324",
+    "codbarras": "09324",
+    "descrip1art": "ADHESIVO LEUKOPLAST SEDA 4\"X10Y  PIEL"
+  },
+  {
+    "codigo": "100006",
+    "codbarras": "100006",
+    "descrip1art": "JELCO Nº20 ROSADO"
+  },
+  {
+    "codigo": "100007",
+    "codbarras": "100007",
+    "descrip1art": "JELCO Nº 22 AZUL"
+  },
+  {
+    "codigo": "100008",
+    "codbarras": "100008",
+    "descrip1art": "JELCO N º 24 AMARILLO"
+  },
+  {
+    "codigo": "100010",
+    "codbarras": "100010",
+    "descrip1art": "PERICRANEAL Nº21"
+  },
+  {
+    "codigo": "100011",
+    "codbarras": "100011",
+    "descrip1art": "PERICRANEAL N 23"
+  },
+  {
+    "codigo": "100014",
+    "codbarras": "100014",
+    "descrip1art": "CURITAS DETALLADAS LARGAS"
+  },
+  {
+    "codigo": "100098",
+    "codbarras": "100098",
+    "descrip1art": "MACROGOTERO"
+  },
+  {
+    "codigo": "100117",
+    "codbarras": "100117",
+    "descrip1art": "GUANTE ESTERIL X TIPO PAR"
+  },
+  {
+    "codigo": "100211",
+    "codbarras": "100211",
+    "descrip1art": "CENTRO DE CAMA X UNIDAD"
+  },
+  {
+    "codigo": "100314",
+    "codbarras": "100314",
+    "descrip1art": "JELCO N°14 NARANJA"
+  },
+  {
+    "codigo": "100316",
+    "codbarras": "100316",
+    "descrip1art": "JELCO N° 16 GRIS"
+  },
+  {
+    "codigo": "100320",
+    "codbarras": "100320",
+    "descrip1art": "CULTURETE"
+  },
+  {
+    "codigo": "100458",
+    "codbarras": "100458",
+    "descrip1art": "PITO PLASTICO"
+  },
+  {
+    "codigo": "100465",
+    "codbarras": "100465",
+    "descrip1art": "SONDA FOLEY 2 VIAS Nº16"
+  },
+  {
+    "codigo": "100616",
+    "codbarras": "100616",
+    "descrip1art": "MASCARILLA DE OXIGENO PED"
+  },
+  {
+    "codigo": "10258",
+    "codbarras": "10258",
+    "descrip1art": "KIT NEBULIZADOR PED GIDAGUS"
+  },
+  {
+    "codigo": "102585",
+    "codbarras": "102585",
+    "descrip1art": "KIT PARA PACIENTE BATA,GORRO"
+  },
+  {
+    "codigo": "104027",
+    "codbarras": "104027",
+    "descrip1art": "BISTURI HOJA # 15"
+  },
+  {
+    "codigo": "104688",
+    "codbarras": "104688",
+    "descrip1art": "KIT NEBULIZADOR ADULTO"
+  },
+  {
+    "codigo": "104941",
+    "codbarras": "104941",
+    "descrip1art": "TAPA BOCA X 1"
+  },
+  {
+    "codigo": "109355",
+    "codbarras": "109355",
+    "descrip1art": "CEPILLO QUIRURGICO IODADO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "1121508537",
+    "descrip1art": "VITAOVULOS X 4 UNI 3GR"
+  },
+  {
+    "codigo": "1180201949410",
+    "codbarras": "1180201949410",
+    "descrip1art": "MIMLOT JABON /TOCADOR 90GR"
+  },
+  {
+    "codigo": "12230608",
+    "codbarras": "12230608",
+    "descrip1art": "GUATA 15 CTMS"
+  },
+  {
+    "codigo": "1362",
+    "codbarras": "1362",
+    "descrip1art": "ADHESIVO TRANSPORE 1\"X10 YDS"
+  },
+  {
+    "codigo": "14587",
+    "codbarras": "14587",
+    "descrip1art": "ADHESIVO MICROP 3\"X10 YD COLOR BLANCO 3M"
+  },
+  {
+    "codigo": "1515",
+    "codbarras": "1515",
+    "descrip1art": "CORTADOR DE PASTILLA COLORES X 1UNID"
+  },
+  {
+    "codigo": "15250",
+    "codbarras": "15250",
+    "descrip1art": "TRIFLO (GENERICO) EJERCITADOR DE RESPIRA"
+  },
+  {
+    "codigo": "1681536",
+    "codbarras": "1681536",
+    "descrip1art": "ADHESIVO DURAPORE 2\"X10 YDS 3M"
+  },
+  {
+    "codigo": "18LA",
+    "codbarras": "18LA",
+    "descrip1art": "LANILLA AMARRILLA X1 PAÑITO"
+  },
+  {
+    "codigo": "2024",
+    "codbarras": "2024",
+    "descrip1art": "ADHESIVO MICRO 2 X 10 COLOR BLANCO  3M"
+  },
+  {
+    "codigo": "2025",
+    "codbarras": "2025",
+    "descrip1art": "ADHESIVO DE PAPEL 2.5 X5CM ECOMED"
+  },
+  {
+    "codigo": "2028",
+    "codbarras": "2028",
+    "descrip1art": "ADHESIVO PLASTICO 2.5 X5CM ECOMED"
+  },
+  {
+    "codigo": "2108788",
+    "codbarras": "2108788",
+    "descrip1art": "PRESERVATIVO DETALLADO"
+  },
+  {
+    "codigo": "252525",
+    "codbarras": "252525",
+    "descrip1art": "Guantes Nitrilo ( el par) talla M"
+  },
+  {
+    "codigo": "2709202647577",
+    "codbarras": "2709202647577",
+    "descrip1art": "SONDA FOLEY DE LATEX 2V Nº18"
+  },
+  {
+    "codigo": "306045",
+    "codbarras": "306045",
+    "descrip1art": "ADHESIVO DE PAPEL BLANCO 5CMX5Y"
+  },
+  {
+    "codigo": null,
+    "codbarras": "323533709",
+    "descrip1art": "VITA SUPOSITORIOS X 4 UNI 3GRS"
+  },
+  {
+    "codigo": "3570",
+    "codbarras": "3570",
+    "descrip1art": "ADHESIVO MICROPORE 2 X10 YD BLANCO"
+  },
+  {
+    "codigo": "36596",
+    "codbarras": "36596",
+    "descrip1art": "JER  10CC 21 X 1 CC X 100  GAESCA"
+  },
+  {
+    "codigo": "3699090335016",
+    "codbarras": "3699090335016",
+    "descrip1art": "TETERO S/ASA 260ML BERNICE"
+  },
+  {
+    "codigo": "3M9971",
+    "codbarras": "3M9971",
+    "descrip1art": "ADHESIVO MICRO 1/2\"YD BLANCO (3M)"
+  },
+  {
+    "codigo": "4490112589115",
+    "codbarras": "4490112589115",
+    "descrip1art": "TETERO C/ASA 260ML BERNICE"
+  },
+  {
+    "codigo": "4557152121986",
+    "codbarras": "4557152121986",
+    "descrip1art": "HISOPOS X 100 UNID BERNICE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "4569636538227",
+    "descrip1art": "NEBULIZADOR NIÑO/ADULTO PORTATIL VITALME"
+  },
+  {
+    "codigo": "5000394126091",
+    "codbarras": "5000394126091",
+    "descrip1art": "PILA DURACEL AA"
+  },
+  {
+    "codigo": "5000394127296",
+    "codbarras": "5000394127296",
+    "descrip1art": "PILAS DURACEL AAA"
+  },
+  {
+    "codigo": "5410853039273",
+    "codbarras": "5410853039273",
+    "descrip1art": "PILAS PANASSONIC AA"
+  },
+  {
+    "codigo": "5521585221581",
+    "codbarras": "5521585221581",
+    "descrip1art": "AEROCHAMBER PLUS PED LAB BIOHLAB"
+  },
+  {
+    "codigo": "5555",
+    "codbarras": "5555",
+    "descrip1art": "LENTES DE LECTURA"
+  },
+  {
+    "codigo": "55555",
+    "codbarras": "55555",
+    "descrip1art": "ADHESIVO MICROPORE 2\"X10YD COLOR BLANCO"
+  },
+  {
+    "codigo": "5605622200927",
+    "codbarras": "5605622200927",
+    "descrip1art": "VENDA ELASTICA 15CM X 4CM"
+  },
+  {
+    "codigo": "561326671096",
+    "codbarras": "561326671096",
+    "descrip1art": "AFEITADORA MAX 3 X 2UNID"
+  },
+  {
+    "codigo": "56899",
+    "codbarras": "56899",
+    "descrip1art": "CORTA UÑA"
+  },
+  {
+    "codigo": "589456",
+    "codbarras": "589456",
+    "descrip1art": "TENSIOMETRO DE BRAZO ARM STYLE"
+  },
+  {
+    "codigo": "58963",
+    "codbarras": "58963",
+    "descrip1art": "GUATA 10 CTMS"
+  },
+  {
+    "codigo": "5901234123457",
+    "codbarras": "5901234123457",
+    "descrip1art": "PRESER KRISTEL SEDA X 1"
+  },
+  {
+    "codigo": "59911",
+    "codbarras": "59911",
+    "descrip1art": "KIT DE LAPARATOMIA"
+  },
+  {
+    "codigo": "606110872904",
+    "codbarras": "606110872904",
+    "descrip1art": "ESPONJA DE GASA 4 X 4 ESTERIL"
+  },
+  {
+    "codigo": "606110873017",
+    "codbarras": "606110873017",
+    "descrip1art": "COMPRESAS DE LAPATOMIA 18X18 PQT 5 UNID"
+  },
+  {
+    "codigo": "6223003733520",
+    "codbarras": "6223003733520",
+    "descrip1art": "ADHESIVO SILKPLAST DE 5X 500 CM"
+  },
+  {
+    "codigo": "6239",
+    "codbarras": "6239",
+    "descrip1art": "ADHESIVO MICROPORE 1/2\"X10 YDS COLOR PIE"
+  },
+  {
+    "codigo": "652931966582",
+    "codbarras": "652931966582",
+    "descrip1art": "SONDA FOLEY DE LATEX 2 VIAS 20 FR"
+  },
+  {
+    "codigo": "652931974402",
+    "codbarras": "652931974402",
+    "descrip1art": "COMPRESA DE LA LAPARATOMIA X5 SUMEDICAL"
+  },
+  {
+    "codigo": "661799967112",
+    "codbarras": "661799967112",
+    "descrip1art": "MIMLOT TOALLA HUMEDA CREMA X 72 UND"
+  },
+  {
+    "codigo": "6722",
+    "codbarras": "6722",
+    "descrip1art": "ALGODON ROLLO 100 X1 UND IM"
+  },
+  {
+    "codigo": "6893",
+    "codbarras": "6893",
+    "descrip1art": "ADHESIVO DE TELA 1\"X5YD COLOR BLANCO"
+  },
+  {
+    "codigo": "6910021007206",
+    "codbarras": "6910021007206",
+    "descrip1art": "CEPILLO DENTAL ULTRA MEDIANO"
+  },
+  {
+    "codigo": "6920210513029",
+    "codbarras": "6920210513029",
+    "descrip1art": "AEROCHAMBER ADULTO BIO-MERCY"
+  },
+  {
+    "codigo": "6922954822115",
+    "codbarras": "6922954822115",
+    "descrip1art": "PRESERVATIVO M.ZONE NATURAL X 3"
+  },
+  {
+    "codigo": "6922954822122",
+    "codbarras": "6922954822122",
+    "descrip1art": "PRESERVATIVO M.ZONE TEXTURIZADO X 3"
+  },
+  {
+    "codigo": "6922954822139",
+    "codbarras": "6922954822139",
+    "descrip1art": "PRESERVATIVO M.ZONE ACANALADO X 3"
+  },
+  {
+    "codigo": "6922954822146",
+    "codbarras": "6922954822146",
+    "descrip1art": "PRESERVATIVO M.ZONE ANATOMICO X 3"
+  },
+  {
+    "codigo": "6922954822153",
+    "codbarras": "6922954822153",
+    "descrip1art": "M-ZONE  UND RETARDANTE"
+  },
+  {
+    "codigo": "6922954822160",
+    "codbarras": "6922954822160",
+    "descrip1art": "M-ZONE 4 UND HOT"
+  },
+  {
+    "codigo": "6922954822177",
+    "codbarras": "6922954822177",
+    "descrip1art": "M-ZONE 4 UND SABORES"
+  },
+  {
+    "codigo": "6922954822184",
+    "codbarras": "6922954822184",
+    "descrip1art": "M-ZONE 4 UND SENSIBLE"
+  },
+  {
+    "codigo": "6924565912636",
+    "codbarras": "6924565912636",
+    "descrip1art": "AFEITADORA MAX 3 COMFORTABLE X 1 PCS"
+  },
+  {
+    "codigo": "6924565919000",
+    "codbarras": "6924565919000",
+    "descrip1art": "AFEITADORA MAX 3"
+  },
+  {
+    "codigo": "6924565920020",
+    "codbarras": "6924565920020",
+    "descrip1art": "AFEITADORA MAX X 3PCS PLATINUM"
+  },
+  {
+    "codigo": "6924565920181",
+    "codbarras": "6924565920181",
+    "descrip1art": "AFEITADORA QUOTTRO ROSADA X 2 PCS"
+  },
+  {
+    "codigo": "6924565920198",
+    "codbarras": "6924565920198",
+    "descrip1art": "AFEITADORA QUOTTRO NARANJA X 2 PCS"
+  },
+  {
+    "codigo": "6940907039014",
+    "codbarras": "6940907039014",
+    "descrip1art": "FEMENINA TOALLAS NOCTURNA X10"
+  },
+  {
+    "codigo": "6944977122126",
+    "codbarras": "6944977122126",
+    "descrip1art": "CREMA DE ZAPATO CHEERY NEGRO"
+  },
+  {
+    "codigo": "6948122306027",
+    "codbarras": "6948122306027",
+    "descrip1art": "CEPILLO DENTAL COBOR"
+  },
+  {
+    "codigo": "6950769301204",
+    "codbarras": "6950769301204",
+    "descrip1art": "AFEITADORA MAX 3 COMFORTABLE X 1 PCS"
+  },
+  {
+    "codigo": "6955143918290",
+    "codbarras": "6955143918290",
+    "descrip1art": "CHUPON DE BEBE BERNICE"
+  },
+  {
+    "codigo": "6970205630132",
+    "codbarras": "6970205630132",
+    "descrip1art": "HISOPOS COTTON SWABS"
+  },
+  {
+    "codigo": "6971077610161",
+    "codbarras": "6971077610161",
+    "descrip1art": "BISTURI HOJA # 11"
+  },
+  {
+    "codigo": "6971077610178",
+    "codbarras": "6971077610178",
+    "descrip1art": "LLAVE 3 VIAS  DIPHOCARE"
+  },
+  {
+    "codigo": "6971077610277",
+    "codbarras": "6971077610277",
+    "descrip1art": "SONDA  FOLEY LATEX Nº18 DIPHOCARE"
+  },
+  {
+    "codigo": "6971077610376",
+    "codbarras": "6971077610376",
+    "descrip1art": "SONDA FLOLEY 2 VIAS DE SILICONA N 16"
+  },
+  {
+    "codigo": "6971077610802",
+    "codbarras": "6971077610802",
+    "descrip1art": "KIT DE NEBULIZADOR ADULTO DIPHOCARE"
+  },
+  {
+    "codigo": "6971077610871",
+    "codbarras": "6971077610871",
+    "descrip1art": "GASA 4X4 ESTERIL"
+  },
+  {
+    "codigo": "6971077610888",
+    "codbarras": "6971077610888",
+    "descrip1art": "COMPRESA LAPAROTOMIA X5 DIPHCARE"
+  },
+  {
+    "codigo": "6971077611533",
+    "codbarras": "6971077611533",
+    "descrip1art": "TERMOMETRO DIGITAL (DIPHOCARE)"
+  },
+  {
+    "codigo": "6971077612493",
+    "codbarras": "6971077612493",
+    "descrip1art": "CATETER VALEMEDIC N 22 X1"
+  },
+  {
+    "codigo": "6971077612509",
+    "codbarras": "6971077612509",
+    "descrip1art": "CATETER N 24 VALEMEDIC X1"
+  },
+  {
+    "codigo": "6971077612806",
+    "codbarras": "6971077612806",
+    "descrip1art": "MICROGOTERO DIPHOCARE"
+  },
+  {
+    "codigo": "6971594732797",
+    "codbarras": "6971594732797",
+    "descrip1art": "ACEITE BERENICE BEBE 100ML"
+  },
+  {
+    "codigo": "6972559540372",
+    "codbarras": "6972559540372",
+    "descrip1art": "SUTURA CROMICO 4-0 SH AGUJA CIRCULAR"
+  },
+  {
+    "codigo": "6972559546053",
+    "codbarras": "6972559546053",
+    "descrip1art": "SUTURA PROLENE 2-0KS AGUJA RECTA CORTANT"
+  },
+  {
+    "codigo": "6972598197407",
+    "codbarras": "6972598197407",
+    "descrip1art": "SUN SCREEN 90SPF PROTECTOR SOLAR"
+  },
+  {
+    "codigo": "6972598197414",
+    "codbarras": "6972598197414",
+    "descrip1art": "PROTECTOR SOLAR SOF90 MLUNDO"
+  },
+  {
+    "codigo": "6973042912546",
+    "codbarras": "6973042912546",
+    "descrip1art": "REMOVEDOR TUMAX X 50 ML"
+  },
+  {
+    "codigo": "6973715250081",
+    "codbarras": "6973715250081",
+    "descrip1art": "JERINGA 1CC 27 G X1/2 MEDICAL"
+  },
+  {
+    "codigo": "6973715250203",
+    "codbarras": "6973715250203",
+    "descrip1art": "RECOLECTOR DE ORINA PEDIATRICO BOLSA"
+  },
+  {
+    "codigo": "6973715250210",
+    "codbarras": "6973715250210",
+    "descrip1art": "BOLSA DE ORINA ADULTO 2000ML"
+  },
+  {
+    "codigo": "6990785880017",
+    "codbarras": "6990785880017",
+    "descrip1art": "PEINE SACA PIOJOS"
+  },
+  {
+    "codigo": "71120",
+    "codbarras": "71120",
+    "descrip1art": "ADHESIVO DE TELA LEUKOPLAST 3\"X10YDS"
+  },
+  {
+    "codigo": "7112001",
+    "codbarras": "7112001",
+    "descrip1art": "ADHESIVO DE TELA LEUKOPLAST 4\"X10YDS"
+  },
+  {
+    "codigo": "72230",
+    "codbarras": "72230",
+    "descrip1art": "ADHESIVO MICROPORE 1\"X10YD COLOR PIEL"
+  },
+  {
+    "codigo": "723592772581",
+    "codbarras": "723592772581",
+    "descrip1art": "BOLSA RECOLECTORA DE ORINA X100ML PED"
+  },
+  {
+    "codigo": "723592772611",
+    "codbarras": "723592772611",
+    "descrip1art": "BOLSA DE ORINA 2000ML BRIUTCARE"
+  },
+  {
+    "codigo": "723592772697",
+    "codbarras": "723592772697",
+    "descrip1art": "ADHESIVO DE TELA 2X10 YARDAS BRIUTCARE"
+  },
+  {
+    "codigo": "726529638561",
+    "codbarras": "726529638561",
+    "descrip1art": "REMOVEDOR DE ESMALTE KELBION 120ML"
+  },
+  {
+    "codigo": "728417501001",
+    "codbarras": "728417501001",
+    "descrip1art": "TOALLITAS HUM CHICCO X 72"
+  },
+  {
+    "codigo": "736372692627",
+    "codbarras": "736372692627",
+    "descrip1art": "ESPECULO VAGINAL TALLA S X1 MEDICAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7401078990201",
+    "descrip1art": "GYNOTRAN CREMA VAGINAL 40G"
+  },
+  {
+    "codigo": "742033994689",
+    "codbarras": "742033994689",
+    "descrip1art": "CURITAS CLASICAS BRUITCARE X 20 UNDS"
+  },
+  {
+    "codigo": "742033994696",
+    "codbarras": "742033994696",
+    "descrip1art": "CURITAS CIRCULARES X 1 UNIDAD  BRIUTCARE"
+  },
+  {
+    "codigo": "742033994726",
+    "codbarras": "742033994726",
+    "descrip1art": "CURITAS FLEX BRIUTCARE X 20 (DETALLADA)"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7467922682173",
+    "descrip1art": "NORPRIM 81 MG X 100 TAB"
+  },
+  {
+    "codigo": "7501033204920",
+    "codbarras": "7501033204920",
+    "descrip1art": "SPEED STICK NIGHT CREMA 30GR"
+  },
+  {
+    "codigo": "7501037608946",
+    "codbarras": "7501037608946",
+    "descrip1art": "SCHICK EXACTA 2 /SENSIBLE RISTRA"
+  },
+  {
+    "codigo": "7501054549796",
+    "codbarras": "7501054549796",
+    "descrip1art": "NIVEA CREMA CORPORAL MILK NUTRI X 100ML"
+  },
+  {
+    "codigo": "7501054549819",
+    "codbarras": "7501054549819",
+    "descrip1art": "NIVEA SOFT MILK X100ML"
+  },
+  {
+    "codigo": "7501054549826",
+    "codbarras": "7501054549826",
+    "descrip1art": "NIVEA EXPRESS HYDRATIONX100ML"
+  },
+  {
+    "codigo": "7501082721676",
+    "codbarras": "7501082721676",
+    "descrip1art": "NUVEL CREMA MIEL Y AVENA 750ML"
+  },
+  {
+    "codigo": "7501082721683",
+    "codbarras": "7501082721683",
+    "descrip1art": "NUVEL CREMA MANTECA DE KARITE 750ML"
+  },
+  {
+    "codigo": "7501082721690",
+    "codbarras": "7501082721690",
+    "descrip1art": "NUVEL CREMA PIEL SECA 750ML"
+  },
+  {
+    "codigo": "7501082721706",
+    "codbarras": "7501082721706",
+    "descrip1art": "NUVEL CREMA EXTRA ARANTA 750 ML"
+  },
+  {
+    "codigo": "7501082725261",
+    "codbarras": "7501082725261",
+    "descrip1art": "NUVEL CREMA ACLARADO IDEAL 750ML"
+  },
+  {
+    "codigo": "7501082740011",
+    "codbarras": "7501082740011",
+    "descrip1art": "NUVEL QUITA X 125 NUVEL"
+  },
+  {
+    "codigo": "7501082770704",
+    "codbarras": "7501082770704",
+    "descrip1art": "NUVEL BLOQUEADOR KIDS 50FPS X120ML"
+  },
+  {
+    "codigo": "7501082770803",
+    "codbarras": "7501082770803",
+    "descrip1art": "NUVEL BLOQUEADOR SOLAR 50FPS X120ML"
+  },
+  {
+    "codigo": "7503026029626",
+    "codbarras": "7503026029626",
+    "descrip1art": "OFF ESTRA DURACION SPRAY 177ML"
+  },
+  {
+    "codigo": "7509546052588",
+    "codbarras": "7509546052588",
+    "descrip1art": "DES SPEDD STICK ROLL-ON"
+  },
+  {
+    "codigo": "7509546057521",
+    "codbarras": "7509546057521",
+    "descrip1art": "LADY SPEED STICK 50 ML ROLL ON"
+  },
+  {
+    "codigo": "7509546075013",
+    "codbarras": "7509546075013",
+    "descrip1art": "JABON PALMOLIVE NEUTRO BALANCE 100GR"
+  },
+  {
+    "codigo": "7509546650098",
+    "codbarras": "7509546650098",
+    "descrip1art": "SH PALMOLIVE OPT KRATIN 10ML SOBRES"
+  },
+  {
+    "codigo": "7509546658223",
+    "codbarras": "7509546658223",
+    "descrip1art": "CEPILLO COLGATE ZZ CHARCOAL"
+  },
+  {
+    "codigo": "7509546676982",
+    "codbarras": "7509546676982",
+    "descrip1art": "JABON PALMOLIVE OLIVA-ALOE 110GR"
+  },
+  {
+    "codigo": "7509546677019",
+    "codbarras": "7509546677019",
+    "descrip1art": "PALMOLIVE AVENA Y AZUCAR MORENA 110GR"
+  },
+  {
+    "codigo": "7509546679525",
+    "codbarras": "7509546679525",
+    "descrip1art": "ENJ BUC PLAX ODOR CONTROL X250ML"
+  },
+  {
+    "codigo": "7509546690254",
+    "codbarras": "7509546690254",
+    "descrip1art": "PALMOLIVE MANDARINA/ROMERO X3"
+  },
+  {
+    "codigo": "7509546690261",
+    "codbarras": "7509546690261",
+    "descrip1art": "JABON PALMOLIVE MANDARINA 110G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "756029628311",
+    "descrip1art": "BUSCALATT FEM X 10 TAB LATTAN"
+  },
+  {
+    "codigo": null,
+    "codbarras": "756029628328",
+    "descrip1art": "BUSCALATT PLUS X 10 TAB LATTAN"
+  },
+  {
+    "codigo": "7590005162023",
+    "codbarras": "7590005162023",
+    "descrip1art": "LOC EVERY NIGHT HIDRA MAX 200ML"
+  },
+  {
+    "codigo": "7590005162047",
+    "codbarras": "7590005162047",
+    "descrip1art": "LOC EVERY NIGHT HIDRA PROF 200ML"
+  },
+  {
+    "codigo": "7590005162085",
+    "codbarras": "7590005162085",
+    "descrip1art": "LOC EVERY NIGHT HIDRA SUAVE 200ML"
+  },
+  {
+    "codigo": "7590005162108",
+    "codbarras": "7590005162108",
+    "descrip1art": "CREM EV NIGHT PIEL EX SE CACAO FRU 200C"
+  },
+  {
+    "codigo": "7590005162801",
+    "codbarras": "7590005162801",
+    "descrip1art": "DES EVERY NIGTH BABY PINK 90G"
+  },
+  {
+    "codigo": "7590005162818",
+    "codbarras": "7590005162818",
+    "descrip1art": "DES EVERY NIGTH NATURELLE 90G"
+  },
+  {
+    "codigo": "7590005162825",
+    "codbarras": "7590005162825",
+    "descrip1art": "DES EVERY NIGTH SPRING FRESH 90G"
+  },
+  {
+    "codigo": "7590005162832",
+    "codbarras": "7590005162832",
+    "descrip1art": "DES EVERY NIGTH POWDER 90G"
+  },
+  {
+    "codigo": "7590005162849",
+    "codbarras": "7590005162849",
+    "descrip1art": "DES EVERY NIGTH COLONIA 90G"
+  },
+  {
+    "codigo": "7590005168179",
+    "codbarras": "7590005168179",
+    "descrip1art": "GEL FIJ EVERY EXT/FUERT AZUL X 100"
+  },
+  {
+    "codigo": "7590005168186",
+    "codbarras": "7590005168186",
+    "descrip1art": "GEL FIJADOR EVERY NIGHT FRESH 100G"
+  },
+  {
+    "codigo": "7590005168209",
+    "codbarras": "7590005168209",
+    "descrip1art": "GEL FIJ EVERY NIGTH POWER 100G"
+  },
+  {
+    "codigo": "7590005168216",
+    "codbarras": "7590005168216",
+    "descrip1art": "GEL FIJ EVERY  WINNER"
+  },
+  {
+    "codigo": "7590005168223",
+    "codbarras": "7590005168223",
+    "descrip1art": "GEL EVERY NIGTH  FRESH 250G"
+  },
+  {
+    "codigo": "7590005168810",
+    "codbarras": "7590005168810",
+    "descrip1art": "DES EVERY NIGHT FOR MEN SPORT 90G"
+  },
+  {
+    "codigo": "7590005168834",
+    "codbarras": "7590005168834",
+    "descrip1art": "DES EVERY NIGHT FOR MEN FRESH ROLLON"
+  },
+  {
+    "codigo": "7590005183066",
+    "codbarras": "7590005183066",
+    "descrip1art": "LOC CORP DERMOX MILK 200ML"
+  },
+  {
+    "codigo": "7590005183080",
+    "codbarras": "7590005183080",
+    "descrip1art": "LOCION DERMOX ANTIEDAD 200ML"
+  },
+  {
+    "codigo": "7590005183189",
+    "codbarras": "7590005183189",
+    "descrip1art": "LOC DERMOX CORPORAL HUMECT X 200ML"
+  },
+  {
+    "codigo": "75903565",
+    "codbarras": "75903565",
+    "descrip1art": "HOJ SCHICK SUPER CHROMIUM 10 X 3."
+  },
+  {
+    "codigo": "7591005981102",
+    "codbarras": "7591005981102",
+    "descrip1art": "MR COCINA LIMP PODEROSA"
+  },
+  {
+    "codigo": "7591005996632",
+    "codbarras": "7591005996632",
+    "descrip1art": "OFF FAMILY CREMA 60 GR"
+  },
+  {
+    "codigo": "7591020080538",
+    "codbarras": "7591020080538",
+    "descrip1art": "ESQUIDONE TAB 1      MG X 30"
+  },
+  {
+    "codigo": "7591061400005",
+    "codbarras": "7591061400005",
+    "descrip1art": "CHICCO TOALLAS HUMEDAD  X 72"
+  },
+  {
+    "codigo": "7591061640081",
+    "codbarras": "7591061640081",
+    "descrip1art": "CHICCO ORIGINAL"
+  },
+  {
+    "codigo": "7591061640258",
+    "codbarras": "7591061640258",
+    "descrip1art": "CHICCO COTONCITOS 100 UND PHARSANA"
+  },
+  {
+    "codigo": "7591061640272",
+    "codbarras": "7591061640272",
+    "descrip1art": "COTONCITOS X 60 UNI  CHICCO"
+  },
+  {
+    "codigo": "7591061640319",
+    "codbarras": "7591061640319",
+    "descrip1art": "CHICCO COTONCITOS 60UNID PROMO 3X2"
+  },
+  {
+    "codigo": "7591061640463",
+    "codbarras": "7591061640463",
+    "descrip1art": "AMY TOALLAS HUMED AGUA 24 PIEZA"
+  },
+  {
+    "codigo": "7591061640481",
+    "codbarras": "7591061640481",
+    "descrip1art": "CHICCO TALCO X 100 GR PHARMASANA"
+  },
+  {
+    "codigo": "7591061647264",
+    "codbarras": "7591061647264",
+    "descrip1art": "CHICCO COLONIA NIÑO 110CC"
+  },
+  {
+    "codigo": "7591061650462",
+    "codbarras": "7591061650462",
+    "descrip1art": "CHICCO COLONIA 100CC"
+  },
+  {
+    "codigo": "7591062013389",
+    "codbarras": "7591062013389",
+    "descrip1art": "LIOLACTIL TAB X 20"
+  },
+  {
+    "codigo": "7591062018650",
+    "codbarras": "7591062018650",
+    "descrip1art": "ULCENOL TAB 40      MG X 20"
+  },
+  {
+    "codigo": "7591066701015",
+    "codbarras": "7591066701015",
+    "descrip1art": "MAQ XTREME 3 P/SENSIB BLISTER X 8"
+  },
+  {
+    "codigo": "7591096000393",
+    "codbarras": "7591096000393",
+    "descrip1art": "OXINORM TAB X 30"
+  },
+  {
+    "codigo": "7591138073552",
+    "codbarras": "7591138073552",
+    "descrip1art": "JAB SANALO ANTIBACTERIAL X 85 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196003140",
+    "descrip1art": "NAS AD GTA SOL NASAL 0.1% X 15ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196003171",
+    "descrip1art": "CLARIX SOL GTAS 0.20% X150ML"
+  },
+  {
+    "codigo": "7591196003201",
+    "codbarras": "7591196003201",
+    "descrip1art": "VITAVISION TAB X 30       OFTALMI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196003416",
+    "descrip1art": "QUINOMAX SOL OFT 0,50%X5ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196003942",
+    "descrip1art": "OPAT SOL OFT 0,1% X 5ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196004208",
+    "descrip1art": "LACRI FORT SOL OFT X 15 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196004604",
+    "descrip1art": "CORTYNASE REFORM SUS 0.05% X 140 DO"
+  },
+  {
+    "codigo": "7591196006110",
+    "codbarras": "7591196006110",
+    "descrip1art": "MOXIDEX GOTAS 5ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "759119600624",
+    "descrip1art": "AFLAMAX SUPOSITORIOS X 6 OFTALMI"
+  },
+  {
+    "codigo": "7591196006301",
+    "codbarras": "7591196006301",
+    "descrip1art": "APIRET FLU NOCHE GRANULADO 8GX1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196006417",
+    "descrip1art": "AFLAMAX S 50MG X 6 SUPOSITORIOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196007155",
+    "descrip1art": "APIRET JAB 60ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196007162",
+    "descrip1art": "BUDECORT SUSP P/INH 1MG/ML X 10ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196007186",
+    "descrip1art": "AFLAMAX 50MG X 10 COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591196007193",
+    "descrip1art": "PERIDONT SOL TOP BUCAL 240ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591241846609",
+    "descrip1art": "SAX DUCHA VAG.135 ML NATURISSIMA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243802092",
+    "descrip1art": "ARESAN 20MG X 30"
+  },
+  {
+    "codigo": "7591243802108",
+    "codbarras": "7591243802108",
+    "descrip1art": "ARESAN 40      MG X 10 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243804140",
+    "descrip1art": "BETADERM CREMA 0,05% X 15 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243804164",
+    "descrip1art": "BETADERM PLUS CREMA x15g"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243807370",
+    "descrip1art": "BROFLEMA JBE 8MG/5ML X 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243811483",
+    "descrip1art": "DECA LENTERMINA COMPLE X 3 AMP BIOTECH"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243812398",
+    "descrip1art": "DI-EUDRIN 12.5 TAB X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243814347",
+    "descrip1art": "EKI CAL SUSP 120ML BIOTECH"
+  },
+  {
+    "codigo": "7591243815801",
+    "codbarras": "7591243815801",
+    "descrip1art": "ERILON 0.1% CREMA 15G"
+  },
+  {
+    "codigo": "7591243817782",
+    "codbarras": "7591243817782",
+    "descrip1art": "FLENOX JARABE PED 120ML"
+  },
+  {
+    "codigo": "7591243817829",
+    "codbarras": "7591243817829",
+    "descrip1art": "FLENOX JARABE ADU 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243826777",
+    "descrip1art": "IVAGAN FORTE TAB 650 MG X 10"
+  },
+  {
+    "codigo": "7591243830507",
+    "codbarras": "7591243830507",
+    "descrip1art": "LISIN-BE JARABE 120ML"
+  },
+  {
+    "codigo": "7591243830705",
+    "codbarras": "7591243830705",
+    "descrip1art": "LITONATE CREMA X15 GR BIOTECH"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243831474",
+    "descrip1art": "LOGANIL JARABE ADULTO 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243831511",
+    "descrip1art": "LOGANIL JARABE PED 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243851106",
+    "descrip1art": "TONUM TAB 10MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591243856705",
+    "descrip1art": "YONAL JBE X 120 ML AREX"
+  },
+  {
+    "codigo": "7591243856743",
+    "codbarras": "7591243856743",
+    "descrip1art": "YONALIN 4MG/ML X15ML SOL  GOTAS BIOTECH"
+  },
+  {
+    "codigo": "7591248510503",
+    "codbarras": "7591248510503",
+    "descrip1art": "MIMADITO COLONIA 90ML X1 UND"
+  },
+  {
+    "codigo": "7591248611309",
+    "codbarras": "7591248611309",
+    "descrip1art": "ACEITE MIMADITO CREMOSO X 200ML"
+  },
+  {
+    "codigo": "7591248811105",
+    "codbarras": "7591248811105",
+    "descrip1art": "MOTAS DE ALGODON X50 MIMADITO"
+  },
+  {
+    "codigo": "7591309000042",
+    "codbarras": "7591309000042",
+    "descrip1art": "DES DIOXOG ROLL-ON ANTIS X 90 CC"
+  },
+  {
+    "codigo": "7591309000066",
+    "codbarras": "7591309000066",
+    "descrip1art": "DES DIOXOG ROLL-ON ANT C/TALX 90GR"
+  },
+  {
+    "codigo": "7591309000080",
+    "codbarras": "7591309000080",
+    "descrip1art": "DES DIOXOG ROLL-ON ALOE X 90 GR"
+  },
+  {
+    "codigo": "7591309000219",
+    "codbarras": "7591309000219",
+    "descrip1art": "DES DIOXOG ROLL-ON C/BICARB X 90GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591309000608",
+    "descrip1art": "WAMPOLE EMUL NARANJA X 240 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591309000714",
+    "descrip1art": "VITENOL CREM X 15 GR"
+  },
+  {
+    "codigo": "7591309001049",
+    "codbarras": "7591309001049",
+    "descrip1art": "DENCORUB ICE GEL X 40 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591309002183",
+    "descrip1art": "OVERSKIN 13% CREMA PAÑALITIS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591309010409",
+    "descrip1art": "DENCORUB CREM X 40 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591309010416",
+    "descrip1art": "DENCORUB GEL X 40 GR"
+  },
+  {
+    "codigo": "7591309902667",
+    "codbarras": "7591309902667",
+    "descrip1art": "GEL  ANTIBACTERIAL  REFRESCANTE  50ML"
+  },
+  {
+    "codigo": "7591353515004",
+    "codbarras": "7591353515004",
+    "descrip1art": "PAÑ SECURREZZA INCONT MED CLAS X6"
+  },
+  {
+    "codigo": "7591353515103",
+    "codbarras": "7591353515103",
+    "descrip1art": "SECUREZA COMFORT TALLA  M 1 X 6"
+  },
+  {
+    "codigo": "7591353680542",
+    "codbarras": "7591353680542",
+    "descrip1art": "ACTIVA SEC/ABUNDANTE X 10 UNIDADES"
+  },
+  {
+    "codigo": "7591353699018",
+    "codbarras": "7591353699018",
+    "descrip1art": "PAÑALES ADULTO SIEMPRE SECO TALLA G X6"
+  },
+  {
+    "codigo": "7591353700059",
+    "codbarras": "7591353700059",
+    "descrip1art": "TOA CLINICAS SECUREZZA POST PARTO 1"
+  },
+  {
+    "codigo": "7591353701858",
+    "codbarras": "7591353701858",
+    "descrip1art": "FRIENDS TOALLAS SANITARIAS  X14 C/ALAS"
+  },
+  {
+    "codigo": "7591415011772",
+    "codbarras": "7591415011772",
+    "descrip1art": "PROCTETOR LAB/MANTECA DE CACAO  4.2GR"
+  },
+  {
+    "codigo": "7591442000046",
+    "codbarras": "7591442000046",
+    "descrip1art": "ALG ALVE X 10 GR"
+  },
+  {
+    "codigo": "7591442000053",
+    "codbarras": "7591442000053",
+    "descrip1art": "ALG ALVE X 25 GR"
+  },
+  {
+    "codigo": "7591442000060",
+    "codbarras": "7591442000060",
+    "descrip1art": "ALG ALVE X 50 GR"
+  },
+  {
+    "codigo": "7591442000107",
+    "codbarras": "7591442000107",
+    "descrip1art": "MOTAS ALGODON ALVE BLANCO X 50"
+  },
+  {
+    "codigo": "7591501000017",
+    "codbarras": "7591501000017",
+    "descrip1art": "ALG HIDEVEN X 10 GR"
+  },
+  {
+    "codigo": "7591501000024",
+    "codbarras": "7591501000024",
+    "descrip1art": "ALG HIDEVEN X 25 GR"
+  },
+  {
+    "codigo": "7591501000031",
+    "codbarras": "7591501000031",
+    "descrip1art": "ALG HIDEVEN X 50 GR"
+  },
+  {
+    "codigo": "7591519000092",
+    "codbarras": "7591519000092",
+    "descrip1art": "TORIVAS 100      MG X 30 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519000474",
+    "descrip1art": "DOL TAB X 10 CALOX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519000573",
+    "descrip1art": "FESTAL X 10 TAB (DETALLADO)"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519001587",
+    "descrip1art": "DOL TAB X 20 CALOX"
+  },
+  {
+    "codigo": "7591519003574",
+    "codbarras": "7591519003574",
+    "descrip1art": "DOLKIDS TAB X 20  CALOX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519005134",
+    "descrip1art": "DOL PLUS TAB X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519005141",
+    "descrip1art": "DOL PLUS TAB 650MG X 20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519008487",
+    "descrip1art": "CALOXPIRINA TABE 81 MG X 30"
+  },
+  {
+    "codigo": "7591519051872",
+    "codbarras": "7591519051872",
+    "descrip1art": "ANTAAR 2,5      MG X 30 TABLETAS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519317428",
+    "descrip1art": "FESTAL X10 CALOX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591519317572",
+    "descrip1art": "FESTAL GRAG X 25"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585110923",
+    "descrip1art": "MONOSULPA SOL NSAL X 15ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585111005",
+    "descrip1art": "VIASEK COMPDO 50 MG X 2"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585111166",
+    "descrip1art": "FLUVIRIN JBE 120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585112552",
+    "descrip1art": "OXIDREN COMP 150MG X 1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585112620",
+    "descrip1art": "CANFIR 500MG LP 30COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585113139",
+    "descrip1art": "FULGRAM SUSP 600MG X 60ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585113368",
+    "descrip1art": "NEUROMIX 10 COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585113382",
+    "descrip1art": "NEUROMIX SOL INY X 3 AMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585114389",
+    "descrip1art": "LISILETIC COMPDO 20MG/12,5MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585114884",
+    "descrip1art": "LETISAN GTA PED X 20 CC"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585115737",
+    "descrip1art": "MIGREN 650mg X 10 COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585118431",
+    "descrip1art": "TENSOMAX CAP 30 MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585118462",
+    "descrip1art": "ZONTRICON COM 500MGX6"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585119049",
+    "descrip1art": "RIFAMIX COMR 200 MG X 12"
+  },
+  {
+    "codigo": "7591585119100",
+    "codbarras": "7591585119100",
+    "descrip1art": "DIGLET 200UI GOTAS X20ML BANANA LETI"
+  },
+  {
+    "codigo": "7591585119131",
+    "codbarras": "7591585119131",
+    "descrip1art": "GYNOMET CREMA VAGx40g"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585213198",
+    "descrip1art": "FULGRAM COMPR 875 MG/125 MG X 16"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585213334",
+    "descrip1art": "ASARAP 15 MG X 30 COMP LETI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585213341",
+    "descrip1art": "ASARAP 20MG X 30 COMP"
+  },
+  {
+    "codigo": "7591585213365",
+    "codbarras": "7591585213365",
+    "descrip1art": "NEUROMIX 30 TAB LETI"
+  },
+  {
+    "codigo": "7591585214850",
+    "codbarras": "7591585214850",
+    "descrip1art": "LETISAN MASTICABLE X10 TAB UVA LETI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585214881",
+    "descrip1art": "LETISAN SOL REFORM X 120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585215901",
+    "descrip1art": "DERAIN CREM X 15 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585216175",
+    "descrip1art": "ALIVET GRANULADO LIMON X1 SOBRE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585216755",
+    "descrip1art": "ALIVET JBE 125/0,5 MG X 120 ML GENV"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585217165",
+    "descrip1art": "BIOTALOL COMR 5 MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585217523",
+    "descrip1art": "DIKLASON A.P. COM 100 MG X 20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585217660",
+    "descrip1art": "BABILIN GOTA 100MG - 0.42MG X 20 ML LETI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585219299",
+    "descrip1art": "DIKLASON GEL 50 GR"
+  },
+  {
+    "codigo": "7591585313355",
+    "codbarras": "7591585313355",
+    "descrip1art": "ASARAP 10MG X 10 TAB LETI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585314864",
+    "descrip1art": "LETISAN CAPS 500MG X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585318565",
+    "descrip1art": "TEKRON COMR 200 MG X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585319616",
+    "descrip1art": "ULGARIN CAP 40MGX32"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585415738",
+    "descrip1art": "MIGREN COMPR 650MG/50MG/1G X20"
+  },
+  {
+    "codigo": "7591585514875",
+    "codbarras": "7591585514875",
+    "descrip1art": "LETISAN TAB MASTICABLE X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585561237",
+    "descrip1art": "ASAPROL COM 81 MG X 40"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591585616685",
+    "descrip1art": "ALIVETFORTE NOCHE SOBRE 10 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619000541",
+    "descrip1art": "FLEMIBAR 6.67MG-33.40ML X 20ML ROWE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619000633",
+    "descrip1art": "DERMOSUPRIL 0.1% LOCION 30ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619000800",
+    "descrip1art": "GULAPER JBE PED 100/5ML X 60ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619001005",
+    "descrip1art": "NEFROTAL H 100MG/12.5MG ROWE"
+  },
+  {
+    "codigo": "7591619001067",
+    "codbarras": "7591619001067",
+    "descrip1art": "DORIXINA FLEX 5 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619001180",
+    "descrip1art": "NEFROTAL 50MG X 30 COPM ROWE"
+  },
+  {
+    "codigo": "75916191630311",
+    "codbarras": "75916191630311",
+    "descrip1art": "AFOKLIN GOTAS 10MG/ML"
+  },
+  {
+    "codigo": "7591619517797",
+    "codbarras": "7591619517797",
+    "descrip1art": "ZUDENINA 01.%X 30G CREMA MEDIHEALT"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619517803",
+    "descrip1art": "ZUDENINA FORTE 0.3% GEL MEDIHEALTH"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619517858",
+    "descrip1art": "BETARRETIN CREMA 0.05%"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619517940",
+    "descrip1art": "PLIDAN GOTAS x 20 ml"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619518688",
+    "descrip1art": "MIGRADORIXINA 125MG /1MG ROEMMERSX10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619518695",
+    "descrip1art": "PLIDAN COMPUESTO COMPDO X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619519036",
+    "descrip1art": "DERMAZOL CREMA 0.05% X 30 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619519043",
+    "descrip1art": "DERMAZOL UNGUENTO 0.05% X 30 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619519050",
+    "descrip1art": "ORLIDIET CAPS 60mg x 30's"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619519098",
+    "descrip1art": "DERMAZOL LOC CAPILAR 0,05% 25ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619519227",
+    "descrip1art": "CICLOKAN 500MG X 21 COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520315",
+    "descrip1art": "CORENTEL H 5/6,25 X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520353",
+    "descrip1art": "COROPRES H COM 8MG-12,5MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520483",
+    "descrip1art": "MARTESIA 75MG X 14 CAPS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520537",
+    "descrip1art": "RAMIPRES 5 MG X 30"
+  },
+  {
+    "codigo": "7591619520797",
+    "codbarras": "7591619520797",
+    "descrip1art": "PINAVIX 100MG X 30 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520865",
+    "descrip1art": "DERMOSUPRIL 0.05% 15G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591619520872",
+    "descrip1art": "DERMOSUPRIL C CREMA TOPICA 15MG"
+  },
+  {
+    "codigo": "7591635000105",
+    "codbarras": "7591635000105",
+    "descrip1art": "SHAM AVISPA X 120 CC"
+  },
+  {
+    "codigo": "7591635000136",
+    "codbarras": "7591635000136",
+    "descrip1art": "SHAM AVISPA X 60 CC"
+  },
+  {
+    "codigo": "7591635000181",
+    "codbarras": "7591635000181",
+    "descrip1art": "REPELENTE AVISPA LOC X 110 CC"
+  },
+  {
+    "codigo": "7591635000198",
+    "codbarras": "7591635000198",
+    "descrip1art": "REPELENTE AVISPA EN CREM X 100 GR"
+  },
+  {
+    "codigo": "7591635000204",
+    "codbarras": "7591635000204",
+    "descrip1art": "REPELENTE AVISPA TUBO X 100 GR"
+  },
+  {
+    "codigo": "7591635000228",
+    "codbarras": "7591635000228",
+    "descrip1art": "REPELENTE AVISPA X 220 ML"
+  },
+  {
+    "codigo": "7591635910244",
+    "codbarras": "7591635910244",
+    "descrip1art": "PROTECTOR LAB NEVADA CEREZA"
+  },
+  {
+    "codigo": "7591635910251",
+    "codbarras": "7591635910251",
+    "descrip1art": "PROTECTOR LABIAL NEVADA 4G FRESA"
+  },
+  {
+    "codigo": "7591635910268",
+    "codbarras": "7591635910268",
+    "descrip1art": "PROTECTOR LABIAL NEVADA 4G MANZANA"
+  },
+  {
+    "codigo": "7591635910275",
+    "codbarras": "7591635910275",
+    "descrip1art": "PROTECTOR LAB NEVADA COCO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591635910282",
+    "descrip1art": "PROTECTOR LABIAL NEVADA 4G COCO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591651722401",
+    "descrip1art": "MUCORAMA JBE x 118ml"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591651723651",
+    "descrip1art": "MUCOLIPTO PEDIATRICO JAB 90ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591651932299",
+    "descrip1art": "DUVADILAN 10MG X 30 COMP ZUOZ PHARMA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "75916565",
+    "descrip1art": "VAPORUD 12G"
+  },
+  {
+    "codigo": "7591664000046",
+    "codbarras": "7591664000046",
+    "descrip1art": "PEGA LOKA 3"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818026366",
+    "descrip1art": "MIOVIT AMPS 3 ML X 3 COFASA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818111024",
+    "descrip1art": "AIRFEN GTA PED X 15 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818111048",
+    "descrip1art": "IPALAT SOL X 20 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818111123",
+    "descrip1art": "CELAY SOL GTA PED 10MG X 15 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818112021",
+    "descrip1art": "MUCOBROL JBE X 120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818113028",
+    "descrip1art": "EUSILEN AMPS 4 MG X 1 (KIT) COFAS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818114001",
+    "descrip1art": "IPALAT CREM X 20 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818116005",
+    "descrip1art": "EUSILEN COMPDO 4 MG X 8"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818116043",
+    "descrip1art": "CLORACE CAP X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818118030",
+    "descrip1art": "MIOVIT GRAG X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818118047",
+    "descrip1art": "MIOVIT GRAG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818213407",
+    "descrip1art": "BREXIN 180MG/5ML X 120ML COFASA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818215265",
+    "descrip1art": "CLORACE TAB 500MG/4MG X20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818222164",
+    "descrip1art": "EUSILEN COMP 4mg x 15¨s"
+  },
+  {
+    "codigo": "7591818251386",
+    "codbarras": "7591818251386",
+    "descrip1art": "MIOVIT X 60 TAB COFASA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818716687",
+    "descrip1art": "MIOVIT JBE X90 ML S/AZUCAR COFASA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818716700",
+    "descrip1art": "CLORACE JARABE PED"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591818716854",
+    "descrip1art": "OLOCOF 5ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591821101692",
+    "descrip1art": "TERAGRIP JBE PED 120MG X 120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591821210028",
+    "descrip1art": "ARUDIL 20MG X 10"
+  },
+  {
+    "codigo": "7591821210059",
+    "codbarras": "7591821210059",
+    "descrip1art": "MAGALEX  30 CAPSULAS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591821210264",
+    "descrip1art": "COLYPAN TAB 200 MG X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591821210288",
+    "descrip1art": "ULCON TAB 1 GR X 20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7591821210417",
+    "descrip1art": "ULCON SUSP X 120 ML"
+  },
+  {
+    "codigo": "7591821904316",
+    "codbarras": "7591821904316",
+    "descrip1art": "FITEX TAB 5      MG X 30"
+  },
+  {
+    "codigo": "7591821904323",
+    "codbarras": "7591821904323",
+    "descrip1art": "FITEX TAB 5      MG X 10"
+  },
+  {
+    "codigo": "7591838000025",
+    "codbarras": "7591838000025",
+    "descrip1art": "GERDEX DESINFECTANTE X 240 ML"
+  },
+  {
+    "codigo": "7591838000117",
+    "codbarras": "7591838000117",
+    "descrip1art": "GERDEX DESIFECTANTE SPRAY X 240ML"
+  },
+  {
+    "codigo": "7591844000439",
+    "codbarras": "7591844000439",
+    "descrip1art": "ADEMINA PLUS CREM CORP X 30 G"
+  },
+  {
+    "codigo": "7591844000446",
+    "codbarras": "7591844000446",
+    "descrip1art": "ADEMINA PLUS CREM CORP X 60 G"
+  },
+  {
+    "codigo": "7591844000583",
+    "codbarras": "7591844000583",
+    "descrip1art": "ADEMINA KIDS CRM ANTIPAÃ‘ALITIS 60G"
+  },
+  {
+    "codigo": "7591928000034",
+    "codbarras": "7591928000034",
+    "descrip1art": "TOA SANIT CLINICAS X 10 LARGE"
+  },
+  {
+    "codigo": "7591929000071",
+    "codbarras": "7591929000071",
+    "descrip1art": "MULTI PLUS LD SOL 120 ML"
+  },
+  {
+    "codigo": "7591929000156",
+    "codbarras": "7591929000156",
+    "descrip1art": "MULTI PLUS ULTRA X 120 ML"
+  },
+  {
+    "codigo": "7591929232021",
+    "codbarras": "7591929232021",
+    "descrip1art": "SOL ACOND 20/20 X 120 ML   ALGOL"
+  },
+  {
+    "codigo": "7591929727015",
+    "codbarras": "7591929727015",
+    "descrip1art": "MULTI PLUS SOL X 360 ML ALGOL"
+  },
+  {
+    "codigo": "7591929828026",
+    "codbarras": "7591929828026",
+    "descrip1art": "7591929828026"
+  },
+  {
+    "codigo": "7591948156018",
+    "codbarras": "7591948156018",
+    "descrip1art": "TAPONES PARA OIDOS RIGA X2"
+  },
+  {
+    "codigo": "7591949528012",
+    "codbarras": "7591949528012",
+    "descrip1art": "REM VALMY ORIGINAL 50 ML VIDRIO"
+  },
+  {
+    "codigo": "7591949610014",
+    "codbarras": "7591949610014",
+    "descrip1art": "REM VALMY ORIGINAL 50 ML PLASTICO"
+  },
+  {
+    "codigo": "7592044002407",
+    "codbarras": "7592044002407",
+    "descrip1art": "GEL ANTIBACTERIAL X60ML EL GUARDIAN"
+  },
+  {
+    "codigo": "7592074000060",
+    "codbarras": "7592074000060",
+    "descrip1art": "JARABE LAMEDOR COMPU X 125 ML BIONE"
+  },
+  {
+    "codigo": "7592090000037",
+    "codbarras": "7592090000037",
+    "descrip1art": "BRUCEN  CREMA NUTRITIVA"
+  },
+  {
+    "codigo": "7592090000075",
+    "codbarras": "7592090000075",
+    "descrip1art": "BRUCEN ADULTC CREMA RESTAU 30G"
+  },
+  {
+    "codigo": "7592090000334",
+    "codbarras": "7592090000334",
+    "descrip1art": "BRUCEN ADULTCARE LOCION 250ml"
+  },
+  {
+    "codigo": "7592090000495",
+    "codbarras": "7592090000495",
+    "descrip1art": "BRUCETIN KIDS UNGUENTO CORPORAL BRUPHARM"
+  },
+  {
+    "codigo": "7592090001447",
+    "codbarras": "7592090001447",
+    "descrip1art": "BRUCEN ENJUAGUE BUCAL X250ML"
+  },
+  {
+    "codigo": "7592090001454",
+    "codbarras": "7592090001454",
+    "descrip1art": "BRUCEN ENJUAGUE BUCAL COOL X 250ML"
+  },
+  {
+    "codigo": "7592090001461",
+    "codbarras": "7592090001461",
+    "descrip1art": "BRUCEN ENJUAGUE HIERBA BUENA X250 ML"
+  },
+  {
+    "codigo": "7592090001546",
+    "codbarras": "7592090001546",
+    "descrip1art": "BRUCETIN KIDS BODY LO 200"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592236002215",
+    "descrip1art": "FANASAL ADULTO 15 ML"
+  },
+  {
+    "codigo": "7592247000217",
+    "codbarras": "7592247000217",
+    "descrip1art": "SAITO VENDAS ELASTICAS 8CM"
+  },
+  {
+    "codigo": "7592247000224",
+    "codbarras": "7592247000224",
+    "descrip1art": "SAITO VENDAS ELASTICAS 10CM"
+  },
+  {
+    "codigo": "7592247000248",
+    "codbarras": "7592247000248",
+    "descrip1art": "SAITO VENDAS ELASTICAS 15CM"
+  },
+  {
+    "codigo": "7592247000255",
+    "codbarras": "7592247000255",
+    "descrip1art": "SAITO VENDAS ELASTICAS 20CM"
+  },
+  {
+    "codigo": "7592285001207",
+    "codbarras": "7592285001207",
+    "descrip1art": "JER 20 CC  21 X 1 1/2 X 50 GAESCA"
+  },
+  {
+    "codigo": "7592340000114",
+    "codbarras": "7592340000114",
+    "descrip1art": "WIKI-WIKI AZUL COLEGIAL"
+  },
+  {
+    "codigo": "7592340000213",
+    "codbarras": "7592340000213",
+    "descrip1art": "WIKI-WIKI NEGRO DETALLADO"
+  },
+  {
+    "codigo": "7592340000275",
+    "codbarras": "7592340000275",
+    "descrip1art": "WIKI-WIKI NEGRO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592349001044",
+    "descrip1art": "LUMBAX 400MG X 10 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592349001051",
+    "descrip1art": "LUMBAX 600MG X 10 TAB VALMORCA"
+  },
+  {
+    "codigo": "7592349001167",
+    "codbarras": "7592349001167",
+    "descrip1art": "LIT ENEMA ADULTO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592349527124",
+    "descrip1art": "MODERAN JBE X 120 ML"
+  },
+  {
+    "codigo": "7592432005508",
+    "codbarras": "7592432005508",
+    "descrip1art": "CUTICLIN TAB BLANDAS 10      MG X 30"
+  },
+  {
+    "codigo": "7592432007427",
+    "codbarras": "7592432007427",
+    "descrip1art": "MELOVAX TAB BLDA 15      MG X 10"
+  },
+  {
+    "codigo": "7592432009728",
+    "codbarras": "7592432009728",
+    "descrip1art": "CARVIX TAB BLANDAS X 30"
+  },
+  {
+    "codigo": "7592454000789",
+    "codbarras": "7592454000789",
+    "descrip1art": "ANALPER NAX TAB 250      MG X 10"
+  },
+  {
+    "codigo": "7592454004053",
+    "codbarras": "7592454004053",
+    "descrip1art": "TALYSTOR 5MG X 10 TAB"
+  },
+  {
+    "codigo": "7592454004060",
+    "codbarras": "7592454004060",
+    "descrip1art": "TALYSTOR 5MG X 30 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592467000011",
+    "descrip1art": "PRESERVATIVOS KRISTEL X 3"
+  },
+  {
+    "codigo": "7592467001025",
+    "codbarras": "7592467001025",
+    "descrip1art": "PRESER KRISTEL COLORES X 3"
+  },
+  {
+    "codigo": "7592467001032",
+    "codbarras": "7592467001032",
+    "descrip1art": "PRESER KRISTEL TEXTURIZADO x3"
+  },
+  {
+    "codigo": "7592467001049",
+    "codbarras": "7592467001049",
+    "descrip1art": "PRESER KRISTEL EXTRA FUERTE x3"
+  },
+  {
+    "codigo": "7592467001056",
+    "codbarras": "7592467001056",
+    "descrip1art": "PRESER KRISTEL ULTRA DELGAD x3"
+  },
+  {
+    "codigo": "7592601100676",
+    "codbarras": "7592601100676",
+    "descrip1art": "ASCAFYL PLUS TAB X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592601100683",
+    "descrip1art": "ARBIXIL SOL GTA PED 7,5MG/5MCG 15M"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592601100836",
+    "descrip1art": "SEDIVAL TAB X 30"
+  },
+  {
+    "codigo": "7592601303558",
+    "codbarras": "7592601303558",
+    "descrip1art": "CAMPAL CREMA 50GR"
+  },
+  {
+    "codigo": "7592871002205",
+    "codbarras": "7592871002205",
+    "descrip1art": "ROLDA GEL FIJADOR ANTICASPA AZUL X120 G"
+  },
+  {
+    "codigo": "7592871002212",
+    "codbarras": "7592871002212",
+    "descrip1art": "ROLDA GEL FIJADOR AZUL 250GR"
+  },
+  {
+    "codigo": "7592871002243",
+    "codbarras": "7592871002243",
+    "descrip1art": "ROLDA GEL FIJAD EXT BOTANICO BLANCO 120G"
+  },
+  {
+    "codigo": "7592871002250",
+    "codbarras": "7592871002250",
+    "descrip1art": "ROLDA GEL EXT BOTANI BLANCO 250G"
+  },
+  {
+    "codigo": "7592871002281",
+    "codbarras": "7592871002281",
+    "descrip1art": "GEL FIJAD EXT BOTANICO AZUL 120GM ROLDA"
+  },
+  {
+    "codigo": "7592871002298",
+    "codbarras": "7592871002298",
+    "descrip1art": "ROLDA GEL FIJADOR EXT BOTAN AZUL 250GR"
+  },
+  {
+    "codigo": "7592871002724",
+    "codbarras": "7592871002724",
+    "descrip1art": "ROLDA GEL FIJADO ANTICAI BLANCO X 120G"
+  },
+  {
+    "codigo": "7592904000017",
+    "codbarras": "7592904000017",
+    "descrip1art": "LUBRIX LUBRICANTE INTIMO X 60 CC"
+  },
+  {
+    "codigo": "7592904000031",
+    "codbarras": "7592904000031",
+    "descrip1art": "LUBRIX LUBRICANTE INTIMO X 120 ESP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592904000437",
+    "descrip1art": "LUBRIX GEL LUBRICANT AROM/CHOCOL X6"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592904000444",
+    "descrip1art": "LUBRIX GEL LUBRICANT AROM/FRES X60C"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7592904000451",
+    "descrip1art": "LUBRIX GEL LUBRICANT AR/MENTA X60CM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593090000171",
+    "descrip1art": "HTBRUSH PEINE P PIOJO ACERO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593090000324",
+    "descrip1art": "BAÑO INTIMO PERLAVIS FEMME 200ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593090000768",
+    "descrip1art": "PERLAVIS FEM TEENS JAB INTX200"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593255000145",
+    "descrip1art": "ALGODON ALGOBAP 10 GRAMOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593255000152",
+    "descrip1art": "ALGODON ALGOBAP 25GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593255000169",
+    "descrip1art": "ALGODON ALGOBAP 50G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593255000176",
+    "descrip1art": "ALGODON ALGOBAP 100 GRAMOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593319000050",
+    "descrip1art": "CREMA PIERNAS CANS 200 GR VIBRA NAT"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593319000173",
+    "descrip1art": "PIERNAS CANSADAS ROLLON 90 G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593567000673",
+    "descrip1art": "RECOLECTOR DE HECES"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593567000697",
+    "descrip1art": "RECOLECTOR DE ORINA DEXX X 1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593567000727",
+    "descrip1art": "CUBRE BOTAS DESCARTABLE AZUL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593567001991",
+    "descrip1art": "GASA 3X3 ESTERIL SOBRE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7593614001073",
+    "descrip1art": "MAQ THOR RAZOR 3 HOJILLAS X 1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001101567",
+    "descrip1art": "MISULVAN JBE ADUL 15MG-0,01MG/5ML X"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001101581",
+    "descrip1art": "ANANTY FORTE JBE x 120ml"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001101734",
+    "descrip1art": "TIOCHAS PLUS 400MG 4 MG X10 PLUS ANDES"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001101970",
+    "descrip1art": "CLODOXIN 10MG X 10 COMP PLUSANDES"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001450054",
+    "descrip1art": "ACEITE DE COCO 30 ML RECETEMARK"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001455776",
+    "descrip1art": "LAMEDOR COMPUESTO JBE 120ML BIONECTAR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001563921",
+    "descrip1art": "PHARMASTRIP X 16 TIRAS PHARMAPLAST"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001564102",
+    "descrip1art": "ADHESIVO AIROPLAST 1.25CM X500CM X1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001564201",
+    "descrip1art": "VENDA YESO ORTOBAN 15 CM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594001564218",
+    "descrip1art": "VENDA YESO ORTOBAN 20 CM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594003280048",
+    "descrip1art": "NIOSILIN PDA X 25 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7594005620132",
+    "descrip1art": "AGUA DEL CARMEN ALVA LOF SA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595059000437",
+    "descrip1art": "SCALP 23  PERIRANEAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595059000994",
+    "descrip1art": "GUANTES DE NITRILO  NEGRO X 1 PAR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595059001281",
+    "descrip1art": "CATETER VENTRO N 18 VEINCARE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595059001304",
+    "descrip1art": "CATETER VENTRON N 22 VEINCARE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595137000168",
+    "descrip1art": "XIODINE SOL. JABONOSA 150ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595481000234",
+    "descrip1art": "JAB BIOS P/GRASA X 110 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595481000241",
+    "descrip1art": "JAB BIOS P/SECA X 110 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595481000265",
+    "descrip1art": "JABON DERMOPROTECTOR NEUTRO BIOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595481000364",
+    "descrip1art": "BIOS BEBE BARRA  NEUTRO 90GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595651000026",
+    "descrip1art": "BIOSCRUB CEPILLO DESINF"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595651000422",
+    "descrip1art": "GEL JABONO INTIMO PARA DAMA 200ML BIOLAC"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595651000453",
+    "descrip1art": "LUBRICANTE INTIMO NATURAL 120ML HMD MEDI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595747000077",
+    "descrip1art": "BAJA LENGUA 100 UNIDADES"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595747000305",
+    "descrip1art": "APLICADORES CON ALGODON PROCAREX100UNID"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595751002593",
+    "descrip1art": "AFEITADORA IDEAL 3 HOJILLA 2PCS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7595950000024",
+    "descrip1art": "AGUA POTABLE HELEAL 500 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596111002123",
+    "descrip1art": "CHAMPU NIÑ@ 240 ML KABELLITOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596111002130",
+    "descrip1art": "COLONIA 200 ML KABELLITOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596111003625",
+    "descrip1art": "SHAMPU ANTI PIOJOS  240 ML KABELLITOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596111003649",
+    "descrip1art": "CREMA DE PEINAR 240ML KABELLITOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596139000453",
+    "descrip1art": "SOMEDINE JAB LIQUID 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596273000579",
+    "descrip1art": "TOALLAS SANITARIAS FRESCA X8UNID"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596273000982",
+    "descrip1art": "OKI TOALLAS 20 UND BABY  SV"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596273001019",
+    "descrip1art": "OKY TOALLAS 20 UNID ALOE SV"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596466002267",
+    "descrip1art": "ESPECULO VAGINAL SOFT TALLA M"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596548000624",
+    "descrip1art": "DERNIER  BABY CREMA BABY 50 CM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7596937000068",
+    "descrip1art": "TOALLAS CLINICAS X10 POST PARTO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597297000255",
+    "descrip1art": "CEP DENT KID ICEB X1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597297000262",
+    "descrip1art": "HILO DENTAL ICEBERG MENTA 50M"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597297000279",
+    "descrip1art": "HILO DENTAL NEUTRO ENCERADO 50M ICEBERG"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597297000439",
+    "descrip1art": "CEPILLO INTERDENTAL 1 X 5 CEPI ICEBERG"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597467000115",
+    "descrip1art": "OBTURADOR AMARILLO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597467002782",
+    "descrip1art": "ESPECULO VAGINAL TALLA L"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597478000166",
+    "descrip1art": "JERINGA 1CC 30GX1/2 TAPA NARANJA GDG"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597478000203",
+    "descrip1art": "JERINGA DE 20CC 21 X  1 1/2"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597478000593",
+    "descrip1art": "PRUEBA DE EMBARAZO GIDAGUS X1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597478000760",
+    "descrip1art": "SODA DE FOLEY 3 VIAS N°18"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597478001668",
+    "descrip1art": "EQUIPO DE TRANSFUSION DE SANGRE 1.8MT"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597597000450",
+    "descrip1art": "HILO DENTAL C/MANGO ALIVE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597597000917",
+    "descrip1art": "ACEITE BABY FINGER 100 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597597004076",
+    "descrip1art": "ALIDENT CREMA DENTAL GEL AZUL X 50G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597597004083",
+    "descrip1art": "ALIDENT CREMA DENTAL GEL VERDE  50G"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830001992",
+    "descrip1art": "OBTUBRADOR AMARILLO GROSSMED 1 UND"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830004184",
+    "descrip1art": "JERINGA 60 CC SIN AGUJA CON ROSCA GROSSM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830004276",
+    "descrip1art": "JERINGA 60ML TOMMY SIN AGUJA GROSSMED"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830004955",
+    "descrip1art": "VENDA ELASTICA 20 CM X 4CM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830005037",
+    "descrip1art": "CATETER VENTRON N 16 VEINCARE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830005167",
+    "descrip1art": "SONDA FOLEY NRO 16 GROSSMED"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830006287",
+    "descrip1art": "APLICADOR CON ALGODON X100 UND"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830008328",
+    "descrip1art": "ESPECULO VAGINAL TALLA S X 1 GROSSMED"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7597830008342",
+    "descrip1art": "ESPECULO TALLA L X1 GROSSMED"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598084001004",
+    "descrip1art": "PROCTECTOR SOLAR CORPORAL 75MG X1 GERNIE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598084001011",
+    "descrip1art": "PROTEC SOLAR EN CREMA 160ML X1 DERNIER"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598084001134",
+    "descrip1art": "PROTEC CREMA BABY 160GR X 1 DERNIER"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598084001189",
+    "descrip1art": "PROCTEC CREMA BABY SOLAR 50GR X1 DERNIER"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598130212552",
+    "descrip1art": "GEL ULTRASONIDO 250ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598252001331",
+    "descrip1art": "DISTROVIT X 30M CAP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598455000087",
+    "descrip1art": "GOTAS ARTIFICIALES 0.3% X15 ML BIOGLASS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598484000218",
+    "descrip1art": "FANASAL GOTAS ADULTO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598484000232",
+    "descrip1art": "FANASAL PED 15ML QUIM-FAR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598484000515",
+    "descrip1art": "PIPERZAN JBE 120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598484000867",
+    "descrip1art": "MUCOFAR JAB ADULTO 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598578000117",
+    "descrip1art": "CLONEDEX CREMA 20GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598578000520",
+    "descrip1art": "GYNO CLONEDAC CREMA VAGINAL 6 APLIC"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7598751000019",
+    "descrip1art": "DIVIDIVI CREMA X30GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599028000336",
+    "descrip1art": "LOCION JABONOSA AL 10%X20ML LYA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599028000503",
+    "descrip1art": "QUITACALLOS 8GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599043000182",
+    "descrip1art": "SABEMIEL KIDS JAB X 120 ML BIOFAR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599043000304",
+    "descrip1art": "FLEXTRIN X 30 CAP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599043000311",
+    "descrip1art": "FLXTRIN X60 CAP BIOFARCO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599336000011",
+    "descrip1art": "GLUCOMETRO BLOOD GOOD"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599336000028",
+    "descrip1art": "TIRAS DE PRUEBA PARA MEDIDOR EN SANGRE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599336000042",
+    "descrip1art": "LANCETAS PARA SANGRE BLOODGOOD"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599336000073",
+    "descrip1art": "TENSIOMETRO ELYON MANUAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599336000080",
+    "descrip1art": "TENSIOMETRO GOODPRESSURE"
+  },
+  {
+    "codigo": "7599336000356",
+    "codbarras": "7599336000356",
+    "descrip1art": "TIRAS DE PRUEBA PARA GLUCOSA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599381000189",
+    "descrip1art": "JABON NEUTRO 80GR FARMAX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599457001317",
+    "descrip1art": "MACROGOTERO HEALTH MEDICAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599457003496",
+    "descrip1art": "APLICADORES DE MADERA C/ALGODON X100 UNI"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599608003382",
+    "descrip1art": "HIDRATATEX SOBRES X21GR ZUZU"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599700001057",
+    "descrip1art": "CENTRUNEX SILVER X60 TABL FITOSANA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599740000041",
+    "descrip1art": "INTYLACT JABON INTIMO 220ML AROMA FLORAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599955000010",
+    "descrip1art": "VITAOVULOS X4 UNID VITAOZONO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7599955000027",
+    "descrip1art": "VITAOZONO GOTAS X 15ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "764451542600",
+    "descrip1art": "CATETER FOLEY 2VIAS N°16 SONDA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "764451542631",
+    "descrip1art": "SONDA NUMERO 18 FOLEY 2VIAS FULL TIME"
+  },
+  {
+    "codigo": null,
+    "codbarras": "76821",
+    "descrip1art": "ADHESIVO DE TELA LEUKOPLAST 1\"X10YDS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "76822",
+    "descrip1art": "ADHESIVO DE TELA LEUKOPLAST 2\"X10YDS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "769229220612",
+    "descrip1art": "VIAJESAN TAB 50 MG X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7693764730165",
+    "descrip1art": "PATO CLINICO MILFORM"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702010111501",
+    "descrip1art": "PAST COLGATE TRIPLE ACCION 60ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702010631191",
+    "descrip1art": "CEPILLO COLGATE TRIPLE ACCION  123"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031244486",
+    "descrip1art": "LUBRIDERM HUMECTACION DIARIA X 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031244530",
+    "descrip1art": "LUBRIDERM HUM DELICADA X120 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031291534",
+    "descrip1art": "SHAMPOO BABY GOLD 100 ML JOHNSONS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031500315",
+    "descrip1art": "CAREFREE X 25 PROTECCION CON PERFUME"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031504009",
+    "descrip1art": "CAREFREE X 25 PROTECCION SIN PERFUME"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702031563334",
+    "descrip1art": "LISTERINE COOL MINT S/ALCOHOL 360ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702035455055",
+    "descrip1art": "LOC LUBRIDERM P/SENS S/PERF 120ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702035833815",
+    "descrip1art": "LISTERINE CUIDADO TOTAL X 180 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702132011062",
+    "descrip1art": "CENTRUM SILVER + 50AÑOS X30 CAPS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702132011840",
+    "descrip1art": "CENTRUM MEN X 30 CAP"
+  },
+  {
+    "codigo": "7702314700449",
+    "codbarras": "7702314700449",
+    "descrip1art": "PROQUIDENT CREMA ADHESIVA DENTAL X 40GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702418004399",
+    "descrip1art": "CEBION 1GR NARANJA EFERVESCENTES X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425152540",
+    "descrip1art": "TOALLAS KOTEX FEM ESENCIAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425544932",
+    "descrip1art": "PROTECTORES DIARIO KOTEX X 15 UN"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425631397",
+    "descrip1art": "KOTEX TOALLAS DIARIA X15 UND"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425801288",
+    "descrip1art": "TOA KOTEX ULTRAFINA DISCRETA X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425803008",
+    "descrip1art": "KOTE NOCTURNA X 8 UNID"
+  },
+  {
+    "codigo": "7702425807648",
+    "codbarras": "7702425807648",
+    "descrip1art": "KOTE NOCTURNA DISCRETA X 8"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425808041",
+    "descrip1art": "KOTEX TAMPONES X 12 UNID DISCRETOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702425810501",
+    "descrip1art": "TOALLAS KOTEX P ULTRAFINA X 10"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702661351264",
+    "descrip1art": "CREMA CERO X 30 GRS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702661353015",
+    "descrip1art": "CREMA CERO MED X 50 GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702661363199",
+    "descrip1art": "CREMA DERMOPROTECTORA 50GR CERO ADULTOS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7702796354109",
+    "descrip1art": "APLICADORES ASEPTICOS PRODEMA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703153028053",
+    "descrip1art": "ADELLA 21 COMP"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703153037512",
+    "descrip1art": "ALBISEC CAP X 12"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703281000365",
+    "descrip1art": "LACTIBON FEM PH3.5  240ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703281001454",
+    "descrip1art": "UMBRELLA GEL 60G SPF50+PA+ MEDIHEALTH"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703281001461",
+    "descrip1art": "UMBRELLA CREMA SPF 50X60GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703281001485",
+    "descrip1art": "UMBRELLA KIDS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703281008422",
+    "descrip1art": "DERMACORTINE LOC 0.1% X 30ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703333007007",
+    "descrip1art": "BETARRETIN LOC AL 0,05% X 60 ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703712010895",
+    "descrip1art": "DOLICO GRIP NOCHE (SOBRES) COASPHARMA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703763363063",
+    "descrip1art": "LEPRIT TAB 25 MG X 30"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7703763861002",
+    "descrip1art": "BUMETIN RETARD TAB 300MG X 20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7707172681060",
+    "descrip1art": "SCOTT JBE 180ML SABOR TRACIONAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7707172681183",
+    "descrip1art": "SCOTT EMULSION 180ML FRUTAS TROPICALES"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7707233050552",
+    "descrip1art": "ASPIRADOR NASAL CORCHITO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7707236123291",
+    "descrip1art": "CEFEPIMA AMP 1 G VITALIS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "7707355054346",
+    "descrip1art": "NOXPIRIN NOCHE 10GR"
+  },
+  {
+    "codigo": null,
+    "codbarras": "77593090000324",
+    "descrip1art": "PERLAVIS FEMME BAÑO INT FCX200"
+  },
+  {
+    "codigo": "7800004261505",
+    "codbarras": "7800004261505",
+    "descrip1art": "DISFRUTA (SOBRE)"
+  },
+  {
+    "codigo": null,
+    "codbarras": "796029455234",
+    "descrip1art": "ADHESIVO DE PAPEL 1X5 YARDAS BRIUTCARE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "796029455258",
+    "descrip1art": "ADHESIVO DE PAPEL BLANCO 2.54/4.57 MX1"
+  },
+  {
+    "codigo": null,
+    "codbarras": "81179",
+    "descrip1art": "JELCO # 24"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333012400",
+    "descrip1art": "APLICADORES ALGODON X 100"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333012547",
+    "descrip1art": "VENDAS YESO 15CMX3.6M KX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333013957",
+    "descrip1art": "ESPECULO VAGINAL TALLA M X 1 MEDICAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333014541",
+    "descrip1art": "MACROGOTERO KX MEDICAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333014695",
+    "descrip1art": "COMPRESA FRIO/CALOR X2  KX MEDICAL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "813333014930",
+    "descrip1art": "ALGODON X 25 G KX"
+  },
+  {
+    "codigo": null,
+    "codbarras": "81880",
+    "descrip1art": "ESPECULO VAGINAL POR UNIDAD"
+  },
+  {
+    "codigo": null,
+    "codbarras": "83009",
+    "descrip1art": "BATA DESECHABLE PARA PACIENTE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "83446",
+    "descrip1art": "SONDA FOLEY DE 2 VIAS #18"
+  },
+  {
+    "codigo": null,
+    "codbarras": "83601",
+    "descrip1art": "MICROGOTEROS EQUIPO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232010",
+    "descrip1art": "TETERO 90Z AMAZING 250ML PLASTICO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232027",
+    "descrip1art": "TETEROS 50Z AMAZING"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232034",
+    "descrip1art": "TETERO 90Z AMAZING 250ML"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232041",
+    "descrip1art": "TETERO 110Z SMILE 320ML PLASTICO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232058",
+    "descrip1art": "TETERO 250 ML PLASTICO SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232065",
+    "descrip1art": "TETERO50Z SMILE 150ML PLASTICO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232089",
+    "descrip1art": "TETERO CON CUCHARILLA 125 ML PLASTICO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232188",
+    "descrip1art": "MAMILA PEQUEÑA X 2 UNID"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232195",
+    "descrip1art": "MAMILA  PEQUEÑA X 3 UNID SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232201",
+    "descrip1art": "MAMILA GRANDE X 2UND SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232218",
+    "descrip1art": "MAMILA GRANDE X3 UNIDADES SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232225",
+    "descrip1art": "MAMILA PEQUEÑA X 6UNIDADES SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232232",
+    "descrip1art": "CHUPON SILICON SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232256",
+    "descrip1art": "KIT DE CHUPON +  3 MANILA 3UNID SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232270",
+    "descrip1art": "RASCA ENCIAS SILICON SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8678920232294",
+    "descrip1art": "CHUPONES X 2 UNID  SMILE"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8697420536251",
+    "descrip1art": "MIMLOT TOALLAS HUMEDAD CREMA X25UNDS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8697420538538",
+    "descrip1art": "MIMLOT TOALLAS HUMEDAD X72 FRESH"
+  },
+  {
+    "codigo": null,
+    "codbarras": "88",
+    "descrip1art": "GUATA X 20 CM SERIS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8801038514932",
+    "descrip1art": "AFEITADORA DORCO 5 PC MUJER"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8801038562421",
+    "descrip1art": "AFEITADORA DORCO X 5"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8801038584799",
+    "descrip1art": "AFEITADORA DORCO 2 HOJILLA 3PCS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8801038590745",
+    "descrip1art": "AFEITADORA DORCO 3 HOJILLA 3PAQT"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8850217041004",
+    "descrip1art": "ASPIRADOR NASAL TOMI TIPI MOD 504100"
+  },
+  {
+    "codigo": null,
+    "codbarras": "890410708034",
+    "descrip1art": "CICLESONO-T INHALADOR X 120 DOSIS BIOMER"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8904187863088",
+    "descrip1art": "FEMIGYNA 50MG/5MG X1 AMP OVEROL"
+  },
+  {
+    "codigo": "8906045361590",
+    "codbarras": "8906045361590",
+    "descrip1art": "VITA- MIX REGULAR 60 TAB ZUZU"
+  },
+  {
+    "codigo": "8906130232170",
+    "codbarras": "8906130232170",
+    "descrip1art": "CREMA PARA HEMORROIDES BRIXMEDIC"
+  },
+  {
+    "codigo": "8906142160904",
+    "codbarras": "8906142160904",
+    "descrip1art": "VITAMIX FORTE TAB 1 X 10 TAB"
+  },
+  {
+    "codigo": null,
+    "codbarras": "8906188190507",
+    "descrip1art": "VITALIT NATAL D X30 TABL DROTAFARMA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "9049",
+    "descrip1art": "ADHESIVO MICROPORE 1\"X10 YD BLANCO 3M"
+  },
+  {
+    "codigo": null,
+    "codbarras": "92321",
+    "descrip1art": "TUBO VACUTAINER TAPA MORADA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "93766",
+    "descrip1art": "TUBO VACUTAINER TAPA AZUL"
+  },
+  {
+    "codigo": null,
+    "codbarras": "959595",
+    "descrip1art": "TAPA BOCA KN95 NEGRO"
+  },
+  {
+    "codigo": "9890023813111",
+    "codbarras": "9890023813111",
+    "descrip1art": "CEPILLO DENTAL BERENICE GOLD"
+  },
+  {
+    "codigo": "999",
+    "codbarras": "999",
+    "descrip1art": "ELECTRODO ADULTO X 1UNDIDAD"
+  },
+  {
+    "codigo": null,
+    "codbarras": "A8974",
+    "descrip1art": "ADHESIVO MICROP 2\"X10YD COLOR PIEL (3M)"
+  },
+  {
+    "codigo": null,
+    "codbarras": "ANNSIN",
+    "descrip1art": "APOSITOS OCULAR OVALADO ADULTO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "HJ20",
+    "descrip1art": "BISTURI HOJILLA NUMERO 20"
+  },
+  {
+    "codigo": null,
+    "codbarras": "JER_5CC",
+    "descrip1art": "JERINGA"
+  },
+  {
+    "codigo": null,
+    "codbarras": "LA5896",
+    "descrip1art": "LAPIZ ELECTROCAUTERIO"
+  },
+  {
+    "codigo": null,
+    "codbarras": "SH24100",
+    "descrip1art": "ADH PAPEL BLANCO 1X10YRDS SEBIS"
+  },
+  {
+    "codigo": null,
+    "codbarras": "SH24101",
+    "descrip1art": "ADH PAPEL BLANCO 2X10 YSDS SEBIS"
+  }
+]

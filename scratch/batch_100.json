@@ -1,0 +1,1002 @@
+[
+  {
+    "EAN": "000000000130",
+    "Desc": "ONDANSETRON 4 MG / 2ML X 10 AMP ( I.V )  ( BIOSANO )",
+    "Act": "ONDANSETR\u00d3N",
+    "Con": "4MG/2ML",
+    "Form": "soluci\u00f3n inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": 20.0
+  },
+  {
+    "EAN": "0000000030373",
+    "Desc": "DISCOLAYTE POLVO 69.7 G X 10 SOBRES DISTRILAB",
+    "Act": "SALES DE REHIDRATACI\u00d3N ORAL",
+    "Con": "69.7G",
+    "Form": "polvo para soluci\u00f3n oral",
+    "Marca": "Discolayte",
+    "Fab": null,
+    "Net": 69.7
+  },
+  {
+    "EAN": "0000000072410",
+    "Desc": "AMOXICILINA - ACIDO CLAVULANICO 875 MG - 125 MG X 10 TABLETAS ARTE MEDICO",
+    "Act": "AMOXICILINA-\u00c1CIDO CLAVUL\u00c1NICO",
+    "Con": "875MG-125MG",
+    "Form": "tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0000000093491",
+    "Desc": "SERTRALINA 50 MG X 10 TABLETAS ARTE MEDICO",
+    "Act": "SERTRALINA",
+    "Con": "50MG",
+    "Form": "tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0000000104098",
+    "Desc": "DIOSMINA + HESPERIDINA 450 MG / 50 MG X 10 TABLETAS DROTAFARMA",
+    "Act": "DIOSMINA-HESPERIDINA",
+    "Con": "450MG-50MG",
+    "Form": "tableta",
+    "Marca": null,
+    "Fab": "Drotafarma",
+    "Net": null
+  },
+  {
+    "EAN": "0000000107839",
+    "Desc": "VANCOMICINA 1 G POLVO PARA SOLUCION INYECTABLE I.V X 10 AMPOLLA ZAKIMED",
+    "Act": "VANCOMICINA",
+    "Con": "1G",
+    "Form": "polvo para soluci\u00f3n inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": 1.0
+  },
+  {
+    "EAN": "0000000154697",
+    "Desc": "SALES DE REHIDRATACION ORAL HIDROLIT FRESA 21.5G X 10 SOBRES DROTAFARMA",
+    "Act": "SALES DE REHIDRATACI\u00d3N ORAL",
+    "Con": "21.5G",
+    "Form": "polvo para soluci\u00f3n oral",
+    "Marca": null,
+    "Fab": null,
+    "Net": 21.5
+  },
+  {
+    "EAN": "0000000163750",
+    "Desc": "METRONIDAZOL 500 MG X 10 TABLETAS ZAKIMED",
+    "Act": "METRONIDAZOL",
+    "Con": "500MG",
+    "Form": "tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0000000163774",
+    "Desc": "OXACILINA 1G POLVO PARA SOLUCION INYECTABLE I.M/ I.V X 10 VIALES ZAKIMED",
+    "Act": "OXACILINA",
+    "Con": "1G",
+    "Form": "polvo para soluci\u00f3n inyectable",
+    "Marca": null,
+    "Fab": "Zakimed",
+    "Net": 1.0
+  },
+  {
+    "EAN": "0000000180528",
+    "Desc": "HIDROLIT 21.5G X 10 SOBRES SABOR COCO DROTAFARMA",
+    "Act": "SALES DE REHIDRATACI\u00d3N ORAL",
+    "Con": "21.5G",
+    "Form": "Polvo para soluci\u00f3n oral",
+    "Marca": "Hidrolit",
+    "Fab": null,
+    "Net": 215.0
+  },
+  {
+    "EAN": "0000000184885",
+    "Desc": "ISOSPRAY PLUS 0.15% - 0.25% X 120ML",
+    "Act": "CETRIMIDA-CLORHEXIDINA",
+    "Con": "0.15%-0.25%",
+    "Form": "Soluci\u00f3n t\u00f3pica",
+    "Marca": "Isospray Plus",
+    "Fab": null,
+    "Net": 120.0
+  },
+  {
+    "EAN": "0000000193009",
+    "Desc": "LIDOCARE CREMA 5% X 30GR MEDPHARMA",
+    "Act": "LIDOCA\u00cdNA",
+    "Con": "5%",
+    "Form": "Crema",
+    "Marca": null,
+    "Fab": "Medpharma",
+    "Net": 30.0
+  },
+  {
+    "EAN": "0000000195911",
+    "Desc": "LOSARTAN POTASICO 100 MG X 30 TAB ALFA",
+    "Act": "LOSARTAN POTASICO",
+    "Con": "100MG",
+    "Form": "COMPRIMIDO",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0000000201629",
+    "Desc": "TREXOL SOL INY 50 MG / 2 ML I.V-I.M (METOTREXATO) X 1 AMP VENUS",
+    "Act": "METOTREXATO",
+    "Con": "50MG/2ML",
+    "Form": "Soluci\u00f3n inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": 2.0
+  },
+  {
+    "EAN": "0000000206815",
+    "Desc": "GEMCITABINE 1 GR POLVO SOL INY X 1 AMP RTM",
+    "Act": "GEMCITABINA",
+    "Con": "1G",
+    "Form": "Polvo para soluci\u00f3n inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": 1.0
+  },
+  {
+    "EAN": "0000001100181",
+    "Desc": "PASSIFLORA PLUS JARABE 180 ML  FARMAGENIK",
+    "Act": "PASSIFLORA",
+    "Con": null,
+    "Form": "JARABE",
+    "Marca": "PASSIFLORA PLUS",
+    "Fab": "FARMAGENIK",
+    "Net": 180.0
+  },
+  {
+    "EAN": "0000001100198",
+    "Desc": "SENOLAX JARABE 120 ML FARMAGENIK",
+    "Act": "SEN",
+    "Con": null,
+    "Form": "JARABE",
+    "Marca": "SENOLAX",
+    "Fab": "FARMAGENIK",
+    "Net": 120.0
+  },
+  {
+    "EAN": "0000007603815",
+    "Desc": "SAL DE FRUTAS MAKENO POLVO EFERV SABOR NARANJA X 10 SACHETS BIUMAK",
+    "Act": "SAL DE FRUTAS",
+    "Con": null,
+    "Form": "POLVO EFERVESCENTE",
+    "Marca": "SAL DE FRUTAS",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0000020000264",
+    "Desc": "NIFEDIPINA LP 20 MG X 30 TABLETAS  LATTAN MEDIC",
+    "Act": "NIFEDIPINO",
+    "Con": "20MG",
+    "Form": "TABLETA",
+    "Marca": null,
+    "Fab": "LATTAN MEDIC",
+    "Net": null
+  },
+  {
+    "EAN": "0000025525748",
+    "Desc": "JARABE DE BERRO 120 ML FARMAGENIK",
+    "Act": "BERRO",
+    "Con": null,
+    "Form": "JARABE",
+    "Marca": "JARABE DE BERRO",
+    "Fab": "FARMAGENIK",
+    "Net": 120.0
+  },
+  {
+    "EAN": "0000025525755",
+    "Desc": "JARABE DE ACHICORIA 120 ML FARMAGENIK",
+    "Act": "ACHICORIA",
+    "Con": null,
+    "Form": "JARABE",
+    "Marca": "JARABE DE ACHICORIA",
+    "Fab": "FARMAGENIK",
+    "Net": 120.0
+  },
+  {
+    "EAN": "0000025525762",
+    "Desc": "JARABE LAMEDOR 120 ML FARMAGENIK",
+    "Act": "LAMEDOR",
+    "Con": null,
+    "Form": "JARABE",
+    "Marca": "JARABE LAMEDOR",
+    "Fab": "FARMAGENIK",
+    "Net": 120.0
+  },
+  {
+    "EAN": "0000025526479",
+    "Desc": "CITRATO DE POTASIO 10.8% 1 LT FARMAGENIK",
+    "Act": "POTASIO CITRATO",
+    "Con": "10.8%",
+    "Form": "SOLUCION ORAL",
+    "Marca": null,
+    "Fab": "FARMAGENIK",
+    "Net": 1000.0
+  },
+  {
+    "EAN": "00000451",
+    "Desc": "HEPAROID ( HEPARINA ) 250 UI / G X 30 G GEL ( TIARES )",
+    "Act": "HEPARINA",
+    "Con": "250UI/G",
+    "Form": "GEL",
+    "Marca": "HEPARINA",
+    "Fab": null,
+    "Net": 30.0
+  },
+  {
+    "EAN": "0000075970543",
+    "Desc": "CREMA SULFUROCIS 40GR AZUFRE 10% + IVERMECTINA 1% + VITAMINA A-D-E  BOOZ",
+    "Act": "AZUFRE-IVERMECTINA",
+    "Con": "10%-1%",
+    "Form": "CREMA",
+    "Marca": "SULFURCIS",
+    "Fab": null,
+    "Net": 40.0
+  },
+  {
+    "EAN": "001004002941515",
+    "Desc": "HIDROCORTISONA 500MG X 1 AMP I.V-I.M DROTAFARMA | HIDROCORTISONA 500MG X 1 AMP I.V-I.M DROTAFARMA | HIDROCORTISONA 500MG X 1 AMP I.V-I.M DROTAFARMA | HIDROCORTISONA 500MG X 1 AMP I.V-I.M DROTAFARMA",
+    "Act": "HIDROCORTISONA",
+    "Con": "500MG",
+    "Form": "inyectable (IV/IM)",
+    "Marca": null,
+    "Fab": "Drotafarma",
+    "Net": null
+  },
+  {
+    "EAN": "0020800753050",
+    "Desc": "PEPTO-BISMOL 525MG/30ML SUSP ORAL 236ML",
+    "Act": "BISMUTO SUBSALICYLATE",
+    "Con": "525MG/30ML",
+    "Form": "suspensi\u00f3n oral",
+    "Marca": "Pepto-Bismol",
+    "Fab": null,
+    "Net": 236.0
+  },
+  {
+    "EAN": "0020800753067",
+    "Desc": "PEPTO-BISMOL 525 MG / 30 ML SOLUCION ORAL 118 ML",
+    "Act": "BISMUTO SUBSALICYLATE",
+    "Con": "525MG/30ML",
+    "Form": "soluci\u00f3n oral",
+    "Marca": "Pepto-Bismol",
+    "Fab": null,
+    "Net": 118.0
+  },
+  {
+    "EAN": "0021241259262",
+    "Desc": "TEOFILINA 100 MG X 10 TABLETAS BUKA",
+    "Act": "TEOFILINA",
+    "Con": "100MG",
+    "Form": "TABLETA",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0021281086200",
+    "Desc": "EMPAGLIF 10MG X 30 TABLETAS BUKA",
+    "Act": "EMPAGLIFLOZINA",
+    "Con": "10MG",
+    "Form": "TABLETA",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0021281086217",
+    "Desc": "EMPAGLIF 25MG X 30 TABLETAS BUKA",
+    "Act": "EMPAGLIFLOZINA",
+    "Con": "25MG",
+    "Form": "TABLETA",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0021281086293",
+    "Desc": "TESTOMIX (MEZCLA DE TESTOSTERONA) 1ML X 10AMP EMINENCE LABS",
+    "Act": "MEZCLA DE TESTOSTERONA",
+    "Con": "1ML",
+    "Form": "ampollas",
+    "Marca": null,
+    "Fab": "Eminence Labs",
+    "Net": null
+  },
+  {
+    "EAN": "01100181",
+    "Desc": "PASSIFLORA PLUS FG JBE180 | PASSIFLORA PLUS JBE X 180ML (CALMANTE ANSIOLITICO) FARMAGENIK | PASSIFLORA PLUS JBE X 180ML (CALMANTE ANSIOLITICO) FARMAGENIK | PASSIFLORA PLUS JBE X 180ML (CALMANTE ANSIOLITICO) FARMAGENIK | PASSIFLORA PLUS JBE X 180ML (CALMANTE ANSIOLITICO) FARMAGENIK",
+    "Act": "PASSIFLORA",
+    "Con": null,
+    "Form": "Jarabe",
+    "Marca": "Farmagenik",
+    "Fab": null,
+    "Net": 180.0
+  },
+  {
+    "EAN": "01100198",
+    "Desc": "JARABE DE SEN (SENOLAX) FRASCO X 120ML (FARMAGENIK) FV. 04/2027 | SENOLAX 120 ML ( JBE DE SEN, REGULADOR INTESTINAL ) ( FARMAGENIK ) | SENOLAX FG JBE . 120ML. | SENOLAX JARABE 120ML (JARABE DE SEN) FARMAGENIK | SENOLAX JARABE 120ML (JARABE DE SEN) FARMAGENIK | SENOLAX JARABE 120ML (JARABE DE SEN) FARMAGENIK | SENOLAX JARABE 120ML (JARABE DE SEN) FARMAGENIK",
+    "Act": "SEN",
+    "Con": null,
+    "Form": "Jarabe",
+    "Marca": "SENOLAX",
+    "Fab": "Farmagenik",
+    "Net": 120.0
+  },
+  {
+    "EAN": "0112266402235",
+    "Desc": "SOLUCION FISIOLOGICA 30ML FARMAGENIK",
+    "Act": "CLORURO DE SODIO",
+    "Con": "0.9%",
+    "Form": "Soluci\u00f3n",
+    "Marca": "Farmagenik",
+    "Fab": null,
+    "Net": 30.0
+  },
+  {
+    "EAN": "020800753067",
+    "Desc": "PEPTO - BISMOL ( SUBSALICILATO DE BISMUTO ) 525 MG / 30 ML X 118 ML ( FARMA ) | PEPTO BISMOL 525MG/30ML X 118ML (BISMUTO) FARMA | PEPTO BISMOL 525MG/30ML X 118ML (BISMUTO) FARMA | PEPTO BISMOL 525MG/30ML X 118ML (BISMUTO) FARMA | PEPTO BISMOL 525MG/30ML X 118ML (BISMUTO) FARMA | PEPTO-BISMOL 525GM / 30ML SUSP X 118ML | PEPTO-BISMOL SUSP. 118ML.",
+    "Act": "SUBSALICILATO DE BISMUTO",
+    "Con": "525 mg/30 ml",
+    "Form": "Suspensi\u00f3n oral",
+    "Marca": "Pepto-Bismol",
+    "Fab": null,
+    "Net": 118.0
+  },
+  {
+    "EAN": "0323533709",
+    "Desc": "ACEITE OZONIZADO (VITASUPOSITORIO) CJ X 4 SUPOSITORIOS (VITAOZONO) FV. 12/2026 | VITASUPOSITORIO X 4 UNIDADES (REFRIGERADO) | VITASUPOSITORIOS 4 SUPOSITORIOS X 3 GR | VITASUPOSITORIOS 4 SUPOSITORIOS X 3 GR",
+    "Act": "ACEITE OZONIZADO",
+    "Con": null,
+    "Form": "Supositorio",
+    "Marca": "Vitasupositorio",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0614143659027",
+    "Desc": "CIPROFLOXACINA 500MG CJ X 10 TABL (MEDICAL CARE) FV. 10/2026",
+    "Act": "Ciprofloxacina",
+    "Con": "500mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843366",
+    "Desc": "ETORICOXIB 90MG X 10 TABLETAS H&M",
+    "Act": "Etoricoxib",
+    "Con": "90 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843380",
+    "Desc": "PEROXIDO DE BENZOILO 5% GEL USO EXTERNO VIA TOPICA 30G H&M",
+    "Act": "Per\u00f3xido de Benzoilo",
+    "Con": "5%",
+    "Form": "Gel",
+    "Marca": "H&M",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843397",
+    "Desc": "PROPIONATO DE CLOBETASOL 0.05% UNGUENTO USO EXTERNO VIA TOPICA 15G H&M",
+    "Act": "Clobetasol Propionato",
+    "Con": "0.05%",
+    "Form": "Pomada",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843403",
+    "Desc": "DINITRATO DE ISOSORBIDA 10 MG X10 TABLETAS H&M",
+    "Act": "Dinitrato de Isosorbida",
+    "Con": "10 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843410",
+    "Desc": "ESPIRONOLACTONA 25MG X 10 TABLETAS H&M",
+    "Act": "Espironolactona",
+    "Con": "25 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843427",
+    "Desc": "ONDANSETRON 4MG X 10 TABLETAS H&M",
+    "Act": "Ondansetr\u00f3n",
+    "Con": "4 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "06326278434341",
+    "Desc": "PREGABALINA 75 MG X 30 CAP | PREGABALINA 75 MG X 30 CAP",
+    "Act": "PREGABALINA",
+    "Con": "75 MG",
+    "Form": "C\u00e1psula",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843441",
+    "Desc": "MESALAZINA 500MG X 30 TABLETAS H&M | MESALAZINA 500MG X 30 TABLETAS H&M",
+    "Act": "MESALAZINA",
+    "Con": "500MG",
+    "Form": "Tableta",
+    "Marca": "H&M",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843458",
+    "Desc": "ADAPALENO 0.1% GEL USO EXTERNO VIA TOPICA 15g H&M",
+    "Act": "Adapaleno",
+    "Con": "0.1%",
+    "Form": "Gel",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843465",
+    "Desc": "CLINDAMICINA 1% GEL USO EXTERNO VIA TOPICA 20G H&M",
+    "Act": "Clindamicina",
+    "Con": "1%",
+    "Form": "Gel",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843472",
+    "Desc": "TRETINOINA 0.05% GEL USO EXTERNO VIA TOPICA 20G H&M",
+    "Act": "Tretino\u00edna",
+    "Con": "0.05%",
+    "Form": "Gel",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843496",
+    "Desc": "CLOTRIMAZOL 1% CREMA VAGINAL 40G H&M",
+    "Act": "Clotrimazol",
+    "Con": "1%",
+    "Form": "Crema",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843502",
+    "Desc": "DEXAMETASONA 0.5 MG X 10 TABLETAS H&M",
+    "Act": "Dexametasona",
+    "Con": "0.5 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843519",
+    "Desc": "DICLOFENACO POTASICO 1.8MG/ML SUSPENSION ORAL X 120 ML H&M",
+    "Act": "Diclofenaco Pot\u00e1sico",
+    "Con": "1.8mg/ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843526",
+    "Desc": "DUTASTERIDA-TAMSULOSINA 0.5MG-0.4MG X10 H&M",
+    "Act": "Dutasterida/Tamsulosina",
+    "Con": "0.5mg/0.4mg",
+    "Form": "C\u00e1psula",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843533",
+    "Desc": "ESPIRONOLACTONA 100MG X 10 TABLETAS H&M",
+    "Act": "Espironolactona",
+    "Con": "100mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843557",
+    "Desc": "NITAZOXANIDA 100MG/5ML SUSPENSION ORAL 60ML H&M",
+    "Act": "Nitazoxanida",
+    "Con": "100mg/5ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843564",
+    "Desc": "TERBINAFINA 1% CREMA USO EXTERNO VIA TOPICA 20G H&M",
+    "Act": "Terbinafina",
+    "Con": "1%",
+    "Form": "Crema",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843571",
+    "Desc": "RANITIDINA 300MG X 10 TABLETAS H&M",
+    "Act": "Ranitidina",
+    "Con": "300mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843588",
+    "Desc": "RANITIDINA 150MG/10ML X 120ML H&M",
+    "Act": "Ranitidina",
+    "Con": "150mg/10ml",
+    "Form": "Soluci\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843595",
+    "Desc": "SUCRALFATO 1G / 5ML SUSPENSION VIA ORAL 150ML H&M",
+    "Act": "Sucralfato",
+    "Con": "1g/5ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0632627843601",
+    "Desc": "IRBESARTAN 300MG X 10 TABLETAS H&M",
+    "Act": "Irbesart\u00e1n",
+    "Con": "300 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0645748578116",
+    "Desc": "LEVONORGESTREL 1.5 X 1 TAB REC",
+    "Act": "Levonorgestrel",
+    "Con": "1.5 mg",
+    "Form": "Comprimido",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0652931975645",
+    "Desc": "VITAMINA C 500MG/5ML I.M/I.V X 1 AMP EL MORRO | VITAMINA C 500MG/5ML I.M/I.V X 1 AMP EL MORRO | VITAMINA C 500MG/5ML I.M/I.V X 1 AMP EL MORRO | VITAMINA C 500MG/5ML I.M/I.V X 1 AMP EL MORRO",
+    "Act": "Vitamina C",
+    "Con": "500mg/5ml",
+    "Form": "Inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696259942",
+    "Desc": "AMOXICILINA 875MG + ACIDO CLAVULANICO 125MG X 14 TAB BUKA",
+    "Act": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+    "Con": "875mg + 125mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696259973",
+    "Desc": "AZITROMICINA 500 MG X 5 TABLETAS BUKA",
+    "Act": "Azitromicina",
+    "Con": "500 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260023",
+    "Desc": "CLOPIDOGREL 75 MG X 30 TABLETAS BUKA",
+    "Act": "Clopidogrel",
+    "Con": "75 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260030",
+    "Desc": "DICLOFENAC POTASICO 50 MG X 10 TABLETAS BUKA",
+    "Act": "Diclofenaco pot\u00e1sico",
+    "Con": "50 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260054",
+    "Desc": "LORATADINA 5 MG / 5ML SOLUCION ORAL 60 ML BUKA",
+    "Act": "Loratadina",
+    "Con": "5 mg/5 ml",
+    "Form": "Soluci\u00f3n",
+    "Marca": "Buka",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260061",
+    "Desc": "LOSARTAN POTASICO 50 MG X 30 TABLETAS BUKA",
+    "Act": "Losart\u00e1n Pot\u00e1sico",
+    "Con": "50 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260078",
+    "Desc": "OMEPRAZOL 20 MG X 14 TABLETAS BUKA",
+    "Act": "Omeprazol",
+    "Con": "20 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260085",
+    "Desc": "VALSARTAN 80 MG X 30 TABLETAS BUKA",
+    "Act": "Valsart\u00e1n",
+    "Con": "80 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260115",
+    "Desc": "AMLODIPINO 10 MG X 30 TABLETAS BUKA",
+    "Act": "Amlodipino",
+    "Con": "10 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260122",
+    "Desc": "METFORMINA 500 MG X 30 TABLETAS BUKA",
+    "Act": "Metformina",
+    "Con": "500 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260139",
+    "Desc": "ATORVASTATINA 20 MG X 30 TABLETAS BUKA",
+    "Act": "Atorvastatina",
+    "Con": "20 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260146",
+    "Desc": "ATORVASTATINA 40 MG X 30 TABLETAS BUKA",
+    "Act": "Atorvastatina",
+    "Con": "40 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260153",
+    "Desc": "GLIBENCLAMIDA 5 MG X 30 TABLETAS BUKA",
+    "Act": "Glibenclamida",
+    "Con": "5 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260184",
+    "Desc": "OLMESARTAN 20 MG X 30 TAB  (BUKA)",
+    "Act": "Olmesart\u00e1n",
+    "Con": "20 mg",
+    "Form": "Comprimido",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260191",
+    "Desc": "TAMSULOSINA 0.4 MG X 30 TABLETAS BUKA",
+    "Act": "Tamsulosina",
+    "Con": "0.4 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260207",
+    "Desc": "GLIBENCLAMIDA - METFORMINA 5 MG - 500 MG X 30 TABLETAS BUKA",
+    "Act": "Glibenclamida, Metformina",
+    "Con": "5 mg/500 mg",
+    "Form": "Tableta",
+    "Marca": "Buka",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260214",
+    "Desc": "LOSARTAN POTASICO 100 MG X 30 TABLETAS BUKA",
+    "Act": "Losart\u00e1n Pot\u00e1sico",
+    "Con": "100 mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0675696260597",
+    "Desc": "AMOXICILINA + ACIDO CLAVULANICO SUSP 400 MG / 57 MG X 60 ML BUKA",
+    "Act": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+    "Con": "400 mg/57 mg",
+    "Form": "Suspensi\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727157",
+    "Desc": "PHARMAFOLIC (ACIDO FOLICO) 10MG/2ML X 10 AMP PHARMALAB",
+    "Act": "\u00c1cido F\u00f3lico",
+    "Con": "10mg/2ml",
+    "Form": "Inyectable",
+    "Marca": "PHARMAFOLIC",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727164",
+    "Desc": "PHARMAVAL (ACIDO VALPROICO ) 200MG/5ML SUSP ORAL X 120ML PHARMALAB",
+    "Act": "\u00c1cido Valproico",
+    "Con": "200mg/5ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": "PHARMAVAL",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727171",
+    "Desc": "PHARMAVAL (ACIDO VALPROICO) 500MG X 30 TAB PHARMALAB",
+    "Act": "\u00c1cido Valproico",
+    "Con": "500mg",
+    "Form": "Tableta",
+    "Marca": "PHARMAVAL, PHARMALAB",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727188",
+    "Desc": "CLAVAMOX DUO ( AMOXIC+ACIDO CLAVULANICO) 600MG-42.9MG/5ML X 60 ML PHARMALAB",
+    "Act": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+    "Con": "600mg/42.9mg/5ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727195",
+    "Desc": "CLAVAMOX DUO (AMOXICILINA-ACIDO CLAVULANICO) 875MG/125MG X 14TAB PHARMALAB",
+    "Act": "Amoxicilina, \u00c1cido Clavul\u00e1nico",
+    "Con": "875mg/125mg",
+    "Form": "Tableta",
+    "Marca": "CLAVAMOX DUO, PHARMALAB",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727201",
+    "Desc": "PHARMABAC (BACITRCINA) UNG TOPICO X 20G PHARMALAB",
+    "Act": "Bacitracina",
+    "Con": null,
+    "Form": "Ung\u00fcento",
+    "Marca": "PHARMABAC",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727218",
+    "Desc": "PHARMATROP (BROMURO DE IPATROPIO) 20MCG X 200 DOSIS PHARMALAB",
+    "Act": "Bromuro de Ipratropio",
+    "Con": "20mcg/dosis",
+    "Form": "Aerosol",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727225",
+    "Desc": "BUDESONIDA X 200 DOSIS SUSP AEROSOL P/IN PHARMALAB",
+    "Act": "Budesonida",
+    "Con": null,
+    "Form": "Aerosol",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727232",
+    "Desc": "CEFADROXILO 500MG X 10 CAP PHARMALAB",
+    "Act": "Cefadroxilo",
+    "Con": "500mg",
+    "Form": "C\u00e1psula",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727249",
+    "Desc": "PHARXINATO RELAX 125MG/5MG X 10TAB PHARMALAB",
+    "Act": null,
+    "Con": "125mg/5mg",
+    "Form": "Tableta",
+    "Marca": "Pharxinato Relax, Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727256",
+    "Desc": "PHARMAMONT PLUS (DESLORATADINA + MONTELUKAST) 5MG/10MG X 20 TAB PHARMALAB",
+    "Act": "Desloratadina, Montelukast",
+    "Con": "5mg + 10mg",
+    "Form": "Tableta",
+    "Marca": "PHARMAMONT PLUS, PHARMALAB",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727263",
+    "Desc": "DIOSMINA 600MG X 20 TAB PHARMALAB",
+    "Act": "Diosmina",
+    "Con": "600 mg",
+    "Form": "Tableta",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727270",
+    "Desc": "DIOSMINA + HEPERIDINA 450MG/50MG X 30 TAB PHARMALAB",
+    "Act": "Diosmina, Hesperidina",
+    "Con": "450mg + 50mg",
+    "Form": "Tableta",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727287",
+    "Desc": "FUROSEMIDA 20MG/2ML X 3 AMP PHARMALAB",
+    "Act": "Furosemida",
+    "Con": "20mg/2ml",
+    "Form": "Inyectable",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727294",
+    "Desc": "IBUPROFENO 400MG X 10 TAB PHARMALAB",
+    "Act": "Ibuprofeno",
+    "Con": "400 mg",
+    "Form": "Tableta",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727300",
+    "Desc": "PHARMACALM ( LEVETIRACETAM) 100MG/ML SUSP ORAL X 150ML PHARMALAB",
+    "Act": "Levetiracetam",
+    "Con": "100mg/ml",
+    "Form": "Suspensi\u00f3n",
+    "Marca": "PHARMACALM",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727317",
+    "Desc": "LOSARTAN HCT 100MG/12.5MG X 30 TAB PHARMALAB",
+    "Act": "Losart\u00e1n, Hidroclorotiazida",
+    "Con": "100mg/12.5mg",
+    "Form": "Comprimido",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727324",
+    "Desc": "PHARMANIFE (NIFEDIPINA) 30MG X 30 TAB PHARMALAB",
+    "Act": "Nifedipino",
+    "Con": "30mg",
+    "Form": "Tableta",
+    "Marca": "Pharmalab",
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727331",
+    "Desc": "NITROFURANTOINA100MG X 10TAB PHARMALAB",
+    "Act": "Nitrofuranto\u00edna",
+    "Con": "100mg",
+    "Form": "Tableta",
+    "Marca": null,
+    "Fab": null,
+    "Net": null
+  },
+  {
+    "EAN": "0677144727348",
+    "Desc": "PHARMACORT (PREDNISONA) 3MG/ML X 60ML PHARMALAB",
+    "Act": "Prednisona",
+    "Con": "3mg/ml",
+    "Form": "Soluci\u00f3n",
+    "Marca": "PHARMACORT",
+    "Fab": null,
+    "Net": null
+  }
+]

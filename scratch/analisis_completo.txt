@@ -1,0 +1,724 @@
+=== ANÁLISIS DETALLADO DE DISCREPANCIAS CON GEMINI 3.1 LOW ===
+
+Discrepancias por Atributo (Frecuencia):
+- contenido_neto: 63 veces
+- principio_activo: 43 veces
+- cantidad_presentacion: 43 veces
+- forma_farmaceutica: 26 veces
+- concentracion: 25 veces
+- dominio: 23 veces
+- marca: 22 veces
+- fabricante: 12 veces
+- contenido_neto_unidad_Des: 11 veces
+- generico: 10 veces
+- segmento_etario: 9 veces
+
+==================================================
+
+Producto #1: Multivitamínico Preventud Plus con vitaminas C, D, E, A y zinc en 60 tabletas.
+Atributo: marca
+  -> Gemini 3.1 Low: Preventud Plus
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #1: Multivitamínico Preventud Plus con vitaminas C, D, E, A y zinc en 60 tabletas.
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Vitaminas C, D, E, A, zinc
+  -> Gemini 3.1 High: vitaminas C, D, E, A y zinc
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #2: Ibuprofeno + Tiocolchicósido 400mg + 4mg, 10 tabletas
+Atributo: concentracion
+  -> Gemini 3.1 Low: 400mg + 4mg
+  -> Qwen 2.5 72B: 400mg, 4mg
+----------------------------------------
+Producto #2: Ibuprofeno + Tiocolchicósido 400mg + 4mg, 10 tabletas
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Ibuprofeno + Tiocolchicósido
+  -> Qwen 2.5 72B: Ibuprofeno, Tiocolchicosido
+----------------------------------------
+Producto #3: Champú con extractos botánicos, blanco, 400 ml
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #3: Champú con extractos botánicos, blanco, 400 ml
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 400.0
+  -> DeepSeek V4 Pro: 400
+  -> DeepSeek Chat: 400
+  -> Qwen 2.5 72B: 400
+  -> Mixtral 8x22B: 400
+----------------------------------------
+Producto #3: Champú con extractos botánicos, blanco, 400 ml
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: champú
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #3: Champú con extractos botánicos, blanco, 400 ml
+Atributo: principio_activo
+  -> Gemini 3.1 Low: None
+  -> Gemini 3.1 High: extractos botánicos
+----------------------------------------
+Producto #4: Jeringa de 3ml con aguja 21G x 1 1/2, marca Health Medical.
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #4: Jeringa de 3ml con aguja 21G x 1 1/2, marca Health Medical.
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 3.0
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: 3
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: 3
+----------------------------------------
+Producto #4: Jeringa de 3ml con aguja 21G x 1 1/2, marca Health Medical.
+Atributo: contenido_neto_unidad_Des
+  -> Gemini 3.1 Low: ml
+  -> DeepSeek V4 Pro: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #5: Jarabe de jengibre y berro sin azúcar 120ml Recette Mark
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #5: Jarabe de jengibre y berro sin azúcar 120ml Recette Mark
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 120.0
+  -> DeepSeek V4 Pro: 120
+  -> DeepSeek Chat: 120
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: 120
+----------------------------------------
+Producto #5: Jarabe de jengibre y berro sin azúcar 120ml Recette Mark
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Jengibre, berro
+  -> Gemini 3.1 High: jengibre y berro
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: jengibre y berro
+----------------------------------------
+Producto #6: SULIXTRA DUO 0.4 mg/0.5 mg x 30 cápsulas de liberación prolongada (Tamsulosina/Dutasteride) FC Pharma
+Atributo: concentracion
+  -> Gemini 3.1 Low: 0.4 mg/0.5 mg
+  -> Qwen 2.5 72B: 0.4 mg, 0.5 mg
+----------------------------------------
+Producto #6: SULIXTRA DUO 0.4 mg/0.5 mg x 30 cápsulas de liberación prolongada (Tamsulosina/Dutasteride) FC Pharma
+Atributo: fabricante
+  -> Gemini 3.1 Low: FC Pharma
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #6: SULIXTRA DUO 0.4 mg/0.5 mg x 30 cápsulas de liberación prolongada (Tamsulosina/Dutasteride) FC Pharma
+Atributo: marca
+  -> Gemini 3.1 Low: SULIXTRA DUO
+  -> Qwen 2.5 72B: FC Pharma
+----------------------------------------
+Producto #6: SULIXTRA DUO 0.4 mg/0.5 mg x 30 cápsulas de liberación prolongada (Tamsulosina/Dutasteride) FC Pharma
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Tamsulosina/Dutasteride
+  -> Qwen 2.5 72B: Tamsulosina, Dutasteride
+----------------------------------------
+Producto #7: TACHIPIRIN FORTE (Acetaminofén) 160 mg/5 ml suspensión oral pediátrica sabor tutti-frutti sin azúcar 120 ml
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #7: TACHIPIRIN FORTE (Acetaminofén) 160 mg/5 ml suspensión oral pediátrica sabor tutti-frutti sin azúcar 120 ml
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 120.0
+  -> DeepSeek V4 Pro: 120
+  -> DeepSeek Chat: 120
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: 120
+----------------------------------------
+Producto #7: TACHIPIRIN FORTE (Acetaminofén) 160 mg/5 ml suspensión oral pediátrica sabor tutti-frutti sin azúcar 120 ml
+Atributo: segmento_etario
+  -> Gemini 3.1 Low: pediátrico
+  -> Gemini 3.1 High: pediátrica
+  -> DeepSeek V4 Pro: pediátrica
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: pediátrica
+----------------------------------------
+Producto #8: Valeriana jarabe Soma 120 ml
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #8: Valeriana jarabe Soma 120 ml
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 120.0
+  -> DeepSeek V4 Pro: 120
+  -> DeepSeek Chat: 120
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: 120
+----------------------------------------
+Producto #8: Valeriana jarabe Soma 120 ml
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Valeriana
+  -> DeepSeek V4 Pro: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #9: Vitamina E 400 UI con 268 mg, 50 cápsulas
+Atributo: concentracion
+  -> Gemini 3.1 Low: 400 UI / 268 mg
+  -> DeepSeek Chat: 400 UI con 268 mg
+  -> Qwen 2.5 72B: 400 UI, 268 mg
+  -> Mixtral 8x22B: 400 UI con 268 mg
+----------------------------------------
+Producto #11: BORIFOR CON MENTOL 60G
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #11: BORIFOR CON MENTOL 60G
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 60.0
+  -> DeepSeek V4 Pro: 60
+  -> DeepSeek Chat: 60
+  -> Qwen 2.5 72B: 60
+  -> Mixtral 8x22B: 60
+----------------------------------------
+Producto #11: BORIFOR CON MENTOL 60G
+Atributo: dominio
+  -> Gemini 3.1 Low: COSMETICO_CUIDADO_PERSONAL
+  -> Gemini 3.1 High: MEDICAMENTO_ALOPATICO
+  -> DeepSeek V4 Pro: MEDICAMENTO_ALOPATICO
+----------------------------------------
+Producto #11: BORIFOR CON MENTOL 60G
+Atributo: marca
+  -> Gemini 3.1 Low: BORIFOR
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #11: BORIFOR CON MENTOL 60G
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Mentol
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: concentracion
+  -> Gemini 3.1 Low: SPF50+
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 150.0
+  -> DeepSeek V4 Pro: 150
+  -> DeepSeek Chat: 150
+  -> Qwen 2.5 72B: 150
+  -> Mixtral 8x22B: 150
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: fabricante
+  -> Gemini 3.1 Low: Instituto Español
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: crema
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #12: Protector solar Instituto Español SPF50+ para pieles atópicas 150ml
+Atributo: marca
+  -> Gemini 3.1 Low: None
+  -> Gemini 3.1 High: Instituto Español
+  -> DeepSeek V4 Pro: Instituto Español
+  -> DeepSeek Chat: Instituto Español
+  -> Qwen 2.5 72B: Instituto Español
+  -> Mixtral 8x22B: Instituto Español
+----------------------------------------
+Producto #13: Termómetro digital Berrcom con memoria y batería.
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #13: Termómetro digital Berrcom con memoria y batería.
+Atributo: fabricante
+  -> Gemini 3.1 Low: None
+  -> DeepSeek V4 Pro: Berrcom
+  -> Mixtral 8x22B: Berrcom
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: concentracion
+  -> Gemini 3.1 Low: None
+  -> Gemini 3.1 High: 23.5g
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 23.5
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: 1175
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: contenido_neto_unidad_Des
+  -> Gemini 3.1 Low: g
+  -> Gemini 3.1 High: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: dominio
+  -> Gemini 3.1 Low: SUPLEMENTO_VITAMINICO
+  -> Gemini 3.1 High: MEDICAMENTO_ALOPATICO
+  -> DeepSeek V4 Pro: MEDICAMENTO_ALOPATICO
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: fabricante
+  -> Gemini 3.1 Low: Balker
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: polvo para reconstrucción
+  -> Gemini 3.1 High: polvo
+  -> DeepSeek V4 Pro: polvo
+  -> DeepSeek Chat: polvo
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: polvo
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: marca
+  -> Gemini 3.1 Low: Suerolito
+  -> DeepSeek Chat: Balker
+  -> Qwen 2.5 72B: Balker
+----------------------------------------
+Producto #14: Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Sales de Rehidratación
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #15: Zukadryl Loción con difenhidramina HCl y calamina, 100 ml.
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #15: Zukadryl Loción con difenhidramina HCl y calamina, 100 ml.
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 100.0
+  -> DeepSeek V4 Pro: 100
+  -> DeepSeek Chat: 100
+  -> Qwen 2.5 72B: 100
+  -> Mixtral 8x22B: 100
+----------------------------------------
+Producto #15: Zukadryl Loción con difenhidramina HCl y calamina, 100 ml.
+Atributo: marca
+  -> Gemini 3.1 Low: Zukadryl
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #15: Zukadryl Loción con difenhidramina HCl y calamina, 100 ml.
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Difenhidramina HCl + Calamina
+  -> Gemini 3.1 High: difenhidramina HCl y calamina
+  -> DeepSeek V4 Pro: difenhidramina HCl, calamina
+  -> DeepSeek Chat: difenhidramina HCl y calamina
+  -> Qwen 2.5 72B: difenhidramina HCl, calamina
+  -> Mixtral 8x22B: difenhidramina HCl y calamina
+----------------------------------------
+Producto #16: Lentes de lectura flexibles con graduación +3.50 (surtidos)
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #16: Lentes de lectura flexibles con graduación +3.50 (surtidos)
+Atributo: concentracion
+  -> Gemini 3.1 Low: +3.50
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #16: Lentes de lectura flexibles con graduación +3.50 (surtidos)
+Atributo: dominio
+  -> Gemini 3.1 Low: MATERIAL_MEDICO_INSUMO
+  -> Gemini 3.1 High: MISCELANEO
+  -> DeepSeek V4 Pro: MISCELANEO
+  -> DeepSeek Chat: MISCELANEO
+  -> Qwen 2.5 72B: MISCELANEO
+  -> Mixtral 8x22B: MISCELANEO
+----------------------------------------
+Producto #17: FULGRAM 875 mg/125 mg, 16 comprimidos (Amoxicilina/Ácido Clavulánico)
+Atributo: marca
+  -> Gemini 3.1 Low: FULGRAM
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #17: FULGRAM 875 mg/125 mg, 16 comprimidos (Amoxicilina/Ácido Clavulánico)
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Amoxicilina/Ácido Clavulánico
+  -> Qwen 2.5 72B: Amoxicilina, Ácido Clavulánico
+----------------------------------------
+Producto #18: Lentes de lectura con graduación +1.75 (surtidos)
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #18: Lentes de lectura con graduación +1.75 (surtidos)
+Atributo: concentracion
+  -> Gemini 3.1 Low: +1.75
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #18: Lentes de lectura con graduación +1.75 (surtidos)
+Atributo: dominio
+  -> Gemini 3.1 Low: MATERIAL_MEDICO_INSUMO
+  -> Gemini 3.1 High: MISCELANEO
+  -> DeepSeek V4 Pro: MISCELANEO
+  -> DeepSeek Chat: MISCELANEO
+  -> Qwen 2.5 72B: MISCELANEO
+  -> Mixtral 8x22B: MISCELANEO
+----------------------------------------
+Producto #19: Limpiador en polvo de 450 gramos con tapa amarilla
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #19: Limpiador en polvo de 450 gramos con tapa amarilla
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 450.0
+  -> DeepSeek V4 Pro: 450
+  -> DeepSeek Chat: 450
+  -> Qwen 2.5 72B: 450
+  -> Mixtral 8x22B: 450
+----------------------------------------
+Producto #19: Limpiador en polvo de 450 gramos con tapa amarilla
+Atributo: contenido_neto_unidad_Des
+  -> Gemini 3.1 Low: g
+  -> Gemini 3.1 High: gramos
+----------------------------------------
+Producto #19: Limpiador en polvo de 450 gramos con tapa amarilla
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: polvo
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 120.0
+  -> DeepSeek V4 Pro: 120
+  -> DeepSeek Chat: 120
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: 120
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: dominio
+  -> Gemini 3.1 Low: SUPLEMENTO_VITAMINICO
+  -> Mixtral 8x22B: MEDICAMENTO_ALOPATICO
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: fabricante
+  -> Gemini 3.1 Low: Biotech
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: marca
+  -> Gemini 3.1 Low: Lisin-Be
+  -> DeepSeek Chat: Biotech
+  -> Qwen 2.5 72B: Biotech
+----------------------------------------
+Producto #20: Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Complejo B, aminoácidos
+  -> Gemini 3.1 High: complejo B y aminoácidos
+  -> DeepSeek V4 Pro: Complejo B y aminoácidos
+  -> DeepSeek Chat: complejo B y aminoácidos
+  -> Qwen 2.5 72B: None
+  -> Mixtral 8x22B: complejo B y aminoácidos
+----------------------------------------
+Producto #21: KETOVEN 2% Crema con Ketoconazol 30g
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 30
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #21: KETOVEN 2% Crema con Ketoconazol 30g
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 30.0
+  -> DeepSeek V4 Pro: 30
+  -> Qwen 2.5 72B: 30
+  -> Mixtral 8x22B: 30
+----------------------------------------
+Producto #21: KETOVEN 2% Crema con Ketoconazol 30g
+Atributo: marca
+  -> Gemini 3.1 Low: KETOVEN
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 120.0
+  -> DeepSeek V4 Pro: 120
+  -> Qwen 2.5 72B: 120
+  -> Mixtral 8x22B: 120
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: contenido_neto_unidad_Des
+  -> Gemini 3.1 Low: ml/g
+  -> Gemini 3.1 High: ml/gr
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: ml/gr
+  -> Qwen 2.5 72B: ml
+  -> Mixtral 8x22B: ml/gr
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: dominio
+  -> Gemini 3.1 Low: COSMETICO_CUIDADO_PERSONAL
+  -> Gemini 3.1 High: MEDICAMENTO_ALOPATICO
+  -> DeepSeek V4 Pro: MEDICAMENTO_ALOPATICO
+  -> Mixtral 8x22B: MEDICAMENTO_ALOPATICO
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: marca
+  -> Gemini 3.1 Low: Dolo Ice
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #22: Dolo Ice Loción/Gel Mentolado 120 ml/gr
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Mentol
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #23: Nitazoxanida 100 mg/5 ml polvo para suspensión oral pediátrica 60 ml LAND
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 60
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #23: Nitazoxanida 100 mg/5 ml polvo para suspensión oral pediátrica 60 ml LAND
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 60.0
+  -> DeepSeek V4 Pro: 60
+  -> Qwen 2.5 72B: 60
+  -> Mixtral 8x22B: 60
+----------------------------------------
+Producto #23: Nitazoxanida 100 mg/5 ml polvo para suspensión oral pediátrica 60 ml LAND
+Atributo: generico
+  -> Gemini 3.1 Low: 1
+  -> Gemini 3.1 High: 0
+  -> DeepSeek V4 Pro: 0
+  -> DeepSeek Chat: 0
+  -> Qwen 2.5 72B: 0
+  -> Mixtral 8x22B: 0
+----------------------------------------
+Producto #23: Nitazoxanida 100 mg/5 ml polvo para suspensión oral pediátrica 60 ml LAND
+Atributo: segmento_etario
+  -> Gemini 3.1 Low: pediátrico
+  -> Gemini 3.1 High: pediátrica
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #24: Miovit Compositum inyectable, complejo B con lidocaína, 1 ampolla de 3ml.
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 3.0
+  -> DeepSeek V4 Pro: 3
+  -> Qwen 2.5 72B: 3
+  -> Mixtral 8x22B: 3
+----------------------------------------
+Producto #24: Miovit Compositum inyectable, complejo B con lidocaína, 1 ampolla de 3ml.
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: solución inyectable
+  -> Gemini 3.1 High: inyectable
+  -> DeepSeek V4 Pro: Inyectable
+  -> DeepSeek Chat: Inyectable
+  -> Qwen 2.5 72B: Inyectable
+  -> Mixtral 8x22B: Inyectable
+----------------------------------------
+Producto #24: Miovit Compositum inyectable, complejo B con lidocaína, 1 ampolla de 3ml.
+Atributo: marca
+  -> Gemini 3.1 Low: Miovit Compositum
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #24: Miovit Compositum inyectable, complejo B con lidocaína, 1 ampolla de 3ml.
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Complejo B + Lidocaína
+  -> Gemini 3.1 High: complejo B con lidocaína
+  -> DeepSeek V4 Pro: Complejo B, Lidocaína
+  -> DeepSeek Chat: Complejo B con lidocaína
+  -> Qwen 2.5 72B: Complejo B con lidocaína
+  -> Mixtral 8x22B: Complejo B, Lidocaína
+----------------------------------------
+Producto #25: ARTROSAN (Colágeno + Glucosamina + Condroitina) 60 cápsulas Walife
+Atributo: dominio
+  -> Gemini 3.1 Low: PRODUCTO_NATURAL_HOMEOPATICO
+  -> Gemini 3.1 High: SUPLEMENTO_VITAMINICO
+  -> DeepSeek V4 Pro: SUPLEMENTO_VITAMINICO
+  -> DeepSeek Chat: SUPLEMENTO_VITAMINICO
+  -> Qwen 2.5 72B: SUPLEMENTO_VITAMINICO
+  -> Mixtral 8x22B: SUPLEMENTO_VITAMINICO
+----------------------------------------
+Producto #25: ARTROSAN (Colágeno + Glucosamina + Condroitina) 60 cápsulas Walife
+Atributo: fabricante
+  -> Gemini 3.1 Low: Walife
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #25: ARTROSAN (Colágeno + Glucosamina + Condroitina) 60 cápsulas Walife
+Atributo: marca
+  -> Gemini 3.1 Low: ARTROSAN
+  -> DeepSeek Chat: Walife
+----------------------------------------
+Producto #25: ARTROSAN (Colágeno + Glucosamina + Condroitina) 60 cápsulas Walife
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Colágeno + Glucosamina + Condroitina
+  -> DeepSeek V4 Pro: Colágeno, Glucosamina, Condroitina
+  -> Mixtral 8x22B: Colágeno, Glucosamina, Condroitina
+----------------------------------------
+Producto #26: Amikacina 100 mg/2 ml solución inyectable I.M./I.V. x 1 ampolla Biosano
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 2.0
+  -> Qwen 2.5 72B: 2
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #26: Amikacina 100 mg/2 ml solución inyectable I.M./I.V. x 1 ampolla Biosano
+Atributo: contenido_neto_unidad_Des
+  -> Gemini 3.1 Low: ml
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #26: Amikacina 100 mg/2 ml solución inyectable I.M./I.V. x 1 ampolla Biosano
+Atributo: generico
+  -> Gemini 3.1 Low: 1
+  -> Gemini 3.1 High: 0
+  -> DeepSeek V4 Pro: 0
+  -> DeepSeek Chat: 0
+  -> Qwen 2.5 72B: 0
+  -> Mixtral 8x22B: 0
+----------------------------------------
+Producto #27: Apósito de gasa parafinada con clorhexidina (Bactigras) de 10x10 cm, caja de 10 unidades.
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: apósito
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #27: Apósito de gasa parafinada con clorhexidina (Bactigras) de 10x10 cm, caja de 10 unidades.
+Atributo: principio_activo
+  -> Gemini 3.1 Low: Clorhexidina
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #28: Givotan 100 mg/5 ml polvo para suspensión oral pediátrica 30 ml (Nitazoxanida) Megalabs
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 30
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #28: Givotan 100 mg/5 ml polvo para suspensión oral pediátrica 30 ml (Nitazoxanida) Megalabs
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 30.0
+  -> Qwen 2.5 72B: 30
+  -> Mixtral 8x22B: 30
+----------------------------------------
+Producto #28: Givotan 100 mg/5 ml polvo para suspensión oral pediátrica 30 ml (Nitazoxanida) Megalabs
+Atributo: marca
+  -> Gemini 3.1 Low: Givotan
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #28: Givotan 100 mg/5 ml polvo para suspensión oral pediátrica 30 ml (Nitazoxanida) Megalabs
+Atributo: segmento_etario
+  -> Gemini 3.1 Low: pediátrico
+  -> Gemini 3.1 High: pediátrica
+  -> DeepSeek V4 Pro: pediátrica
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #29: Flodont ungüento bucal con Bencidamina 15g
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 15
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #29: Flodont ungüento bucal con Bencidamina 15g
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 15.0
+  -> Qwen 2.5 72B: 15
+  -> Mixtral 8x22B: 15
+----------------------------------------
+Producto #29: Flodont ungüento bucal con Bencidamina 15g
+Atributo: marca
+  -> Gemini 3.1 Low: Flodont
+  -> DeepSeek Chat: None
+----------------------------------------
+Producto #30: Protector solar SPF 50+ en spray de 200ml
+Atributo: cantidad_presentacion
+  -> Gemini 3.1 Low: 1
+  -> Qwen 2.5 72B: 200
+  -> Mixtral 8x22B: None
+----------------------------------------
+Producto #30: Protector solar SPF 50+ en spray de 200ml
+Atributo: concentracion
+  -> Gemini 3.1 Low: SPF 50+
+  -> Gemini 3.1 High: None
+  -> DeepSeek V4 Pro: None
+  -> DeepSeek Chat: None
+  -> Qwen 2.5 72B: None
+----------------------------------------
+Producto #30: Protector solar SPF 50+ en spray de 200ml
+Atributo: contenido_neto
+  -> Gemini 3.1 Low: 200.0
+  -> Qwen 2.5 72B: 200
+  -> Mixtral 8x22B: 200
+----------------------------------------
+Producto #30: Protector solar SPF 50+ en spray de 200ml
+Atributo: forma_farmaceutica
+  -> Gemini 3.1 Low: spray
+  -> DeepSeek V4 Pro: None
+----------------------------------------

@@ -1,0 +1,392 @@
+[
+  {
+    "registro": {
+      "codigo": "0021241259262",
+      "codbarras": "0021241259262",
+      "descripcion_original": "Teofilina 100 mg x 10 tabletas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "Teofilina",
+      "concentracion": "100 mg",
+      "forma_farmaceutica": "tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0021281083261",
+      "codbarras": "0021281083261",
+      "descripcion_original": "Betadex 0.1% 15g",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": "0.1%",
+      "forma_farmaceutica": null,
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 15,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0021281084282",
+      "codbarras": "0021281084282",
+      "descripcion_original": "Elok 0.1% crema 20g",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": "0.1%",
+      "forma_farmaceutica": "crema",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 20,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0021281086200",
+      "codbarras": "0021281086200",
+      "descripcion_original": "Empagliflozina 10 mg x 30 tabletas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "Empagliflozina",
+      "concentracion": "10 mg",
+      "forma_farmaceutica": "tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 30,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0021281086217",
+      "codbarras": "0021281086217",
+      "descripcion_original": "Empagliflozina 25 mg x 30 tabletas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "Empagliflozina",
+      "concentracion": "25 mg",
+      "forma_farmaceutica": "tabletas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 30,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0021281086293",
+      "codbarras": "0021281086293",
+      "descripcion_original": "Testomix (mezcla de testosterona) 1ml x 10 ampollas Eminence Labs",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "mezcla de testosterona",
+      "concentracion": "1ml",
+      "forma_farmaceutica": "ampollas",
+      "requiere_recipe": 1,
+      "segmento_etario": "ADULTO",
+      "origen": "IA",
+      "fabricante": "Eminence Labs",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0022796900906",
+      "codbarras": "0022796900906",
+      "descripcion_original": "Champ\u00fa OGX Coconut Curls 385ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 385,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0022796900920",
+      "codbarras": "0022796900920",
+      "descripcion_original": "Acondicionador OGX Coconut Curls 385ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 385,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0022796916129",
+      "codbarras": "0022796916129",
+      "descripcion_original": "Acondicionador OGX Argan Oil of Morocco 385ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 385,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0028000428433",
+      "codbarras": "0028000428433",
+      "descripcion_original": "Nesquik Chocolate 570g Nestl\u00e9",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Nestl\u00e9",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 570,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0028000544652",
+      "codbarras": "0028000544652",
+      "descripcion_original": "Nescaf\u00e9 Cl\u00e1sico Decaf, caf\u00e9 soluble descafeinado, tarro 100g, Nestl\u00e9.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Nestl\u00e9",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 100,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0028000846794",
+      "codbarras": "0028000846794",
+      "descripcion_original": "Nesquik Fresa 532g Nestl\u00e9",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Nestl\u00e9",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 532,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0036782",
+      "codbarras": "0036782",
+      "descripcion_original": "Kit de cirujano talla M 40G KD Medical",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "KD Medical",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": 40,
+      "contenido_neto_unidad_Des": "G",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0048526001729",
+      "codbarras": "0048526001729",
+      "descripcion_original": "Aspirador nasal y jeringa para o\u00eddo Nuby 0m+ Ref. 172",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Nuby",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0048526004553",
+      "codbarras": "0048526004553",
+      "descripcion_original": "Mordedera de llaves Nuby para alivio de enc\u00edas, 3 meses en adelante.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": "ADULTO",
+      "origen": "NO_MEDICAMENTO",
+      "fabricante": "Nuby",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  }
+]

@@ -1,0 +1,842 @@
+[
+  {
+    "registro": {
+      "codigo": "759895300053",
+      "codbarras": "759895300053",
+      "descripcion_original": "Multivitamínico Preventud Plus con vitaminas C, D, E, A y zinc en 60 tabletas.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un multivitamínico, por lo que el dominio es SUPLEMENTO_VITAMINICO. El principio activo son las vitaminas y minerales mencionados. La forma farmacéutica es tabletas y la cantidad es 60. La marca es Preventud Plus. No se menciona fabricante, ATC, concentración, ni si viene en blister o es genérico.",
+      "dominio": "SUPLEMENTO_VITAMINICO",
+      "principio_activo": "Vitaminas C, D, E, A y zinc",
+      "concentracion": null,
+      "forma_farmaceutica": "tabletas",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Preventud Plus",
+      "codigo_atc": null,
+      "cantidad_presentacion": 60,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7598008001813",
+      "codbarras": "7598008001813",
+      "descripcion_original": "Ibuprofeno + Tiocolchicósido 400mg + 4mg, 10 tabletas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto detalla un medicamento con dos principios activos y sus concentraciones. El dominio es MEDICAMENTO_ALOPATICO. La forma farmacéutica es tabletas y la cantidad es 10. No se menciona marca, fabricante, ATC, ni si viene en blister o es genérico.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Ibuprofeno + Tiocolchicósido",
+      "concentracion": "400mg + 4mg",
+      "forma_farmaceutica": "tabletas",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592871003530",
+      "codbarras": "7592871003530",
+      "descripcion_original": "Champú con extractos botánicos, blanco, 400 ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un champú, lo que corresponde al dominio COSMETICO_CUIDADO_PERSONAL. El contenido neto es 400 ml. La cantidad de presentación es 1 envase. No se menciona marca, fabricante, ni principio activo específico.",
+      "dominio": "COSMETICO_CUIDADO_PERSONAL",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 400.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7599457000723",
+      "codbarras": "7599457000723",
+      "descripcion_original": "Jeringa de 3ml con aguja 21G x 1 1/2, marca Health Medical.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe una jeringa, lo que corresponde al dominio MATERIAL_MEDICO_INSUMO. La marca es Health Medical. El contenido neto o capacidad es 3 ml. La cantidad de presentación es 1. No se menciona fabricante.",
+      "dominio": "MATERIAL_MEDICO_INSUMO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Health Medical",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 3.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7594001455813",
+      "codbarras": "7594001455813",
+      "descripcion_original": "Jarabe de jengibre y berro sin azúcar 120ml Recette Mark",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un jarabe de plantas medicinales, lo que corresponde al dominio PRODUCTO_NATURAL_HOMEOPATICO. El principio activo sería jengibre y berro. La forma farmacéutica es jarabe y el contenido neto es 120 ml. La marca es Recette Mark. La cantidad de presentación es 1.",
+      "dominio": "PRODUCTO_NATURAL_HOMEOPATICO",
+      "principio_activo": "Jengibre y berro",
+      "concentracion": null,
+      "forma_farmaceutica": "jarabe",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Recette Mark",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 120.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7593090002410",
+      "codbarras": "7593090002410",
+      "descripcion_original": "SULIXTRA DUO 0.4 mg/0.5 mg x 30 cápsulas de liberación prolongada (Tamsulosina/Dutasteride) FC Pharma",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un medicamento alopático con dos principios activos. Se extrae la concentración, la forma farmacéutica y la cantidad de cápsulas. 'SULIXTRA DUO' es la marca y 'FC Pharma' parece ser el fabricante. No se menciona contenido neto, ATC, ni si viene en blister.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Tamsulosina/Dutasteride",
+      "concentracion": "0.4 mg/0.5 mg",
+      "forma_farmaceutica": "cápsulas de liberación prolongada",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "FC Pharma",
+      "marca": "SULIXTRA DUO",
+      "codigo_atc": null,
+      "cantidad_presentacion": 30,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591062017301",
+      "codbarras": "7591062017301",
+      "descripcion_original": "TACHIPIRIN FORTE (Acetaminofén) 160 mg/5 ml suspensión oral pediátrica sabor tutti-frutti sin azúcar 120 ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Medicamento alopático. El principio activo es Acetaminofén, marca TACHIPIRIN FORTE. La concentración es 160 mg/5 ml. La forma farmacéutica es suspensión oral. El segmento etario es pediátrico explícito. El contenido neto es 120 ml. La cantidad de presentación es 1 envase.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Acetaminofén",
+      "concentracion": "160 mg/5 ml",
+      "forma_farmaceutica": "suspensión oral",
+      "requiere_recipe": null,
+      "segmento_etario": "pediátrico",
+      "origen": null,
+      "fabricante": null,
+      "marca": "TACHIPIRIN FORTE",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 120.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7596139000057",
+      "codbarras": "7596139000057",
+      "descripcion_original": "Valeriana jarabe Soma 120 ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Producto natural/homeopático. El principio activo es Valeriana. La marca es Soma. La forma farmacéutica es jarabe. El contenido neto es 120 ml. La cantidad de presentación es 1 envase.",
+      "dominio": "PRODUCTO_NATURAL_HOMEOPATICO",
+      "principio_activo": "Valeriana",
+      "concentracion": null,
+      "forma_farmaceutica": "jarabe",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Soma",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 120.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0733739008909",
+      "codbarras": "0733739008909",
+      "descripcion_original": "Vitamina E 400 UI con 268 mg, 50 cápsulas",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Suplemento vitamínico. El principio activo es Vitamina E. La concentración es 400 UI con 268 mg. La forma farmacéutica es cápsulas. La cantidad de presentación es 50. No se menciona marca ni fabricante.",
+      "dominio": "SUPLEMENTO_VITAMINICO",
+      "principio_activo": "Vitamina E",
+      "concentracion": "400 UI con 268 mg",
+      "forma_farmaceutica": "cápsulas",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 50,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591720032011",
+      "codbarras": "7591720032011",
+      "descripcion_original": "Maní con chocolate con leche Sple, caja de 12 unidades.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Producto misceláneo (alimento/snack). La marca es Sple. La cantidad de presentación es 12 unidades. No aplica principio activo, concentración ni forma farmacéutica.",
+      "dominio": "MISCELANEO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Sple",
+      "codigo_atc": null,
+      "cantidad_presentacion": 12,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592730000014",
+      "codbarras": "7592730000014",
+      "descripcion_original": "BORIFOR CON MENTOL 60G",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe 'BORIFOR CON MENTOL 60G'. Se asume dominio de medicamento o cosmético, se asigna MEDICAMENTO_ALOPATICO por el uso de bórico. La marca es Borifor. El contenido neto es 60g. No hay concentración ni forma farmacéutica explícita.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Borifor",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 60.0,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "8411047108765",
+      "codbarras": "8411047108765",
+      "descripcion_original": "Protector solar Instituto Español SPF50+ para pieles atópicas 150ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un protector solar. Dominio es COSMETICO_CUIDADO_PERSONAL. Marca y fabricante es Instituto Español. Contenido neto 150ml. Cantidad 1.",
+      "dominio": "COSMETICO_CUIDADO_PERSONAL",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Instituto Español",
+      "marca": "Instituto Español",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 150.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "6947656113262",
+      "codbarras": "6947656113262",
+      "descripcion_original": "Termómetro digital Berrcom con memoria y batería.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un termómetro digital. Dominio MATERIAL_MEDICO_INSUMO. Marca y fabricante Berrcom. Cantidad 1. No aplica contenido neto ni principio activo.",
+      "dominio": "MATERIAL_MEDICO_INSUMO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Berrcom",
+      "marca": "Berrcom",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "0117597767001048",
+      "codbarras": "0117597767001048",
+      "descripcion_original": "Suerolito Sales de Rehidratación 23.5g polvo sabor fresa, caja con 50 sobres Balker",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe sales de rehidratación oral. Dominio MEDICAMENTO_ALOPATICO. Principio activo Sales de rehidratación. Forma farmacéutica polvo. Cantidad 50 sobres. Contenido neto 23.5g por sobre. Marca Suerolito, fabricante Balker.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Sales de rehidratación",
+      "concentracion": null,
+      "forma_farmaceutica": "polvo",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Balker",
+      "marca": "Suerolito",
+      "codigo_atc": null,
+      "cantidad_presentacion": 50,
+      "contenido_neto": 23.5,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7597446000129",
+      "codbarras": "7597446000129",
+      "descripcion_original": "Zukadryl Loción con difenhidramina HCl y calamina, 100 ml.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe una loción con difenhidramina y calamina. Dominio MEDICAMENTO_ALOPATICO. Principio activo Difenhidramina HCl y calamina. Forma farmacéutica Loción. Contenido neto 100ml. Marca Zukadryl.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Difenhidramina HCl, calamina",
+      "concentracion": null,
+      "forma_farmaceutica": "Loción",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Zukadryl",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 100.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "SINT-CRISTMEDICAL-MISC1453",
+      "codbarras": "SINT-CRISTMEDICAL-MISC1453",
+      "descripcion_original": "Lentes de lectura flexibles con graduación +3.50 (surtidos)",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe lentes de lectura, lo cual corresponde a un artículo misceláneo. No hay principio activo, concentración, forma farmacéutica ni contenido neto. No se especifica marca ni fabricante.",
+      "dominio": "MISCELANEO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591585213198",
+      "codbarras": "7591585213198",
+      "descripcion_original": "FULGRAM 875 mg/125 mg, 16 comprimidos (Amoxicilina/Ácido Clavulánico)",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un medicamento antibiótico. La marca es FULGRAM, el principio activo es Amoxicilina/Ácido Clavulánico con concentración 875 mg/125 mg. La forma farmacéutica es comprimidos y la cantidad es 16. No se menciona fabricante, ATC, ni si viene en blister explícitamente.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Amoxicilina/Ácido Clavulánico",
+      "concentracion": "875 mg/125 mg",
+      "forma_farmaceutica": "comprimidos",
+      "requiere_recipe": 1,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "FULGRAM",
+      "codigo_atc": null,
+      "cantidad_presentacion": 16,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "MISC0769",
+      "codbarras": "MISC0769",
+      "descripcion_original": "Lentes de lectura con graduación +1.75 (surtidos)",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe lentes de lectura, un artículo misceláneo. No hay datos farmacológicos, de marca, ni fabricante explícitos.",
+      "dominio": "MISCELANEO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": null,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592632872023",
+      "codbarras": "7592632872023",
+      "descripcion_original": "Limpiador en polvo de 450 gramos con tapa amarilla",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un limpiador en polvo, un artículo misceláneo. La forma es polvo, el contenido neto es 450 gramos. No hay marca ni fabricante explícitos.",
+      "dominio": "MISCELANEO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "polvo",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 450,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591243830507",
+      "codbarras": "7591243830507",
+      "descripcion_original": "Lisin-Be jarabe con complejo B y aminoácidos, 120 ml, Biotech.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe un suplemento vitamínico en jarabe. La marca es Lisin-Be, el principio activo es complejo B y aminoácidos. El contenido neto es 120 ml. El fabricante es Biotech. No se menciona ATC ni blister.",
+      "dominio": "SUPLEMENTO_VITAMINICO",
+      "principio_activo": "Complejo B y aminoácidos",
+      "concentracion": null,
+      "forma_farmaceutica": "jarabe",
+      "requiere_recipe": 0,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Biotech",
+      "marca": "Lisin-Be",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 120,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7599910793582",
+      "codbarras": "7599910793582",
+      "descripcion_original": "KETOVEN 2% Crema con Ketoconazol 30g",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "El texto describe una crema con ketoconazol al 2%. Marca KETOVEN. Contenido neto 30g. No se menciona fabricante, ATC, ni si es genérico o viene en blister.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Ketoconazol",
+      "concentracion": "2%",
+      "forma_farmaceutica": "Crema",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "KETOVEN",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 30.0,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7599104000038",
+      "codbarras": "7599104000038",
+      "descripcion_original": "Dolo Ice Loción/Gel Mentolado 120 ml/gr",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Producto tópico mentolado, sin principio activo farmacológico explícito, clasificado como cosmético/cuidado personal. Contenido neto 120 ml/gr. Marca Dolo Ice.",
+      "dominio": "COSMETICO_CUIDADO_PERSONAL",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "Loción/Gel",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Dolo Ice",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 120.0,
+      "contenido_neto_unidad_Des": "ml/gr",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7598008001752",
+      "codbarras": "7598008001752",
+      "descripcion_original": "Nitazoxanida 100 mg/5 ml polvo para suspensión oral pediátrica 60 ml LAND",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Medicamento con principio activo Nitazoxanida, concentración 100 mg/5 ml. Forma farmacéutica polvo para suspensión oral. Segmento etario pediátrico. Contenido neto 60 ml. LAND parece ser el fabricante.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Nitazoxanida",
+      "concentracion": "100 mg/5 ml",
+      "forma_farmaceutica": "polvo para suspensión oral",
+      "requiere_recipe": null,
+      "segmento_etario": "pediatrico",
+      "origen": null,
+      "fabricante": "LAND",
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 60.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591818113011",
+      "codbarras": "7591818113011",
+      "descripcion_original": "Miovit Compositum inyectable, complejo B con lidocaína, 1 ampolla de 3ml.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Inyectable de complejo B con lidocaína. Marca Miovit Compositum. Contenido neto 3ml en 1 ampolla. No se menciona fabricante ni ATC.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "complejo B con lidocaína",
+      "concentracion": null,
+      "forma_farmaceutica": "inyectable",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Miovit Compositum",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 3.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7592710004629",
+      "codbarras": "7592710004629",
+      "descripcion_original": "ARTROSAN (Colágeno + Glucosamina + Condroitina) 60 cápsulas Walife",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Suplemento vitamínico/natural con Colágeno, Glucosamina y Condroitina. Marca ARTROSAN. Fabricante Walife. 60 cápsulas. No se indica contenido neto en peso.",
+      "dominio": "SUPLEMENTO_VITAMINICO",
+      "principio_activo": "Colágeno + Glucosamina + Condroitina",
+      "concentracion": null,
+      "forma_farmaceutica": "cápsulas",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Walife",
+      "marca": "ARTROSAN",
+      "codigo_atc": null,
+      "cantidad_presentacion": 60,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7800061031103",
+      "codbarras": "7800061031103",
+      "descripcion_original": "Amikacina 100 mg/2 ml solución inyectable I.M./I.V. x 1 ampolla Biosano",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Medicamento alopativo. Principio activo Amikacina, concentración 100 mg/2 ml. Forma farmacéutica solución inyectable. Presentación de 1 ampolla, contenido neto 2 ml. Marca y fabricante Biosano. No se menciona ATC, blister ni genérico.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Amikacina",
+      "concentracion": "100 mg/2 ml",
+      "forma_farmaceutica": "solución inyectable",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": "Biosano",
+      "marca": "Biosano",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 2.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "3170472453011",
+      "codbarras": "3170472453011",
+      "descripcion_original": "Apósito de gasa parafinada con clorhexidina (Bactigras) de 10x10 cm, caja de 10 unidades.",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Material médico insumo. Apósito de gasa. Caja de 10 unidades. Marca Bactigras. No se especifica fabricante, ni contenido neto en volumen/peso.",
+      "dominio": "MATERIAL_MEDICO_INSUMO",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": null,
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Bactigras",
+      "codigo_atc": null,
+      "cantidad_presentacion": 10,
+      "contenido_neto": null,
+      "contenido_neto_unidad_Des": null,
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": "Apósito"
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7861148020472",
+      "codbarras": "7861148020472",
+      "descripcion_original": "Givotan 100 mg/5 ml polvo para suspensión oral pediátrica 30 ml (Nitazoxanida) Megalabs",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Medicamento alopativo. Marca Givotan, fabricante Megalabs. Principio activo Nitazoxanida, concentración 100 mg/5 ml. Forma farmacéutica polvo para suspensión oral. Segmento etario pediátrico. Contenido neto 30 ml.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Nitazoxanida",
+      "concentracion": "100 mg/5 ml",
+      "forma_farmaceutica": "polvo para suspensión oral",
+      "requiere_recipe": null,
+      "segmento_etario": "pediátrica",
+      "origen": null,
+      "fabricante": "Megalabs",
+      "marca": "Givotan",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 30.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7591955000496",
+      "codbarras": "7591955000496",
+      "descripcion_original": "Flodont ungüento bucal con Bencidamina 15g",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Medicamento alopatico. Marca Flodont. Principio activo Bencidamina. Forma farmacéutica ungüento bucal. Contenido neto 15 g. No se menciona concentración, fabricante, ni ATC.",
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "principio_activo": "Bencidamina",
+      "concentracion": null,
+      "forma_farmaceutica": "ungüento bucal",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": "Flodont",
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 15.0,
+      "contenido_neto_unidad_Des": "g",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  },
+  {
+    "registro": {
+      "codigo": "7596548002000",
+      "codbarras": "7596548002000",
+      "descripcion_original": "Protector solar SPF 50+ en spray de 200ml",
+      "ciclos_reproceso": 0
+    },
+    "atributos_ya_encontrados": {},
+    "atributos_nuevos_consolidados": {
+      "razonamiento": "Cosmético de cuidado personal. Protector solar en spray. Contenido neto 200 ml. No se menciona marca, fabricante, ni principio activo.",
+      "dominio": "COSMETICO_CUIDADO_PERSONAL",
+      "principio_activo": null,
+      "concentracion": null,
+      "forma_farmaceutica": "spray",
+      "requiere_recipe": null,
+      "segmento_etario": null,
+      "origen": null,
+      "fabricante": null,
+      "marca": null,
+      "codigo_atc": null,
+      "cantidad_presentacion": 1,
+      "contenido_neto": 200.0,
+      "contenido_neto_unidad_Des": "ml",
+      "blister": 0,
+      "generico": 0,
+      "clasificacion_insumo_Des": null
+    }
+  }
+]

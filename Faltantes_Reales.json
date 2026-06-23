@@ -1,0 +1,394 @@
+[
+    {
+        "codigo": null,
+        "codbarras": "7591062011262",
+        "descriptor_original": "PEREBRON",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591062011828",
+        "descriptor_original": "KLAS",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591062901297",
+        "descriptor_original": "LAFARCAINA",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": "7591096000416",
+        "codbarras": "7591096000416",
+        "descriptor_original": "null",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": "7591196002211",
+        "codbarras": "7591196002211",
+        "descriptor_original": "",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 0.0
+    },
+    {
+        "codigo": "7591243815801",
+        "codbarras": "7591243815801",
+        "descriptor_original": "ERILON",
+        "mejor_coincidencia_sugerida": "CLORURO DE AMONIO, GUAYACOLATO DE GLICERILO",
+        "score": 81.82
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591821102170",
+        "descriptor_original": "CALCIBON SUPRA",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": "7591821210059",
+        "codbarras": "7591821210059",
+        "descriptor_original": "null",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": "7591955001257",
+        "codbarras": "7591955001257",
+        "descriptor_original": "null",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591955001271",
+        "descriptor_original": "FERGANIC",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591955001295",
+        "descriptor_original": "GULAPER",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591955002278",
+        "descriptor_original": "POLI OTICO",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 68.4
+    },
+    {
+        "codigo": null,
+        "codbarras": "7591955002421",
+        "descriptor_original": "FERGANIC",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": "7591956110224",
+        "codbarras": "7591956110224",
+        "descriptor_original": "Agua Oxigenada",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592074004686",
+        "descriptor_original": "MIPROPOLEO",
+        "mejor_coincidencia_sugerida": "HIERBAS-MIEL-PROPOLEO",
+        "score": 80.0
+    },
+    {
+        "codigo": "7592349001167",
+        "codbarras": "7592349001167",
+        "descriptor_original": "null",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": "7592432009728",
+        "codbarras": "7592432009728",
+        "descriptor_original": "CARVIX",
+        "mejor_coincidencia_sugerida": "CARVIDORPA-ENTACAPONA-LEVODOPA",
+        "score": 81.82
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592432017877",
+        "descriptor_original": "betaduo",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 65.45
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592432900032",
+        "descriptor_original": "evigax",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.0
+    },
+    {
+        "codigo": "7592454000789",
+        "codbarras": "7592454000789",
+        "descriptor_original": "ANALPER NAX",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.87
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592454891387",
+        "descriptor_original": "bucoxol",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 66.67
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592601100492",
+        "descriptor_original": "multiviral",
+        "mejor_coincidencia_sugerida": "MULTIVITAMINAS (A, D3, C, E, B1, B2, B6, B12, NIACINAMIDA)",
+        "score": 75.79
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592803001023",
+        "descriptor_original": "VIZERUL",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 65.45
+    },
+    {
+        "codigo": null,
+        "codbarras": "7592946000341",
+        "descriptor_original": "CARDIMAR",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 64.29
+    },
+    {
+        "codigo": null,
+        "codbarras": "7593090002311",
+        "descriptor_original": "DARLIDE",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 66.67
+    },
+    {
+        "codigo": null,
+        "codbarras": "7594001101024",
+        "descriptor_original": "ANANTY",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 65.45
+    },
+    {
+        "codigo": null,
+        "codbarras": "7594005622198",
+        "descriptor_original": "AGUA DE AZAHAR",
+        "mejor_coincidencia_sugerida": "ACEITE DE HIGADO DE BACALAO-VIT A-VIT D",
+        "score": 85.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "7596526001353",
+        "descriptor_original": "MAGNEVIT",
+        "mejor_coincidencia_sugerida": "VIT E",
+        "score": 76.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7597134000868",
+        "descriptor_original": "CITRATO/POTASIO",
+        "mejor_coincidencia_sugerida": "CITRATO DE POTASIO",
+        "score": 84.85
+    },
+    {
+        "codigo": null,
+        "codbarras": "7597758001289",
+        "descriptor_original": "ALESPIRINA",
+        "mejor_coincidencia_sugerida": "VALERIANA",
+        "score": 73.68
+    },
+    {
+        "codigo": null,
+        "codbarras": "7703712030091",
+        "descriptor_original": "ANTIACIDO",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 70.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7703712035485",
+        "descriptor_original": "ANTI ACIDO",
+        "mejor_coincidencia_sugerida": "ACIDO ASCORBICO-ALOE VERA-GLUCONATO MANGANESO-GRAPEFRUIT",
+        "score": 85.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "7707816985561",
+        "descriptor_original": "VITAFER",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 66.67
+    },
+    {
+        "codigo": null,
+        "codbarras": "7707816985783",
+        "descriptor_original": "VITAFER-L",
+        "mejor_coincidencia_sugerida": "VIT A",
+        "score": 80.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7707816989873",
+        "descriptor_original": "VITAFER DUO",
+        "mejor_coincidencia_sugerida": "VIT A",
+        "score": 80.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7709209475703",
+        "descriptor_original": "GEL LUBRICANTE",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7709209475741",
+        "descriptor_original": "GEL LUBRICANTE",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7709209475765",
+        "descriptor_original": "GEL LUBRICANTE",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7730969306891",
+        "descriptor_original": "MIGRADORIXINA",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 69.23
+    },
+    {
+        "codigo": null,
+        "codbarras": "7891010974336",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7891024027028",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7891024033050",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7891024136096",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "7894164009633",
+        "descriptor_original": "Sales de Rehidratacion Oral",
+        "mejor_coincidencia_sugerida": "ACEITE DE AJO",
+        "score": 85.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "796554484822",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "810028130548",
+        "descriptor_original": "N/A",
+        "mejor_coincidencia_sugerida": "ACEBROFILINA",
+        "score": 72.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "810100050498",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "810100050504",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "813333013605",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "8902297024955",
+        "descriptor_original": "Antigripal (Multiple)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 66.32
+    },
+    {
+        "codigo": "8902297026898",
+        "codbarras": "8902297026898",
+        "descriptor_original": "GYNO-CANDERM",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 60.0
+    },
+    {
+        "codigo": "8906142160904",
+        "codbarras": "8906142160904",
+        "descriptor_original": "null",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 67.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "97217",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "98521",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    },
+    {
+        "codigo": null,
+        "codbarras": "B1325",
+        "descriptor_original": "VITAMINA B COMPLE",
+        "mejor_coincidencia_sugerida": "BACITRACINA-NEOMICINA-POLIMIXINA B",
+        "score": 85.5
+    },
+    {
+        "codigo": null,
+        "codbarras": "JER_3CC",
+        "descriptor_original": "N/A (Insumo)",
+        "mejor_coincidencia_sugerida": "Ninguna",
+        "score": 54.0
+    }
+]
