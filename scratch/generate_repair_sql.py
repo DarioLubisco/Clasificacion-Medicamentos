@@ -83,8 +83,12 @@ def main():
 
     out_file = "scratch/repair_ids.sql"
     with open(out_file, "w", encoding="utf-8") as f:
+        f.write("-- SQL Safety Protocol - Dry-Run\n")
+        f.write("BEGIN TRANSACTION;\n\n")
         for u in updates:
             f.write(u + "\n")
+        f.write("\n-- Para aplicar los cambios de forma definitiva, reemplace ROLLBACK por COMMIT\n")
+        f.write("ROLLBACK TRANSACTION;\n")
             
     print(f"\nArchivo generado: {out_file} con {len(updates)} sentencias UPDATE.")
     print("Estadísticas de resolución (Encontrados / Totales huérfanos):")

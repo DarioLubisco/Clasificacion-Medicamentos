@@ -1,3 +1,6 @@
+-- SQL Safety Protocol - Dry-Run
+BEGIN TRANSACTION;
+
 UPDATE Procurement.por_aprobacion_equivalencias SET marca = 9463, clasificacion_insumo = 115, LastUpdated = GETDATE() WHERE codbarras = '0000000000';
 UPDATE Procurement.por_aprobacion_equivalencias SET marca = 10832, clasificacion_insumo = 97, LastUpdated = GETDATE() WHERE codbarras = '000000000002569';
 UPDATE Procurement.por_aprobacion_equivalencias SET fabricante = 1088, codigo_atc = 1329, contenido_neto_unidad = 32, LastUpdated = GETDATE() WHERE codbarras = '000000000130';
@@ -15619,3 +15622,6 @@ UPDATE Procurement.por_aprobacion_equivalencias SET clasificacion_insumo = 90, L
 UPDATE Procurement.por_aprobacion_equivalencias SET fabricante = 1069, marca = 9531, clasificacion_insumo = 90, LastUpdated = GETDATE() WHERE codbarras = 'TRA81906';
 UPDATE Procurement.por_aprobacion_equivalencias SET marca = 9292, codigo_atc = 1138, clasificacion_insumo = 90, LastUpdated = GETDATE() WHERE codbarras = 'TRIXATE';
 UPDATE Procurement.por_aprobacion_equivalencias SET marca = 11175, clasificacion_insumo = 93, LastUpdated = GETDATE() WHERE codbarras = 'VITA2586';
+
+-- Para aplicar los cambios de forma definitiva, reemplace ROLLBACK por COMMIT
+ROLLBACK TRANSACTION;
