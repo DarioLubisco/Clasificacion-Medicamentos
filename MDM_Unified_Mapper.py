@@ -56,6 +56,36 @@ class MasterCatalog:
         if not cat or not cat["names"]: return None
         
         norm_search = normalize_text(search_text)
+
+        # Mapeo explicito de las 22 categorias de AppSheet a Procurement.clasificacion_insumo
+        if catalog_key == "clasificacion_insumo":
+            mapping_dict = {
+                "HIGIENE BUCODENTAL": 98,              # HIGIENE PERSONAL
+                "CUIDADO FEMENINO": 94,                # HIGIENE FEMENINA
+                "CUIDADO CORPORAL Y BANIO": 92,        # CUIDADO PERSONAL
+                "CUIDADO CORPORAL Y BANO": 92,         # CUIDADO PERSONAL
+                "DESODORANTES": 92,                    # CUIDADO PERSONAL
+                "CUIDADO DE LA PIEL": 92,              # CUIDADO PERSONAL
+                "CUIDADO DEL CABELLO": 92,             # CUIDADO PERSONAL
+                "FOTOPROTECCION": 92,                  # CUIDADO PERSONAL
+                "PANALES Y TOALLITAS": 103,           # ARTICULOS PARA BEBE
+                "ALIMENTACION Y FORMULAS INFANTILES": 103, # ARTICULOS PARA BEBE
+                "ACCESORIOS INFANTILES": 103,          # ARTICULOS PARA BEBE
+                "VITAMINAS Y MINERALES": 117,          # SUPLEMENTO NUTRICIONAL
+                "NUTRICION DEPORTIVA": 117,            # SUPLEMENTO NUTRICIONAL
+                "ALIMENTOS Y BEBIDAS DIETETICAS": 84,  # ALIMENTO
+                "MATERIAL DE CURACION": 79,            # MATERIAL DE CURACION
+                "INSUMOS DESCARTABLES": 87,            # DESCARTABLE
+                "EQUIPOS DE MONITOREO DE SALUD": 80,   # EQUIPO MEDICO
+                "ARTICULOS ORTOPEDICOS": 110,          # MATERIAL MEDICO
+                "PRODUCTOS DE LIMPIEZA": 106,          # PRODUCTO DE LIMPIEZA
+                "REPELENTES DE INSECTOS": 83,          # REPELENTE DE INSECTOS
+                "OTROS MISCELANEOS": 88,               # MISCELANEOS
+                "PRUEBAS RAPIDAS DE DIAGNOSTICO": 82,  # REACTIVO
+                "REACTIVOS QUIMICOS": 82,              # REACTIVO
+            }
+            if norm_search in mapping_dict:
+                return mapping_dict[norm_search]
         
         # Limpieza profunda para fabricantes (remover palabras genéricas corporativas)
         if catalog_key == "fabricante":
@@ -77,7 +107,19 @@ class MasterCatalog:
             cleaned = re.sub(r'\s+', ' ', cleaned).strip()
             if cleaned != "": 
                 norm_search = cleaned
-        
+
+        # Limpieza profunda para orígenes (ignorar basura de la BD)
+        if catalog_key == "origen":
+            import re
+            basura = ['IMPORTADO', 'NACIONAL', 'GENERICO', 'GENERIC', 'ALCOHOL', 'TERMOMETRO', 'N-A', 'N/A', 'DESCONOCIDO']
+            basura.sort(key=len, reverse=True)
+            pattern = re.compile(r'\b(' + '|'.join(re.escape(g) for g in basura) + r')\b', re.IGNORECASE)
+            cleaned = pattern.sub('', norm_search)
+            cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+            if cleaned == "":
+                return None
+            norm_search = cleaned
+
         # ATC is usually exact match of code
         if catalog_key == "codigo_atc":
             return cat["mapping"].get(norm_search)
