@@ -64,16 +64,39 @@ flowchart TD
 
    AG --> AH["Fin del Proceso de Clasificación Multimodal"]
 
-    classDef processStartEnd fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#fff;
-    classDef processWarning fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff;
-    classDef processBlue fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff;
-    classDef processPurple fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff;
-    classDef processDatabase fill:#607D8B,stroke:#455A64,stroke-width:2px,color:#fff;
-
-    class A,AH processStartEnd;
-    class S,T,U,Y processWarning;
-    class D,E,F,G,H,I,J,K,R,V,W,Z,AB,AC,AD,AE processBlue;
-    class L,M,N,O,P,Q,X,AA processPurple;
-    class B,C,AF,AG processDatabase;
+    style A fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#fff
+    style AH fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#fff
+    style S fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    style T fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    style U fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    style Y fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#fff
+    style D fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style E fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style F fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style G fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style H fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style I fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style J fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style K fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style R fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style V fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style W fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style Z fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style AB fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style AC fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style AD fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style AE fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#fff
+    style L fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style M fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style N fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style O fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style P fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style Q fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style X fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style AA fill:#9C27B0,stroke:#7B1FA2,stroke-width:2px,color:#fff
+    style B fill:#607D8B,stroke:#455A64,stroke-width:2px,color:#fff
+    style C fill:#607D8B,stroke:#455A64,stroke-width:2px,color:#fff
+    style AF fill:#607D8B,stroke:#455A64,stroke-width:2px,color:#fff
+    style AG fill:#607D8B,stroke:#455A64,stroke-width:2px,color:#fff
 
 ```
