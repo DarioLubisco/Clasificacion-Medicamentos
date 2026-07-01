@@ -1,0 +1,16 @@
+{
+  "vision": {
+    "gemini_flash_2_5": "google/gemini-2.5-flash"
+  },
+  "texto": {
+    "deepseek_v4_flash": "deepseek/deepseek-v4-flash"
+  },
+  "parametros": {
+    "deepseek_v4_flash": {"temperature": 0.6, "top_p": 0.9, "reasoning": {"effort": "xhigh"}},
+    "deepseek_v4_pro": {"temperature": 0.6, "top_p": 0.9, "reasoning": {"effort": "xhigh"}}
+  },
+  "precios": {
+    "deepseek_v4_flash": {"in": 0.14, "out": 0.14},
+    "deepseek_v4_pro": {"in": 0.5, "out": 0.5}
+  }
+}

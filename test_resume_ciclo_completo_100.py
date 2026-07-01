@@ -41,46 +41,18 @@ def llamar_openrouter(batch_json_str, model, ciclo_actual):
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json"
     }
-    
-    prompt = f"""
-    Actúa como el Agente Investigador Farmacéutico. Recibirás un lote de productos.
-    Para cada producto, extrae los siguientes atributos basándote en la descripción:
-    - principio_activo (string o null si no aplica/es material médico)
-    - concentracion (string o null)
-    - forma_farmaceutica (string o null)
-    - fabricante (string o null)
-    - marca (string o null)
-    - codigo_atc (string o null)
-    - cantidad_presentacion (int o null, cantidad de unidades en el empaque, ej. 30 pastillas = 30)
-    - contenido_neto (float o null, ej. 500 para 500ml)
-    - contenido_neto_unidad_Des (string o null, ej. 'ml', 'g')
-    - blister (1 o 0, si viene en blister)
-    - generico (1 o 0, si es genérico)
-
-    Si el producto claramente no es un medicamento (ej. Teteros, Mamilas, Chupones, Toallas húmedas, Guata, Aspirador nasal, Tubos de ensayo, Bolsas recolectoras, Tapabocas, Centros de cama, Inyectadoras), debes poner:
-    - principio_activo: null
-    - concentracion: null
-    - forma_farmaceutica: null
-    - requiere_recipe: 0
-    - origen: "NO_MEDICAMENTO" (o el tipo de insumo)
-
-    Si es medicamento, extrae el principio activo y concentración de la descripción.
-
-    IMPORTANTE: 
-    - En la llave "atributos_ya_encontrados" te informaremos qué datos ya logramos extraer en intentos pasados. 
-    - Debes CONSERVAR esos valores exactamente iguales en tu respuesta y enfocarte ÚNICAMENTE en intentar inferir o completar las llaves que aún están en nulo (elementos faltantes).
-    - Devuelve ÚNICAMENTE un array JSON válido con este formato, sin markdown, sin texto adicional:
-    [
-      {{
-        "registro": {{"codigo": "...", "codbarras": "...", "descripcion_original": "...", "ciclos_reproceso": 0}},
-        "atributos_ya_encontrados": {{}},
-        "atributos_nuevos_consolidados": {{"principio_activo": "...", "concentracion": "...", "forma_farmaceutica": "...", "requiere_recipe": 1, "segmento_etario": "ADULTO", "origen": "IA", "fabricante": null, "marca": null, "codigo_atc": null, "cantidad_presentacion": null, "contenido_neto": null, "contenido_neto_unidad_Des": null, "blister": 0, "generico": 0, "clasificacion_insumo_Des": null}}
-      }}
-    ]
-
-    LOTE A PROCESAR:
-    {batch_json_str}
-    """
+    try:
+        with open("prompt_agente_v2.txt", "r", encoding="utf-8") as f:
+            prompt_base = f.read()
+        with open("taxonomias_v2.txt", "r", encoding="utf-8") as f:
+            taxonomias = f.read()
+            
+        prompt = prompt_base.replace("{taxonomias_existentes}", taxonomias)
+        prompt = prompt.replace("{context_json_str}", batch_json_str)
+        prompt = prompt.replace("{nota_vision}", "No hay imágenes disponibles para el lote.")
+    except Exception as e:
+        print(f"Error cargando prompt/taxonomias: {e}")
+        return None
     
     data = {
         "model": model, 

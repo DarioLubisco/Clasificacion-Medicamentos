@@ -25,6 +25,8 @@ with open('actualizacion_limpieza_v10.sql', 'w', encoding='utf-8') as f:
         f.write(f"concentracion_Des = {t(attr.get('concentracion'), 255)}, ")
         f.write(f"forma_farmaceutica_Des = {t(attr.get('forma_farmaceutica'), 255)}, ")
         f.write(f"codigo_atc_Des = {t(attr.get('codigo_atc'), 50)}, ")
+        f.write(f"codigo_atc_profundo_Des = {t(attr.get('codigo_atc_profundo'), 50)}, ")
+        f.write(f"modelo_ia_Des = {t(attr.get('modelo_ia', 'UNKNOWN'), 100)}, ")
         
         rec = attr.get('requiere_recipe')
         f.write(f"requiere_recipe_Des = {1 if rec else 0}, ")
@@ -51,6 +53,15 @@ with open('actualizacion_limpieza_v10.sql', 'w', encoding='utf-8') as f:
             f.write(f"WHERE codigo = '{cod}';\n")
         else:
             f.write(f"WHERE codbarras = '{codbarras}' AND codigo IS NULL;\n")
+            
+        # Inserción de imágenes satélite (si están en el output del JSON)
+        fotos_satelite = res.get('fotos_a_guardar', [])
+        for fimg in fotos_satelite:
+            # fimg puede ser dict o str
+            url_img = fimg.get('b64') if isinstance(fimg, dict) else fimg
+            score_img = fimg.get('score', 1) if isinstance(fimg, dict) else 1
+            f.write(f"INSERT INTO Procurement.Imagenes_Productos_Crudas (codbarras, url_imagen, score_legibilidad) VALUES ('{codbarras}', {t(url_img, 4000)}, {score_img});\n")
+            
             
     f.write('\nCOMMIT;\n')
 print('SQL regenerado!')

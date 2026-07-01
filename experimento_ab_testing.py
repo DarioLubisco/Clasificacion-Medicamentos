@@ -16,13 +16,9 @@ from mega_orquestador_autonomo import calcular_score_calidad
 # ==============================================================================
 LIMITE_REGISTROS = 25 # Cambiar a 200 o más para la prueba final
 MODELOS = [
-    "deepseek/deepseek-chat", # Fallback in case v4-flash is not available, but let's use the ones user requested
     "deepseek/deepseek-v4-flash",
-    "deepseek/deepseek-v4-pro",
-    "deepseek/deepseek-r1"
+    "deepseek/deepseek-v4-pro"
 ]
-# Forzamos los que el usuario pidió estrictamente
-MODELOS = ["deepseek/deepseek-v4-flash", "deepseek/deepseek-v4-pro", "deepseek/deepseek-r1"]
 
 CONN_STR = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER=100.94.5.108\\efficacis3;DATABASE=EnterpriseAdmin_AMC;UID=sa;PWD={os.getenv("DB_PASSWORD")};TrustServerCertificate=yes;Encrypt=yes;'
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")

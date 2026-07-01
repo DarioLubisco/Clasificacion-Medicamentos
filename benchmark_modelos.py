@@ -87,22 +87,10 @@ def llamar_openrouter(batch_json_str, model, ciclo_actual):
                 model_lower = model.lower()
                 if "gemini-2.5-flash" in model_lower:
                     costo = (p_tokens * 0.075 + c_tokens * 0.30) / 1000000.0
-                elif "gemini-2.5-pro" in model_lower:
-                    costo = (p_tokens * 1.25 + c_tokens * 5.00) / 1000000.0
                 elif "deepseek-v4-flash" in model_lower:
                     costo = (p_tokens * 0.09 + c_tokens * 0.18) / 1000000.0
                 elif "deepseek-v4-pro" in model_lower:
                     costo = (p_tokens * 0.44 + c_tokens * 0.87) / 1000000.0
-                elif "deepseek-r1" in model_lower:
-                    costo = (p_tokens * 0.55 + c_tokens * 2.19) / 1000000.0
-                elif "minimax-m3" in model_lower:
-                    costo = (p_tokens * 0.30 + c_tokens * 1.20) / 1000000.0
-                elif "mixtral-8x22b" in model_lower:
-                    costo = (p_tokens * 0.90 + c_tokens * 0.90) / 1000000.0
-                elif "qwen-2.5-72b" in model_lower:
-                    costo = (p_tokens * 0.36 + c_tokens * 0.40) / 1000000.0
-                elif "llama-3.3-70b" in model_lower:
-                    costo = (p_tokens * 0.35 + c_tokens * 0.40) / 1000000.0
                 else:
                     costo = (p_tokens * 1.25 + c_tokens * 10.00) / 1000000.0
                 
@@ -217,10 +205,8 @@ def main():
     lote_json_str = json.dumps(lote_limpio, indent=2)
 
     modelos_a_evaluar = [
-        ("Qwen 2.5 72B", "qwen/qwen-2.5-72b-instruct", 0, "benchmark_qwen.json"),
-        ("MiniMax M3", "minimax/minimax-m3", 1, "benchmark_minimax.json"),
-        ("Mixtral 8x22B", "mistralai/mixtral-8x22b-instruct", 2, "benchmark_mixtral.json"),
-        ("Gemini 2.5 Pro", "google/gemini-2.5-pro", 3, "benchmark_gemini.json")
+        ("DeepSeek V4 Flash", "deepseek/deepseek-v4-flash", 1, "benchmark_deepseek_flash.json"),
+        ("DeepSeek V4 Pro", "deepseek/deepseek-v4-pro", 2, "benchmark_deepseek_pro.json")
     ]
 
     for nombre, modelo_id, ciclo, archivo_salida in modelos_a_evaluar:

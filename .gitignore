@@ -4,3 +4,18 @@ __pycache__/
 .venv/
 venv/
 *.sqlite3
+
+# Archivos de datos y reportes pesados
+*.xlsx
+*.xls
+*.csv
+*.json
+*.log
+.~lock.*
+
+# Directorios de datos y temporales
+neo4j_data/
+scratch/imagenes_test/
+scratch/imagenes_productos/
+scratch/resultados_pruebas/
+scrapling-local/

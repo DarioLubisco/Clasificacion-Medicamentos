@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  neo4j-medico:
+    image: neo4j:5-community
+    container_name: neo4j_grafos_amc
+    restart: unless-stopped
+    ports:
+      - "7474:7474" # Consola Web (Neo4j Browser) - Interfaz visual
+      - "7687:7687" # Puerto del Driver para Dify / Python (Consultas Cypher)
+    environment:
+      # Credenciales de acceso
+      - NEO4J_AUTH=neo4j/Twinc3pt.2
+      
+      # Auto-descarga de plugins oficiales soportados
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
+      
+      # Ajuste de memoria para soportar archivos masivos como RxNorm y UMLS
+      - NEO4J_server_memory_heap_initial__size=2G
+      - NEO4J_server_memory_heap_max__size=4G
+      - NEO4J_server_memory_pagecache_size=2G
+      
+      # Configuración de seguridad para APOC (Permitir leer/escribir archivos e integraciones)
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*,n10s.*,gds.*
+    volumes:
+      - ./neo4j_data/data:/data
+      - ./neo4j_data/logs:/logs
+      - ./neo4j_data/import:/var/lib/neo4j/import  # Aquí se colocarán los archivos RDF/OWL/CSV a importar
+      - ./neo4j_data/plugins:/plugins              # Aquí el script de setup bajará n10s (Neosemantics)
+    
+networks:
+  default:
+    name: synapse_medical_network
