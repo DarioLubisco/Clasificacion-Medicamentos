@@ -24,22 +24,35 @@ Antes de procesar cualquier producto, internaliza estas definiciones. Confundir 
 ### 1. JERARQUÍA DE FUENTES Y REGLAS MULTIMODALES (CRUCE DE EVIDENCIA)
 El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
 
-- **Igual peso**: El texto del contexto web y las imágenes tienen la misma autoridad. Integra ambas para la respuesta más completa.
+- **Igual peso**: El texto del contexto web y las imágenes tienen la misma autoridad. Integra ambas para la respuesta más completa. **Excepción jerárquica**: el consenso de 2+ imágenes independientes prevalece sobre el texto de la descripción del EAN (ver regla dedicada).
 - **Validación de Imagen (Anti-basura)**: Si la imagen provista NO corresponde a un producto farmacéutico, está dañada, es borrosa o es una imagen genérica (herramienta, ropa, logotipo), **IGNORA la imagen** y basa tu análisis SOLO en el texto. Reduce `confianza_nivel` a 2 o 1, y documenta en `razonamiento`.
 - **Resolución de Discrepancias**: Ante contradicciones directas e irreconciliables entre fuentes, aplica el siguiente protocolo estricto:  
   a) Documenta **todas** las versiones en `confianza_razonamiento`.  
   b) Reduce el `confianza_nivel` a 3 o 4 según la gravedad.  
   c) Elige el dato con mayor respaldo por **consistencia entre múltiples fuentes**, no por preferencia arbitraria.  
   d) Si la duda persiste, asigna `null` y regístralo en `atributos_baja_confianza` y `alertas_auditoria`.
-- **Evidencia visual complementaria**: Un nombre de laboratorio o fabricante legible en el empaque de la imagen **DEBE** ser extraído, incluso si no aparece en el texto web.  
-- **⚠️ REGLA CRÍTICA — Concentración en Imagen vs Descripción del EAN**:  
-  Muchos fármacos tienen presentaciones "hermanas" (ej: Amoxicilina 500mg y 875mg con empaques casi idénticos).  
-  **SI** la concentración visible en la imagen DIFIERE de la concentración declarada en la descripción original del EAN (campo `descripcion_original`), DEBES:  
-    - Documentar ambas versiones en `razonamiento`.  
-    - Usar como **VERDAD DE REFERENCIA** la concentración de la **descripción original (EAN)**.  
-    - Añadir `concentracion` a la lista `atributos_baja_confianza`.  
-    - Bajar el `confianza_nivel` a **máximo 3**.  
-  **Jamás** anules el dato del EAN por lo que ves en la imagen en este campo concreto, pues el EAN es el identificador único del producto.
+- **Evidencia visual complementaria**: Un nombre de laboratorio o fabricante legible en el empaque de la imagen **DEBE** ser extraído, incluso si no aparece en el texto web. Además, bajo la regla de consenso de imágenes, las imágenes pueden **sobreescribir** atributos del EAN (no solo complementarlos).
+- **⚠️ REGLA CRÍTICA — Consenso de Imágenes vs Descripción del EAN**:
+  Las transcripciones OCR llegan etiquetadas `[Imagen 1]`, `[Imagen 2]`, etc., cada una de una página/distinto dominio independiente (garantizado por el scraper). Cuando **2 o más imágenes reportan el mismo valor** para un atributo (`concentracion`, `fabricante`, `marca`, `forma_farmaceutica`, `cantidad_presentacion`, `registro_sanitario`) Y ese valor **difiere** del declarado en `descripcion_original`:
+    - El **consenso de imágenes PREVALECE** sobre la descripción del EAN. Asigna ese valor al atributo.
+    - Baja `confianza_nivel` a **máximo 4** (el consenso visual independiente es fuerte, pero no infalible).
+    - Registra en `alertas_auditoria`: `"Atributo X sobrescrito por consenso de N imágenes (EAN='...' → imágenes='...')"`.
+    - Documenta ambas versiones (EAN e imágenes) en `confianza_razonamiento`.
+  **Excepciones donde la descripción del EAN sigue prevaleciendo:**
+    - Menos de 2 imágenes reportan el mismo valor divergente (consenso insuficiente).
+    - Las imágenes reportan valores contradictorios entre sí (sin acuerdo).
+    - `nota_vision` indica que no hubo imágenes aprobadas, o se procesó solo 1 imagen.
+- **⚠️ REGLA CRÍTICA — Fabricante/Marca en conflicto imagen↔texto**:
+  Contexto operativo: El OCR puede provenir de una imagen que no corresponde al EAN del producto consultado. Para evitar contaminar la extracción con fabricante o marca erróneos, aplica de forma estricta las reglas siguientes, **sujetas a la regla de consenso de imágenes** (si 2+ imágenes independientes coinciden en fabricante/marca, prevalecen sobre cualquier otra fuente — ver regla dedicada arriba).
+
+  1. **Conflicto irreconciliable texto↔imagen (1 sola imagen).** Si `fabricante` o `marca` presentan un conflicto irreconciliable entre el texto web y el OCR de **1 sola imagen** (sin alcanzar el consenso de 2), DEBES:
+     a. Asignar `marca = null`.
+     b. Mantener `fabricante` únicamente si dos o más fuentes web independientes coinciden entre sí; en caso contrario, también `fabricante = null`.
+     c. Registrar ambos campos (`marca` y, si aplica, `fabricante`) en `atributos_baja_confianza`.
+     d. Documentar el conflicto en `alertas_auditoria`, indicando para cada atributo afectado: `valor_web`, `valor_ocr` y `fuente_descartada`.
+  2. **Marca proveniente únicamente de OCR (1 imagen).** PROHIBIDO emitir un valor de `marca` tomado exclusivamente del OCR de **1 sola imagen** cuya correspondencia al EAN no esté confirmada por texto web. **EXCEPCIÓN**: si se alcanza el consenso de 2+ imágenes independientes (Regla de Consenso de Imágenes), la marca SÍ debe extraerse del OCR y prevalecer.
+  3. **Coherencia de canal fuente.** PROHIBIDO mezclar `fabricante` extraído del texto web con `marca` extraída de una imagen dentro de la misma salida. Ambos atributos DEBEN provenir del mismo canal (web→web, o imagen→imagen solo si ésta está validada contra el EAN); en caso contrario, `marca = null`.
+  4. **Cap de confianza.** Estos conflictos de `fabricante`/`marca` afectan a `confianza_nivel` de forma ADITIVA al cálculo estándar (mínimo de los atributos críticos: dominio, principio_activo, concentracion, cantidad_presentacion). Cuando se aplique cualquiera de los puntos 1, 2 o 3 de esta cláusula, `confianza_nivel` DEBE quedar capado a un máximo de 3, sin importar el valor que hubiese resultado del cálculo estándar. Asimismo, DEBES volcar en `confianza_razonamiento` la razón del capado, citando el número de cláusula aplicado.
 
 ---
 
@@ -47,7 +60,7 @@ El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
 Para cada producto, extraerás y validarás los siguientes campos. La omisión de cualquier llave está terminantemente prohibida.
 
 *   **razonamiento** (String): Justificación detallada del análisis global. Incluye: fuentes que respaldan cada dato clave, resolución de discrepancias (si las hay), justificación de la taxonomía seleccionada, y cualquier decisión no trivial.
-*   **confianza_nivel** (Integer, 1-5): Confianza GLOBAL de la clasificación. Se calcula como el **MÍNIMO** entre los puntajes individuales de los atributos críticos (`dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`). Si un solo atributo crítico es dudoso, el nivel global baja al de ese atributo.
+*   **confianza_nivel** (Integer, 1-5): Confianza GLOBAL de la clasificación. Se calcula como el **MÍNIMO** entre los puntajes individuales de los atributos críticos (`dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`). Si un solo atributo crítico es dudoso, el nivel global baja al de ese atributo. **Excepción aditiva**: si aplica la "REGLA CRÍTICA — Fabricante/Marca en conflicto imagen↔texto" (§1), `confianza_nivel` se capa además a **máximo 3**, sin importar el resultado del mínimo anterior.
 *   **confianza_razonamiento** (String): Para cada discrepancia detectada, detalla: (a) qué dicen exactamente las fuentes, (b) cuál dato elegiste y por qué, (c) el puntaje que asignas a ese atributo (1-5). El puntaje global final es el mínimo de todos esos puntajes individuales.
 *   **atributos_baja_confianza** (Array of Strings): Lista de **nombres exactos de campos** (ej: `["concentracion", "origen"]`) que generan dudas. Si no hay dudas, devuelve `[]` (arreglo vacío).
 *   **alertas_auditoria** (String o Null): Si falta algún atributo crítico (principio activo, concentración) o si hay una anomalía de clasificación, documenta aquí la razón. Ej: "Fitoterapéutico: no declara concentración de principio activo aislado", "Dispositivo médico sin ATC aplicable".
@@ -138,7 +151,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 *   **2 - BAJA**: Datos escasos, fuentes contradictorias o inferencias débiles. Extracción incompleta.
 *   **1 - NULA**: Ausencia total de datos críticos o información inválida.
 
-**Cálculo del nivel global**: `confianza_nivel` = **MÍNIMO** de los puntajes asignados a los atributos considerados críticos: `dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`. Documenta en `confianza_razonamiento` los puntajes individuales de los atributos donde hubo discrepancias.
+**Cálculo del nivel global**: `confianza_nivel` = **MÍNIMO** de los puntajes asignados a los atributos considerados críticos: `dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`. Documenta en `confianza_razonamiento` los puntajes individuales de los atributos donde hubo discrepancias. **Excepciones aditivas**: si `fabricante` o `marca` presentan conflicto irreconciliable imagen↔texto (ver cláusula dedicada en §1), `confianza_nivel` se capa a **máximo 3**. Si aplica el consenso de 2+ imágenes que sobreescribe el EAN, `confianza_nivel` se capa a **máximo 4**. **Jerarquía de caps**: si aplican múltiples reglas de capado simultáneamente, prevalece siempre el cap más restrictivo (el número menor).
 
 ---
 
@@ -148,7 +161,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 **Ejemplo 1 (Medicamento Sólido en Caja - Regla A)**:
 - Descripción: "IBUPROFENO 400MG X 10 TAB"
 - Imagen: Caja "Ibuprofeno 400mg Calox" con 10 tabletas en blíster.
-- Contexto web: "Ibuprofeno 400mg caja con 20 tabletas - Farmacia X" (discrepancia en cantidad).
+- Contexto web: "Ibuprofeno 400mg Calox, caja con 20 tabletas - Farmacia X" (discrepancia en cantidad; la web confirma el laboratorio Calox).
 
 **Salida JSON Esperada 1**:
 ```json
@@ -206,16 +219,16 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "descripcion_original": "DISCOLAYTE POLVO ORAL CAJA X 5 SOBRES"
     },
     "atributos_nuevos_consolidados": {
-      "razonamiento": "Suero de rehidratación en polvo. Caja con 5 sobres (Regla A). Cada sobre 27.9g. Todas las fuentes coinciden.",
+      "razonamiento": "Suero de rehidratación en polvo. Caja con 5 sobres (Regla A). Cada sobre 27.9g (registrado en volumen_unidad, NO en concentracion). No hay concentracion de principio activo aislado declarada.",
       "confianza_nivel": 5,
       "confianza_razonamiento": "dominio=5, principio_activo=5, cantidad_presentacion=5, volumen_unidad=5. Nivel global=5.",
       "atributos_baja_confianza": [],
-      "alertas_auditoria": null,
+      "alertas_auditoria": "Rehidratante: no declara concentración de principio activo aislado; el peso 27.9g es del sobre (volumen_unidad), no concentracion.",
       "dominio": "MEDICAMENTO_ALOPATICO",
       "categoria": "ELECTROLITOS_ORALES",
       "subcategoria": "SALES_DE_REHIDRATACION_ORAL",
       "principio_activo": "Sales de Rehidratación Oral",
-      "concentracion": "27.9 g",
+      "concentracion": null,
       "forma_farmaceutica": "Polvo para suspensión oral",
       "segmento_etario": "GENERAL",
       "origen": null,
@@ -452,7 +465,7 @@ Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem n
 - [ ] ¿El `confianza_nivel` es realmente el **mínimo** de esos puntajes?
 - [ ] ¿El `origen` es un país soberano y no "Importado" o "Nacional"?
 - [ ] ¿Usé `null` y no strings vacíos para datos ausentes?
-- [ ] Si hubo conflicto de concentración EAN vs imagen, ¿usé el EAN como referencia y bajé confianza a ≤3?
+- [ ] Si hubo conflicto de concentración EAN vs imagen, ¿apliqué la regla de consenso? (Si 2+ imágenes coinciden, prevalece la imagen con cap a 4. Si es 1 sola imagen, prevalece el EAN con confianza ≤3).
 - [ ] ¿`requiere_recipe` es `1` solo para psicotrópicos/estupefacientes y `0` para todo lo demás?
 - [ ] ¿`registro_sanitario` está extraído si era visible? ¿Está en el formato correcto?
 
@@ -462,7 +475,7 @@ Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem n
 **ANTES DE GENERAR EL JSON**, debes desarrollar un análisis riguroso dentro de etiquetas `<analisis_clinico>`. Este bloque debe contener los siguientes **5 pasos obligatorios**:
 
 **Paso 1 – Evaluación Multimodal**:  
-Compara: descripción original vs contexto web vs texto visible en imagen (OCR). ¿Hay discrepancias en concentración, cantidad, producto? Si la imagen muestra un fármaco diferente, descríbelo. Recuerda: ante conflicto de concentración entre imagen y EAN, el EAN es la referencia.
+Compara: descripción original vs contexto web vs texto visible en imagen (OCR). ¿Hay discrepancias en concentración, cantidad, producto? Si la imagen muestra un fármaco diferente, descríbelo. Recuerda: ante conflicto entre imagen y EAN, aplica la regla de consenso (2+ imágenes prevalecen; 1 sola imagen no sobreescribe el EAN).
 
 **Paso 2 – Identidad del Producto**:  
 Determina si es MEDICAMENTO_ALOPATICO, MATERIAL_MEDICO_INSUMO, MISCELANEO, etc. Justifica.

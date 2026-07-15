@@ -1,12 +1,25 @@
 import os
 import json
 import sys
+from urllib.parse import urlparse
 
 # Add root folder to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import orquestador_scraper_v11_local as scrap
-import scratch.evaluate_optimized_local as ev
+import orquestador_scraper as scrap
+import evaluate_local as ev
+
+
+def _dominio(url: str) -> str:
+    """Dominio raíz para deduplicación de imágenes por fuente independiente."""
+    try:
+        host = urlparse(url).netloc.lower()
+        for pref in ("www.", "cdn.", "static.", "img.", "images."):
+            if host.startswith(pref):
+                host = host[len(pref):]
+        return host
+    except Exception:
+        return ""
 
 def main():
     # Load the 20 hard products
@@ -21,22 +34,32 @@ def main():
         
         fuentes_extraidas = []
         todas_imagenes = []
-        
+        dominios_usados = set()
+
         # Búsqueda web usando la descripción del producto
         urls_web = scrap.buscar_en_internet(desc, max_fuentes=5)  # limit to 5 sources to be faster
         for idx, url in enumerate(urls_web):
             fuente_data = scrap.extraer_fuente_web(url, idx+1, desc_maestra=desc)
             if fuente_data:
                 fuentes_extraidas.append(fuente_data)
-                todas_imagenes.extend(fuente_data['imagenes_encontradas'])
-                if len(set(todas_imagenes)) >= 5: # limit to 5 images to be faster
+                for img_url in fuente_data['imagenes_encontradas']:
+                    dom = _dominio(img_url) or _dominio(url)
+                    # Independencia: 1 imagen por dominio (evita 3 copias del mismo listing).
+                    if dom and dom not in dominios_usados:
+                        dominios_usados.add(dom)
+                        todas_imagenes.append(img_url)
+                    elif not dom:
+                        todas_imagenes.append(img_url)
+                    if len(set(todas_imagenes)) >= 5: # limit to 5 images to be faster
+                        break
+                if len(set(todas_imagenes)) >= 5:
                     break
-                    
+
         resultados_scraping.append({
             "ean": ean,
             "descripcion": desc,
             "fuentes_web": fuentes_extraidas,
-            "imagenes_b64": list(set(todas_imagenes))[:5]
+            "imagenes_b64": list(dict.fromkeys(todas_imagenes))[:5]
         })
 
     # Save to input file for evaluation
@@ -44,22 +67,16 @@ def main():
     with open(input_path, "w", encoding="utf-8") as f:
         json.dump(resultados_scraping, f, ensure_ascii=False, indent=2)
 
-    print("\nScraping completado. Ejecutando evaluate_optimized...")
+    print("\nScraping completado. Ejecutando evaluate_local...")
 
-    # Run evaluation with the new file
-    # We clear results first to force re-evaluation
-    comp_path = "scratch/resultados_20_vision.json"
-    if os.path.exists(comp_path):
+    output_path = "scratch/resultados_20_vision.json"
+    if os.path.exists(output_path):
         try:
-            os.remove(comp_path)
+            os.remove(output_path)
         except Exception:
             pass
 
-    ev.main(
-        input_path=input_path,
-        comp_path=comp_path,
-        excel_path="scratch/comparativa_20_vision.xlsx"
-    )
+    ev.main(input_path=input_path, output_path=output_path)
 
 if __name__ == "__main__":
     main()
