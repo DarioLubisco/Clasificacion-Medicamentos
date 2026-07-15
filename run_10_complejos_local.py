@@ -18,7 +18,7 @@ eans_test = [
 
 # Modificar evaluate_optimized temporalmente para leer de este json en vez de la BD.
 # Generar el JSON dummy como si hubiera venido del scraper.
-import orquestador_scraper_v11_local as scrap
+import orquestador_scraper as scrap
 
 resultados_scraping = []
 for item in eans_test:
@@ -49,9 +49,11 @@ for item in eans_test:
 with open("scratch/10_complejos_raw_local.json", "w", encoding="utf-8") as f:
     json.dump(resultados_scraping, f, ensure_ascii=False, indent=2)
 
-print("Scraping completado. Ejecutando evaluate_optimized...")
+print("Scraping completado. Ejecutando evaluate_local...")
 
-# Inyectar el json_path a evaluate_optimized
-import scratch.evaluate_optimized_local as ev
+import evaluate_local as ev
 
-ev.main(input_path="scratch/10_complejos_raw_local.json", comp_path="scratch/10_complejos_resultados_local.json", excel_path="scratch/10_complejos_excel_local.xlsx")
+ev.main(
+    input_path="scratch/10_complejos_raw_local.json",
+    output_path="scratch/10_complejos_resultados_local.json",
+)

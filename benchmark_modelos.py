@@ -75,6 +75,10 @@ def llamar_openrouter(batch_json_str, model, ciclo_actual):
         "temperature": 0.1
     }
     
+    # Para GLM-4.7, habilitar el modo de razonamiento
+    if "glm-4.7" in model.lower():
+        data["include_reasoning"] = True
+    
     max_retries = 3
     for attempt in range(max_retries):
         req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers)
@@ -91,6 +95,9 @@ def llamar_openrouter(batch_json_str, model, ciclo_actual):
                     costo = (p_tokens * 0.09 + c_tokens * 0.18) / 1000000.0
                 elif "deepseek-v4-pro" in model_lower:
                     costo = (p_tokens * 0.44 + c_tokens * 0.87) / 1000000.0
+                elif "glm-4.7" in model_lower:
+                    # OpenRouter pricing for z-ai/glm-4.7: $0.40 / $1.75 per 1M tokens
+                    costo = (p_tokens * 0.40 + c_tokens * 1.75) / 1000000.0
                 else:
                     costo = (p_tokens * 1.25 + c_tokens * 10.00) / 1000000.0
                 
@@ -104,6 +111,16 @@ def llamar_openrouter(batch_json_str, model, ciclo_actual):
                     
                 message = result['choices'][0].get('message', {})
                 content = message.get('content')
+                
+                # GLM-4.7 puede enviar el contenido en 'reasoning' en lugar de 'content'
+                reasoning = message.get('reasoning')
+                
+                if content is None and reasoning is not None:
+                    # GLM-4.7 usa reasoning, pero el contenido real debería estar en content
+                    # Esto puede indicar que el modelo está en modo "thinking" y no devolvió el contenido final
+                    print(f"    WARNING: content is None pero reasoning existe. Esto puede ser normal en GLM-4.7 thinking mode")
+                    content = reasoning  # Usar reasoning como fallback
+                
                 if content is None:
                     print(f"    ERROR: El content de la respuesta es None. Mensaje completo: {json.dumps(message, indent=2)}")
                     return None
@@ -206,7 +223,8 @@ def main():
 
     modelos_a_evaluar = [
         ("DeepSeek V4 Flash", "deepseek/deepseek-v4-flash", 1, "benchmark_deepseek_flash.json"),
-        ("DeepSeek V4 Pro", "deepseek/deepseek-v4-pro", 2, "benchmark_deepseek_pro.json")
+        ("DeepSeek V4 Pro", "deepseek/deepseek-v4-pro", 2, "benchmark_deepseek_pro.json"),
+        ("GLM-4.7", "z-ai/glm-4.7", 3, "benchmark_glm47.json")
     ]
 
     for nombre, modelo_id, ciclo, archivo_salida in modelos_a_evaluar:

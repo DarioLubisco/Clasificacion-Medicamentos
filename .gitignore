@@ -1,6 +1,5 @@
 __pycache__/
 *.pyc
-.env
 .venv/
 venv/
 *.sqlite3
@@ -19,3 +18,8 @@ scratch/imagenes_test/
 scratch/imagenes_productos/
 scratch/resultados_pruebas/
 scrapling-local/
+
+# Archivos de credenciales (PROTEGIDOS)
+sinapsis.credentials
+synapse.credentials
+.env
