@@ -16,7 +16,7 @@ from synapse_cred import load_synapse_credentials
 
 load_synapse_credentials()
 
-from orquestador_n8n import handle_trigger
+from orquestador_produccion import handle_trigger
 
 app = FastAPI(title="MDM Orquestador Local", version="1.0.0")
 

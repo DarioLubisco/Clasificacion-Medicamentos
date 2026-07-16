@@ -35,6 +35,10 @@ N8N_WEBHOOK_URL = os.getenv(
 )
 MAX_REINTENTOS = int(os.getenv("ORQUESTADOR_MAX_REINTENTOS", "3"))
 SCORE_CIERRE = int(os.getenv("ORQUESTADOR_SCORE_CIERRE", "88"))
+SCORE_CIERRE_NO_MED = int(os.getenv("ORQUESTADOR_SCORE_CIERRE_NO_MED", "70"))
+MAX_FUENTES_WEB = int(os.getenv("MAX_FUENTES_WEB", "10"))
+MAX_FOTOS_TOTALES = int(os.getenv("MAX_FOTOS_TOTALES", "10"))
+SCRAPING_DELAY = float(os.getenv("SCRAPING_DELAY", "0.5"))
 
 
 def _conn_str() -> str:
@@ -50,7 +54,8 @@ def _conn_str() -> str:
 
 
 def get_db_connection() -> pyodbc.Connection:
-    return pyodbc.connect(_conn_str(), timeout=20)
+    timeout_red = int(os.getenv("TIMEOUT_RED", "20"))
+    return pyodbc.connect(_conn_str(), timeout=timeout_red)
 
 
 def check_threshold(trigger: dict[str, Any]) -> bool:
@@ -118,23 +123,19 @@ def scrape_producto(codbarras: str, descripcion: str) -> tuple[list, list]:
     fuentes_extraidas: list = []
     todas_imagenes: list = []
     is_internal = codbarras.startswith("BLI_") or len(codbarras) != 13
-    is_med = scrap.pre_clasificar_medicamento(descripcion)
-
-    if not is_med:
-        return fuentes_extraidas, todas_imagenes
 
     if not is_internal:
-        urls = scrap.buscar_en_internet(f'"{codbarras}" {descripcion}', max_fuentes=10)
+        urls = scrap.buscar_en_internet(f'"{codbarras}" {descripcion}', max_fuentes=MAX_FUENTES_WEB)
         for idx, url in enumerate(urls, 1):
             fuente = scrap.extraer_fuente_web(url, idx, descripcion)
             if fuente:
                 fuentes_extraidas.append(fuente)
                 todas_imagenes.extend(fuente.get("imagenes_encontradas", []))
-                if len(set(todas_imagenes)) >= 10:
+                if len(set(todas_imagenes)) >= MAX_FOTOS_TOTALES:
                     break
-            time.sleep(0.5)
+            time.sleep(SCRAPING_DELAY)
 
-    return fuentes_extraidas, list(dict.fromkeys(todas_imagenes))[:10]
+    return fuentes_extraidas, list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES]
 
 
 def _sql_val(val: Any) -> Any:
@@ -164,7 +165,7 @@ def atributos_a_fila_sql(
     score = ev.calcular_score_calidad(atrib)
     es_med = not bool(atrib.get("clasificacion_insumo_Des"))
 
-    if score >= SCORE_CIERRE or (not es_med and score >= 70):
+    if score >= SCORE_CIERRE or (not es_med and score >= SCORE_CIERRE_NO_MED):
         estado_ciclo = "CERRADO"
         ciclos_final = ciclos_reproceso
     elif ciclos_reproceso >= MAX_REINTENTOS:
@@ -282,7 +283,8 @@ def procesar_trigger_mercado_vivo(trigger: dict[str, Any]) -> dict[str, Any]:
 
 def post_webhook(trigger_id: int | None, filas: list[dict[str, Any]]) -> None:
     payload = {"TriggerID": trigger_id, "data": filas}
-    resp = requests.post(N8N_WEBHOOK_URL, json=payload, timeout=60)
+    timeout_red = int(os.getenv("TIMEOUT_RED", "15"))
+    resp = requests.post(N8N_WEBHOOK_URL, json=payload, timeout=timeout_red)
     resp.raise_for_status()
     print(f"[MDM] Webhook enviado ({len(filas)} filas) → {resp.status_code}")
 

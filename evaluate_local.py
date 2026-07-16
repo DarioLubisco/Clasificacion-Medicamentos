@@ -21,6 +21,8 @@ from pathlib import Path
 from synapse_cred import load_synapse_credentials
 load_synapse_credentials()
 
+from pipeline_logger import log, log_producto, log_resumen, log_evento
+
 # Cliente Z.ai directo (GLM Coding Plan)
 from zai_client import call_glm, extract_content, estimate_cost, GLM_MODEL as ZAI_MODEL
 from mimo_client import call_mimo_chat, extract_content as mimo_extract_content
@@ -42,9 +44,9 @@ GEMINI_PRICE_OUT_PER_1M = 2.50
 
 
 def _vision_config():
-    """Config de visión desde experimento.conf vía variables de entorno."""
-    proveedor = os.getenv("EXPERIMENT_VISION_PROVIDER", "openrouter").lower()
-    modelo = os.getenv("EXPERIMENT_VISION_MODEL", "google/gemini-2.5-flash")
+    """Config de visión desde .env vía variables de entorno."""
+    proveedor = os.getenv("EXPERIMENT_VISION_PROVIDER", "mimo").lower()
+    modelo = os.getenv("EXPERIMENT_VISION_MODEL", "mimo-v2.5")
     thinking = os.getenv("EXPERIMENT_VISION_THINKING", "disabled").lower()
     max_prefiltro = int(os.getenv("EXPERIMENT_VISION_MAX_PREFILTRO", "10"))
     max_ocr = int(os.getenv("EXPERIMENT_VISION_MAX_OCR", "3"))
@@ -79,13 +81,14 @@ def _llamar_vision_api(messages, temperature=0.0, max_tokens=1024):
     cfg = _vision_config()
 
     if cfg["proveedor"] == "mimo":
+        timeout_vision = int(os.getenv("TIMEOUT_VISION", "120"))
         result, err = call_mimo_chat(
             messages,
             model=cfg["modelo"],
             temperature=temperature,
             max_completion_tokens=max_tokens,
             thinking=cfg["thinking"],
-            timeout=120,
+            timeout=timeout_vision,
         )
         if err:
             return "", 0.0, err, {}
@@ -116,8 +119,9 @@ def _llamar_vision_api(messages, temperature=0.0, max_tokens=1024):
         "max_tokens": max_tokens,
     }
     try:
+        timeout_vision = int(os.getenv("TIMEOUT_VISION", "120"))
         req = urllib.request.Request(url, data=json.dumps(data).encode("utf-8"), headers=headers)
-        with urllib.request.urlopen(req, timeout=120) as response:
+        with urllib.request.urlopen(req, timeout=timeout_vision) as response:
             result = json.loads(response.read().decode())
             usage = result.get("usage", {})
             content = result["choices"][0]["message"]["content"].strip()
@@ -298,7 +302,8 @@ def filtrar_imagenes_legibles(imagenes_b64, descripcion_producto):
                 b64_uri = url_img
             else:
                 headers_img = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-                img_res = requests.get(url_img, headers=headers_img, timeout=10)
+                timeout_red = int(os.getenv("TIMEOUT_RED", "15"))
+                img_res = requests.get(url_img, headers=headers_img, timeout=timeout_red)
                 if img_res.status_code != 200:
                     print(f"    [Pre-Filtro] Error HTTP {img_res.status_code} descargando URL {url_img}. Omitiendo.")
                     continue
@@ -395,17 +400,19 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=4000):
     """
     Llamada DIRECTA a GLM-4.7 via API de Z.ai (GLM Coding Plan).
     NO usa OpenRouter. Devuelve (result_dict, error_str).
+    Temperature y top_p vienen del .env (GLM-4.7 recomienda 0.7 / 0.95).
     """
-    # call_glm usa GLM_API_KEY, GLM_API_URL y GLM_MODEL del entorno.
-    # Forzamos el model_id por compatibilidad con la firma anterior.
-    max_tokens = int(os.getenv("GLM_MAX_TOKENS", "4000"))
+    max_tokens = int(os.getenv("GLM_MAX_TOKENS", str(max_tokens)))
+    temperature = float(os.getenv("GLM_TEMPERATURE", "0.7"))
+    top_p = float(os.getenv("GLM_TOP_P", "0.95"))
+    timeout_texto = int(os.getenv("TIMEOUT_TEXTO", "300"))
     return call_glm(
         prompt=prompt_text,
         model=model_id,
-        temperature=0.2,
-        top_p=0.9,
+        temperature=temperature,
+        top_p=top_p,
         max_tokens=max_tokens,
-        timeout=300,
+        timeout=timeout_texto,
     )
 
 
@@ -426,12 +433,13 @@ def llamar_llm_texto(prompt_text, max_tokens=4000):
         # DeepSeek V4 thinking mode: max_tokens amplio (reasoning + JSON).
         # temperature/top_p son NO-OP en thinking mode — no se pasan.
         mt = max_tokens or int(os.getenv("DEEPSEEK_MAX_TOKENS", "16384"))
+        timeout_texto = int(os.getenv("TIMEOUT_TEXTO", "300"))
         result, err = call_deepseek(
             prompt=prompt_text,
             model=os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash"),
             max_tokens=mt,
             reasoning_effort=os.getenv("DEEPSEEK_REASONING_EFFORT", "max"),
-            timeout=180,
+            timeout=timeout_texto,
         )
         return result, err, "DeepSeek V4 Flash"
     # default: GLM
@@ -461,13 +469,13 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     vlabel = _vision_label(vcfg)
 
     # Paso 1: Pre-filtro de imágenes
-    print(f"  [1/3] Pre-filtro de imágenes ({vlabel})...")
+    log(f"  [1/3] Pre-filtro de imágenes ({vlabel})...")
     fotos_aprobadas, fotos_a_guardar, costo_vision = filtrar_imagenes_legibles(imagenes_b64, desc_producto)
     metricas["llamadas_gemini_prefiltro"] = len(imagenes_b64[: vcfg["max_prefiltro"]]) if imagenes_b64 else 0
     metricas["costo_gemini"] += costo_vision
 
     # Paso 2: OCR
-    print(f"  [2/3] OCR de imágenes ({vlabel})...")
+    log(f"  [2/3] OCR de imágenes ({vlabel})...")
     transcripciones = []
     costo_ocr = 0.0
     if fotos_aprobadas:
@@ -491,9 +499,9 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         nota_vision = "[Nota: Se encontraron imágenes pero ninguna contenía texto farmacéutico legible. Procede usando únicamente los datos de texto web.]"
 
     # Paso 3: Consolidación con GLM-4.7
-    print(f"  [3/3] Consolidación con GLM-4.7...")
+    log(f"  [3/3] Consolidación con GLM-4.7...")
 
-    # Cargar prompt (override via experimento.conf → EXPERIMENT_PROMPT_FILE)
+    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / EXPERIMENT_PROMPT_FILE)
     prompt_template_path = os.getenv("EXPERIMENT_PROMPT_FILE", "prompt_agente_v3_solidificado_final.txt")
     with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
         prompt_template = f_prompt.read()
@@ -606,6 +614,7 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
         print(f"\n{'='*80}")
         print(f"[{idx}/{len(productos)}] EAN {ean} - {desc}")
         print(f"{'='*80}")
+        log_evento("producto_inicio", idx=idx, total=len(productos), ean=ean, descripcion=desc[:80])
 
         context_block = [{
             "registro": {"codbarras": ean, "descripcion_original": desc},
@@ -680,6 +689,24 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
 
         print(f"  ✓ Procesado en {metricas['tiempo_total']:.2f}s | Costo: ${metricas['costo_gemini'] + metricas['costo_glm']:.6f}")
 
+        # Logging estructurado del producto
+        costo_prod = metricas['costo_gemini'] + metricas['costo_glm']
+        atrib_log = resultado_producto.get("atributos") or {}
+        log_producto(
+            ean=ean,
+            descripcion=desc,
+            score=resultado_producto.get("score"),
+            costo=costo_prod,
+            tiempo=metricas['tiempo_total'],
+            exito=resultado_producto.get("exito", False),
+            atributos=atrib_log,
+            error=resultado_producto.get("error"),
+            modelo=os.getenv("GLM_MODEL", ""),
+            fuentes_web=len(fuentes_web),
+            imagenes=len(imagenes_b64),
+            ocr_aprobadas=metricas.get("llamadas_gemini_ocr", 0),
+        )
+
     # Calcular métricas globales finales
     resultados_batch1["metricas_globales"]["tiempo_total"] = time.time() - tiempo_inicio_global
     resultados_batch1["metricas_globales"]["costo_total"] = (
@@ -695,11 +722,19 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
     print(f"✓ BATCH=1 COMPLETADO!")
     print(f"  - Resultados guardados: {output_path}")
     print(f"  - Productos exitosos: {resultados_batch1['metricas_globales']['productos_exitosos']}/{len(productos)}")
-    print(f"  - Tiempo total: {resultados_batch1['metricas_globales']['tiempo_total']:.2f}s")
-    print(f"  - Costo total: ${resultados_batch1['metricas_globales']['costo_total']:.6f}")
-    print(f"  - Llamadas GLM-4.7: {resultados_batch1['metricas_globales']['total_llamadas_glm']}")
-    print(f"  - Llamadas Gemini: {resultados_batch1['metricas_globales']['total_llamadas_gemini']}")
-    print(f"{'='*80}")
+
+    # Resumen estructurado al logger
+    mg = resultados_batch1["metricas_globales"]
+    log_resumen({
+        "productos_exitosos": mg["productos_exitosos"],
+        "productos_fallidos": mg["productos_fallidos"],
+        "tiempo_total": mg["tiempo_total"],
+        "costo_total": mg["costo_total"],
+        "total_llamadas_vision": mg["total_llamadas_gemini"],
+        "total_llamadas_texto": mg["total_llamadas_glm"],
+        "total_errores_json": mg["total_errores_json"],
+        "resultados_archivo": output_path,
+    })
 
 if __name__ == "__main__":
     main()

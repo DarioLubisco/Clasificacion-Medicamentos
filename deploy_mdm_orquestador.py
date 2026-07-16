@@ -16,15 +16,17 @@ REMOTE = "/opt/scripts/mdm"
 CREDS = os.getenv("SYNAPSE_CREDENTIALS_PATH", "/root/N8N/synapse.credentials")
 
 FILES = [
-    "orquestador_n8n.py",
+    "orquestador_produccion.py",
     "orquestador_local_api.py",
     "evaluate_local.py",
     "orquestador_scraper.py",
     "etl_mercado_vivo_incremental.py",
     "synapse_cred.py",
     "zai_client.py",
+    "mimo_client.py",
     "limpiador_farmaceutico_regex.py",
     "prompt_agente_v3_solidificado_final.txt",
+    ".env",
 ]
 
 

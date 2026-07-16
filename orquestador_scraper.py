@@ -14,15 +14,21 @@ from openai import OpenAI
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
-# --- CONFIGURACIÓN ---
-SCRAPLING_API_URL = "http://10.147.18.204:8005/scrape"
+# --- CONFIGURACIÓN (desde .env) ---
+SCRAPLING_API_URL = os.getenv("SCRAPLING_API_URL", "http://10.147.18.204:8005/scrape")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-INPUT_FILE = "input_scraper_v11.json"
-OUTPUT_JSON = "investigacion_resultados_v11.json"
-OUTPUT_SQL = "actualizacion_scraper_v11.sql"
-SEARCH_ENGINE = "valueserp"
+INPUT_FILE = os.getenv("SCRAPING_INPUT_FILE", "input_scraper_v11.json")
+OUTPUT_JSON = os.getenv("SCRAPING_OUTPUT_JSON", "investigacion_resultados_v11.json")
+OUTPUT_SQL = os.getenv("SCRAPING_OUTPUT_SQL", "actualizacion_scraper_v11.sql")
+SEARCH_ENGINE = os.getenv("SCRAPING_SEARCH_ENGINE", "valueserp")
 VALUESERP_API_KEY = os.getenv("VALUESERP_API_KEY")
 SEARCH_LOCATION = os.getenv("SEARCH_LOCATION", "Venezuela")
+
+# Parametros operacionales desde .env
+SCRAPING_TIMEOUT = int(os.getenv("TIMEOUT_RED", "15"))
+SCRAPING_REINTENTOS = int(os.getenv("SCRAPING_REINTENTOS", "3"))
+SCRAPING_DELAY = float(os.getenv("SCRAPING_DELAY", "0.5"))
+SCRAPING_TEXTO_MAX = int(os.getenv("SCRAPING_TEXTO_MAX", "8000"))
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
@@ -48,12 +54,11 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
             "q": query,
             "location": SEARCH_LOCATION,
             "hl": "es",
-            "num": 10
+            "num": max_fuentes
         }
-        max_intentos = 3
-        for intento in range(max_intentos):
+        for intento in range(SCRAPING_REINTENTOS):
             try:
-                res = requests.get("https://api.valueserp.com/search", params=params, timeout=15)
+                res = requests.get("https://api.valueserp.com/search", params=params, timeout=SCRAPING_TIMEOUT)
                 if res.status_code == 200:
                     data = res.json()
                     organic_results = data.get("organic_results", [])
@@ -70,8 +75,8 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
             except Exception as e:
                 print(f"  [Intento {intento+1}/{max_intentos}] Error de red/timeout en búsqueda (ValueSERP): {e}")
             
-            if intento < max_intentos - 1:
-                wait_time = (intento + 1) * 3.0
+            if intento < SCRAPING_REINTENTOS - 1:
+                wait_time = (intento + 1) * SCRAPING_DELAY * 6
                 print(f"  Esperando {wait_time} segundos antes de reintentar búsqueda...")
                 time.sleep(wait_time)
         return fuentes
@@ -95,7 +100,7 @@ def extraer_fuente_web(url: str, idx: int, desc_maestra: str = None) -> dict:
     print(f"    Extrayendo Fuente {idx}: {url}")
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        response = requests.get(url, headers=headers, timeout=15)
+        response = requests.get(url, headers=headers, timeout=SCRAPING_TIMEOUT)
         if response.status_code == 200:
             html_content = response.text
             soup = BeautifulSoup(html_content, 'html.parser')
@@ -140,7 +145,7 @@ def extraer_fuente_web(url: str, idx: int, desc_maestra: str = None) -> dict:
 
             # Texto extraido
             texto = soup.get_text(separator=' ', strip=True)
-            texto = re.sub(r'\s+', ' ', texto)[:8000]
+            texto = re.sub(r'\s+', ' ', texto)[:SCRAPING_TEXTO_MAX]
 
             return {
                 "fuente": idx,
@@ -151,23 +156,6 @@ def extraer_fuente_web(url: str, idx: int, desc_maestra: str = None) -> dict:
     except Exception as e:
         print(f"    Fallo extraccion de {url}: {e}")
     return None
-
-def pre_clasificar_medicamento(desc: str) -> bool:
-    prompt = f"""
-    Eres un experto en farmacia. Analiza la siguiente descripción de producto de inventario:
-    "{desc}"
-    ¿Es esto un MEDICAMENTO FARMACÉUTICO (que contiene principios activos, ej. pastillas, jarabes, inyecciones) o es un INSUMO MEDICO / MISCELÁNEO (ej. jeringas, termómetros, gasas, champú, cosméticos)?
-    Responde ÚNICAMENTE con la palabra "MEDICAMENTO" o "INSUMO".
-    """
-    try:
-        response = client.chat.completions.create(
-            model="google/gemini-2.5-flash",
-            messages=[{"role": "user", "content": prompt}],
-        )
-        res = response.choices[0].message.content.strip().upper()
-        return "MEDICAMENTO" in res
-    except:
-        return True
 
 def procesar_lote():
     if not os.path.exists(INPUT_FILE):
@@ -189,29 +177,25 @@ def procesar_lote():
         
         is_bli = codbarras.startswith("BLI_")
         is_internal = is_bli or len(codbarras) != 13
-        is_med = pre_clasificar_medicamento(desc)
-        
+
         fuentes_extraidas = []
         todas_imagenes = []
-        
-        if not is_med:
-            print("  Clasificado como INSUMO MEDICO. Saltando busqueda web profunda.")
+
+        if not is_internal:
+            urls = buscar_en_internet(f'"{codbarras}"')
+            if not urls:
+                print("  Buscando por EAN falló, saltando búsqueda web para evitar falsos positivos.")
+
+            for idx, u in enumerate(urls, 1):
+                fuente_data = extraer_fuente_web(u, idx, desc)
+                if fuente_data:
+                    fuentes_extraidas.append(fuente_data)
+                    todas_imagenes.extend(fuente_data['imagenes_encontradas'])
+                    if len(set(todas_imagenes)) >= int(os.getenv("MAX_FOTOS_TOTALES", "10")):
+                        break
+                time.sleep(SCRAPING_DELAY)
         else:
-            if not is_internal:
-                urls = buscar_en_internet(f'"{codbarras}"')
-                if not urls:
-                    print("  Buscando por EAN falló, saltando búsqueda web para evitar falsos positivos.")
-                
-                for idx, u in enumerate(urls, 1):
-                    fuente_data = extraer_fuente_web(u, idx, desc)
-                    if fuente_data:
-                        fuentes_extraidas.append(fuente_data)
-                        todas_imagenes.extend(fuente_data['imagenes_encontradas'])
-                        if len(set(todas_imagenes)) >= 10:
-                            break
-                    time.sleep(1) # delay between scraping
-            else:
-                print(f"  Código interno ({codbarras}). Sin búsqueda web.")
+            print(f"  Código interno ({codbarras}). Sin búsqueda web.")
                 
         # Estructuramos para el Mega Orquestador V3
         context_block = {
@@ -219,7 +203,6 @@ def procesar_lote():
                 "codigo": codigo, 
                 "codbarras": codbarras, 
                 "descripcion_original": desc,
-                "es_medicamento": 1 if is_med else 0,
                 "is_blister": 1 if is_bli else 0
             },
             "fuentes_web": fuentes_extraidas
