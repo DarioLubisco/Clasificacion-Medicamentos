@@ -12,7 +12,7 @@ HOST = os.getenv("MDM_DEPLOY_HOST", "10.147.18.204")
 USER = os.getenv("MDM_DEPLOY_USER", "root")
 PASS = os.getenv("MDM_DEPLOY_PASSWORD", "Twinc3pt.2")
 LOCAL = Path(__file__).resolve().parent
-REMOTE = "/opt/scripts/mdm"
+REMOTE = "/home/synapse/clasificacion"
 CREDS = os.getenv("SYNAPSE_CREDENTIALS_PATH", "/root/N8N/synapse.credentials")
 
 FILES = [
@@ -49,7 +49,7 @@ def main() -> int:
     sftp.close()
 
     unit = f"""[Unit]
-Description=MDM Orquestador Local V11 API
+Description=Pipeline Clasificacion Farmaceutica
 After=network.target
 
 [Service]
@@ -57,7 +57,6 @@ Type=simple
 WorkingDirectory={REMOTE}
 Environment=SYNAPSE_CREDENTIALS_PATH={CREDS}
 Environment=EXPERIMENT_TAXONOMIAS_CACHE={REMOTE}/scratch/taxonomias_local.txt
-Environment=ORQUESTADOR_BATCH_SIZE=5
 Environment=ORQUESTADOR_API_PORT=8012
 ExecStart=/usr/bin/python3 {REMOTE}/orquestador_local_api.py
 Restart=always
