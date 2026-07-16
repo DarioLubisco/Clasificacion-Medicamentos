@@ -24,14 +24,14 @@ load_synapse_credentials()
 from pipeline_logger import log, log_producto, log_resumen, log_evento
 
 # Cliente Z.ai directo (GLM Coding Plan)
-from zai_client import call_glm, extract_content, estimate_cost, GLM_MODEL as ZAI_MODEL
-from mimo_client import call_mimo_chat, extract_content as mimo_extract_content
-from mimo_client import estimate_cost as mimo_estimate_cost, reasoning_tokens as mimo_reasoning_tokens
+from cliente_glm import call_glm, extract_content, estimate_cost, GLM_MODEL as ZAI_MODEL
+from cliente_vision_mimo import call_mimo_chat, extract_content as mimo_extract_content
+from cliente_vision_mimo import estimate_cost as mimo_estimate_cost, reasoning_tokens as mimo_reasoning_tokens
 
 # Cliente DeepSeek nativo (api.deepseek.com) — opcional, activado vía EXPERIMENT_TEXTO_PROVIDER=deepseek
 try:
-    from deepseek_client import call_deepseek, extract_content as deepseek_extract_content
-    from deepseek_client import estimate_cost as deepseek_estimate_cost, DEEPSEEK_MODEL
+    from cliente_deepseek import call_deepseek, extract_content as deepseek_extract_content
+    from cliente_deepseek import estimate_cost as deepseek_estimate_cost, DEEPSEEK_MODEL
 except Exception:
     call_deepseek = None
 

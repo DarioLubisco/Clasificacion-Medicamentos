@@ -25,7 +25,7 @@ load_synapse_credentials()
 
 import evaluate_local as ev
 import orquestador_scraper as scrap
-from limpiador_farmaceutico_regex import procesar_farmacos
+from normalizador_farmaceutico import procesar_farmacos
 
 REPO_DIR = Path(__file__).resolve().parent
 BATCH_SIZE = int(os.getenv("ORQUESTADOR_BATCH_SIZE", "5"))
@@ -81,7 +81,7 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
         cur.execute(
             f"""
             SELECT TOP ({limit})
-                codigo, codbarras, descrip1art,
+                codbarras, descrip1art,
                 ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
                 principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
                 fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
@@ -106,14 +106,13 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
     for row in rows:
         ya = {}
         for idx, key in enumerate(keys):
-            val = row[4 + idx]
+            val = row[3 + idx]
             if val is not None and str(val).strip() != "":
                 ya[key] = val
         productos.append({
-            "codigo": row[0],
-            "codbarras": row[1],
-            "descripcion": row[2],
-            "ciclos_reproceso": int(row[3]),
+            "codbarras": row[0],
+            "descripcion": row[1],
+            "ciclos_reproceso": int(row[2]),
             "atributos_ya_encontrados": ya,
         })
     return productos
@@ -224,7 +223,7 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         fuentes, imagenes = scrape_producto(codbarras, desc)
         context_block = [{
             "registro": {
-                "codigo": item["codigo"],
+                "codigo": codbarras,
                 "codbarras": codbarras,
                 "descripcion_original": desc,
                 "ciclos_reproceso": item["ciclos_reproceso"],
@@ -254,7 +253,7 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
             continue
 
         filas.append(atributos_a_fila_sql(
-            codbarras, item["codigo"], atrib, item["ciclos_reproceso"], modelo,
+            codbarras, codbarras, atrib, item["ciclos_reproceso"], modelo,
         ))
         costo = (metricas.get("costo_gemini") or 0) + (metricas.get("costo_glm") or 0)
         print(f"  [MDM] OK score={filas[-1]['score_calidad']} costo=${costo:.4f}")

@@ -10,7 +10,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 socket.setdefaulttimeout(180) # 3 minutes read timeout
 from MDM_Unified_Mapper import MasterCatalog
-from limpiador_farmaceutico_regex import procesar_farmacos
+from normalizador_farmaceutico import procesar_farmacos
 
 gasto_lock = threading.Lock()
 
