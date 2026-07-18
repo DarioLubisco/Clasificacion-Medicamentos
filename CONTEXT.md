@@ -88,9 +88,6 @@
 - Los detalles técnicos (calibres, grosores, tallas, diámetros) NUNCA se usan para inventar subcategorías, sino que se extraen de manera pura en el campo `especificacion_tecnica`.
 - *Decisión de Arquitectura*: Las columnas SQL para soportar la V2 (`especificacion_tecnica`, `dominio`, `categoria`, `subcategoria`) se difirieron para implementarse cuando haya conexión a la BD, pero los scripts de Python ya cargan el prompt V2.
 
-### R9: Condición de Venta y Psicotrópicos
-- El atributo `requiere_recipe` es exclusivamente para medicamentos Psicotrópicos o Estupefacientes controlados.
-- Todo lo demás (incluyendo antibióticos) se asume como venta libre por defecto (`requiere_recipe = 0`).
 
 ### R10: Consenso de 2 Imágenes sobreescribe el EAN
 - Cuando 2+ imágenes independientes (de distinto dominio, garantizado por scraper) reportan el mismo valor para un atributo (concentración, fabricante, marca, forma_farm., cantidad, registro_sanitario) Y ese valor difiere del declarado en `descripcion_original`, el **consenso de imágenes PREVALECE** sobre el EAN.

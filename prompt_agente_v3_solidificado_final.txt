@@ -83,7 +83,6 @@ Para cada producto, extraerás y validarás los siguientes campos. La omisión d
 *   **volumen_unidad** (Float o Null): Peso/volumen de **UNA SOLA UNIDAD MÍNIMA INDIVIDUAL** (sobre, ampolla). Solo si aplica y se diferencia del total.
 *   **volumen_unidad_medida** (String o Null): Unidad de medida del `volumen_unidad` (ej: "ml", "g"). Si `volumen_unidad` es null, esto es null.
 *   **generico** (Integer, 0 o 1): `1` si es medicamento genérico (DCI), `0` si es de marca/patente.  
-*   **requiere_recipe** (Integer, 0 o 1): **`1` SOLO SI es un psicotrópico o estupefaciente** (ej: benzodiacepinas, opioides, anfetaminas reguladas). Para cualquier otro (antibióticos, analgésicos, antiinflamatorios, suplementos, etc.) debe ser **`0`** (venta libre por defecto).  
 *   **registro_sanitario** (String o Null): Registro sanitario M.P.P.S. u otro organismo (ej: "E.F.G. 35.889/12"). Extraer del empaque o documento. `null` si no visible.
 *   **clasificacion_insumo_Des** (String o Null): **SOLO** si el dominio es `"MATERIAL_MEDICO_INSUMO"` o `"MISCELANEO"`. Debe ser uno de los valores válidos predefinidos: "Higiene Bucodental", "Cuidado Femenino", "Cuidado Corporal y Baño", "Desodorantes", "Cuidado de la Piel", "Cuidado del Cabello", "Fotoprotección", "Pañales y Toallitas", "Alimentación y Fórmulas Infantiles", "Accesorios Infantiles", "Vitaminas y Minerales", "Nutrición Deportiva", "Alimentos y Bebidas Dietéticas", "Material de Curación", "Insumos Descartables", "Equipos de Monitoreo de Salud", "Artículos Ortopédicos", "Productos de Limpieza", "Repelentes de Insectos", "Otros Misceláneos", "Pruebas Rápidas de Diagnóstico", "Reactivos Químicos". Para medicamentos alopáticos, debe ser `null`.
 *   **especificacion_tecnica** (String o Null): Detalle técnico, talla, calibre, modelo. **SOLO** para insumos médicos o misceláneos cuando sea indispensable. Ej: "16G", "N95", "Nelaton", "Pediátrica". Para medicamentos alopáticos, `null`.
@@ -124,9 +123,8 @@ El cálculo sigue reglas estrictas basadas en el **EMPAQUE EXTERNO PRINCIPAL**, 
 6.  **Origen**: Únicamente nombres de países soberanos (ej: "ESPAÑA", "ARGENTINA"). "Importado", "Nacional", "Extranjero", "UE" no son válidos y deben convertirse en `null`.
 7.  **Prohibición de Conversiones (Tópicos y Porcentajes)**: La concentración debe transcribirse **exactamente** como aparece en la fuente, especialmente en tópicos (cremas, geles). Si dice "0.1%", queda "0.1%". **PROHIBIDO** convertir a "1 mg/g" u otras equivalencias. La literalidad es máxima.
 8.  **Registro Sanitario**: Extraer solo códigos con formato de registro (M.P.P.S., E.F.G., etc.). Si aparece un número sin prefijo claro, analiza si es lote o código de barras. Ante la duda, `null`.
-9.  **Requiere Recipe**: Regla estricta: `1` **exclusivamente** para psicotrópicos/estupefacientes de lista controlada (ej: Alprazolam, Morfina, Metilfenidato, Clonazepam, Zolpidem). Antibióticos, antihipertensivos, anticonceptivos, analgésicos comunes son `0`. Las dudas se resuelven con `0`.
-10. **Especificación Técnica**: Solo para insumos o misceláneos. En medicamentos, `null`. No confundir "forte" o "plus" con especificación técnica. Si un insumo no tiene calibre/talla, `null`.
-11. **Consistencia de campos**: Si `codigo_atc_profundo` es `null`, `confianza_atc` debe ser `null`. Si `volumen_unidad` es `null`, `volumen_unidad_medida` debe ser `null`. Mantén la coherencia.
+9.  **Especificación Técnica**: Solo para insumos o misceláneos. En medicamentos, `null`. No confundir "forte" o "plus" con especificación técnica. Si un insumo no tiene calibre/talla, `null`.
+10. **Consistencia de campos**: Si `codigo_atc_profundo` es `null`, `confianza_atc` debe ser `null`. Si `volumen_unidad` es `null`, `volumen_unidad_medida` debe ser `null`. Mantén la coherencia.
 
 ---
 
@@ -156,7 +154,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 ---
 
 ### 7. EJEMPLOS DE COMPORTAMIENTO (FEW-SHOT CONSOLIDADOS)
-*Asegúrate de que todos los campos estén presentes en cada ejemplo, especialmente `requiere_recipe` y `registro_sanitario`.*
+*Asegúrate de que todos los campos estén presentes en cada ejemplo, especialmente `registro_sanitario`.*
 
 **Ejemplo 1 (Medicamento Sólido en Caja - Regla A)**:
 - Descripción: "IBUPROFENO 400MG X 10 TAB"
@@ -196,7 +194,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": null,
       "volumen_unidad_medida": null,
       "generico": 1,
-      "requiere_recipe": 0,
       "registro_sanitario": null,
       "clasificacion_insumo_Des": null,
       "especificacion_tecnica": null
@@ -243,7 +240,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": 27.9,
       "volumen_unidad_medida": "g",
       "generico": 0,
-      "requiere_recipe": 0,
       "registro_sanitario": null,
       "clasificacion_insumo_Des": null,
       "especificacion_tecnica": null
@@ -290,7 +286,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": 100,
       "volumen_unidad_medida": "ml",
       "generico": 1,
-      "requiere_recipe": 0,
       "registro_sanitario": null,
       "clasificacion_insumo_Des": null,
       "especificacion_tecnica": null
@@ -337,7 +332,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": null,
       "volumen_unidad_medida": null,
       "generico": 0,
-      "requiere_recipe": 0,
       "registro_sanitario": null,
       "clasificacion_insumo_Des": "Insumos Descartables",
       "especificacion_tecnica": "Talla M"
@@ -384,7 +378,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": 2,
       "volumen_unidad_medida": "kg",
       "generico": 0,
-      "requiere_recipe": 0,
       "registro_sanitario": null,
       "clasificacion_insumo_Des": "Nutrición Deportiva",
       "especificacion_tecnica": null
@@ -431,7 +424,6 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
       "volumen_unidad": null,
       "volumen_unidad_medida": null,
       "generico": 0,
-      "requiere_recipe": 0,
       "registro_sanitario": "DM-12345",
       "clasificacion_insumo_Des": "Insumos Descartables",
       "especificacion_tecnica": "#16"
@@ -455,7 +447,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 ### 9. CHECKLIST DE VERIFICACIÓN (AUTOINSPECCIÓN OBLIGATORIA)
 Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem no se cumple, **corrígelo antes de emitir**.
 
-- [ ] ¿Incluí **todas** las llaves del esquema, sin excepción? ¿Alguna está omitida? (Revisar `requiere_recipe`, `registro_sanitario`, `volumen_unidad_medida`, etc.)
+- [ ] ¿Incluí **todas** las llaves del esquema, sin excepción? ¿Alguna está omitida? (Revisar `registro_sanitario`, `volumen_unidad_medida`, etc.)
 - [ ] ¿El `codigo_atc` fue extraído **exclusivamente** de los corchetes del catálogo? Si no hay corchetes, es `null`.
 - [ ] ¿El `codigo_atc_profundo` coincide con mi conocimiento farmacológico y es de nivel 4/5? Si no hay seguridad, es `null`.
 - [ ] ¿La `concentracion` es por **unidad mínima**? ¿Está transcrita literalmente sin conversiones?
@@ -466,7 +458,6 @@ Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem n
 - [ ] ¿El `origen` es un país soberano y no "Importado" o "Nacional"?
 - [ ] ¿Usé `null` y no strings vacíos para datos ausentes?
 - [ ] Si hubo conflicto de concentración EAN vs imagen, ¿apliqué la regla de consenso? (Si 2+ imágenes coinciden, prevalece la imagen con cap a 4. Si es 1 sola imagen, prevalece el EAN con confianza ≤3).
-- [ ] ¿`requiere_recipe` es `1` solo para psicotrópicos/estupefacientes y `0` para todo lo demás?
 - [ ] ¿`registro_sanitario` está extraído si era visible? ¿Está en el formato correcto?
 
 ---
@@ -487,7 +478,7 @@ Describe el empaque: ¿es caja con múltiples unidades? ¿Frasco único? ¿Cuán
 Cruza tu análisis con el [CATÁLOGO ACTIVO DISPONIBLE]. Selecciona la combinación exacta de dominio/categoria/subcategoria. Extrae el código ATC si existe. Si no encaja, asigna `null` a taxonomía.
 
 **Paso 5 – ATC Profundo y Campos Sensibles**:  
-Deduce `codigo_atc_profundo` para el principio activo usando tu conocimiento. Evalúa `requiere_recipe` según lista de controlados. Extrae `registro_sanitario` si es visible. Asigna puntajes individuales a los atributos en conflicto.
+Deduce `codigo_atc_profundo` para el principio activo usando tu conocimiento. Extrae `registro_sanitario` si es visible. Asigna puntajes individuales a los atributos en conflicto.
 
 **Solo después de cerrar `</analisis_clinico>`** generarás el array JSON. La respuesta debe comenzar con `<analisis_clinico>`.
 

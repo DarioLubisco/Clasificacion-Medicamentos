@@ -56,9 +56,8 @@ Extrae y normaliza los siguientes atributos. Si un campo no aplica o no se encue
 9. **`cantidad_presentacion`**: Número entero de unidades (Ej: Pastillas en la caja o ampollas en el pack).
 10. **`contenido_neto`**: Extraer el volumen líquido o peso total del envase primario. SINTAXIS SIN ESPACIOS. Líquidos (jarabes, gotas, suspensiones): Usar ML (Ej: 120ML, 15ML). Tópicos (cremas, geles): Usar G (Ej: 30G). Sólidos (pastillas, cápsulas): Dejar en null.
 11. **`codigo_atc`**: Código ATC oficial de la OMS (Clasificación Anatómica, Terapéutica, Química). Ej: "N02BE01". Si no se encuentra fácilmente, `null`.
-12. **`requiere_recipe`**: Entero booleano (1 o 0). `1` si el medicamento exige prescripción médica (Rx, Psicotrópicos, Antibióticos), `0` si es de Venta Libre (OTC).
-13. **`segmento_etario`**: Población objetivo principal explícita. Ej: "ADULTO", "PEDIATRICO", "INFANTIL", "NEONATAL". Si es de uso general o no se especifica en la caja, dejar en `null`.
-14. **`url_imagen`**: Extrae la URL (enlace) directa a la mejor fotografía de alta calidad del producto que encuentres. Debe ser un enlace HTTP/HTTPS válido que apunte a una imagen (jpg, png, webp). Si no hay imagen disponible, `null`.
+12. **`segmento_etario`**: Población objetivo principal explícita. Ej: "ADULTO", "PEDIATRICO", "INFANTIL", "NEONATAL". Si es de uso general o no se especifica en la caja, dejar en `null`.
+13. **`url_imagen`**: Extrae la URL (enlace) directa a la mejor fotografía de alta calidad del producto que encuentres. Debe ser un enlace HTTP/HTTPS válido que apunte a una imagen (jpg, png, webp). Si no hay imagen disponible, `null`.
 
 ## Paso 6: Gestión de Integridad Relacional (Fuzzy Match)
 - **REGLA DE ORO:** Antes de registrar un fabricante, marca o atributo como "NUEVO" en las tablas catálogo (SQL), debes agotar la búsqueda de descripciones similares.

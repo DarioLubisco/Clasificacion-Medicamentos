@@ -29,7 +29,7 @@ Eres un Agente de Conciliación MDM. Tu misión es mapear los descriptores de te
 ## Campos Adicionales y Metadatos
 Los siguientes campos son extraídos y procesados directamente en la misma tabla sin apuntar a un catálogo maestro con clave foránea externa:
 - **`marca`** e **`indicaciones`**, **`contraindicaciones`**, **`almacenamiento`**, **`codigo_atc`**, **`url_imagen`** (Valor de las fotos).
-- **`requiere_recipe`** (bit), **`es_medicamento`** (bit), **`segmento_etario`** (varchar).
+- **`es_medicamento`** (bit), **`segmento_etario`** (varchar).
 - **`cantidad_presentacion`** (int).
 
 ---

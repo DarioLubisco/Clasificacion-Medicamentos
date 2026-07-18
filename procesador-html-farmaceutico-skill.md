@@ -27,9 +27,8 @@ Lee meticulosamente el HTML o texto proporcionado. Extrae y normaliza los siguie
 9. **`cantidad_presentacion`**: Número entero de unidades (Ej: Pastillas en la caja o ampollas en el pack).
 10. **`contenido_neto`**: Extraer el volumen líquido o peso total del envase primario. SINTAXIS SIN ESPACIOS. Líquidos (jarabes, gotas, suspensiones): Usar ML (Ej: 120ML, 15ML). Tópicos (cremas, geles): Usar G (Ej: 30G). Sólidos (pastillas, cápsulas): Dejar en `null`.
 11. **`codigo_atc`**: Código ATC oficial de la OMS (Ej: "N02BE01"). Extraerlo si aparece explícitamente en el HTML. Si no, `null`.
-12. **`requiere_recipe`**: Entero booleano (1 o 0). `1` si el medicamento exige prescripción médica (Rx, Psicotrópicos, Antibióticos), `0` si es de Venta Libre (OTC). Dedúcelo por la naturaleza del principio activo si no está explícito.
-13. **`segmento_etario`**: Población objetivo principal explícita en la caja o prospecto. Ej: "ADULTO", "PEDIATRICO", "INFANTIL", "NEONATAL". Si es de uso general o no se especifica, dejar en `null`.
-14. **`url_imagen`**: Busca etiquetas `<img>` dentro del HTML y extrae la URL (`src`) directa a la mejor fotografía de alta calidad del producto. Debe ser un enlace HTTP/HTTPS válido. Si la URL es relativa, conviértela en absoluta. Si no hay imagen disponible, `null`.
+12. **`segmento_etario`**: Población objetivo principal explícita en la caja o prospecto. Ej: "ADULTO", "PEDIATRICO", "INFANTIL", "NEONATAL". Si es de uso general o no se especifica, dejar en `null`.
+13. **`url_imagen`**: Busca etiquetas `<img>` dentro del HTML y extrae la URL (`src`) directa a la mejor fotografía de alta calidad del producto. Debe ser un enlace HTTP/HTTPS válido. Si la URL es relativa, conviértela en absoluta. Si no hay imagen disponible, `null`.
 
 ---
 
@@ -58,7 +57,6 @@ Tu respuesta final DEBE ser SIEMPRE un **objeto o array JSON completo y crudo**,
     "cantidad_presentacion": 10,
     "contenido_neto": null,
     "codigo_atc": "R06AX13",
-    "requiere_recipe": 0,
     "segmento_etario": "ADULTO",
     "url_imagen": "https://www.ejemplo.com/imagenes/loratadina.jpg"
   },
