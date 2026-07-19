@@ -83,7 +83,7 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
                 ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
                 principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
                 fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
-                blister, generico, cantidad_presentacion,
+                generico, cantidad_presentacion,
                 contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des
             FROM Procurement.por_aprobacion_equivalencias
             WHERE estado_ciclo = 'ABIERTO'
@@ -101,7 +101,7 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
     productos = []
     keys = [
         "principio_activo", "concentracion", "forma_farmaceutica", "fabricante", "marca",
-        "codigo_atc", "clasificacion_insumo_Des", "blister", "generico",
+        "codigo_atc", "clasificacion_insumo_Des", "generico",
         "cantidad_presentacion", "contenido_neto", "contenido_neto_unidad_Des",
         "segmento_etario", "origen",
     ]
@@ -161,6 +161,38 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
     return fuentes_extraidas, list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES]
 
 
+def _buscar_id_taxonomia(
+    conn_str: str,
+    dominio: str | None,
+    categoria: str | None,
+    subcategoria: str | None,
+) -> int | None:
+    """Lookup del id_taxonomia en Procurement.Taxonomia por match exacto de
+    dominio + categoria + subcategoria (todas activas, activo=1).
+    Devuelve None si falta algún campo, no hay match, o hay error de conexión.
+    """
+    if not (dominio and categoria and subcategoria):
+        return None
+    try:
+        conn = pyodbc.connect(conn_str, timeout=10)
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT TOP 1 id_taxonomia FROM Procurement.Taxonomia "
+                "WHERE dominio = ? AND categoria = ? AND subcategoria = ? "
+                "AND activo = 1",
+                dominio, categoria, subcategoria,
+            )
+            row = cur.fetchone()
+            return int(row[0]) if row else None
+        finally:
+            conn.close()
+    except Exception:
+        # Lookup es best-effort: si falla no rompe el batch (la taxonomía
+        # queda en las columnas VARCHAR como respaldo).
+        return None
+
+
 def _sql_lit(val: Any, is_string: bool = True) -> str:
     """Format a Python value as a SQL literal (NULL if empty). Mirrors fmt() in the boss script."""
     if val is None or val == "None" or str(val).strip() == "":
@@ -215,7 +247,17 @@ def build_update_clauses(
         f"marca_Des = {_sql_lit(atrib.get('marca'))}",
         f"codigo_atc_Des = {_sql_lit(atrib.get('codigo_atc'))}",
         f"clasificacion_insumo_Des = {_sql_lit(atrib.get('clasificacion_insumo_Des'))}",
-        f"blister = {_sql_lit(atrib.get('blister'), False)}",
+        # Campos nuevos sincronizados con prompt V3 (antes se descartaban).
+        f"codigo_atc_profundo_Des = {_sql_lit(atrib.get('codigo_atc_profundo'))}",
+        f"confianza_atc = {_sql_lit(atrib.get('confianza_atc'), False)}",
+        f"dominio = {_sql_lit(atrib.get('dominio'))}",
+        f"categoria = {_sql_lit(atrib.get('categoria'))}",
+        f"subcategoria = {_sql_lit(atrib.get('subcategoria'))}",
+        f"registro_sanitario = {_sql_lit(atrib.get('registro_sanitario'))}",
+        f"especificacion_tecnica = {_sql_lit(atrib.get('especificacion_tecnica'))}",
+        f"volumen_unidad = {_sql_lit(atrib.get('volumen_unidad'), False)}",
+        f"volumen_unidad_medida = {_sql_lit(atrib.get('volumen_unidad_medida'))}",
+        f"generico = {_sql_lit(atrib.get('generico'), False)}",
         f"cantidad_presentacion = {_sql_lit(atrib.get('cantidad_presentacion'), False)}",
         f"contenido_neto = {_sql_lit(atrib.get('contenido_neto'), False)}",
         f"contenido_neto_unidad_Des = {_sql_lit(atrib.get('contenido_neto_unidad_Des'))}",
@@ -243,6 +285,16 @@ def build_update_clauses(
             f"origen = {_sql_lit(catalog.find_id('origen', atrib.get('origen')), False)}",
             f"contenido_neto_unidad = {_sql_lit(catalog.find_id('contenido_neto_unidad', atrib.get('contenido_neto_unidad_Des')), False)}",
         ])
+
+    # id_taxonomia: lookup en Procurement.Taxonomia por (dominio, categoria, subcategoria).
+    # Best-effort: si no hay match exacto o falla, queda NULL (las columnas
+    # VARCHAR dominio/categoria/subcategoria sirven como respaldo textual).
+    id_tax = _buscar_id_taxonomia(
+        _conn_str(),
+        atrib.get("dominio"), atrib.get("categoria"), atrib.get("subcategoria"),
+    )
+    if id_tax:
+        clauses.append(f"id_taxonomia = {id_tax}")
 
     return clauses, score, estado_ciclo, ciclos_final
 
