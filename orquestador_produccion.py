@@ -120,7 +120,11 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
     return productos
 
 
-def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = None) -> tuple[list, list]:
+def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = None) -> tuple[list, list, list]:
+    """Scrapea un producto. Devuelve (fuentes_extraidas, imagenes, urls_encontradas).
+    Tercer elemento son las URLs crudas que ValueSERP devolvió (para distinguir
+    modos de fallo: 0 URLs = ValueSERP caído; >0 URLs pero 0 fuentes = HTML falló).
+    """
     fuentes_extraidas: list = []
     todas_imagenes: list = []
     is_internal = codbarras.startswith("BLI_") or len(codbarras) != 13
@@ -135,7 +139,7 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
             codbarras=codbarras, trigger_id=trigger_id,
             detalle={"motivo": "codigo_interno", "len": len(codbarras)},
         )
-        return [], []
+        return [], [], []
 
     urls = scrap.buscar_en_internet(f'"{codbarras}" {descripcion}', max_fuentes=MAX_FUENTES_WEB)
     for idx, url in enumerate(urls, 1):
@@ -147,18 +151,33 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
                 break
         time.sleep(SCRAPING_DELAY)
 
-    # Alerta: EAN-13 válido pero el scraper no trajo NADA (ValueSERP caído, red, etc.).
-    # Sin esto, el modo de fallo "0 fuentes" pasaba silencioso y solo se veía como score bajo.
-    if not fuentes_extraidas:
+    # Diagnóstico fino del resultado del scraping. Antes todo se reportaba como
+    # "scraper no trajo fuentes ni imágenes" (WARN), lo cual era un falso positivo:
+    # cuando ValueSERP sí devolvía URLs pero la extracción HTML fallaba (SSL, 403, etc.),
+    # el producto igual clasificaba bien con score 80+. Eso llenaba el log de alertas
+    # ruidosas que no indicaban problemas reales.
+    if not urls:
         log_evento(
             "WARN", "SCRAPER",
-            f"EAN-13 {codbarras} válido pero el scraper no trajo fuentes ni imágenes. "
-            f"Posible caída de ValueSERP o red.",
+            f"ValueSERP no devolvió URLs para {codbarras}. Posible caída de API o red.",
             codbarras=codbarras, trigger_id=trigger_id,
-            detalle={"motivo": "scraper_vacio", "query": f'"{codbarras}" {descripcion}'[:200]},
+            detalle={"motivo": "valueserp_vacio", "query": f'"{codbarras}" {descripcion}'[:200]},
+        )
+    elif urls and not fuentes_extraidas:
+        log_evento(
+            "INFO", "SCRAPER",
+            f"{codbarras}: {len(urls)} URLs halladas pero 0 extrajeron contenido "
+            f"(SSL/403/timeout en descarga HTML). El pipeline continúa con solo descripción.",
+            codbarras=codbarras, trigger_id=trigger_id,
+            detalle={"motivo": "html_descarga_fallo", "urls": urls[:5]},
+            alerta_telegram=False,  # INFO no Telegram; común cuando farmacias caen
         )
 
-    return fuentes_extraidas, list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES]
+    return (
+        fuentes_extraidas,
+        list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES],
+        urls,
+    )
 
 
 def _buscar_id_taxonomia(
@@ -352,6 +371,165 @@ def write_rows_to_db(rows: list[dict[str, Any]], trigger_id: int | None = None) 
     return written
 
 
+def _persistir_trazabilidad(
+    codbarras: str,
+    trigger_id: int | None,
+    metricas: dict,
+    raw_content: str,
+    fotos: list[dict],
+    fuentes: list[dict],
+    urls_encontradas: list[str],
+    atrib: dict,
+    score: int | None,
+    estado: str | None,
+) -> None:
+    """Persiste TODO lo que el pipeline calcula pero antes descartaba:
+      - LLM: prompt final, respuesta cruda, chain-of-thought, tokens, costo,
+        confianza, alertas (tabla nueva OrquestadorLLMLog).
+      - Imágenes: URL + score legibilidad + LogID (Imagenes_Productos_Crudas).
+      - Scraping crudo: URL origen + texto extraído (scraping_farmacias_raw).
+
+    Best-effort: si falla algún INSERT, se loguea a OrquestadorLog y se continúa.
+    La persistencia de trazabilidad NUNCA debe romper el batch principal.
+    """
+    try:
+        conn = pyodbc.connect(_conn_str(), timeout=15)
+    except Exception as exc:
+        log_evento("WARN", "TRAZABILIDAD",
+                   f"No se pudo conectar para persistir trazabilidad de {codbarras}: {exc}",
+                   codbarras=codbarras, trigger_id=trigger_id,
+                   alerta_telegram=False)
+        return
+
+    try:
+        cur = conn.cursor()
+
+        # 1) Fila principal en OrquestadorLLMLog
+        costo_vision = float(metricas.get("costo_gemini") or 0)
+        costo_texto = float(metricas.get("costo_glm") or 0)
+        # Serializar listas/dicts a JSON string
+        errores = metricas.get("errores_api") or []
+        errores_str = json.dumps(errores, ensure_ascii=False)[:2000] if errores else None
+        baja_conf = atrib.get("atributos_baja_confianza") if atrib else None
+        baja_conf_str = json.dumps(list(baja_conf), ensure_ascii=False)[:500] if baja_conf else None
+        alertas = (atrib.get("alertas_auditoria") if atrib else None) or None
+        confianza = atrib.get("confianza_nivel") if atrib else None
+
+        cur.execute(
+            """INSERT INTO Procurement.OrquestadorLLMLog
+               (TriggerID, Codbarras, ModeloTexto, ModeloVision, Temperatura,
+                PromptArchivo, PromptEnviado, RespuestaCruda, ReasoningContent,
+                PromptTokens, CompletionTokens, ReasoningTokens,
+                CostoVisionUSD, CostoTextoUSD, CostoTotalUSD,
+                ConfianzaNivel, AtributosBajaConf, AlertasAuditoria,
+                TiempoTotalSeg, NumFuentes, NumImagenes, NumImagenesAprob,
+                Errores, ScoreFinal, EstadoCiclo)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            trigger_id, codbarras,
+            metricas.get("modelo_texto"),
+            metricas.get("modelo_vision") or os.getenv("VISION_MODELO"),
+            metricas.get("temperatura"),
+            metricas.get("prompt_archivo"),
+            metricas.get("prompt_enviado"),
+            raw_content or None,
+            metricas.get("reasoning_content") or None,
+            int(metricas.get("prompt_tokens") or 0) or None,
+            int(metricas.get("completion_tokens") or 0) or None,
+            int(metricas.get("reasoning_tokens") or 0) or None,
+            costo_vision or None,
+            costo_texto or None,
+            (costo_vision + costo_texto) or None,
+            int(confianza) if confianza is not None else None,
+            baja_conf_str,
+            (alertas[:1000] if isinstance(alertas, str) else None),
+            float(metricas.get("tiempo_total") or 0) or None,
+            len(fuentes),                           # fuentes que SÍ extrajeron HTML
+            int(metricas.get("num_imagenes") or 0),
+            int(metricas.get("num_imagenes_aprob") or 0),
+            errores_str,
+            score,
+            estado,
+        )
+        # Recuperar el LogID autogenerado (para FK suave en las tablas hijas)
+        cur.execute("SELECT CAST(@@IDENTITY AS BIGINT)")
+        row = cur.fetchone()
+        log_id = int(row[0]) if row else None
+
+        # 2) Una fila por imagen aprobada en Imagenes_Productos_Crudas
+        if log_id and fotos:
+            for foto in fotos:
+                url = (foto.get("url_imagen") or "")[:5000]
+                score_leg = foto.get("score")
+                if url:
+                    cur.execute(
+                        """INSERT INTO Procurement.Imagenes_Productos_Crudas
+                           (codbarras, url_imagen, score_legibilidad, LogID)
+                           VALUES (?,?,?,?)""",
+                        codbarras, url,
+                        int(score_leg) if score_leg is not None else None,
+                        log_id,
+                    )
+
+        # 3) Una fila por fuente extraída en scraping_farmacias_raw
+        if log_id and fuentes:
+            from urllib.parse import urlparse
+            for fuente in fuentes:
+                url_origen = (fuente.get("url") or "")[:1000]
+                farmacia = urlparse(url_origen).netloc.replace("www.", "")[:100] if url_origen else None
+                texto = (fuente.get("texto_extraido") or "")
+                imagenes_fuente = fuente.get("imagenes_encontradas") or []
+                url_img_principal = (imagenes_fuente[0] if imagenes_fuente else "")[:1000]
+                if url_origen:
+                    cur.execute(
+                        """INSERT INTO Procurement.scraping_farmacias_raw
+                           (codbarras, farmacia_origen, url_origen, url_imagen,
+                            texto_extraido, LogID)
+                           VALUES (?,?,?,?,?,?)""",
+                        codbarras, farmacia, url_origen,
+                        url_img_principal or None,
+                        texto[:50000] or None,
+                        log_id,
+                    )
+
+        conn.commit()
+    except Exception as exc:
+        # Trazabilidad falló → no romper el batch. Loguear y seguir.
+        log_evento("WARN", "TRAZABILIDAD",
+                   f"Fallo persistiendo trazabilidad de {codbarras}: {exc}",
+                   codbarras=codbarras, trigger_id=trigger_id,
+                   alerta_telegram=False)
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _update_llm_log_score(codbarras: str, score: int, estado: str) -> None:
+    """Backfill del ScoreFinal/EstadoCiclo en la última fila de OrquestadorLLMLog
+    del codbarras dado. Se llama después de calcular el score final (post-validación),
+    ya que la persistencia inicial se hace antes de tener ese dato.
+    Best-effort: si falla, no afecta al batch."""
+    try:
+        conn = pyodbc.connect(_conn_str(), timeout=10)
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "UPDATE Procurement.OrquestadorLLMLog SET ScoreFinal = ?, EstadoCiclo = ? "
+                "WHERE LogID = (SELECT MAX(LogID) FROM Procurement.OrquestadorLLMLog WHERE Codbarras = ?)",
+                score, estado, codbarras,
+            )
+            conn.commit()
+        finally:
+            conn.close()
+    except Exception:
+        pass  # best-effort
+
+
 def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
     if not check_threshold(trigger):
         return {"status": "skipped", "reason": "threshold_not_met", "TriggerID": trigger.get("TriggerID")}
@@ -378,7 +556,7 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         desc = item["descripcion"]
         print(f"[MDM] Procesando {codbarras} — {desc[:60]}")
 
-        fuentes, imagenes = scrape_producto(codbarras, desc, trigger_id=trigger.get("TriggerID"))
+        fuentes, imagenes, urls_encontradas = scrape_producto(codbarras, desc, trigger_id=trigger.get("TriggerID"))
         context_block = [{
             "registro": {
                 "codigo": codbarras,
@@ -390,12 +568,29 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
             "fuentes_web": fuentes,
         }]
 
-        parsed, metricas, _raw, _fotos = ev.procesar_producto_batch1(
+        parsed, metricas, raw_content, fotos_guardar = ev.procesar_producto_batch1(
             json.dumps(context_block, ensure_ascii=False),
             taxonomias,
             imagenes,
             desc,
         )
+        # Persistir trazabilidad ANTES del early-continue: incluso si el parse
+        # falla, queremos registrar el intento (prompt, costo, raw, errores).
+        _persistir_trazabilidad(
+            codbarras=codbarras,
+            trigger_id=trigger.get("TriggerID"),
+            metricas=metricas,
+            raw_content=raw_content or "",
+            fotos=fotos_guardar,
+            fuentes=fuentes,
+            urls_encontradas=urls_encontradas,
+            atrib=(parsed[0].get("atributos_nuevos_consolidados", {}) if isinstance(parsed, list) and parsed
+                   else parsed.get("atributos_nuevos_consolidados", {}) if isinstance(parsed, dict)
+                   else {}),
+            score=None,  # se actualizará abajo cuando tengamos el score final
+            estado=None,
+        )
+
         if not parsed:
             print(f"  [MDM] Sin atributos para {codbarras}")
             continue
@@ -414,6 +609,11 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         costo = (metricas.get("costo_gemini") or 0) + (metricas.get("costo_glm") or 0)
         print(f"  [MDM] OK score={score} estado={estado} costo=${costo:.4f}")
         filas.append({"codbarras": codbarras, "clauses": clauses})
+
+        # Backfill del score/estado en OrquestadorLLMLog: la persistencia se hace
+        # antes de calcular el score (para registrar incluso parseos fallidos).
+        # Acá ya tenemos el resultado final → actualizamos la última fila del codbarras.
+        _update_llm_log_score(codbarras, score, estado)
 
     escritos = write_rows_to_db(filas, trigger_id=trigger.get("TriggerID"))
     print(f"[MDM] {escritos} filas escritas directo a SQL (sin n8n)")

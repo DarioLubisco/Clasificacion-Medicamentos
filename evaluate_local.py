@@ -544,6 +544,23 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Costo equivalente
     metricas["costo_glm"] = costo_txt
 
+    # Trazabilidad LLM (persistida por el orquestador a OrquestadorLLMLog).
+    # Capturamos: prompt final, reasoning separado, tokens y metadata del modelo.
+    usage = (result_glm.get("usage") or {}) if isinstance(result_glm, dict) else {}
+    metricas["prompt_enviado"]      = prompt[:50000]                  # str (template final con contexto)
+    metricas["reasoning_content"]   = (reasoning or "")[:50000]       # str (chain-of-thought)
+    metricas["prompt_tokens"]       = usage.get("prompt_tokens", 0) or 0
+    metricas["completion_tokens"]   = usage.get("completion_tokens", 0) or 0
+    metricas["reasoning_tokens"]    = (
+        (usage.get("completion_tokens_details") or {}).get("reasoning_tokens", 0) or 0
+    )
+    metricas["modelo_texto"]        = lbl_modelo or os.getenv("IA_MODELO", "")
+    metricas["prompt_archivo"]      = prompt_template_path
+    metricas["temperatura"]         = float(os.getenv("IA_TEMPERATURE", "0"))
+    metricas["num_fuentes"]         = len(fotos_a_guardar)  # placeholder; orquestador sobreescribe con len(fuentes)
+    metricas["num_imagenes"]        = len(imagenes_b64) if isinstance(imagenes_b64, list) else 0
+    metricas["num_imagenes_aprob"]  = len(fotos_a_guardar)
+
     # Parsear JSON
     try:
         parsed_json = extract_json_from_content(content)
