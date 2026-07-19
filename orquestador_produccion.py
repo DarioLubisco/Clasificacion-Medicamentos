@@ -87,7 +87,11 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
                 contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des
             FROM Procurement.por_aprobacion_equivalencias
             WHERE estado_ciclo = 'ABIERTO'
-            ORDER BY ISNULL(LastUpdated, '1900-01-01') ASC
+            ORDER BY
+                -- EAN-13 primero (scrapeables), códigos internos al final (GLM solo).
+                -- No se excluyen: el prompt clasifica igual con solo descrip1art.
+                CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
+                ISNULL(LastUpdated, '1900-01-01') ASC
             """
         )
         rows = cur.fetchall()

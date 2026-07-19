@@ -71,9 +71,9 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
                                 break
                     return fuentes
                 else:
-                    print(f"  [Intento {intento+1}/{max_intentos}] Error API ValueSERP (HTTP {res.status_code}): {res.text}")
+                    print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error API ValueSERP (HTTP {res.status_code}): {res.text[:120]}")
             except Exception as e:
-                print(f"  [Intento {intento+1}/{max_intentos}] Error de red/timeout en búsqueda (ValueSERP): {e}")
+                print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error de red/timeout en búsqueda (ValueSERP): {e}")
             
             if intento < SCRAPING_REINTENTOS - 1:
                 wait_time = (intento + 1) * SCRAPING_DELAY * 6
