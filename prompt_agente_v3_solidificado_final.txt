@@ -57,10 +57,13 @@ El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
 
   **ORDEN DE RESOLUCIÓN fabricante/marca** (evaluar en secuencia, detenerse al primer match):
   1. ¿Hay consenso de 2+ imágenes independientes? → aplica consenso (cap 4). FIN.
-  2. ¿Conflicto texto↔1 imagen? → aplica cláusula §1 (cap 3). FIN.
-  2.b ¿Texto web + 1 imagen CONCORDANTES (sin conflicto)? → extrae, cap 4 (corroboración parcial). FIN.
-  3. ¿Solo texto web con 2+ fuentes concordantes? → extrae, sin cap especial. FIN.
-  4. Dato único sin corroboración → null.
+  2. ¿Texto web + 1 imagen CONCORDANTES (sin conflicto)? → extrae, cap 4 (corroboración parcial). La corroboración web+imagen valida el dato porque ya no proviene exclusivamente del OCR. FIN.
+  3. ¿Conflicto texto↔1 imagen? → aplica cláusula §1 (cap 3). FIN.
+  4. ¿Solo texto web con 2+ fuentes concordantes? → extrae, sin cap especial. FIN.
+  5. 1 sola imagen sin texto web → `fabricante` extraíble con cap 3; `marca` = null. FIN.
+  6. Dato único sin corroboración → null.
+
+  **Nota**: si las imágenes se contradicen entre sí (sin acuerdo), se tratan como "sin imagen útil" → saltar al paso 4 o 5.
 
 ---
 
@@ -472,6 +475,50 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 ]
 ```
 
+**Ejemplo 7 — MODO DEGRADADO CASO 3 (solo descripción, sin web ni imágenes):**
+Input: `{"registro": {"codbarras": "0736372722508", "descripcion_original": "Butilbromuro de Hioscina 10 mg x 20 tabletas"}, "fuentes_web": [], "nota_vision": "[Nota: No se logro conseguir ninguna imagen...]"}`
+```json
+[
+  {
+    "atributos_nuevos_consolidados": {
+      "principio_activo": "BUTILBROMURO DE HIOSCINA",
+      "concentracion": "10mg",
+      "forma_farmaceutica": "Tableta",
+      "cantidad_presentacion": 20,
+      "codigo_atc": null,
+      "codigo_atc_profundo": "A03BB01",
+      "confianza_atc": 4,
+      "dominio": "MEDICAMENTO_ALOPATICO",
+      "categoria": "A03 - FÁRMACOS PARA TRASTORNOS FUNCIONALES GASTROINTESTINALES",
+      "subcategoria": "[A03B] BELLADONA Y DERIVADOS, ALKALOIDES SIMPLICES",
+      "fabricante": null,
+      "marca": null,
+      "registro_sanitario": null,
+      "confianza_nivel": 3,
+      "razonamiento": "Análisis en modo degradado CASO 3: única fuente = descripción original. Principio activo inequívoco (butilbromuro de hioscina), concentración clara (10mg), cantidad explícita (20 tabletas). Fabricante y marca no declarados → null. ATC profundo inferido por conocimiento farmacológico.",
+      "alertas_auditoria": "Análisis en modo degradado: única fuente = descripción original. Sin corroboración web ni visual."
+    }
+  }
+]
+```
+
+**Ejemplo 8 — CONFLICTO MARCA→NULL (cap 3):**
+Input: Imagen OCR dice marca "Genven" pero texto web dice "Laboratorios Genven S.A." y solo 1 fuente web.
+```json
+[
+  {
+    "atributos_nuevos_consolidados": {
+      "marca": null,
+      "fabricante": null,
+      "confianza_nivel": 3,
+      "razonamiento": "Conflicto fabricante/marca: 1 imagen dice 'Genven', 1 fuente web dice 'Laboratorios Genven S.A.' — conflicto irreconciliable texto↔imagen sin consenso de 2+ imágenes (§1.1). Aplicando orden resolución paso 3 → cap 3. Ambos campos a null.",
+      "atributos_baja_confianza": ["marca", "fabricante"],
+      "alertas_auditoria": "Conflicto marca/fabricante: OCR='Genven', web='Laboratorios Genven S.A.' — sin consenso suficiente → null. Cap 3 aplicado."
+    }
+  }
+]
+```
+
 ---
 
 ### 9. REGLA ABSOLUTA DE INTEGRIDAD DEL JSON (ANTI-KEY-DROPPING)
@@ -498,6 +545,9 @@ Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem n
 - [ ] ¿El `origen` es un país soberano y no "Importado" o "Nacional"?
 - [ ] ¿Usé `null` y no strings vacíos para datos ausentes?
 - [ ] Si hubo conflicto de concentración EAN vs imagen, ¿apliqué la regla de consenso? (Si 2+ imágenes coinciden, prevalece la imagen con cap a 4. Si es 1 sola imagen, prevalece el EAN con confianza ≤3).
+- [ ] ¿Manejo correctamente el **empate sin mayoría**? (2 imágenes dicen A, 2 dicen B → `null` + `atributos_baja_confianza`).
+- [ ] ¿Apliqué el **modo degradado** correcto? (CASO 3 si hay descripción con principio activo; CASO 4 si principio activo es null; CASO 2 si solo imágenes).
+- [ ] ¿Sigo el **orden de resolución fabricante/marca**? (1→2→3→4→5→6 en secuencia).
 - [ ] ¿`registro_sanitario` está extraído si era visible? ¿Está en el formato correcto?
 
 ---
