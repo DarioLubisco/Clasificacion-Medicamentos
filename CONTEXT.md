@@ -243,12 +243,153 @@ Esta variable define que cada producto se procesa en su propia llamada individua
 
 ## 9. Estado de la Base de Datos (Procurement.por_aprobacion_equivalencias)
 
-### Último reset: 2026-07-15
+### Última actualización: 2026-07-19
 
-La base de datos fue reseteada completamente. Estado actual:
+- **16,388 filas totales** en la tabla.
+- **2 columnas pobladas universalmente**: `codbarras` + `descrip1art` (nunca NULL).
+- **Backup disponible**: `Procurement.por_aprobacion_equivalencias_BKP_20260715_1533` (estructura previa al reset del 2026-07-15).
 
-- **16,387 productos** con solo `codbarras` y `descrip1art` poblados.
-- **Todos los demás campos NULL o default** (fabricante_Des, marca_Des, principio_activo_Des, concentracion_Des, estado_ciclo='pendiente', procesado_fase1=0, etc.).
-- **Backup disponible**: `Procurement.por_aprobacion_equivalencias_BKP_20260715_1533` (misma estructura, 16,387 filas con datos anteriores).
-- **Backups anteriores eliminados**: `backup_20260618` y `BKP_20260624_131902` fueron DROPPED.
-- **Estado para reprocesar**: todos los productos están en `estado_ciclo='pendiente'`, `procesado_fase1=0`, `procesado_fase2=0`. Listos para re-procesar desde el scraper (EAN-internet) hasta la extracción LLM con el nuevo prompt auditado.
+### Distribución por `estado_ciclo`
+
+| estado_ciclo | Cantidad | Última modificación | Qué significa |
+|---|---|---|---|
+| `pendiente` | 13,219 | 2026-07-15 16:43 | Nunca entró al orquestador |
+| `ABIERTO` | 3,169 | 2026-07-18 02:22 | En cola activa del orquestador |
+| `CERRADO` | 0 | — | (se llena al clasificar con score ≥ umbral) |
+| `AGOTADO` | 0 | — | (se llena tras 3 reintentos fallidos) |
+| `NULL` | 0 | — | — |
+
+### Origen de los datos
+
+Cruce confirmado por `codigo_barras` contra `Analitica.Mercado_Vivo` (con DISTINCT para no duplicar por sucursal):
+
+| estado_ciclo | Total | En Mercado_Vivo | No encontrados |
+|---|---|---|---|
+| `ABIERTO` | 3,169 | 2,482 (78%) | 687 |
+| `pendiente` | 13,219 | 11,252 (85%) | 1,967 |
+
+**Conclusión**: la mayoría de los productos provienen de Mercado Vivo, sin distinción entre `ABIERTO` y `pendiente`. La tabla `dbo.productos` (con `codigo_barras`) **NO** crusa — 0 coincidencias en ambos sentidos, no es SAPROD.
+
+### Distribución por tipo de código de barras
+
+| Tipo | Cantidad | % | Scrapeable |
+|---|---|---|---|
+| EAN-13 (13 dígitos) | 13,544 | 82.6% | ✅ |
+| UPC-A (12 dígitos) | 1,378 | 8.4% | ✅ (se scrapea igual) |
+| ITF-14 (14 dígitos) | 228 | 1.4% | ⚠️ es de caja, no unidad |
+| EAN-8 (8 dígitos) | 214 | 1.3% | ✅ (formato corto GS1) |
+| Códigos internos cortos (1-5 díg) | 113 | 0.7% | ❌ |
+| `BLI_*` | 102 | 0.6% | ❌ |
+| Otros | 704 | 4.3% | Mixto |
+
+### Tablas de trazabilidad (4)
+
+| Tabla | Filas | Propósito |
+|---|---|---|
+| `Procurement.OrquestadorLog` | 0 (limpia 2026-07-19) | Log de alertas INFO/WARN/ERROR |
+| `Procurement.OrquestadorLLMLog` | 0 (limpia 2026-07-19) | Trazabilidad LLM: prompt, raw, reasoning, tokens, costo |
+| `Procurement.Imagenes_Productos_Crudas` | 0 (limpia 2026-07-19) | URLs + score de legibilidad por imagen |
+| `Procurement.scraping_farmacias_raw` | 0 (limpia 2026-07-19) | URLs + texto extraído por fuente web |
+
+Las 4 tablas fueron vaciadas el 2026-07-19 al detectarse logs huérfanos (apuntaban a `LogID`s que ya no existían en `OrquestadorLLMLog`).
+
+---
+
+## 10. Ciclo de vida del `estado_ciclo` y del disparo del trigger
+
+### Máquina de estados
+
+```
+                  [carga inicial externa]
+                          │
+                          ▼
+                    ┌───────────┐
+                    │ pendiente │  ◄── estado de fábrica tras reset
+                    └───────────┘
+                          │
+                  [PROMOCIÓN MANUAL]
+                   (ver §10.2 abajo)
+                          │
+                          ▼
+   ┌──────────────────────────────────────┐
+   │ estado_ciclo = 'ABIERTO'             │ ◄── SOLO ESTE ENTRA AL ORQUESTADOR
+   │ (orquestador_produccion.py:89)       │
+   └──────────────────────────────────────┘
+                          │
+                          ▼
+            ┌─────────────────────────┐
+            │  Procesa batch (5 prod) │
+            │  scraping + MiMo + GLM  │
+            │  calcula score_calidad  │
+            └─────────────────────────┘
+                          │
+            ┌─────────────┴─────────────┐
+            ▼                           ▼
+      score ≥ 88 (med)             score < 88
+      o ≥ 70 (no-med)                   │
+            │                           ▼
+            ▼                   ¿ciclos_reproceso ≥ 3?
+      ┌──────────┐              ┌───────┴───────┐
+      │ CERRADO  │              ▼               ▼
+      └──────────┘          ABIERTO          AGOTADO
+      (FINAL ✅)            ciclos+1          (FINAL ❌)
+                            (sigue en cola)
+```
+
+### 10.1 Transiciones que SÍ hace el orquestador
+
+Implementadas en `orquestador_produccion.py:251-259` (`build_update_clauses`):
+
+| Condición | estado_ciclo resultante |
+|---|---|
+| `score >= 88` (medicamento) o `>= 70` (no-medicamento) | `CERRADO` |
+| `score < umbral` Y `ciclos_reproceso < 3` | `ABIERTO` con `ciclos_reproceso + 1` |
+| `score < umbral` Y `ciclos_reproceso >= 3` | `AGOTADO` |
+
+Umbrales (`SCORE_CIERRE`, `SCORE_CIERRE_NO_MED`, `MAX_REINTENTOS`) configurables desde `.env`.
+
+### 10.2 GAP ARQUITECTÓNICO — la transición `pendiente → ABIERTO` no tiene ejecutor
+
+**Hallazgo crítico (auditado 2026-07-19)**: ningún script del repositorio ejecuta `UPDATE ... SET estado_ciclo = 'ABIERTO' WHERE estado_ciclo = 'pendiente'`. La búsqueda se hizo con patrones `UPDATE.*ABIERTO`, `SET.*ABIERTO`, `UPDATE.*pendiente` en todos los `.py` y `.sql` — cero resultados.
+
+- `etl_mercado_vivo_incremental.py:95-99` hace el único INSERT de la tabla pero **sin** `estado_ciclo` → las filas nuevas quedan `NULL`, no `pendiente`.
+- El `'pendiente'` textual masivo (13.219 filas con `LastUpdated=2026-07-15 16:43`) fue un **reset SQL manual externo** — el script no está en el repo.
+- El orquestador solo filtra `WHERE estado_ciclo = 'ABIERTO'` (`orquestador_produccion.py:89`) — no acepta `NULL` ni `pendiente`.
+- Un workflow n8n `[PROD] Agente Clasificador (Automatico)` (`/home/synapse/source/N8N/workflows/AAnxxGYtgg5sD0o8.json`) existe pero está **INACTIVO** y su filtro es por `origen_dato IS NULL`, no por `estado_ciclo`.
+- No hay triggers SQL, ni cron, ni systemd timer, ni schedule activo que mueva `pendiente → ABIERTO`.
+
+**Implicación operativa**: para que el orquestador procese los 13.219 `pendiente`, alguien o algo externo al repo debe ejecutar manualmente un UPDATE como:
+
+```sql
+UPDATE Procurement.por_aprobacion_equivalencias
+SET estado_ciclo = 'ABIERTO'
+WHERE estado_ciclo = 'pendiente'
+  AND <criterio_de_promocion>;  -- ej: AND LEN(codbarras) = 13
+```
+
+Ese `<criterio_de_promocion>` no está definido en ningún archivo — es decisión operativa pendiente.
+
+### 10.3 Mecanismo de disparo del trigger
+
+- `Config.AutomationTriggers` define los triggers (TriggerID 1 = MDM_Farmaceutico_Scraper, IsActive=true).
+- `CheckQuery` del TriggerID 1: `SELECT COUNT(*) FROM por_aprobacion_equivalencias WHERE estado_ciclo = 'ABIERTO'`. Se dispara si `count >= ThresholdValue (1)`.
+- `LastTriggered = 2026-07-14` — el último disparo real fue hace 5 días.
+- **No hay polling automático**: no hay proceso que lea `AutomationTriggers`, ejecute `CheckQuery`, y dispare `ActionCommand`. Ese mecanismo (antes `synapse-api` en `10.147.18.204:8012`) está caído.
+- `ActionCommand` apunta a `http://10.147.18.204:8012/api/orquestador/start` — URL muerta. El reemplazo legítimo es `orquestador_local_api.py` (FastAPI en `:8012`) que recibe POST con la fila del trigger y ejecuta `handle_trigger` en background.
+
+### 10.4 Orden de selección dentro de ABIERTO
+
+`fetch_productos_abiertos` (`orquestador_produccion.py:88-94`) ordena:
+
+```sql
+ORDER BY
+    -- EAN-13 primero (scrapeables), códigos internos al final (GLM solo)
+    CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
+    ISNULL(LastUpdated, '1900-01-01') ASC
+```
+
+- **Grupo 0** (prioridad): EAN-13 válidos (2,717 de los 3,169 ABIERTO).
+- **Grupo 1** (al final): `BLI_*` o `len ≠ 13` (452 productos) — se clasifican con GLM solo, sin scraping.
+- Dentro de cada grupo, los `LastUpdated` más viejos van primero (FIFO por antigüedad).
+
+**Nota**: este filtro excluye implícitamente los UPC-A (12 díg) y EAN-8 (8 díg) que también son scrapeables. Hay 1.592 productos válidos en ese grupo (1.378 + 214) que irían al grupo 1 aunque podrían scrapearse. Pendiente de revisar.
