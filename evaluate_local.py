@@ -28,7 +28,7 @@ from cliente_glm import call_glm, extract_content, estimate_cost, GLM_MODEL as Z
 from cliente_vision_mimo import call_mimo_chat, extract_content as mimo_extract_content
 from cliente_vision_mimo import estimate_cost as mimo_estimate_cost, reasoning_tokens as mimo_reasoning_tokens
 
-# Cliente DeepSeek nativo (api.deepseek.com) — opcional, activado vía EXPERIMENT_TEXTO_PROVIDER=deepseek
+# Cliente DeepSeek nativo (api.deepseek.com) — opcional, activado vía IA_PROVEEDOR=deepseek
 try:
     from cliente_deepseek import call_deepseek, extract_content as deepseek_extract_content
     from cliente_deepseek import estimate_cost as deepseek_estimate_cost, DEEPSEEK_MODEL
@@ -45,12 +45,12 @@ GEMINI_PRICE_OUT_PER_1M = 2.50
 
 def _vision_config():
     """Config de visión desde .env vía variables de entorno."""
-    proveedor = os.getenv("EXPERIMENT_VISION_PROVIDER", "mimo").lower()
-    modelo = os.getenv("EXPERIMENT_VISION_MODEL", "mimo-v2.5")
-    thinking = os.getenv("EXPERIMENT_VISION_THINKING", "disabled").lower()
-    max_prefiltro = int(os.getenv("EXPERIMENT_VISION_MAX_PREFILTRO", "10"))
-    max_ocr = int(os.getenv("EXPERIMENT_VISION_MAX_OCR", "3"))
-    umbral = int(os.getenv("EXPERIMENT_VISION_UMBRAL", "3"))
+    proveedor = os.getenv("VISION_PROVEEDOR", "mimo").lower()
+    modelo = os.getenv("VISION_MODELO", "mimo-v2.5")
+    thinking = os.getenv("VISION_THINKING", "disabled").lower()
+    max_prefiltro = int(os.getenv("VISION_MAX_PREFILTRO", "10"))
+    max_ocr = int(os.getenv("VISION_MAX_OCR", "3"))
+    umbral = int(os.getenv("VISION_UMBRAL", "3"))
     return {
         "proveedor": proveedor,
         "modelo": modelo,
@@ -136,7 +136,7 @@ def _llamar_vision_api(messages, temperature=0.0, max_tokens=1024):
 
 def obtener_taxonomias_estrictas():
     """Versión que solo usa cache local - NO intenta conectar a SQL"""
-    cache_path = os.getenv("EXPERIMENT_TAXONOMIAS_CACHE", "scratch/taxonomias_local.txt")
+    cache_path = os.getenv("TAXONOMIAS_CACHE", "scratch/taxonomias_local.txt")
     if os.path.exists(cache_path):
         try:
             with open(cache_path, "r", encoding="utf-8") as f:
@@ -420,13 +420,13 @@ def llamar_llm_texto(prompt_text, max_tokens=4000):
     """
     Despacha la consolidación al proveedor de texto configurado.
 
-    EXPERIMENT_TEXTO_PROVIDER:
+    IA_PROVEEDOR:
       - "glm"      (default): GLM-4.7 vía Z.ai Coding Plan.
       - "deepseek": DeepSeek V4 Flash vía api.deepseek.com (nativo, no OpenRouter).
 
     Devuelve (result_dict, error_str, label_modelo).
     """
-    provider = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider = os.getenv("IA_PROVEEDOR", "glm").lower()
     if provider == "deepseek":
         if call_deepseek is None:
             return None, "deepseek_client no disponible (import fallido)", None
@@ -461,7 +461,7 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         "errores_api": []
     }
 
-    vision_activa = os.getenv("EXPERIMENT_VISION_ACTIVE", "1") == "1"
+    vision_activa = os.getenv("VISION_ACTIVA", "1") == "1"
     if not vision_activa:
         imagenes_b64 = []
 
@@ -501,8 +501,8 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Paso 3: Consolidación con GLM-4.7
     log(f"  [3/3] Consolidación con GLM-4.7...")
 
-    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / EXPERIMENT_PROMPT_FILE)
-    prompt_template_path = os.getenv("EXPERIMENT_PROMPT_FILE", "prompt_agente_v3_solidificado_final.txt")
+    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / PROMPT_ARCHIVO)
+    prompt_template_path = os.getenv("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
     with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
         prompt_template = f_prompt.read()
 
@@ -514,10 +514,10 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         "{nota_vision}", nota_vision
     )
 
-    # Llamada al LLM de texto (GLM-4.7 o DeepSeek según EXPERIMENT_TEXTO_PROVIDER)
+    # Llamada al LLM de texto (GLM-4.7 o DeepSeek según IA_PROVEEDOR)
     metricas["llamadas_glm"] = 1
     # GLM usa 4000; DeepSeek con reasoning=max necesita budget amplio (lo decide el wrapper).
-    provider_txt_cfg = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider_txt_cfg = os.getenv("IA_PROVEEDOR", "glm").lower()
     mt_call = None if provider_txt_cfg == "deepseek" else 4000
     result_glm, error_glm, lbl_modelo = llamar_llm_texto(prompt, max_tokens=mt_call)
 
@@ -529,7 +529,7 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Procesar respuesta del LLM (protocolo OpenAI-compatible: content +
     # reasoning_content). Si content es None por agotamiento de tokens en el
     # razonamiento, usamos reasoning_content como fallback.
-    provider_txt = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider_txt = os.getenv("IA_PROVEEDOR", "glm").lower()
     if provider_txt == "deepseek":
         content, reasoning = deepseek_extract_content(result_glm)
         costo_txt = deepseek_estimate_cost(result_glm)

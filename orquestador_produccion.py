@@ -133,8 +133,8 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
     urls_aprobadas_para_ocr: list = []
     urls_encontradas: list = []
     is_internal = codbarras.startswith("BLI_") or len(codbarras) != 13
-    umbral = int(os.getenv("EXPERIMENT_VISION_UMBRAL", "3"))
-    target_aprobadas = int(os.getenv("EXPERIMENT_VISION_MAX_OCR", "4"))
+    umbral = int(os.getenv("VISION_UMBRAL", "3"))
+    target_aprobadas = int(os.getenv("VISION_MAX_OCR", "4"))
     imgs_por_fuente = 1  # 1 imagen por fuente (mejor score de proximidad)
 
     if is_internal:
@@ -567,8 +567,8 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         return {"status": "skipped", "reason": "no_products", "TriggerID": trigger.get("TriggerID")}
 
     os.chdir(REPO_DIR)
-    os.environ.setdefault("EXPERIMENT_PROMPT_FILE", "prompt_agente_v3_solidificado_final.txt")
-    os.environ.setdefault("EXPERIMENT_VISION_ACTIVE", "1")
+    os.environ.setdefault("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
+    os.environ.setdefault("VISION_ACTIVA", "1")
     taxonomias = ev.obtener_taxonomias_estrictas()
 
     # MDM catalog mapper (numeric IDs against master catalogs)
