@@ -44,6 +44,10 @@ SCRAPING_DELAY = float(os.getenv("SCRAPING_DELAY", "0.5"))
 
 def _conn_str() -> str:
     server = os.getenv("DB_SERVER", "100.94.5.108,49751")
+    # Si el server tiene instance name pero sin puerto, forzar puerto 49751
+    if "\\\\" in server and "," not in server:
+        port = os.getenv("DB_PORT", "49751")
+        server = f"{server},{port}"
     database = os.getenv("DB_DATABASE", "EnterpriseAdmin_AMC")
     user = os.getenv("DB_USER", "sa")
     password = os.getenv("DB_PASSWORD", "")
