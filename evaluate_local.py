@@ -21,6 +21,9 @@ from pathlib import Path
 from synapse_cred import load_synapse_credentials
 load_synapse_credentials()
 
+from pathlib import Path as _Path
+load_dotenv(_Path(__file__).resolve().parent / ".env")
+
 from pipeline_logger import log, log_producto, log_resumen, log_evento
 
 # Cliente Z.ai directo (GLM Coding Plan)

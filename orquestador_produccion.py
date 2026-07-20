@@ -23,6 +23,9 @@ from synapse_cred import load_synapse_credentials
 
 load_synapse_credentials()
 
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).resolve().parent / ".env")
+
 import evaluate_local as ev
 import orquestador_scraper as scrap
 from normalizador_farmaceutico import procesar_farmacos

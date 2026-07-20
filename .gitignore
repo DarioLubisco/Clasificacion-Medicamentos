@@ -22,4 +22,3 @@ scrapling-local/
 # Archivos de credenciales (PROTEGIDOS)
 sinapsis.credentials
 synapse.credentials
-.env
