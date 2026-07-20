@@ -33,7 +33,7 @@ El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
   d) Si la duda persiste, asigna `null` y regístralo en `atributos_baja_confianza` y `alertas_auditoria`.
 - **Evidencia visual complementaria**: Un nombre de laboratorio o fabricante legible en el empaque de la imagen **DEBE** ser extraído, incluso si no aparece en el texto web. Además, bajo la regla de consenso de imágenes, las imágenes pueden **sobreescribir** atributos del EAN (no solo complementarlos).
 - **⚠️ REGLA CRÍTICA — Consenso de Imágenes vs Descripción del EAN**:
-  Las transcripciones OCR llegan etiquetadas `[Imagen 1]`, `[Imagen 2]`, etc., cada una de una página/distinto dominio independiente (garantizado por el scraper). **INDEPENDENCIA**: Dos imágenes son independientes solo si provienen de URLs/distintos dominios. Múltiples crops o resoluciones del MISMO origen cuentan como UNA sola imagen. **NORMALIZACIÓN**: Antes de comparar valores para consenso, normaliza (mayúsculas, espacios, unidades canónicas). "500mg" == "500 MG" == "500 mg". Cuando **2 o más imágenes reportan el mismo valor** para un atributo (`concentracion`, `fabricante`, `marca`, `forma_farmaceutica`, `cantidad_presentacion`, `registro_sanitario`) Y ese valor **difiere** del declarado en `descripcion_original`:
+  Las transcripciones OCR llegan etiquetadas `[Imagen 1]`, `[Imagen 2]`, etc., cada una de una página/distinto dominio independiente (garantizado por el scraper). Cuando **2 o más imágenes reportan el mismo valor** para un atributo (`concentracion`, `fabricante`, `marca`, `forma_farmaceutica`, `cantidad_presentacion`, `registro_sanitario`) Y ese valor **difiere** del declarado en `descripcion_original`:
     - El **consenso de imágenes PREVALECE** sobre la descripción del EAN. Asigna ese valor al atributo.
     - Baja `confianza_nivel` a **máximo 4** (el consenso visual independiente es fuerte, pero no infalible).
     - Registra en `alertas_auditoria`: `"Atributo X sobrescrito por consenso de N imágenes (EAN='...' → imágenes='...')"`.
@@ -41,7 +41,6 @@ El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
   **Excepciones donde la descripción del EAN sigue prevaleciendo:**
     - Menos de 2 imágenes reportan el mismo valor divergente (consenso insuficiente).
     - Las imágenes reportan valores contradictorios entre sí (sin acuerdo).
-    - **Empate sin mayoría** (ej: 2 imágenes dicen "A", 2 dicen "B"): NO hay consenso. Asigna `null` y registra en `atributos_baja_confianza`.
     - `nota_vision` indica que no hubo imágenes aprobadas, o se procesó solo 1 imagen.
 - **⚠️ REGLA CRÍTICA — Fabricante/Marca en conflicto imagen↔texto**:
   Contexto operativo: El OCR puede provenir de una imagen que no corresponde al EAN del producto consultado. Para evitar contaminar la extracción con fabricante o marca erróneos, aplica de forma estricta las reglas siguientes, **sujetas a la regla de consenso de imágenes** (si 2+ imágenes independientes coinciden en fabricante/marca, prevalecen sobre cualquier otra fuente — ver regla dedicada arriba).
@@ -54,13 +53,6 @@ El sistema utiliza múltiples fuentes que deben combinarse con inteligencia:
   2. **Marca proveniente únicamente de OCR (1 imagen).** PROHIBIDO emitir un valor de `marca` tomado exclusivamente del OCR de **1 sola imagen** cuya correspondencia al EAN no esté confirmada por texto web. **EXCEPCIÓN**: si se alcanza el consenso de 2+ imágenes independientes (Regla de Consenso de Imágenes), la marca SÍ debe extraerse del OCR y prevalecer.
   3. **Coherencia de canal fuente.** PROHIBIDO mezclar `fabricante` extraído del texto web con `marca` extraída de una imagen dentro de la misma salida. Ambos atributos DEBEN provenir del mismo canal (web→web, o imagen→imagen solo si ésta está validada contra el EAN); en caso contrario, `marca = null`.
   4. **Cap de confianza.** Estos conflictos de `fabricante`/`marca` afectan a `confianza_nivel` de forma ADITIVA al cálculo estándar (mínimo de los atributos críticos: dominio, principio_activo, concentracion, cantidad_presentacion). Cuando se aplique cualquiera de los puntos 1, 2 o 3 de esta cláusula, `confianza_nivel` DEBE quedar capado a un máximo de 3, sin importar el valor que hubiese resultado del cálculo estándar. Asimismo, DEBES volcar en `confianza_razonamiento` la razón del capado, citando el número de cláusula aplicado.
-
-  **ORDEN DE RESOLUCIÓN fabricante/marca** (evaluar en secuencia, detenerse al primer match):
-  1. ¿Hay consenso de 2+ imágenes independientes? → aplica consenso (cap 4). FIN.
-  2. ¿Conflicto texto↔1 imagen? → aplica cláusula §1 (cap 3). FIN.
-  2.b ¿Texto web + 1 imagen CONCORDANTES (sin conflicto)? → extrae, cap 4 (corroboración parcial). FIN.
-  3. ¿Solo texto web con 2+ fuentes concordantes? → extrae, sin cap especial. FIN.
-  4. Dato único sin corroboración → null.
 
 ---
 
@@ -136,39 +128,7 @@ El cálculo sigue reglas estrictas basadas en el **EMPAQUE EXTERNO PRINCIPAL**, 
 
 ---
 
-### 5. MODO DEGRADADO (CUANDO FALTAN FUENTES)
-
-El pipeline puede no tener imágenes ni fuentes web para un producto. El agente DEBE funcionar en cualquiera de estos escenarios:
-
-**CASO 1 — Sin imágenes aprobadas pero CON texto web:**
-- Todas las reglas de consenso de imágenes quedan INACTIVAS.
-- Prevalece `descripcion_original` + contexto web.
-- `confianza_nivel`: evalúa por calidad del texto (sin penalización automática).
-
-**CASO 2 — Sin fuentes web pero CON imágenes:**
-- Basa extracción en OCR de imágenes (aplica consenso si 2+).
-- `marca` desde OCR: PERMITIDA solo bajo consenso de 2+ imágenes.
-- `confianza_nivel`: máximo 4.
-
-**CASO 3 — SOLO `descripcion_original` (sin web, sin imágenes):**
-- Extrae únicamente lo explícito en el texto original.
-- **PROHIBIDO** inferir fabricante, marca, origen no declarados.
-- `codigo_atc_profundo`: permitido SOLO si `principio_activo` es inequívoco.
-- `confianza_nivel`: máximo 3.
-- `alertas_auditoria`: `"Análisis en modo degradado: única fuente = descripción original"`.
-
-**CASO 4 — Datos insuficientes para clasificar** (aplica cuando la descripción es tan vaga que no permite ni determinar `principio_activo`):
-- `dominio`, `categoria`, `subcategoria` = null.
-- `principio_activo` = null (no se pudo extraer ni de la descripción).
-- `confianza_nivel` = 1.
-- `alertas_auditoria`: describe qué falta.
-- **Nota**: Si la descripción SÍ contiene principio activo (ej: "BUTILBROMURO DE HIOSCINA 10 mg"), aplica **CASO 3**, no CASO 4.
-
-**Jerarquía de reglas en modo degradado**: Las reglas anti-alucinación (§4) se aplican con **máxima rigurosidad** en todos los casos degradados. Si hay duda, `null`.
-
----
-
-### 6. REGLA INQUEBRANTABLE DE TAXONOMÍA (CATÁLOGO CERRADO)
+### 5. REGLA INQUEBRANTABLE DE TAXONOMÍA (CATÁLOGO CERRADO)
 El producto **DEBE** encajar en una de las combinaciones **dominio / categoria / subcategoria** proporcionadas más abajo.  
 **Está estrictamente prohibido inventar, modificar o inferir nuevas categorías**.  
 Antes de emitir el JSON, **confirma mentalmente** que la tupla completa existe literalmente en la tabla de taxonomía activa.  
@@ -180,7 +140,7 @@ Si el producto no calza en ninguna combinación, asigna `null` a los tres campos
 
 ---
 
-### 7. ESCALA DE CONFIANZA (SCORING POR ATRIBUTO)
+### 6. ESCALA DE CONFIANZA (SCORING POR ATRIBUTO)
 Evalúa **cada atributo** individualmente antes de calcular el global.
 
 *   **5 - TOTAL**: Evidencia explícita, inequívoca y consistente en todas las fuentes. Sin contradicción alguna.
@@ -193,7 +153,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 
 ---
 
-### 8. EJEMPLOS DE COMPORTAMIENTO (FEW-SHOT CONSOLIDADOS)
+### 7. EJEMPLOS DE COMPORTAMIENTO (FEW-SHOT CONSOLIDADOS)
 *Asegúrate de que todos los campos estén presentes en cada ejemplo, especialmente `registro_sanitario`.*
 
 **Ejemplo 1 (Medicamento Sólido en Caja - Regla A)**:
@@ -474,7 +434,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 
 ---
 
-### 9. REGLA ABSOLUTA DE INTEGRIDAD DEL JSON (ANTI-KEY-DROPPING)
+### 8. REGLA ABSOLUTA DE INTEGRIDAD DEL JSON (ANTI-KEY-DROPPING)
 
 **ESTRICTAMENTE OBLIGATORIO Y NO NEGOCIABLE:**
 **TU JSON DE SALIDA DEBE CONTENER TODAS Y CADA UNA DE LAS LLAVES DEFINIDAS EN EL DICCIONARIO DE ATRIBUTOS Y MOSTRADAS EN LOS EJEMPLOS, SIN EXCEPCIÓN.**
@@ -484,7 +444,7 @@ Evalúa **cada atributo** individualmente antes de calcular el global.
 
 ---
 
-### 10. CHECKLIST DE VERIFICACIÓN (AUTOINSPECCIÓN OBLIGATORIA)
+### 9. CHECKLIST DE VERIFICACIÓN (AUTOINSPECCIÓN OBLIGATORIA)
 Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem no se cumple, **corrígelo antes de emitir**.
 
 - [ ] ¿Incluí **todas** las llaves del esquema, sin excepción? ¿Alguna está omitida? (Revisar `registro_sanitario`, `volumen_unidad_medida`, etc.)
@@ -502,7 +462,7 @@ Antes de generar el JSON, repasa **uno por uno** estos puntos. Si algún ítem n
 
 ---
 
-### 11. PENSAMIENTO ESTRUCTURADO OBLIGATORIO (SCRATCHPAD)
+### 10. PENSAMIENTO ESTRUCTURADO OBLIGATORIO (SCRATCHPAD)
 **ANTES DE GENERAR EL JSON**, debes desarrollar un análisis riguroso dentro de etiquetas `<analisis_clinico>`. Este bloque debe contener los siguientes **5 pasos obligatorios**:
 
 **Paso 1 – Evaluación Multimodal**:  

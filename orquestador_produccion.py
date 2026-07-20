@@ -121,17 +121,23 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
 
 
 def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = None) -> tuple[list, list, list]:
-    """Scrapea un producto. Devuelve (fuentes_extraidas, imagenes, urls_encontradas).
-    Tercer elemento son las URLs crudas que ValueSERP devolvió (para distinguir
-    modos de fallo: 0 URLs = ValueSERP caído; >0 URLs pero 0 fuentes = HTML falló).
+    """Scrapea un producto. Devuelve (fuentes_extraidas, imagenes_aprobadas, urls_encontradas).
+
+    Flujo optimizado (2026-07-20):
+      1. Busca solo con el EAN (no descripción) — más URLs de farmacias, menos ruido.
+      2. Para cada fuente, extrae 1 imagen → pre-filtro inline → cuenta si pasa.
+      3. Para cuando tenga 4 aprobadas o agote 10 fuentes.
+      4. Si tras 10 fuentes no llega a 4, devuelve lo que tenga.
     """
     fuentes_extraidas: list = []
-    todas_imagenes: list = []
+    urls_aprobadas_para_ocr: list = []
+    urls_encontradas: list = []
     is_internal = codbarras.startswith("BLI_") or len(codbarras) != 13
+    umbral = int(os.getenv("EXPERIMENT_VISION_UMBRAL", "3"))
+    target_aprobadas = int(os.getenv("EXPERIMENT_VISION_MAX_OCR", "4"))
+    imgs_por_fuente = 1  # 1 imagen por fuente (mejor score de proximidad)
 
     if is_internal:
-        # Alerta: scraping saltado silenciosamente era el bug latente.
-        # Ahora queda registrado en tabla + Telegram (WARN) para que se vea.
         log_evento(
             "WARN", "SCRAPER",
             f"Scraping saltado: código interno (len={len(codbarras)}). "
@@ -141,14 +147,36 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
         )
         return [], [], []
 
-    urls = scrap.buscar_en_internet(f'"{codbarras}" {descripcion}', max_fuentes=MAX_FUENTES_WEB)
+    # Query SOLO con EAN — no descripción. ValueSERP devuelve más URLs de farmacias.
+    query = f'"{codbarras}"'
+    urls = scrap.buscar_en_internet(query, max_fuentes=MAX_FUENTES_WEB)
+
     for idx, url in enumerate(urls, 1):
+        if len(urls_aprobadas_para_ocr) >= target_aprobadas:
+            break
+
         fuente = scrap.extraer_fuente_web(url, idx, descripcion)
         if fuente:
             fuentes_extraidas.append(fuente)
-            todas_imagenes.extend(fuente.get("imagenes_encontradas", []))
-            if len(set(todas_imagenes)) >= MAX_FOTOS_TOTALES:
-                break
+            urls_encontradas.append(url)
+
+            # Pre-filtro inline: evaluar cada imagen extraída de inmediato.
+            # Si pasa el umbral (≥3), se cuenta para OCR. Si no, se descarta.
+            # Esto permite parar al llegar a 4 aprobadas sin evaluar todas las fuentes.
+            for img_url in fuente.get("imagenes_encontradas", [])[:imgs_por_fuente]:
+                try:
+                    _, fotos_a_guardar, _ = ev.filtrar_imagenes_legibles([img_url], descripcion)
+                    if fotos_a_guardar and fotos_a_guardar[0]["score"] >= umbral:
+                        urls_aprobadas_para_ocr.append(img_url)
+                        print(f"    [Pre-Filtro] Foto #{len(urls_aprobadas_para_ocr)}/{target_aprobadas} "
+                              f"aprobada (Puntaje: {fotos_a_guardar[0]['score']})")
+                        if len(urls_aprobadas_para_ocr) >= target_aprobadas:
+                            print(f"    [Pre-Filtro] Target alcanzado: {target_aprobadas} fotos aprobadas")
+                            break
+                    elif fotos_a_guardar:
+                        print(f"    [Pre-Filtro] Foto descartada (Puntaje: {fotos_a_guardar[0]['score']})")
+                except Exception as e:
+                    print(f"    [Pre-Filtro] Error evaluando imagen: {e}")
         time.sleep(SCRAPING_DELAY)
 
     # Diagnóstico fino del resultado del scraping. Antes todo se reportaba como
@@ -161,7 +189,7 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
             "WARN", "SCRAPER",
             f"ValueSERP no devolvió URLs para {codbarras}. Posible caída de API o red.",
             codbarras=codbarras, trigger_id=trigger_id,
-            detalle={"motivo": "valueserp_vacio", "query": f'"{codbarras}" {descripcion}'[:200]},
+            detalle={"motivo": "valueserp_vacio", "query": query[:200]},
         )
     elif urls and not fuentes_extraidas:
         log_evento(
@@ -175,8 +203,8 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
 
     return (
         fuentes_extraidas,
-        list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES],
-        urls,
+        urls_aprobadas_para_ocr,
+        urls_encontradas,
     )
 
 
