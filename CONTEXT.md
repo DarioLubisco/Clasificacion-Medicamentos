@@ -112,7 +112,7 @@
 | `deepseek_client.py` | Cliente DeepSeek nativo (api.deepseek.com, reasoning_effort=max) |
 | `zai_client.py` | Cliente GLM-4.7 vía Z.ai Coding Plan |
 | `run_experimento.py` | Runner controlado por `experimento.conf` |
-| `prompt_agente_v3_solidificado_final.txt` | Prompt canónico (versión auditada 2026-07-15) |
+| `prompt_agente_v3_solidificado_final.txt` | Prompt canónico (bugfix + optimización Opus 4.8, 2026-07-20; 244 líneas) |
 | `scratch/prompt_agente_v2.txt` | Template del prompt del agente (separado del .py) |
 | `scratch/taxonomias_local.txt` | Cache local del catálogo de taxonomías |
 | `scratch/eval_test_a_real.json` | Dataset de 5 EANs reales (Cialis, Bisoprolol, OMMUNAL, Ceftriaxona, Rifaximina) |
@@ -200,6 +200,13 @@ Campos nuevos agregados en la última revisión:
 | 2026-07-15 | Actualizar SKILL.md global/local + .env.example (GLM-5.2/Z.ai, no DeepSeek/OpenRouter) | ✅ Aplicado |
 | 2026-07-15 | Reset DB: DROP 2 backups viejos, backup nuevo BKP_20260715_1533, reset 16,387 productos a solo codbarras+descrip1art | ✅ Aplicado |
 | 2026-07-15 | Test final: DeepSeek auditado 19/25, GLM auditado 18/25 (5 EANs reales vs tabla Procurement) | ✅ Medido |
+| --- | **Sesión 2026-07-20 — Bugfix del prompt + optimización Opus 4.8** | --- |
+| 2026-07-20 | Bug 1 + re-grounding: ejemplos few-shot usaban tuplas dominio/categoría/subcategoría inventadas (`subcategoria:"IBUPROFENO"`) que no existen en el catálogo; reconstruidos con tuplas REALES de `taxonomias_local.txt` y `codigo_atc` extraído de los corchetes `[ATC]` | ✅ Aplicado |
+| 2026-07-20 | Bug 2: ejemplos 7 y 8 completados con las 27 llaves del diccionario + wrapper `registro` (anti-key-dropping); Ej7 `codigo_atc` null→"A03B"; Ej8 concretado (Paracetamol [N02B], conflicto marca/fabricante cap 3) | ✅ Aplicado |
+| 2026-07-20 | Bug 3: `contenido_neto` redefinido sin la contradicción "Float … entero sin decimales" (ahora conserva decimales reales) | ✅ Aplicado |
+| 2026-07-20 | Bug 4: `segmento_etario` puesto a null en ejemplos sin palabra clave etaria explícita (§4.5, prohibido deducir) | ✅ Aplicado |
+| 2026-07-20 | Migrar `generador.py` del skill generador-de-prompts a Claude Opus 4.8 (API Anthropic, key ANTHROPIC_OPUS_4_8_SONNET_5_API_KEY) por rate-limit de Z.ai GLM-5.2 | ✅ Aplicado |
+| 2026-07-20 | Optimizar el prompt corregido con Opus 4.8 (43KB→30KB): estructura Markdown, few-shot minificados; verificado que preserva placeholders, 27 llaves, tuplas del catálogo y los 4 bugfixes. Adoptado como canónico | ✅ Aplicado |
 
 ---
 
