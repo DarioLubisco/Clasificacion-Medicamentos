@@ -393,3 +393,86 @@ ORDER BY
 - Dentro de cada grupo, los `LastUpdated` más viejos van primero (FIFO por antigüedad).
 
 **Nota**: este filtro excluye implícitamente los UPC-A (12 díg) y EAN-8 (8 díg) que también son scrapeables. Hay 1.592 productos válidos en ese grupo (1.378 + 214) que irían al grupo 1 aunque podrían scrapearse. Pendiente de revisar.
+
+---
+
+## 11. Schedule automático (n8n) — Ventanas de operación
+
+### Configuración activa
+
+**Workflow n8n**: `[PROD] Orquestador Clasificador (Ventanas)` (id `AAnxxGYtgg5sD0o8`).
+Archivo: `/home/synapse/source/N8N/workflows/AAnxxGYtgg5sD0o8.json`.
+Estado: `active=true`, registrado en el active-workflow-runner al boot de n8n.
+
+### 3 ventanas diarias (hora Venezuela, `America/Caracas`)
+
+n8n corre con `GENERIC_TIMEZONE=America/Caracas`, así que los `scheduleTrigger` se programan directo en hora VET.
+
+| Ventana | Horario VET | Horario China (UTC+8) | Multiplicador Z.ai |
+|---|---|---|---|
+| Mañana | **07:00–09:00** | 19:00–21:00 | 2× (off-peak) |
+| Mediodía | **12:00–14:00** | 00:00–02:00 | 2× (off-peak) |
+| Noche | **19:00–21:00** | 07:00–09:00 | 2× (off-peak) |
+
+**Total**: 6 horas/día → ~180 productos/día (6h × 60min ÷ 2min/producto).
+
+**Franja evitada**: 02:00–06:00 VET (corresponde a 14:00–18:00 China = peak Z.ai 3×).
+
+### Flujo del workflow
+
+```
+3× scheduleTrigger → Iniciar Ventana (Code) → Loop Batches (splitInBatches)
+                                                       │
+                                              ┌────────┴────────┐
+                                              │                 │
+                                       branch 0 (done)    branch 1 (loop)
+                                              │                 │
+                                              ▼                 ▼
+                                     Resumen Telegram    Check Tiempo Restante
+                                                                 │
+                                                                 ▼
+                                                        Ejecutar Batch (SSH)
+                                                                 │
+                                                                 ▼
+                                                        Parse y Acumular
+                                                                 │
+                                                                 ▼
+                                                       (vuelve a Loop Batches)
+```
+
+- `BATCH_SIZE=5` (lo decide `.env`, NO se toca desde n8n).
+- Una invocación SSH = 1 batch de 5 productos (~10-12 min).
+- El loop corta cuando `Check Tiempo Restante` detecta <15 min restantes o cuando el batch devuelve `intentados=0` (no quedan productos ABIERTO).
+- Estado acumulado (`iteraciones`, `procesados_total`, `escritos_total`) viaja en el `json` del item entre iteraciones.
+
+### Comando SSH que ejecuta n8n
+
+```bash
+cd "/home/synapse/source/repos/Clasificacion Medicamentos" \
+  && export DB_SERVER="100.94.5.108,49751" \
+  && python3 -u orquestador_produccion.py \
+       --trigger-json '{"TriggerID":1,"ProcessName":"MDM_Farmaceutico_Scraper","CheckQuery":"SELECT COUNT(*) FROM Procurement.por_aprobacion_equivalencias WHERE estado_ciclo = ''ABIERTO''","ThresholdValue":1}' \
+       --sync
+```
+
+El último renglón del stdout debe ser un JSON `{status, procesados, escritos, intentados}` que `Parse y Acumular` extrae.
+
+### Alertas Telegram
+
+3 canales independientes:
+
+1. **`alertas.py`** (Python, dentro del script): WARN/ERROR del orquestador (scraper caído, INSERT fallido, etc.) → `TELEGRAM_AMC_NOTIFICACION_BOT` + `ERROR_CHAT_ID`. Ya probado.
+2. **Error Trigger del workflow n8n**: cualquier fallo del SSH/script en el workflow → bot `RkijxthBpMtc1pDO` + `ERROR_CHAT_ID`.
+3. **Resumen al final de cada ventana** (nodo Telegram): iters, procesados, escritos, motivo de parada → mismo bot+chat.
+
+### Credenciales involucradas
+
+- SSH: `q9XQyJD7Uu17tWSl` (`[PROD] SSH - Debian WebServices`) — n8n (Docker) → host Debian.
+- Telegram: `RkijxthBpMtc1pDO` (`[PROD] Telegram - Bot Pago Movil`).
+- MSSQL no se usa directo en el workflow (el script Python la maneja via `synapse.credentials`).
+
+### Qué NO hace el workflow
+
+- **No maneja la transición `pendiente → ABIERTO`** (ver §10.2). El gap arquitectónico sigue: los 13.219 `pendiente` no entran al schedule hasta que un agente externo los promueva.
+- **No monitorea cuota Z.ai**: si se agota el budget mensual del Coding Plan, los batches van a fallar y el workflow entra en retry. El Error Trigger avisará por Telegram.
+- **No prueba SSH+Telegram end-to-end antes de activarse**: la lógica de los Code nodes fue validada con `node -e`, pero la ejecución real del SSH y el envío del mensaje Telegram solo se prueban cuando se dispara la primera ventana.
