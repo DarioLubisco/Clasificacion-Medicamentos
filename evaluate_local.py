@@ -501,8 +501,10 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     else:
         nota_vision = "[Nota: Se encontraron imágenes pero ninguna contenía texto farmacéutico legible. Procede usando únicamente los datos de texto web.]"
 
-    # Paso 3: Consolidación con GLM-4.7
-    log(f"  [3/3] Consolidación con GLM-4.7...")
+    # Paso 3: Consolidación LLM
+    _proveedor_txt = os.getenv("IA_PROVEEDOR", "glm").lower()
+    _modelo_label = "DeepSeek V4 Flash" if _proveedor_txt == "deepseek" else "GLM-4.7"
+    log(f"  [3/3] Consolidación con {_modelo_label}...")
 
     # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / PROMPT_ARCHIVO)
     prompt_template_path = os.getenv("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
@@ -605,7 +607,7 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
     resultados_batch1 = {
         "configuracion": {
             "batch_size": 1,
-            "modelo_consolidacion": "GLM-4.7 (Z.ai API DIRECTA - GLM Coding Plan)",
+            "modelo_consolidacion": _modelo_label,
             "modelo_vision": vlabel,
             "fecha": time.strftime("%Y-%m-%d %H:%M:%S")
         },
