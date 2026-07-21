@@ -199,31 +199,21 @@ def normalizar_segmento_etario(val):
 # Todo lo demás se asigna como ADULTO por defecto.
 # ---------------------------------------------------------------------------
 _ATC_PEDIATRICO = {
-    # Vacunas (J07) — mayoría pediátricas
+    # Vacunas (J07) — la mayoría son pediátricas
     'J07A', 'J07B', 'J07C', 'J07X',
     # Antiparasitarios (P01) — uso frecuente pediátrico
     'P01A', 'P01B', 'P01C',
-    # Antidiarreicos (A07) — rehidratación pediátrica
-    'A07A', 'A07B', 'A07C', 'A07D', 'A07E', 'A07F', 'A07X',
-    # Fórmulas infantiles y alimentos (A09/A12 pediátricos)
-    'A09A',
-    # Vitaminas pediátricas
-    'A11A', 'A11C',
-    # Suplementos minerales pediátricos
-    'A12A', 'A12B', 'A12C',
     # Antihelmínticos (P02) — uso frecuente pediátrico
     'P02B', 'P02C', 'P02D',
-    # Antifúngicos sistémicos (J02) — algunos pediátricos
-    'J02A',
+    # Fórmulas infantiles y alimentos pediátricos
+    'A09A',
+    # Vitaminas multivitamínicas combinadas (muchas pediátricas)
+    'A11C',  # Vitamina A y D (uso pediátrico frecuente)
 }
 
 _ATC_NEONATAL = {
-    # Sustancias generales neonatales
-    'V03A', 'V03B',
     # Surfactantes pulmonares (R07) — neonatal
     'R07A',
-    # Soluciones de perfusión neonatales
-    'B05A', 'B05B', 'B05C', 'B05D', 'B05X', 'B05Z',
 }
 
 def deducir_segmento_etario(codigo_atc_profundo):
