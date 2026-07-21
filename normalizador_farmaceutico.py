@@ -27,7 +27,11 @@ def dividir_compuestos(texto, es_concentracion=False):
         # Unidades de masa: MG, G, GR, MCG, UI
         # Regex: reemplaza '/' seguido de números y (MG|G|GR|MCG|UI) por '-'
         texto_mod = re.sub(r'/(?=\s*\d*\.?\d+\s*(MG|G|GR|MCG|UI)\b)', '-', texto, flags=re.IGNORECASE)
-        
+
+        # Eliminar comas de separadores de miles en números (ej: "2,400,000 UI" → "2400000 UI")
+        # para que no se confundan con separadores de ingredientes.
+        texto_mod = re.sub(r'(?<=\d),(?=\d)', '', texto_mod)
+
         separadores = r'[\+;,]|\s+Y\s+|-'
         partes = re.split(separadores, texto_mod)
     else:
