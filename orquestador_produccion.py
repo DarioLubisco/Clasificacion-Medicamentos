@@ -280,8 +280,8 @@ def build_update_clauses(
         atrib["concentracion"] = None
         observaciones = limpieza.get("observaciones") or ""
 
-    # segmento_etario ya fue deducido en evaluate_local.py via ATC profundo.
-    # No volver a normalizar aquí.
+    # Deducir segmento_etario desde ATC profundo (no viene del LLM)
+    atrib["segmento_etario"] = ev.deducir_segmento_etario(atrib.get("codigo_atc_profundo"))
     score = ev.calcular_score_calidad(atrib)
     es_med = not bool(atrib.get("clasificacion_insumo_Des"))
 
