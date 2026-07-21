@@ -31,6 +31,7 @@ import orquestador_scraper as scrap
 from normalizador_farmaceutico import procesar_farmacos
 from MDM_Unified_Mapper import MasterCatalog
 from alertas import log_evento
+from n8n_error_reporter import report_valueserp_access_failure, report_external_error, report_scraper_critical
 
 REPO_DIR = Path(__file__).resolve().parent
 BATCH_SIZE = int(os.getenv("ORQUESTADOR_BATCH_SIZE", "5"))
@@ -279,7 +280,8 @@ def build_update_clauses(
         atrib["concentracion"] = None
         observaciones = limpieza.get("observaciones") or ""
 
-    atrib["segmento_etario"] = ev.normalizar_segmento_etario(atrib.get("segmento_etario"))
+    # segmento_etario ya fue deducido en evaluate_local.py via ATC profundo.
+    # No volver a normalizar aquí.
     score = ev.calcular_score_calidad(atrib)
     es_med = not bool(atrib.get("clasificacion_insumo_Des"))
 
