@@ -154,7 +154,8 @@ def obtener_taxonomias_estrictas():
     return ""
 
 def calcular_score_calidad(atrib):
-    """Calcula score de calidad basado en atributos completados"""
+    """Calcula score de calidad basado en atributos completados.
+    Distribución sobre 100 puntos (sin segmento_etario, que se asigna en Python)."""
     score = 0
     dominio = atrib.get('dominio', 'MEDICAMENTO_ALOPATICO') if atrib else 'MEDICAMENTO_ALOPATICO'
     es_med = dominio in ['MEDICAMENTO_ALOPATICO', 'PRODUCTO_NATURAL_HOMEOPATICO', 'SUPLEMENTO_VITAMINICO']
@@ -170,17 +171,15 @@ def calcular_score_calidad(atrib):
         if not tiene_cant:
             return 0
 
-    if atrib.get('principio_activo'): score += 15
-    if atrib.get('concentracion'): score += 15
-    if atrib.get('forma_farmaceutica'): score += 15
-    if tiene_cant: score += 10
-    if atrib.get('contenido_neto'): score += 5
-    if atrib.get('origen'): score += 10
-    if atrib.get('segmento_etario'): score += 10
-    if atrib.get('fabricante'): score += 5
-    if atrib.get('marca'): score += 5
-    if atrib.get('codigo_atc'): score += 5
-    if atrib.get('generico') in [1, 0]: score += 5
+    if atrib.get('principio_activo'): score += 17
+    if atrib.get('concentracion'): score += 17
+    if atrib.get('forma_farmaceutica'): score += 18
+    if tiene_cant: score += 12
+    if atrib.get('contenido_neto'): score += 6
+    if atrib.get('origen'): score += 12
+    if atrib.get('fabricante'): score += 6
+    if atrib.get('marca'): score += 6
+    if atrib.get('codigo_atc'): score += 6
 
     return min(100, score)
 
@@ -193,6 +192,53 @@ def normalizar_segmento_etario(val):
     if "MIXTO" in v: return "MIXTO"
     if "GENERAL" in v or "TODO" in v: return "GENERAL"
     return "NO_DEFINIDO"
+
+# ---------------------------------------------------------------------------
+# Mapeo ATC profundo → segmento etario (tabla exhaustiva)
+# Prefijos de nivel 3 (4 chars) que son inherentemente pediátricos/neonatales.
+# Todo lo demás se asigna como ADULTO por defecto.
+# ---------------------------------------------------------------------------
+_ATC_PEDIATRICO = {
+    # Vacunas (J07) — mayoría pediátricas
+    'J07A', 'J07B', 'J07C', 'J07X',
+    # Antiparasitarios (P01) — uso frecuente pediátrico
+    'P01A', 'P01B', 'P01C',
+    # Antidiarreicos (A07) — rehidratación pediátrica
+    'A07A', 'A07B', 'A07C', 'A07D', 'A07E', 'A07F', 'A07X',
+    # Fórmulas infantiles y alimentos (A09/A12 pediátricos)
+    'A09A',
+    # Vitaminas pediátricas
+    'A11A', 'A11C',
+    # Suplementos minerales pediátricos
+    'A12A', 'A12B', 'A12C',
+    # Antihelmínticos (P02) — uso frecuente pediátrico
+    'P02B', 'P02C', 'P02D',
+    # Antifúngicos sistémicos (J02) — algunos pediátricos
+    'J02A',
+}
+
+_ATC_NEONATAL = {
+    # Sustancias generales neonatales
+    'V03A', 'V03B',
+    # Surfactantes pulmonares (R07) — neonatal
+    'R07A',
+    # Soluciones de perfusión neonatales
+    'B05A', 'B05B', 'B05C', 'B05D', 'B05X', 'B05Z',
+}
+
+def deducir_segmento_etario(codigo_atc_profundo):
+    """Deduce segmento etario a partir del código ATC profundo (nivel 4/5).
+    Si el prefijo de nivel 3 está en las tablas pediátricas/neonatales,
+    devuelve el segmento correspondiente. Si no, devuelve 'ADULTO'.
+    Si no hay código ATC, devuelve None."""
+    if not codigo_atc_profundo:
+        return None
+    prefijo3 = codigo_atc_profundo[:4].upper()
+    if prefijo3 in _ATC_NEONATAL:
+        return "NEONATAL"
+    if prefijo3 in _ATC_PEDIATRICO:
+        return "PEDIATRICO"
+    return "ADULTO"
 
 def extract_json_from_content(content):
     """
@@ -668,7 +714,7 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
 
             if atrib:
                 score = calcular_score_calidad(atrib)
-                atrib['segmento_etario'] = normalizar_segmento_etario(atrib.get('segmento_etario'))
+                atrib['segmento_etario'] = deducir_segmento_etario(atrib.get('codigo_atc_profundo'))
                 # Capa 2 — post-validación determinista: si fabricante/marca están marcados
                 # como baja confianza (conflicto imagen↔texto u otra razón), el nivel global
                 # se capa a máximo 3. Backstop del fallo donde GLM documenta fabricante=3
