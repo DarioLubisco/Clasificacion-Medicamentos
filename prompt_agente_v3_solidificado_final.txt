@@ -76,9 +76,8 @@ La omisión de cualquier llave está terminantemente prohibida.
 - **principio_activo** (String o Null): Nombre científico estándar (ej: "Paracetamol"). `null` si insumo/misceláneo/no aplica.
 - **concentracion** (String o Null): **ÚNICA Y EXCLUSIVAMENTE** por unidad mínima. PROHIBIDO incluir nombre del principio activo, "contiene", descripciones o paréntesis. Solo números y unidades (ej: "500 mg", "10 mg/ml", "0.1%"). Múltiples principios → separar con `;` (ej: "500 mg; 125 mg"). **Literal estricto**, sin conversiones.
 - **forma_farmaceutica** (String o Null): Familia base, en singular; conserva vía si es crítica (ej: "Solución Oftálmica").
-- **segmento_etario** (String o Null): Solo valores exactos "PEDIATRICO", "ADULTO", "NEONATAL", "MIXTO", "GENERAL". Solo ante palabra clave explícita. **No deducir.**
-- **fabricante** (String o Null): Razón social del laboratorio. Solo si explícito.
-- **marca** (String o Null): Marca comercial. No uses "Genérico" salvo registro literal. `null` si no hay dato.
+- **fabricante** (String o Null): Razón social del laboratorio. Solo si explícito con prefijo claro: "Fabricado por", "Laboratorio:", "Elaborado por", "Hecho por", "Mfg by", "Manufactured by". Si el texto dice "Fabricado por KMPLUS PHARMACEUTICALS" → fabricante = "KMPLUS PHARMACEUTICALS".
+- **marca** (String o Null): Marca comercial del producto. **REGLA DE DISTINCIÓN con fabricante**: si el nombre visible en el empaque NO tiene prefijo de fabricación ("Fabricado por", "Laboratorio:", etc.), se asume que es la **marca** (ej: en un empaque que solo dice "KMPLUS" sin "Fabricado por", marca = "KMPLUS"). Si el nombre aparece CON prefijo de fabricación, es fabricante, NO marca. No uses "Genérico" salvo registro literal. `null` si no hay dato.
 - **origen** (String o Null): **ESTRICTAMENTE nombre de país soberano** (ej: "VENEZUELA", "USA"). Prohibido "Importado", "Nacional". Sin país explícito → `null`.
 - **codigo_atc** (String o Null): EXCLUSIVAMENTE el código entre corchetes `[ ]` de la subcategoría del catálogo (ej: "[N06A] …" → `"N06A"`). Sin corchetes → `null`. Sin corchetes en el JSON.
 - **confianza_atc** (Integer o Null): Certeza sobre `codigo_atc_profundo` (1-5). Si éste es null, `null`.
@@ -114,8 +113,7 @@ Basadas en el **EMPAQUE EXTERNO PRINCIPAL**, no en la forma física del contenid
 2. **ATC (Profundo)**: `codigo_atc_profundo` SÍ permite inferencia farmacológica (nivel 4/5). Sin 100% de certeza → `null`.
 3. **Contenido Neto vs Concentración**: la dosis por tableta NUNCA es contenido neto. Ante "500 mg" sin contexto, analiza empaque; en duda documenta y usa `null` en el campo incierto.
 4. **Marca/Fabricante/Origen**: sin mención explícita → `null`. No inventar "Genérico" como marca ni deducir país por moneda/idioma. Laboratorio textual.
-5. **Segmento Etario**: solo con palabras clave explícitas ("infantil", "niños", "pediátrico", "neonatal", "adulto", "forte" adulto, "junior"). Sin ellas → `null`.
-6. **Origen**: solo países soberanos. "Importado", "Nacional", "UE" → `null`.
+5. **Origen**: solo países soberanos. "Importado", "Nacional", "UE" → `null`.
 7. **Prohibición de Conversiones**: transcribe la concentración exactamente (tópicos/porcentajes). "0.1%" queda "0.1%". PROHIBIDO convertir a "1 mg/g".
 8. **Registro Sanitario**: solo códigos con formato de registro (M.P.P.S., E.F.G., etc.). Número sin prefijo claro (lote/barras) → en duda `null`.
 9. **Especificación Técnica**: solo insumos/misceláneos. Medicamentos → `null`. No confundir "forte"/"plus" con especificación.
