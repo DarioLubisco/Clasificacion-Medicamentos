@@ -499,7 +499,7 @@ def transcribir_imagenes_vision(fotos_aprobadas, desc_producto):
 # Alias legacy
 transcribir_imagenes_gemini = transcribir_imagenes_vision
 
-def llamar_glm_47_api(prompt_text, model_id, max_tokens=4000):
+def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384):
     """
     Llamada DIRECTA a GLM-4.7 via API de Z.ai (GLM Coding Plan).
     NO usa OpenRouter. Devuelve (result_dict, error_str).
