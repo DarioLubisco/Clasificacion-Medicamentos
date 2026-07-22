@@ -284,6 +284,37 @@ def build_update_clauses(
 
     # Deducir segmento_etario desde ATC profundo (no viene del LLM)
     atrib["segmento_etario"] = ev.deducir_segmento_etario(atrib.get("codigo_atc_profundo"))
+
+    # Post-proceso: extraer marca del nombre si el LLM no la extrajo
+    if not atrib.get("marca"):
+        _desc = (atrib.get("descripcion_original") or item.get("descripcion") or "").upper()
+        # Buscar palabras al final que parezcan marca (no PA, no forma, no concentración)
+        _pa = (atrib.get("principio_activo") or "").upper()
+        _ff = (atrib.get("forma_farmaceutica") or "").upper()
+        _conc = (atrib.get("concentracion") or "").upper()
+        # Palabras genéricas que NO son marca
+        _genericos = {"MG", "ML", "G", "GR", "KG", "TAB", "TABLETA", "TABLETAS", "CAP",
+                      "CÁPSULA", "CÁPSULAS", "CAPSULA", "CAPSULAS", "SUSPENSIÓN", "SUSPENSION",
+                      "JARABE", "CREMA", "GEL", "SOLUCIÓN", "SOLUCION", "POLVO", "AMP",
+                      "AMPOLLA", "AMPOLLAS", "X", "UNO", "UNIDAD", "UNIDADES", "FRASCO",
+                      "CAJA", "BLISTER", "SOBRE", "SOBRES", "OVULO", "ÓVULO", "OVULOS",
+                      "ÓVULOS", "SUP", "ORAL", "TOPICO", "TÓPICO", "OFTÁLMICO", "OFTALMICO",
+                      "INHALADOR", "INYECTABLE", "INTRAMUSCULAR", "INTRAVENOSA", "PEDIÁTRICA",
+                      "PEDIATRICA", "ADULTO", "PEDIÁTRICO", "PEDIATRICO"}
+        _desc_words = _desc.replace(",", " ").replace(".", " ").split()
+        # Buscar la última palabra que no sea genérica, número, ni parte de PA/ff/conc
+        for w in reversed(_desc_words):
+            w_clean = w.strip()
+            if not w_clean or w_clean in _genericos or w_clean.replace("/", "").replace("-", "").isdigit():
+                continue
+            if len(w_clean) < 3:
+                continue
+            if w_clean in _pa or w_clean in _ff or w_clean in _conc:
+                continue
+            # Parece marca
+            atrib["marca"] = w_clean.title()
+            break
+
     score = ev.calcular_score_calidad(atrib)
     dominio = atrib.get('dominio') or 'MEDICAMENTO_ALOPATICO'
 
