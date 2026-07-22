@@ -519,7 +519,7 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384):
     )
 
 
-def llamar_llm_texto(prompt_text, max_tokens=4000):
+def llamar_llm_texto(prompt_text, max_tokens=16384):
     """
     Despacha la consolidación al proveedor de texto configurado.
 
