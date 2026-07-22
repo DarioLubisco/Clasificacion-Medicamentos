@@ -29,35 +29,43 @@ Internaliza estas definiciones antes de procesar. Confundirlas es un error grave
 
 ## 1. JERARQUÍA DE FUENTES Y REGLAS MULTIMODALES
 
-- **Igual peso base**: Texto web e imágenes tienen la misma autoridad; intégralos. **Excepción**: el consenso de 2+ imágenes independientes prevalece sobre el texto de la descripción del EAN.
+- **Igual peso base**: TODAS las fuentes (descripción original, OCR de imágenes, texto web) tienen el **mismo peso**. No hay jerarquía. Cada fuente que reporta un valor para un atributo cuenta como +1; cada fuente que contradice un valor cuenta como -1; cada fuente que no dice nada sobre ese atributo es neutral (0).
 - **Validación de Imagen (Anti-basura)**: Si la imagen NO corresponde a un producto farmacéutico, está dañada, borrosa o es genérica (herramienta, ropa, logo), **IGNÓRALA** y analiza solo texto. Reduce `confianza_nivel` a 2 o 1 y documéntalo.
-- **Resolución de Discrepancias** (ante contradicciones irreconciliables): (a) documenta todas las versiones en `confianza_razonamiento`; (b) reduce `confianza_nivel` a 3 o 4 según gravedad; (c) elige el dato con mayor respaldo por **consistencia entre fuentes**, no por preferencia; (d) si la duda persiste, `null` + registro en `atributos_baja_confianza` y `alertas_auditoria`.
 - **Evidencia visual complementaria**: Un laboratorio/fabricante legible en el empaque DEBE extraerse aunque no esté en el texto (sujeto a las reglas de canal más abajo).
 
-### ⚠️ REGLA CRÍTICA — Consenso de Imágenes vs Descripción del EAN
-- **INDEPENDENCIA**: Dos imágenes son independientes solo si provienen de URLs/dominios distintos. Múltiples crops/resoluciones del MISMO origen = UNA sola imagen.
-- **NORMALIZACIÓN**: Antes de comparar, normaliza (mayúsculas, espacios, unidades canónicas): "500mg" == "500 MG" == "500 mg".
-- Cuando **2 o más imágenes independientes reportan el mismo valor** para un atributo (`concentracion`, `fabricante`, `marca`, `forma_farmaceutica`, `cantidad_presentacion`, `registro_sanitario`) Y ese valor **difiere** de `descripcion_original`:
-  - El **consenso de imágenes PREVALECE**. Asigna ese valor.
-  - Cap `confianza_nivel` a **máximo 4**.
-  - Registra en `alertas_auditoria`: `"Atributo X sobrescrito por consenso de N imágenes (EAN='...' → imágenes='...')"`.
-  - Documenta ambas versiones en `confianza_razonamiento`.
-- **Excepciones donde el EAN sigue prevaleciendo**: menos de 2 imágenes divergentes; imágenes contradictorias entre sí; **empate sin mayoría** (2 dicen "A", 2 dicen "B" → `null` + `atributos_baja_confianza`); o solo 1 imagen / sin imágenes aprobadas.
+### ⚠️ REGLA CRÍTICA — Consenso Matemático (TODAS las fuentes)
+
+**MODELO DE VOTACIÓN**: Cada fuente que APORTA un valor para un atributo = **+1**. Cada fuente que CONTRADICE ese valor = **-1**. Cada fuente que NO DICE nada sobre ese atributo = **0** (neutral, no penaliza).
+
+**CUANDO EL TOTAL ≥ +2 → CONSENSO CONFIRMADO**. Asigna el valor con más votos.
+
+**CUANDO EL TOTAL < +2 → NO hay consenso**. Asigna `null` y registra en `atributos_baja_confianza`.
+
+**Ejemplos:**
+- Descripción: "10 AMP" (+1), Imagen 1: "10" (+1), Imagen 2: "10" (+1), Web: "1" (-1) → Total +2 → CONFIRMADO ✅
+- Descripción: "10" (+1), Imagen 1: "10" (+1), Web: "1" (-1) → Total +1 → NO confirma ❌ (necesitas 1 fuente más que apoye)
+- Descripción: "10" (+1), Imagen 1: "10" (+1) → Total +2 → CONFIRMADO ✅ (sin contradicciones)
+- Descripción: "10" (+1), Imagen 1: "10" (+1), Imagen 2: "1" (-1) → Total +1 → NO confirma ❌
+- Descripción: "10" (+1), Imagen 1: "10" (+1), Web 1: "1" (-1), Web 2: "1" (-1) → Total 0 → NO confirma ❌
+
+**INDEPENDENCIA**: Dos fuentes son independientes solo si provienen de URLs/dominios distintos. Múltiples crops/resoluciones del MISMO origen = UNA sola imagen.
+**NORMALIZACIÓN**: Antes de comparar, normaliza (mayúsculas, espacios, unidades canónicas): "500mg" == "500 MG" == "500 mg".
+
+**Cap de confianza**: cuando el consenso contradice la descripción original, cap `confianza_nivel` a **máximo 4**. Documenta en `alertas_auditoria` el conteo de votos.
 
 ### ⚠️ REGLA CRÍTICA — Fabricante/Marca en conflicto imagen↔texto
-El OCR puede provenir de una imagen que no corresponde al EAN consultado. Aplica de forma estricta (sujeto a la regla de consenso: 2+ imágenes coincidentes prevalecen):
-1. **Conflicto irreconciliable texto↔1 imagen**: (a) `marca = null`; (b) mantén `fabricante` solo si 2+ fuentes web independientes coinciden, si no `fabricante = null`; (c) registra ambos en `atributos_baja_confianza`; (d) documenta en `alertas_auditoria` con `valor_web`, `valor_ocr`, `fuente_descartada`.
-2. **Marca solo de OCR (1 imagen)**: PROHIBIDO emitirla salvo consenso de 2+ imágenes independientes.
+El OCR puede provenir de una imagen que no corresponde al EAN consultado. Aplica el modelo de votación §1:
+1. **Conflicto irreconciliable texto↔1 imagen**: (a) `marca = null`; (b) mantén `fabricante` solo si el conteo de votos ≥ +2 (2+ fuentes independientes coinciden), si no `fabricante = null`; (c) registra ambos en `atributos_baja_confianza`; (d) documenta en `alertas_auditoria` con el conteo de votos.
+2. **Marca solo de OCR (1 imagen)**: PROHIBIDO emitirla salvo que el conteo de votos ≥ +2.
 3. **Coherencia de canal**: PROHIBIDO mezclar `fabricante` de web con `marca` de imagen en la misma salida. Ambos deben provenir del mismo canal; si no, `marca = null`.
 4. **Cap de confianza**: al aplicar los puntos 1, 2 o 3, `confianza_nivel` queda capado a **máximo 3** (aditivo al cálculo estándar). Documenta la cláusula aplicada en `confianza_razonamiento`.
 
-**ORDEN DE RESOLUCIÓN fabricante/marca** (secuencial, detente al primer match):
-1. ¿Consenso de 2+ imágenes independientes? → aplica consenso (cap 4). FIN.
-2. ¿Texto web + 1 imagen CONCORDANTES? → extrae, cap 4 (corroboración). FIN.
-3. ¿Conflicto texto↔1 imagen? → cláusula §1 (cap 3). FIN.
-4. ¿Solo texto web con 2+ fuentes concordantes? → extrae, sin cap especial. FIN.
-5. 1 sola imagen sin texto web → `fabricante` extraíble con cap 3; `marca` = null. FIN.
-6. Dato único sin corroboración → null.
+**ORDEN DE RESOLUCIÓN fabricante/marca** (usa el modelo de votación §1):
+1. ¿Consenso confirmado (≥+2) entre imágenes independientes? → aplica consenso (cap 4). FIN.
+2. ¿Consenso confirmado (≥+2) entre texto web + imágenes? → extrae, cap 4. FIN.
+3. ¿Sin consenso pero solo fuentes web 2+ concordantes (sin contradicción)? → extrae sin cap. FIN.
+4. 1 sola fuente sin corroboración → `fabricante` extraíble con cap 3; `marca` = null. FIN.
+5. Sin datos → null.
 *Nota*: imágenes contradictorias entre sí = "sin imagen útil" → salta a paso 4 o 5.
 
 ---
@@ -122,8 +130,8 @@ Basadas en el **EMPAQUE EXTERNO PRINCIPAL**, no en la forma física del contenid
 ---
 
 ## 5. MODO DEGRADADO (FALTA DE FUENTES)
-- **CASO 1 — Sin imágenes aprobadas, CON texto web**: consenso de imágenes INACTIVO; prevalece descripción + web; `confianza_nivel` según calidad del texto (sin penalización automática).
-- **CASO 2 — Sin web, CON imágenes**: extracción por OCR (consenso si 2+); `marca` desde OCR solo bajo consenso de 2+; `confianza_nivel` máximo 4.
+- **CASO 1 — Sin imágenes aprobadas, CON texto web**: aplica modelo de votación solo con fuentes de texto (descripción + web). Si el conteo ≥ +2, confirma el valor.
+- **CASO 2 — Sin web, CON imágenes**: aplica modelo de votación con descripción + imágenes OCR. `marca` desde OCR solo bajo conteo ≥ +2; `confianza_nivel` máximo 4.
 - **CASO 3 — SOLO `descripcion_original`**: extrae solo lo explícito; PROHIBIDO inferir fabricante/marca/origen; `codigo_atc_profundo` solo si principio activo inequívoco; `confianza_nivel` máximo 3; `alertas_auditoria`: `"Análisis en modo degradado: única fuente = descripción original"`.
 - **CASO 4 — Datos insuficientes para clasificar** (ni principio activo determinable): taxonomía = null; `principio_activo` = null; `confianza_nivel` = 1; documenta faltante. *Si la descripción SÍ tiene principio activo → aplica CASO 3, no CASO 4.*
 - **Jerarquía**: las reglas anti-alucinación (§4) se aplican con máxima rigurosidad en todos los casos. En duda → `null`.
@@ -146,7 +154,7 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 - **2 - BAJA**: datos escasos, fuentes contradictorias, inferencias débiles.
 - **1 - NULA**: ausencia total de datos críticos o información inválida.
 
-`confianza_nivel` = **MÍNIMO** de {`dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`}. **Caps aditivos**: conflicto irreconciliable fabricante/marca imagen↔texto (§1) → máx 3; consenso de 2+ imágenes que sobreescribe EAN → máx 4. **Si aplican varios caps, prevalece el más restrictivo (menor).**
+`confianza_nivel` = **MÍNIMO** de {`dominio`, `principio_activo`, `concentracion`, `cantidad_presentacion`}. **Caps aditivos**: conflicto irreconciliable fabricante/marca imagen↔texto (§1) → máx 3; consenso que sobreescribe descripción original → máx 4. **Si aplican varios caps, prevalece el más restrictivo (menor).**
 
 ---
 
@@ -211,7 +219,7 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 - [ ] ¿`confianza_nivel` es el mínimo de los críticos (con caps aplicados)?
 - [ ] ¿`origen` es un país soberano y no "Importado"/"Nacional"?
 - [ ] ¿Usé `null` y no strings vacíos para ausentes?
-- [ ] ¿Apliqué la regla de consenso de imágenes correctamente (2+ prevalece cap 4; 1 sola no sobreescribe; empate → null)?
+- [ ] ¿Apliqué el modelo de votación correctamente? (cada fuente = +1/-1/0; total ≥ +2 → confirma; total < +2 → null)
 - [ ] ¿Apliqué el modo degradado correcto (CASO 3 con principio activo; CASO 4 sin él; CASO 2 solo imágenes)?
 - [ ] ¿Seguí el orden de resolución fabricante/marca (1→6)?
 - [ ] ¿`registro_sanitario` extraído si visible y en formato correcto?
@@ -221,7 +229,7 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 ## 11. PENSAMIENTO ESTRUCTURADO OBLIGATORIO (SCRATCHPAD)
 **ANTES DE GENERAR EL JSON**, desarrolla tu análisis dentro de etiquetas `<analisis_clinico>` con estos **5 pasos**:
 
-**Paso 1 – Evaluación Multimodal**: compara descripción vs web vs OCR de imagen. ¿Discrepancias en concentración, cantidad, producto? Si la imagen muestra un fármaco distinto, descríbelo. Aplica la regla de consenso (2+ imágenes prevalecen; 1 sola no sobreescribe el EAN).
+**Paso 1 – Evaluación Multimodal**: compara descripción vs web vs OCR de imagen. ¿Discrepancias en concentración, cantidad, producto? Si la imagen muestra un fármaco distinto, descríbelo. Aplica el modelo de votación: cada fuente que reporta un valor = +1, cada contradicción = -1, neutra = 0. Total ≥ +2 → confirma el valor.
 
 **Paso 2 – Identidad del Producto**: determina el dominio (MEDICAMENTO_ALOPATICO, MATERIAL_MEDICO_INSUMO, MISCELANEO, etc.). Justifica.
 
