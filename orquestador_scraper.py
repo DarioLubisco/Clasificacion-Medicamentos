@@ -184,10 +184,7 @@ def procesar_lote():
         if not is_internal:
             urls = buscar_en_internet(f'"{codbarras}"')
             if not urls:
-                print("  Buscando por EAN falló, intentando por nombre del producto...")
-                urls = buscar_en_internet(desc)
-            if not urls:
-                print("  Búsqueda por nombre también falló, saltando búsqueda web.")
+                print("  Buscando por EAN falló, saltando búsqueda web para evitar falsos positivos.")
 
             for idx, u in enumerate(urls, 1):
                 fuente_data = extraer_fuente_web(u, idx, desc)
