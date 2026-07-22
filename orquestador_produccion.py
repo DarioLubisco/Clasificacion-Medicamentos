@@ -335,7 +335,7 @@ def build_update_clauses(
         f"ciclos_reproceso = {ciclos_final}",
         f"observaciones_ia = {_sql_lit(observaciones[:500] if observaciones else None)}",
         "origen_dato = 'IA_INVESTIGATED_V11_ORCHESTRATOR'",
-        f"es_medicamento = {0 if atrib.get('clasificacion_insumo_Des') else 1}",
+        f"es_medicamento = {1 if (atrib.get('dominio') or '') in ('MEDICAMENTO_ALOPATICO','PRODUCTO_NATURAL_HOMEOPATICO','SUPLEMENTO_VITAMINICO') else 0}",
         "LastUpdated = GETDATE()",
     ]
 
