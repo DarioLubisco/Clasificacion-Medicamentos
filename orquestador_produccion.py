@@ -267,7 +267,8 @@ def _sql_lit(val: Any, is_string: bool = True) -> str:
 def build_update_clauses(
     atrib: dict[str, Any],
     ciclos_reproceso: int,
-    catalog: Any,
+    descripcion: str = "",
+    catalog: Any = None,
 ) -> tuple[list[str], int, str, int]:
     """Build SET clauses for the UPDATE, aligned to the real table schema
     (same columns as tests/test_ciclo_completo_100.py). No invented _Des columns,
@@ -287,12 +288,10 @@ def build_update_clauses(
 
     # Post-proceso: extraer marca del nombre si el LLM no la extrajo
     if not atrib.get("marca"):
-        _desc = (atrib.get("descripcion_original") or item.get("descripcion") or "").upper()
-        # Buscar palabras al final que parezcan marca (no PA, no forma, no concentración)
+        _desc = (descripcion or atrib.get("descripcion_original") or atrib.get("descripcion") or "").upper()
         _pa = (atrib.get("principio_activo") or "").upper()
         _ff = (atrib.get("forma_farmaceutica") or "").upper()
         _conc = (atrib.get("concentracion") or "").upper()
-        # Palabras genéricas que NO son marca
         _genericos = {"MG", "ML", "G", "GR", "KG", "TAB", "TABLETA", "TABLETAS", "CAP",
                       "CÁPSULA", "CÁPSULAS", "CAPSULA", "CAPSULAS", "SUSPENSIÓN", "SUSPENSION",
                       "JARABE", "CREMA", "GEL", "SOLUCIÓN", "SOLUCION", "POLVO", "AMP",
@@ -300,9 +299,8 @@ def build_update_clauses(
                       "CAJA", "BLISTER", "SOBRE", "SOBRES", "OVULO", "ÓVULO", "OVULOS",
                       "ÓVULOS", "SUP", "ORAL", "TOPICO", "TÓPICO", "OFTÁLMICO", "OFTALMICO",
                       "INHALADOR", "INYECTABLE", "INTRAMUSCULAR", "INTRAVENOSA", "PEDIÁTRICA",
-                      "PEDIATRICA", "ADULTO", "PEDIÁTRICO", "PEDIATRICO"}
+                      "PEDIATRICA", "ADULTO", "PEDIÁTRICO", "PEDIATRICO", "JARABE"}
         _desc_words = _desc.replace(",", " ").replace(".", " ").split()
-        # Buscar la última palabra que no sea genérica, número, ni parte de PA/ff/conc
         for w in reversed(_desc_words):
             w_clean = w.strip()
             if not w_clean or w_clean in _genericos or w_clean.replace("/", "").replace("-", "").isdigit():
@@ -311,10 +309,8 @@ def build_update_clauses(
                 continue
             if w_clean in _pa or w_clean in _ff or w_clean in _conc:
                 continue
-            # Parece marca
             atrib["marca"] = w_clean.title()
             break
-
     score = ev.calcular_score_calidad(atrib)
     dominio = atrib.get('dominio') or 'MEDICAMENTO_ALOPATICO'
 
@@ -686,7 +682,7 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         if not atrib:
             continue
 
-        clauses, score, estado, ciclos = build_update_clauses(atrib, item["ciclos_reproceso"], catalog)
+        clauses, score, estado, ciclos = build_update_clauses(atrib, item["ciclos_reproceso"], item.get("descripcion", ""), catalog)
         costo = (metricas.get("costo_gemini") or 0) + (metricas.get("costo_glm") or 0)
         print(f"  [MDM] OK score={score} estado={estado} costo=${costo:.4f}")
         filas.append({"codbarras": codbarras, "clauses": clauses})
