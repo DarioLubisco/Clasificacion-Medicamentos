@@ -96,9 +96,11 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
             FROM Procurement.por_aprobacion_equivalencias
             WHERE estado_ciclo = 'ABIERTO'
             ORDER BY
-                -- EAN-13 primero (scrapeables), códigos internos al final (GLM solo).
-                -- No se excluyen: el prompt clasifica igual con solo descrip1art.
+                -- Prioridad 1: productos nunca procesados (0 ciclos) primero
+                ISNULL(ciclos_reproceso, 0) ASC,
+                -- Prioridad 2: EAN-13 primero (scrapeables), códigos internos al final
                 CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
+                -- Prioridad 3: más antiguos primero
                 ISNULL(LastUpdated, '1900-01-01') ASC
             """
         )
