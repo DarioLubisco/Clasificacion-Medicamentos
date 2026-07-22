@@ -154,33 +154,97 @@ def obtener_taxonomias_estrictas():
     return ""
 
 def calcular_score_calidad(atrib):
-    """Calcula score de calidad basado en atributos completados.
-    Distribución sobre 100 puntos (sin segmento_etario, que se asigna en Python)."""
-    score = 0
-    dominio = atrib.get('dominio', 'MEDICAMENTO_ALOPATICO') if atrib else 'MEDICAMENTO_ALOPATICO'
-    es_med = dominio in ['MEDICAMENTO_ALOPATICO', 'PRODUCTO_NATURAL_HOMEOPATICO', 'SUPLEMENTO_VITAMINICO']
-
+    """Calcula score de calidad por dominio. Cada dominio tiene su propia
+    escala de 100 puntos con atributos relevantes."""
     if not atrib:
         return 0
 
+    dominio = atrib.get('dominio', 'MEDICAMENTO_ALOPATICO') or 'MEDICAMENTO_ALOPATICO'
+
+    # Despacho por dominio
+    if dominio == 'MEDICAMENTO_ALOPATICO':
+        return _score_medicamento(atrib)
+    elif dominio == 'SUPLEMENTO_VITAMINICO':
+        return _score_suplemento(atrib)
+    elif dominio == 'PRODUCTO_NATURAL_HOMEOPATICO':
+        return _score_suplemento(atrib)  # misma escala que suplementos
+    elif dominio == 'COSMETICO_CUIDADO_PERSONAL':
+        return _score_cosmetico(atrib)
+    elif dominio == 'MATERIAL_MEDICO_INSUMO':
+        return _score_insumo(atrib)
+    elif dominio == 'MISCELANEO':
+        return _score_miscelaneo(atrib)
+    else:
+        return _score_medicamento(atrib)  # fallback
+
+
+def _score_medicamento(atrib):
+    """MEDICAMENTO_ALOPATICO: PA + conc + forma + cant + ATC + origen + fab + marca + neto = 100"""
     tiene_cant = atrib.get('cantidad_presentacion') is not None
-
-    if es_med:
-        if not atrib.get('principio_activo') or not atrib.get('concentracion') or not atrib.get('forma_farmaceutica'):
-            return 0
-        if not tiene_cant:
-            return 0
-
+    # Requisito mínimo: si es medicamento, necesita al menos PA + conc + forma
+    if not atrib.get('principio_activo') or not atrib.get('concentracion') or not atrib.get('forma_farmaceutica'):
+        return 0
+    if not tiene_cant:
+        return 0
+    score = 0
     if atrib.get('principio_activo'): score += 17
     if atrib.get('concentracion'): score += 17
     if atrib.get('forma_farmaceutica'): score += 18
     if tiene_cant: score += 12
-    if atrib.get('contenido_neto'): score += 6
-    if atrib.get('origen'): score += 12
-    if atrib.get('fabricante'): score += 6
+    if atrib.get('codigo_atc'): score += 10
+    if atrib.get('origen'): score += 8
+    if atrib.get('fabricante'): score += 7
     if atrib.get('marca'): score += 6
-    if atrib.get('codigo_atc'): score += 6
+    if atrib.get('contenido_neto'): score += 5
+    return min(100, score)
 
+
+def _score_suplemento(atrib):
+    """SUPLEMENTO_VITAMINICO / PRODUCTO_NATURAL: forma + cant + marca + fab + neto + origen = 100"""
+    score = 0
+    if atrib.get('forma_farmaceutica'): score += 21
+    if atrib.get('cantidad_presentacion'): score += 19
+    if atrib.get('marca'): score += 19
+    if atrib.get('fabricante'): score += 16
+    if atrib.get('contenido_neto'): score += 15
+    if atrib.get('origen'): score += 10
+    return min(100, score)
+
+
+def _score_cosmetico(atrib):
+    """COSMETICO_CUIDADO_PERSONAL: subcat + marca + neto + forma + fab + origen = 100"""
+    score = 0
+    if atrib.get('subcategoria'): score += 25
+    if atrib.get('marca'): score += 25
+    if atrib.get('contenido_neto'): score += 25
+    if atrib.get('forma_farmaceutica'): score += 8
+    if atrib.get('fabricante'): score += 10
+    if atrib.get('origen'): score += 7
+    return min(100, score)
+
+
+def _score_insumo(atrib):
+    """MATERIAL_MEDICO_INSUMO: marca + cant + clasif + espec + forma + fab + origen = 100"""
+    score = 0
+    if atrib.get('marca'): score += 22
+    if atrib.get('cantidad_presentacion'): score += 18
+    if atrib.get('clasificacion_insumo_Des'): score += 18
+    if atrib.get('especificacion_tecnica'): score += 15
+    if atrib.get('forma_farmaceutica'): score += 12
+    if atrib.get('fabricante'): score += 10
+    if atrib.get('origen'): score += 5
+    return min(100, score)
+
+
+def _score_miscelaneo(atrib):
+    """MISCELANEO: marca + cant + fab + origen + neto + clasif = 100"""
+    score = 0
+    if atrib.get('marca'): score += 30
+    if atrib.get('cantidad_presentacion'): score += 20
+    if atrib.get('fabricante'): score += 18
+    if atrib.get('origen'): score += 15
+    if atrib.get('contenido_neto'): score += 12
+    if atrib.get('clasificacion_insumo_Des'): score += 5
     return min(100, score)
 
 def normalizar_segmento_etario(val):

@@ -283,9 +283,20 @@ def build_update_clauses(
     # Deducir segmento_etario desde ATC profundo (no viene del LLM)
     atrib["segmento_etario"] = ev.deducir_segmento_etario(atrib.get("codigo_atc_profundo"))
     score = ev.calcular_score_calidad(atrib)
-    es_med = not bool(atrib.get("clasificacion_insumo_Des"))
+    dominio = atrib.get('dominio') or 'MEDICAMENTO_ALOPATICO'
 
-    if score >= SCORE_CIERRE or (not es_med and score >= SCORE_CIERRE_NO_MED):
+    # Umbrales de cierre por dominio
+    UMBRAL_CIERRE = {
+        'MEDICAMENTO_ALOPATICO': 88,
+        'SUPLEMENTO_VITAMINICO': 75,
+        'PRODUCTO_NATURAL_HOMEOPATICO': 75,
+        'COSMETICO_CUIDADO_PERSONAL': 80,
+        'MATERIAL_MEDICO_INSUMO': 75,
+        'MISCELANEO': 70,
+    }
+    umbral = UMBRAL_CIERRE.get(dominio, SCORE_CIERRE)
+
+    if score >= umbral:
         estado_ciclo = "CERRADO"
         ciclos_final = ciclos_reproceso
     elif ciclos_reproceso >= MAX_REINTENTOS:
