@@ -39,7 +39,9 @@ Internaliza estas definiciones antes de procesar. Confundirlas es un error grave
 
 **CUANDO EL TOTAL ≥ +2 → CONSENSO CONFIRMADO**. Asigna el valor con más votos.
 
-**CUANDO EL TOTAL < +2 → NO hay consenso**. Asigna `null` y registra en `atributos_baja_confianza`.
+**CUANDO EL TOTAL = +1 Y EL ATRIBUTO ES OBLIGATORIO** (`principio_activo`, `concentracion`, `forma_farmaceutica`, `cantidad_presentacion`): **ACEPTA el valor** pero asigna **confianza máxima 3** para ese atributo. Registra en `atributos_baja_confianza` y documenta en `confianza_razonamiento`: "Atributo X confirmado por fuente única (confianza 3)".
+
+**CUANDO EL TOTAL < +2 Y EL ATRIBUTO ES OPCIONAL** (marca, fabricante, origen, contenido_neto, etc.): **NO hay consenso**. Asigna `null` y registra en `atributos_baja_confianza`.
 
 **Ejemplos:**
 - Descripción: "10 AMP" (+1), Imagen 1: "10" (+1), Imagen 2: "10" (+1), Web: "1" (-1) → Total +2 → CONFIRMADO ✅
@@ -219,7 +221,7 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 - [ ] ¿`confianza_nivel` es el mínimo de los críticos (con caps aplicados)?
 - [ ] ¿`origen` es un país soberano y no "Importado"/"Nacional"?
 - [ ] ¿Usé `null` y no strings vacíos para ausentes?
-- [ ] ¿Apliqué el modelo de votación correctamente? (cada fuente = +1/-1/0; total ≥ +2 → confirma; total < +2 → null)
+- [ ] ¿Apliqué el modelo de votación correctamente? (cada fuente = +1/-1/0; total ≥ +2 → confirma; total = +1 para atributo OBLIGATORIO → acepta con confianza 3; total < +2 para opcional → null)
 - [ ] ¿Apliqué el modo degradado correcto (CASO 3 con principio activo; CASO 4 sin él; CASO 2 solo imágenes)?
 - [ ] ¿Seguí el orden de resolución fabricante/marca (1→6)?
 - [ ] ¿`registro_sanitario` extraído si visible y en formato correcto?
