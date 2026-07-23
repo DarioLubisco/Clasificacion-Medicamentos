@@ -417,13 +417,31 @@ n8n corre con `GENERIC_TIMEZONE=America/Caracas`, así que los `scheduleTrigger`
 
 | Ventana | Horario VET | Horario China (UTC+8) | Multiplicador Z.ai |
 |---|---|---|---|
-| Mañana | **07:00–09:00** | 19:00–21:00 | 2× (off-peak) |
-| Mediodía | **12:00–14:00** | 00:00–02:00 | 2× (off-peak) |
-| Noche | **19:00–21:00** | 07:00–09:00 | 2× (off-peak) |
+| Mañana | **07:00–09:00** | 19:00–21:00 | **1×** (off-peak promo Sep-2026) |
+| Mediodía | **12:00–14:00** | 00:00–02:00 | **1×** (off-peak promo Sep-2026) |
+| Noche | **18:25–20:25** | 06:25–08:25 | **1×** (off-peak promo Sep-2026) |
 
 **Total**: 6 horas/día → ~180 productos/día (6h × 60min ÷ 2min/producto).
 
+### Horarios peak/off-peak de Z.ai (GLM Coding Plan)
+
+**Peak Z.ai**: 14:00–18:00 hora China (UTC+8) = **02:00–06:00 VET** (franja evitada).
+
+| Modelo | Off-peak (promo Sep-2026) | Off-peak (normal) | Peak (14:00–18:00 CST) |
+|---|---|---|---|
+| **GLM-5.2** | **1×** (promo) | 2× | 3× |
+| **GLM-5-Turbo** | **1×** (promo) | 2× | 3× |
+| **GLM-4.7** | 1× (siempre) | 1× | 1× |
+
+> **Promoción**: hasta finales de septiembre 2026, GLM-5.2 y GLM-5-Turbo consumen solo 1× en off-peak (en vez de 2×). Las 3 ventanas del orquestador caen en off-peak → máximo ahorro de quota.
+
 **Franja evitada**: 02:00–06:00 VET (corresponde a 14:00–18:00 China = peak Z.ai 3×).
+
+### Bot de notificaciones Telegram
+
+- **Bot**: `AMC Admin Bot` (credential `4I2mxF1bCgABeO4Y`, token `TELEGRAM_AMC_ADMIN_BOT`)
+- **Chat**: `ERROR_CHAT_ID` = `-1003531406167`
+- **chatId fijo** en los nodos (no usa `$env` — eso causaba error de chat_id vacío)
 
 ### Flujo del workflow
 
