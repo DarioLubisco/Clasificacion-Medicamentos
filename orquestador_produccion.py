@@ -492,16 +492,23 @@ def _persistir_trazabilidad(
         alertas = (atrib.get("alertas_auditoria") if atrib else None) or None
         confianza = atrib.get("confianza_nivel") if atrib else None
 
-        cur.execute(
-            """INSERT INTO Procurement.OrquestadorLLMLog
-               (TriggerID, Codbarras, ModeloTexto, ModeloVision, Temperatura,
+        # Tokens cacheados para medir el ahorro del prefix caching (cambio de caché).
+        # Se persisten en PromptCacheHitTokens / PromptCacheMissTokens.
+        cache_hit = int(metricas.get("prompt_cache_hit_tokens") or 0) or None
+        cache_miss = int(metricas.get("prompt_cache_miss_tokens") or 0) or None
+
+        # 1) Fila principal en OrquestadorLLMLog.
+        # Intento primero CON las columnas de caché (requieren el ALTER de
+        # db/orquestador_llmlog_cache_columns.sql). Si la DB aún no las tiene,
+        # el INSERT falla y se reintenta SIN esas columnas (compat. hacia atrás).
+        _base_cols = """(TriggerID, Codbarras, ModeloTexto, ModeloVision, Temperatura,
                 PromptArchivo, PromptEnviado, RespuestaCruda, ReasoningContent,
                 PromptTokens, CompletionTokens, ReasoningTokens,
                 CostoVisionUSD, CostoTextoUSD, CostoTotalUSD,
                 ConfianzaNivel, AtributosBajaConf, AlertasAuditoria,
                 TiempoTotalSeg, NumFuentes, NumImagenes, NumImagenesAprob,
-                Errores, ScoreFinal, EstadoCiclo)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                Errores, ScoreFinal, EstadoCiclo)"""
+        _base_vals = (
             trigger_id, codbarras,
             metricas.get("modelo_texto"),
             metricas.get("modelo_vision") or os.getenv("VISION_MODELO"),
@@ -527,6 +534,27 @@ def _persistir_trazabilidad(
             score,
             estado,
         )
+        _inserted_with_cache = False
+        try:
+            cur.execute(
+                f"""INSERT INTO Procurement.OrquestadorLLMLog
+                    {_base_cols}, PromptCacheHitTokens, PromptCacheMissTokens)
+                    VALUES ({','.join(['?']*25)}, ?, ?)""",
+                _base_vals + (cache_hit, cache_miss),
+            )
+            _inserted_with_cache = True
+        except Exception as exc_cache:
+            # Columnas de caché ausentes: reintentar sin ellas para no romper el batch.
+            log_evento("DEBUG", "TRAZABILIDAD",
+                       f"INSERT con columnas de caché falló, reintentando sin ellas: {exc_cache}",
+                       codbarras=codbarras, alerta_telegram=False)
+            conn.rollback()
+            cur.execute(
+                f"""INSERT INTO Procurement.OrquestadorLLMLog
+                    {_base_cols})
+                    VALUES ({','.join(['?']*25)})""",
+                _base_vals,
+            )
         # Recuperar el LogID autogenerado (para FK suave en las tablas hijas)
         cur.execute("SELECT CAST(@@IDENTITY AS BIGINT)")
         row = cur.fetchone()

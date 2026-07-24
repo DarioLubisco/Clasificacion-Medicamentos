@@ -41,6 +41,10 @@ GLM_MODEL = os.getenv("GLM_MODEL", "glm-4.7")
 # reportar el "costo equivalente" por comparacion con otros modelos.
 GLM_PRICE_IN_PER_1M = 0.50
 GLM_PRICE_OUT_PER_1M = 2.00
+# Context Caching de Z.ai: los tokens cacheados se cobran a ~50% del input.
+# Se reportan en usage.prompt_tokens_details.cached_tokens.
+# https://docs.z.ai/guides/capabilities/cache
+GLM_PRICE_CACHE_HIT_PER_1M = 0.25
 
 
 def get_chat_endpoint(base_url: str = GLM_BASE_URL) -> str:
@@ -146,14 +150,31 @@ def extract_content(result: Dict[str, Any]) -> Tuple[Optional[str], Optional[str
 
 def estimate_cost(result: Dict[str, Any],
                   price_in: float = GLM_PRICE_IN_PER_1M,
-                  price_out: float = GLM_PRICE_OUT_PER_1M) -> float:
+                  price_out: float = GLM_PRICE_OUT_PER_1M,
+                  price_cache_hit: float = GLM_PRICE_CACHE_HIT_PER_1M) -> float:
     """Costo USD aproximado a partir de usage. Coding Plan es flat-rate;
-    este numero es solo un 'costo equivalente' para comparar modelos."""
+    este numero es solo un 'costo equivalente' para comparar modelos.
+
+    Refleja el descuento del Context Caching de Z.ai: los tokens en
+    `usage.prompt_tokens_details.cached_tokens` se cobran a ~50% del input; el
+    resto del input a precio pleno. Si la API no reporta cached_tokens, cae al
+    cálculo legacy con prompt_tokens entero a precio pleno.
+    """
     if not result:
         return 0.0
     usage = result.get("usage", {}) or {}
-    p_tok = usage.get("prompt_tokens", 0) or 0
     c_tok = usage.get("completion_tokens", 0) or 0
+    p_tok = usage.get("prompt_tokens", 0) or 0
+
+    details = usage.get("prompt_tokens_details") or {}
+    cached = details.get("cached_tokens") or 0
+    if cached:
+        fresh = max(p_tok - cached, 0)
+        return (cached * price_cache_hit / 1e6
+                + fresh * price_in / 1e6
+                + c_tok * price_out / 1e6)
+
+    # Fallback legacy: sin desglose de caché, todo el input a precio pleno.
     # completion_tokens YA incluye reasoning_tokens segun el API de Z.ai.
     return (p_tok * price_in / 1e6) + (c_tok * price_out / 1e6)
 

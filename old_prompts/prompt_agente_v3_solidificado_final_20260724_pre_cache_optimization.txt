@@ -246,7 +246,8 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 ---
 
 **LOTE A PROCESAR:**
-**INSTRUCCIÓN CRÍTICA: TU RESPUESTA DEBE EMPEZAR EXACTAMENTE CON LA ETIQUETA `<analisis_clinico>`. NO ESCRIBAS EL JSON PRIMERO.**
 {context_json_str}
 
 {nota_vision}
+
+**INSTRUCCIÓN CRÍTICA: TU RESPUESTA DEBE EMPEZAR EXACTAMENTE CON LA ETIQUETA `<analisis_clinico>`. NO ESCRIBAS EL JSON PRIMERO.**

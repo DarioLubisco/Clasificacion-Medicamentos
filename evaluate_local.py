@@ -499,11 +499,14 @@ def transcribir_imagenes_vision(fotos_aprobadas, desc_producto):
 # Alias legacy
 transcribir_imagenes_gemini = transcribir_imagenes_vision
 
-def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384):
+def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384, system_prompt=None):
     """
     Llamada DIRECTA a GLM-4.7 via API de Z.ai (GLM Coding Plan).
     NO usa OpenRouter. Devuelve (result_dict, error_str).
     Temperature y top_p vienen del .env (GLM-4.7 recomienda 0.7 / 0.95).
+
+    system_prompt: bloque fijo (manual + taxonomías) que se envía como mensaje
+    `system` separado para maximizar el prefix caching de Z.ai.
     """
     max_tokens = int(os.getenv("GLM_MAX_TOKENS", str(max_tokens)))
     temperature = float(os.getenv("GLM_TEMPERATURE", "0.7"))
@@ -512,6 +515,7 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384):
     return call_glm(
         prompt=prompt_text,
         model=model_id,
+        system_prompt=system_prompt,
         temperature=temperature,
         top_p=top_p,
         max_tokens=max_tokens,
@@ -519,13 +523,17 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384):
     )
 
 
-def llamar_llm_texto(prompt_text, max_tokens=16384):
+def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None):
     """
     Despacha la consolidación al proveedor de texto configurado.
 
     IA_PROVEEDOR:
       - "glm"      (default): GLM-4.7 vía Z.ai Coding Plan.
       - "deepseek": DeepSeek V4 Flash vía api.deepseek.com (nativo, no OpenRouter).
+
+    system_prompt: bloque fijo que se envía como mensaje `system` separado para
+    aprovechar el prefix caching automático (DeepSeek disk cache / Z.ai cache).
+    Si es None, el prompt completo va como único user message (compat. hacia atrás).
 
     Devuelve (result_dict, error_str, label_modelo).
     """
@@ -539,6 +547,7 @@ def llamar_llm_texto(prompt_text, max_tokens=16384):
         timeout_texto = int(os.getenv("TIMEOUT_TEXTO", "300"))
         result, err = call_deepseek(
             prompt=prompt_text,
+            system_prompt=system_prompt,
             model=os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash"),
             max_tokens=mt,
             reasoning_effort=os.getenv("DEEPSEEK_REASONING_EFFORT", "max"),
@@ -546,7 +555,7 @@ def llamar_llm_texto(prompt_text, max_tokens=16384):
         )
         return result, err, "DeepSeek V4 Flash"
     # default: GLM
-    result, err = llamar_glm_47_api(prompt_text, GLM_MODEL, max_tokens=max_tokens)
+    result, err = llamar_glm_47_api(prompt_text, GLM_MODEL, max_tokens=max_tokens, system_prompt=system_prompt)
     return result, err, "GLM-4.7"
 
 def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b64, desc_producto):
@@ -606,25 +615,41 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     _modelo_label = "DeepSeek V4 Flash" if _proveedor_txt == "deepseek" else "GLM-4.7"
     log(f"  [3/3] Consolidación con {_modelo_label}...")
 
-    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / PROMPT_ARCHIVO)
+    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / PROMPT_ARCHIVO).
+    # OPTIMIZACIÓN DE CACHÉ: se parte en SYSTEM (fijo por sesión → cacheable como
+    # bloque estable en el prefix caching de DeepSeek/Z.ai) y USER (contiene solo
+    # las variables que cambian por producto). El corte es en "**LOTE A PROCESAR:**".
     prompt_template_path = os.getenv("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
     with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
         prompt_template = f_prompt.read()
 
-    prompt = prompt_template.replace(
-        "{taxonomias_existentes}", taxonomias_existentes
-    ).replace(
-        "{context_json_str}", context_json_str
-    ).replace(
-        "{nota_vision}", nota_vision
-    )
+    _SPLIT_MARKER = "**LOTE A PROCESAR:**"
+    _idx = prompt_template.find(_SPLIT_MARKER)
+    if _idx == -1:
+        # Fallback de seguridad: si el marcador desaparece, todo va como system.
+        system_prompt = prompt_template.replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = f"{context_json_str}\n\n{nota_vision}"
+    else:
+        system_prompt = prompt_template[:_idx].replace(
+            "{taxonomias_existentes}", taxonomias_existentes
+        )
+        user_content = prompt_template[_idx:].replace(
+            "{context_json_str}", context_json_str
+        ).replace(
+            "{nota_vision}", nota_vision
+        )
+
+    # Reconstrucción del prompt completo solo para trazabilidad (PromptEnviado).
+    prompt = f"{system_prompt}\n\n{user_content}"
 
     # Llamada al LLM de texto (GLM-4.7 o DeepSeek según IA_PROVEEDOR)
     metricas["llamadas_glm"] = 1
     # GLM usa 4000; DeepSeek con reasoning=max necesita budget amplio (lo decide el wrapper).
     provider_txt_cfg = os.getenv("IA_PROVEEDOR", "glm").lower()
     mt_call = None if provider_txt_cfg == "deepseek" else 4000
-    result_glm, error_glm, lbl_modelo = llamar_llm_texto(prompt, max_tokens=mt_call)
+    result_glm, error_glm, lbl_modelo = llamar_llm_texto(
+        user_content, system_prompt=system_prompt, max_tokens=mt_call
+    )
 
     if error_glm:
         metricas["errores_api"].append(f"{lbl_modelo or 'LLM'} API Error: {error_glm}")
@@ -659,6 +684,15 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     metricas["reasoning_tokens"]    = (
         (usage.get("completion_tokens_details") or {}).get("reasoning_tokens", 0) or 0
     )
+    # Tokens cacheados (para medir el ahorro del prefix caching).
+    # - DeepSeek: usage.prompt_cache_hit_tokens / prompt_cache_miss_tokens (plano).
+    # - Z.ai (GLM): usage.prompt_tokens_details.cached_tokens (anidado).
+    metricas["prompt_cache_hit_tokens"] = (
+        usage.get("prompt_cache_hit_tokens")
+        or (usage.get("prompt_tokens_details") or {}).get("cached_tokens")
+        or 0
+    )
+    metricas["prompt_cache_miss_tokens"] = usage.get("prompt_cache_miss_tokens") or 0
     metricas["modelo_texto"]        = lbl_modelo or os.getenv("IA_MODELO", "")
     metricas["prompt_archivo"]      = prompt_template_path
     metricas["temperatura"]         = float(os.getenv("IA_TEMPERATURE", "0"))
