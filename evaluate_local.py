@@ -639,8 +639,13 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
             "{nota_vision}", nota_vision
         )
 
-    # Reconstrucción del prompt completo solo para trazabilidad (PromptEnviado).
-    prompt = f"{system_prompt}\n\n{user_content}"
+    # Reconstrucción del prompt para trazabilidad (PromptEnviado).
+    # IMPORTANTE: el user_content (lote + nota de visión) va PRIMERO porque es el
+    # dato variable que cambia por producto y el que importa auditar. El
+    # system_prompt (manual + taxonomías ~80KB) va después; si el truncamiento a
+    # 50000 chars lo corta, no se pierde información relevante (las taxonomías
+    # son fijas y viven en prompt_agente_v3_solidificado_final.txt).
+    prompt = f"{user_content}\n\n=== SYSTEM PROMPT (fijo) ===\n{system_prompt}"
 
     # Llamada al LLM de texto (GLM-4.7 o DeepSeek según IA_PROVEEDOR)
     metricas["llamadas_glm"] = 1
