@@ -81,30 +81,56 @@ def check_threshold(trigger: dict[str, Any]) -> bool:
 
 
 def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
+    """RECLAMA (claim) hasta `limit` productos ABIERTOS para procesamiento.
+
+    Patrón claim atómico para PARALELISMO SEGURO: marca los productos como
+    'EN_PROCESO' y los devuelve en una sola sentencia UPDATE...OUTPUT atómica.
+    Otra instancia que corra en paralelo ya no verá estos productos (dejan de
+    ser 'ABIERTO'), evitando que dos procesos trabajen el mismo codbarras.
+
+    El claim se libera NATURALMENTE cuando write_rows_to_db() actualiza
+    estado_ciclo a su valor final (CERRADO/AGOTADO/ABIERTO). Si el proceso
+    muere antes, los productos quedan 'EN_PROCESO' y los rescata
+    _reabrir_stuck() en la próxima corrida.
+    """
     conn = get_db_connection()
     try:
         cur = conn.cursor()
+        # CTE con TOP+ORDER BY (SQL Server no permite ORDER BY directo en
+        # UPDATE TOP). El UPDATE sobre la CTE toma locks exclusivos fila a fila;
+        # dos instancias concurrentes no reclaman la misma fila.
         cur.execute(
             f"""
-            SELECT TOP ({limit})
-                codbarras, descrip1art,
-                ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
-                principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
-                fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
-                generico, cantidad_presentacion,
-                contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des
-            FROM Procurement.por_aprobacion_equivalencias
-            WHERE estado_ciclo = 'ABIERTO'
-            ORDER BY
-                -- Prioridad 1: productos nunca procesados (0 ciclos) primero
-                ISNULL(ciclos_reproceso, 0) ASC,
-                -- Prioridad 2: EAN-13 primero (scrapeables), códigos internos al final
-                CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
-                -- Prioridad 3: más antiguos primero
-                ISNULL(LastUpdated, '1900-01-01') ASC
+            WITH candidatos AS (
+                SELECT TOP ({int(limit)})
+                    codbarras, descrip1art,
+                    ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
+                    principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
+                    fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
+                    generico, cantidad_presentacion,
+                    contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des,
+                    estado_ciclo, LastUpdated
+                FROM Procurement.por_aprobacion_equivalencias
+                WHERE estado_ciclo = 'ABIERTO'
+                ORDER BY
+                    ISNULL(ciclos_reproceso, 0) ASC,
+                    CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
+                    ISNULL(LastUpdated, '1900-01-01') ASC
+            )
+            UPDATE candidatos
+               SET estado_ciclo = 'EN_PROCESO', LastUpdated = GETDATE()
+            OUTPUT
+                inserted.codbarras, inserted.descrip1art, inserted.ciclos_reproceso,
+                inserted.principio_activo_Des, inserted.concentracion_Des,
+                inserted.forma_farmaceutica_Des, inserted.fabricante_Des, inserted.marca_Des,
+                inserted.codigo_atc_Des, inserted.clasificacion_insumo_Des,
+                inserted.generico, inserted.cantidad_presentacion,
+                inserted.contenido_neto, inserted.contenido_neto_unidad_Des,
+                inserted.segmento_etario, inserted.origen_Des
             """
         )
         rows = cur.fetchall()
+        conn.commit()
     finally:
         conn.close()
 
@@ -128,6 +154,41 @@ def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
             "atributos_ya_encontrados": ya,
         })
     return productos
+
+
+def _reabrir_stuck() -> int:
+    """Reabre productos que quedaron 'EN_PROCESO' por una corrida que murió.
+
+    Se ejecuta al inicio de cada corrida, ANTES del claim. Reabre a 'ABIERTO'
+    los productos 'EN_PROCESO' cuyo LastUpdated es más antiguo que el umbral
+    configurado (ORQUESTADOR_STUCK_MINUTOS, default 60). El umbral es generoso
+    para NO reabrir un producto que otra instancia está procesando legítimamente
+    (tus productos tardan 2-4 min; 60 min da holgura segura).
+
+    Returns: número de filas reabiertas.
+    """
+    minutos = int(os.getenv("ORQUESTADOR_STUCK_MINUTOS", "60"))
+    conn = get_db_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            """
+            UPDATE Procurement.por_aprobacion_equivalencias
+               SET estado_ciclo = 'ABIERTO'
+             WHERE estado_ciclo = 'EN_PROCESO'
+               AND LastUpdated < DATEADD(minute, -?, GETDATE())
+            """,
+            minutos,
+        )
+        n = cur.rowcount
+        conn.commit()
+        if n:
+            log_evento("INFO", "ORQUESTADOR",
+                       f"Cleanup: {n} producto(s) EN_PROCESO trabados (> {minutos} min) reabiertos a ABIERTO.",
+                       alerta_telegram=False)
+        return n
+    finally:
+        conn.close()
 
 
 def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = None) -> tuple[list, list, list]:
@@ -638,6 +699,10 @@ def _update_llm_log_score(codbarras: str, score: int, estado: str) -> None:
 def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
     if not check_threshold(trigger):
         return {"status": "skipped", "reason": "threshold_not_met", "TriggerID": trigger.get("TriggerID")}
+
+    # Cleanup de productos trabados por corridas que murieron (claim colgado).
+    # Corre ANTES del claim para que esos productos vuelvan a estar disponibles.
+    _reabrir_stuck()
 
     productos = fetch_productos_abiertos(BATCH_SIZE)
     if not productos:
