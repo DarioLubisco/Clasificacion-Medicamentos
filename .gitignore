@@ -19,6 +19,9 @@ scratch/imagenes_productos/
 scratch/resultados_pruebas/
 scrapling-local/
 
-# Archivos de credenciales (PROTEGIDOS)
+# Archivos de credenciales y configuración local (PROTEGIDOS)
 sinapsis.credentials
 synapse.credentials
+.env
+.env.local
+
