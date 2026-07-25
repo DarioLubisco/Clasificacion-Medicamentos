@@ -649,9 +649,15 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
 
     # Llamada al LLM de texto (GLM-4.7 o DeepSeek según IA_PROVEEDOR)
     metricas["llamadas_glm"] = 1
-    # GLM usa 4000; DeepSeek con reasoning=max necesita budget amplio (lo decide el wrapper).
+    # Budget de salida: 1 producto con reasoning=max + OCR puede generar ~16-20K
+    # tokens. El default 16384 (DEEPSEEK_MAX_TOKENS) se queda corto y CORTA el
+    # JSON (visto en test: producto con OCR largo → FALLO parse). Subimos a un
+    # valor cómodo por producto, configurable por env.
     provider_txt_cfg = os.getenv("IA_PROVEEDOR", "glm").lower()
-    mt_call = None if provider_txt_cfg == "deepseek" else 4000
+    if provider_txt_cfg == "deepseek":
+        mt_call = int(os.getenv("DEEPSEEK_MAX_TOKENS_POR_PRODUCTO", "24000"))
+    else:
+        mt_call = int(os.getenv("GLM_MAX_TOKENS_POR_PRODUCTO", "24000"))
     result_glm, error_glm, lbl_modelo = llamar_llm_texto(
         user_content, system_prompt=system_prompt, max_tokens=mt_call
     )
