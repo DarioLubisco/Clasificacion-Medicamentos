@@ -42,10 +42,7 @@ def main():
             f.write(f"codigo_atc_Des = {t(attr.get('codigo_atc'), 50)}, ")
             f.write(f"codigo_atc_profundo_Des = {t(attr.get('codigo_atc_profundo'), 50)}, ")
             f.write(f"modelo_ia_Des = {t(modelo_usado, 100)}, ")
-            
-            rec = attr.get('requiere_recipe')
-            f.write(f"requiere_recipe_Des = {1 if rec else 0}, ")
-            
+
             gen = attr.get('generico')
             f.write(f"generico_Des = {1 if gen else 0}, ")
             

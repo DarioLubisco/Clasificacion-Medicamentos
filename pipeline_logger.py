@@ -137,7 +137,6 @@ def log_producto(
         "codigo_atc": atributos.get("codigo_atc"),
         "fabricante": atributos.get("fabricante"),
         "generico": atributos.get("generico"),
-        "requiere_recipe": atributos.get("requiere_recipe"),
         "confianza_nivel": atributos.get("confianza_nivel"),
         "estado_ciclo": atributos.get("estado_ciclo"),
         "error": error,

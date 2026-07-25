@@ -10,7 +10,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 socket.setdefaulttimeout(180) # 3 minutes read timeout
 from MDM_Unified_Mapper import MasterCatalog
-from limpiador_farmaceutico_regex import procesar_farmacos
+from normalizador_farmaceutico import procesar_farmacos
 
 gasto_lock = threading.Lock()
 
@@ -226,7 +226,6 @@ def generar_y_ejecutar_sql(resultados_ia, catalog):
             f"marca_Des = {fmt(atrib.get('marca'))}",
             f"codigo_atc_Des = {fmt(atrib.get('codigo_atc'))}",
             f"clasificacion_insumo_Des = {fmt(atrib.get('clasificacion_insumo_Des'))}",
-            f"requiere_recipe = {fmt(atrib.get('requiere_recipe'), False)}",
             f"blister = {fmt(atrib.get('blister'), False)}",
             f"generico = {fmt(atrib.get('generico'), False)}",
             f"cantidad_presentacion = {fmt(atrib.get('cantidad_presentacion'), False)}",
@@ -290,7 +289,7 @@ def obtener_lote_especifico(codbarras_list, ciclo_esperado):
     query = f"""
     SELECT codbarras, descrip1art, ISNULL(ciclos_reproceso, 0) as ciclos_reproceso,
         principio_activo_Des, concentracion_Des, forma_farmaceutica_Des, fabricante_Des, marca_Des,
-        codigo_atc_Des, clasificacion_insumo_Des, requiere_recipe, blister, generico, 
+        codigo_atc_Des, clasificacion_insumo_Des, blister, generico,
         cantidad_presentacion, contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des, estado_ciclo
     FROM Procurement.por_aprobacion_equivalencias 
     WHERE codbarras IN ({codbarras_placeholders})
@@ -305,7 +304,7 @@ def obtener_lote_especifico(codbarras_list, ciclo_esperado):
     for r in rows:
         ya_encontrados = {}
         keys = ['principio_activo', 'concentracion', 'forma_farmaceutica', 'fabricante', 'marca',
-                'codigo_atc', 'clasificacion_insumo_Des', 'requiere_recipe', 'blister', 'generico',
+                'codigo_atc', 'clasificacion_insumo_Des', 'blister', 'generico',
                 'cantidad_presentacion', 'contenido_neto', 'contenido_neto_unidad_Des', 'segmento_etario', 'origen']
         
         for idx, k in enumerate(keys):

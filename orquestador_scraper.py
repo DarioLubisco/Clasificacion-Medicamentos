@@ -35,14 +35,56 @@ client = OpenAI(
     api_key=OPENROUTER_API_KEY,
 )
 
-PROHIBITED_DOMAINS = ["barcode", "upc", "ean", "lookup", "database", "upcitemdb", "ean-search", "pinterest", "youtube"]
+# Dominios/patrones prohibidos: fuentes que típicamente NO aportan datos de
+# producto farmacéutico y sí consumen tiempo (timeouts, SSL failures, inventarios
+# genéricos). Ampliar vía .env con SCRAPING_BLOCKLIST_EXTRA="dom1,dom2,...".
+PROHIBITED_DOMAINS = [
+    # Bases de datos de códigos de barras (ruido, no producto)
+    "barcode", "upc", "ean", "lookup", "database", "upcitemdb", "ean-search",
+    # Redes sociales / multimedia
+    "pinterest", "youtube", "instagram", "facebook", "tiktok",
+    # Documentos/inventarios genéricos (vistos en logs: inventarios, facturas, registros)
+    "scribd",
+    # CDNs/APIs de e-commerce que fallan con SSL handshake (rio-supermarket-prod.instaleap.io)
+    "instaleap.io",
+    # Listas de existencias / stock sin datos de producto
+    "/existencias", "registro-detallado", "facturas",
+]
+# Ampliación desde .env (coma-separado). Se merguea en runtime.
+_extra = os.getenv("SCRAPING_BLOCKLIST_EXTRA", "")
+if _extra:
+    PROHIBITED_DOMAINS += [d.strip().lower() for d in _extra.split(",") if d.strip()]
+
+# Extensiones de archivo que típicamente son inventarios/datos crudos, no fichas
+# de producto. Se filtran si la URL termina en ellas.
+PROHIBITED_EXTENSIONS = [".txt", ".csv", ".xml", ".xls", ".xlsx"]
+
+# Regex de IPs privadas/puras en host (http://172.241.x.x/... vista en logs).
+# Captura URLs cuyo dominio es una IP literal (pública o privada), que suelen ser
+# endpoints internos o scrape targets rotos.
+_IP_HOST_RE = re.compile(r"https?://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", re.IGNORECASE)
+
 
 def is_valid_url(url, title):
+    """Filtra URLs/títulos que no aportan datos de producto farmacéutico.
+
+    Criterios:
+      - Dominio o título contiene un término prohibido (blocklist configurable).
+      - URL termina en extensión de archivo ruidosa (.txt, .csv, ...).
+      - El host es una IP literal (endpoint interno/roto; ej. http://172.241.x.x).
+    """
     url_lower = url.lower()
-    title_lower = title.lower()
+    title_lower = (title or "").lower()
     for pd in PROHIBITED_DOMAINS:
         if pd in url_lower or pd in title_lower:
             return False
+    # Extensión de archivo al final de la path.
+    path = url_lower.split("?")[0].split("#")[0]
+    if any(path.endswith(ext) for ext in PROHIBITED_EXTENSIONS):
+        return False
+    # Host como IP literal.
+    if _IP_HOST_RE.match(url_lower):
+        return False
     return True
 
 def buscar_en_internet(query: str, max_fuentes=10) -> list:
@@ -71,9 +113,9 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
                                 break
                     return fuentes
                 else:
-                    print(f"  [Intento {intento+1}/{max_intentos}] Error API ValueSERP (HTTP {res.status_code}): {res.text}")
+                    print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error API ValueSERP (HTTP {res.status_code}): {res.text[:120]}")
             except Exception as e:
-                print(f"  [Intento {intento+1}/{max_intentos}] Error de red/timeout en búsqueda (ValueSERP): {e}")
+                print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error de red/timeout en búsqueda (ValueSERP): {e}")
             
             if intento < SCRAPING_REINTENTOS - 1:
                 wait_time = (intento + 1) * SCRAPING_DELAY * 6

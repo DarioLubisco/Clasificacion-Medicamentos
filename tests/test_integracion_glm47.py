@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, '.')
 
 from benchmark_modelos import llamar_openrouter, calcular_score_calidad, normalizar_segmento_etario
-from limpiador_farmaceutico_regex import procesar_farmacos
+from normalizador_farmaceutico import procesar_farmacos
 
 # Cargar el lote de prueba
 with open('lote_prueba_glm47.json', 'r', encoding='utf-8') as f:

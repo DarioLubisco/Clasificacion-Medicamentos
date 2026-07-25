@@ -21,17 +21,20 @@ from pathlib import Path
 from synapse_cred import load_synapse_credentials
 load_synapse_credentials()
 
+from pathlib import Path as _Path
+load_dotenv(_Path(__file__).resolve().parent / ".env")
+
 from pipeline_logger import log, log_producto, log_resumen, log_evento
 
 # Cliente Z.ai directo (GLM Coding Plan)
-from zai_client import call_glm, extract_content, estimate_cost, GLM_MODEL as ZAI_MODEL
-from mimo_client import call_mimo_chat, extract_content as mimo_extract_content
-from mimo_client import estimate_cost as mimo_estimate_cost, reasoning_tokens as mimo_reasoning_tokens
+from cliente_glm import call_glm, extract_content, estimate_cost, GLM_MODEL as ZAI_MODEL
+from cliente_vision_mimo import call_mimo_chat, extract_content as mimo_extract_content
+from cliente_vision_mimo import estimate_cost as mimo_estimate_cost, reasoning_tokens as mimo_reasoning_tokens
 
-# Cliente DeepSeek nativo (api.deepseek.com) — opcional, activado vía EXPERIMENT_TEXTO_PROVIDER=deepseek
+# Cliente DeepSeek nativo (api.deepseek.com) — opcional, activado vía IA_PROVEEDOR=deepseek
 try:
-    from deepseek_client import call_deepseek, extract_content as deepseek_extract_content
-    from deepseek_client import estimate_cost as deepseek_estimate_cost, DEEPSEEK_MODEL
+    from cliente_deepseek import call_deepseek, extract_content as deepseek_extract_content
+    from cliente_deepseek import estimate_cost as deepseek_estimate_cost, DEEPSEEK_MODEL
 except Exception:
     call_deepseek = None
 
@@ -45,12 +48,12 @@ GEMINI_PRICE_OUT_PER_1M = 2.50
 
 def _vision_config():
     """Config de visión desde .env vía variables de entorno."""
-    proveedor = os.getenv("EXPERIMENT_VISION_PROVIDER", "mimo").lower()
-    modelo = os.getenv("EXPERIMENT_VISION_MODEL", "mimo-v2.5")
-    thinking = os.getenv("EXPERIMENT_VISION_THINKING", "disabled").lower()
-    max_prefiltro = int(os.getenv("EXPERIMENT_VISION_MAX_PREFILTRO", "10"))
-    max_ocr = int(os.getenv("EXPERIMENT_VISION_MAX_OCR", "3"))
-    umbral = int(os.getenv("EXPERIMENT_VISION_UMBRAL", "3"))
+    proveedor = os.getenv("VISION_PROVEEDOR", "mimo").lower()
+    modelo = os.getenv("VISION_MODELO", "mimo-v2.5")
+    thinking = os.getenv("VISION_THINKING", "disabled").lower()
+    max_prefiltro = int(os.getenv("VISION_MAX_PREFILTRO", "10"))
+    max_ocr = int(os.getenv("VISION_MAX_OCR", "3"))
+    umbral = int(os.getenv("VISION_UMBRAL", "3"))
     return {
         "proveedor": proveedor,
         "modelo": modelo,
@@ -136,7 +139,7 @@ def _llamar_vision_api(messages, temperature=0.0, max_tokens=1024):
 
 def obtener_taxonomias_estrictas():
     """Versión que solo usa cache local - NO intenta conectar a SQL"""
-    cache_path = os.getenv("EXPERIMENT_TAXONOMIAS_CACHE", "scratch/taxonomias_local.txt")
+    cache_path = os.getenv("TAXONOMIAS_CACHE", "scratch/taxonomias_local.txt")
     if os.path.exists(cache_path):
         try:
             with open(cache_path, "r", encoding="utf-8") as f:
@@ -151,34 +154,97 @@ def obtener_taxonomias_estrictas():
     return ""
 
 def calcular_score_calidad(atrib):
-    """Calcula score de calidad basado en atributos completados"""
-    score = 0
-    dominio = atrib.get('dominio', 'MEDICAMENTO_ALOPATICO') if atrib else 'MEDICAMENTO_ALOPATICO'
-    es_med = dominio in ['MEDICAMENTO_ALOPATICO', 'PRODUCTO_NATURAL_HOMEOPATICO', 'SUPLEMENTO_VITAMINICO']
-
+    """Calcula score de calidad por dominio. Cada dominio tiene su propia
+    escala de 100 puntos con atributos relevantes."""
     if not atrib:
         return 0
 
+    dominio = atrib.get('dominio', 'MEDICAMENTO_ALOPATICO') or 'MEDICAMENTO_ALOPATICO'
+
+    # Despacho por dominio
+    if dominio == 'MEDICAMENTO_ALOPATICO':
+        return _score_medicamento(atrib)
+    elif dominio == 'SUPLEMENTO_VITAMINICO':
+        return _score_suplemento(atrib)
+    elif dominio == 'PRODUCTO_NATURAL_HOMEOPATICO':
+        return _score_suplemento(atrib)  # misma escala que suplementos
+    elif dominio == 'COSMETICO_CUIDADO_PERSONAL':
+        return _score_cosmetico(atrib)
+    elif dominio == 'MATERIAL_MEDICO_INSUMO':
+        return _score_insumo(atrib)
+    elif dominio == 'MISCELANEO':
+        return _score_miscelaneo(atrib)
+    else:
+        return _score_medicamento(atrib)  # fallback
+
+
+def _score_medicamento(atrib):
+    """MEDICAMENTO_ALOPATICO: PA + conc + forma + cant + ATC + origen + fab + marca + neto = 100"""
     tiene_cant = atrib.get('cantidad_presentacion') is not None
-
-    if es_med:
-        if not atrib.get('principio_activo') or not atrib.get('concentracion') or not atrib.get('forma_farmaceutica'):
-            return 0
-        if not tiene_cant:
-            return 0
-
-    if atrib.get('principio_activo'): score += 15
-    if atrib.get('concentracion'): score += 15
-    if atrib.get('forma_farmaceutica'): score += 15
-    if tiene_cant: score += 10
+    # Requisito mínimo: si es medicamento, necesita al menos PA + conc + forma
+    if not atrib.get('principio_activo') or not atrib.get('concentracion') or not atrib.get('forma_farmaceutica'):
+        return 0
+    if not tiene_cant:
+        return 0
+    score = 0
+    if atrib.get('principio_activo'): score += 17
+    if atrib.get('concentracion'): score += 17
+    if atrib.get('forma_farmaceutica'): score += 18
+    if tiene_cant: score += 12
+    if atrib.get('codigo_atc'): score += 10
+    if atrib.get('origen'): score += 8
+    if atrib.get('fabricante'): score += 7
+    if atrib.get('marca'): score += 6
     if atrib.get('contenido_neto'): score += 5
-    if atrib.get('origen'): score += 10
-    if atrib.get('segmento_etario'): score += 10
-    if atrib.get('fabricante'): score += 5
-    if atrib.get('marca'): score += 5
-    if atrib.get('codigo_atc'): score += 5
-    if atrib.get('generico') in [1, 0]: score += 5
+    return min(100, score)
 
+
+def _score_suplemento(atrib):
+    """SUPLEMENTO_VITAMINICO / PRODUCTO_NATURAL: forma + cant + marca + fab + neto + origen = 100"""
+    score = 0
+    if atrib.get('forma_farmaceutica'): score += 21
+    if atrib.get('cantidad_presentacion'): score += 19
+    if atrib.get('marca'): score += 19
+    if atrib.get('fabricante'): score += 16
+    if atrib.get('contenido_neto'): score += 15
+    if atrib.get('origen'): score += 10
+    return min(100, score)
+
+
+def _score_cosmetico(atrib):
+    """COSMETICO_CUIDADO_PERSONAL: subcat + marca + neto + forma + fab + origen = 100"""
+    score = 0
+    if atrib.get('subcategoria'): score += 25
+    if atrib.get('marca'): score += 25
+    if atrib.get('contenido_neto'): score += 25
+    if atrib.get('forma_farmaceutica'): score += 8
+    if atrib.get('fabricante'): score += 10
+    if atrib.get('origen'): score += 7
+    return min(100, score)
+
+
+def _score_insumo(atrib):
+    """MATERIAL_MEDICO_INSUMO: marca + cant + clasif + espec + forma + fab + origen = 100"""
+    score = 0
+    if atrib.get('marca'): score += 22
+    if atrib.get('cantidad_presentacion'): score += 18
+    if atrib.get('clasificacion_insumo_Des'): score += 18
+    if atrib.get('especificacion_tecnica'): score += 15
+    if atrib.get('forma_farmaceutica'): score += 12
+    if atrib.get('fabricante'): score += 10
+    if atrib.get('origen'): score += 5
+    return min(100, score)
+
+
+def _score_miscelaneo(atrib):
+    """MISCELANEO: marca + cant + fab + origen + neto + clasif = 100"""
+    score = 0
+    if atrib.get('marca'): score += 30
+    if atrib.get('cantidad_presentacion'): score += 20
+    if atrib.get('fabricante'): score += 18
+    if atrib.get('origen'): score += 15
+    if atrib.get('contenido_neto'): score += 12
+    if atrib.get('clasificacion_insumo_Des'): score += 5
     return min(100, score)
 
 def normalizar_segmento_etario(val):
@@ -190,6 +256,43 @@ def normalizar_segmento_etario(val):
     if "MIXTO" in v: return "MIXTO"
     if "GENERAL" in v or "TODO" in v: return "GENERAL"
     return "NO_DEFINIDO"
+
+# ---------------------------------------------------------------------------
+# Mapeo ATC profundo → segmento etario (tabla exhaustiva)
+# Prefijos de nivel 3 (4 chars) que son inherentemente pediátricos/neonatales.
+# Todo lo demás se asigna como ADULTO por defecto.
+# ---------------------------------------------------------------------------
+_ATC_PEDIATRICO = {
+    # Vacunas (J07) — la mayoría son pediátricas
+    'J07A', 'J07B', 'J07C', 'J07X',
+    # Antiparasitarios (P01) — uso frecuente pediátrico
+    'P01A', 'P01B', 'P01C',
+    # Antihelmínticos (P02) — uso frecuente pediátrico
+    'P02B', 'P02C', 'P02D',
+    # Fórmulas infantiles y alimentos pediátricos
+    'A09A',
+    # Vitaminas multivitamínicas combinadas (muchas pediátricas)
+    'A11C',  # Vitamina A y D (uso pediátrico frecuente)
+}
+
+_ATC_NEONATAL = {
+    # Surfactantes pulmonares (R07) — neonatal
+    'R07A',
+}
+
+def deducir_segmento_etario(codigo_atc_profundo):
+    """Deduce segmento etario a partir del código ATC profundo (nivel 4/5).
+    Si el prefijo de nivel 3 está en las tablas pediátricas/neonatales,
+    devuelve el segmento correspondiente. Si no, devuelve 'ADULTO'.
+    Si no hay código ATC, devuelve None."""
+    if not codigo_atc_profundo:
+        return None
+    prefijo3 = codigo_atc_profundo[:4].upper()
+    if prefijo3 in _ATC_NEONATAL:
+        return "NEONATAL"
+    if prefijo3 in _ATC_PEDIATRICO:
+        return "PEDIATRICO"
+    return "ADULTO"
 
 def extract_json_from_content(content):
     """
@@ -396,11 +499,14 @@ def transcribir_imagenes_vision(fotos_aprobadas, desc_producto):
 # Alias legacy
 transcribir_imagenes_gemini = transcribir_imagenes_vision
 
-def llamar_glm_47_api(prompt_text, model_id, max_tokens=4000):
+def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384, system_prompt=None):
     """
     Llamada DIRECTA a GLM-4.7 via API de Z.ai (GLM Coding Plan).
     NO usa OpenRouter. Devuelve (result_dict, error_str).
     Temperature y top_p vienen del .env (GLM-4.7 recomienda 0.7 / 0.95).
+
+    system_prompt: bloque fijo (manual + taxonomías) que se envía como mensaje
+    `system` separado para maximizar el prefix caching de Z.ai.
     """
     max_tokens = int(os.getenv("GLM_MAX_TOKENS", str(max_tokens)))
     temperature = float(os.getenv("GLM_TEMPERATURE", "0.7"))
@@ -409,6 +515,7 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=4000):
     return call_glm(
         prompt=prompt_text,
         model=model_id,
+        system_prompt=system_prompt,
         temperature=temperature,
         top_p=top_p,
         max_tokens=max_tokens,
@@ -416,17 +523,21 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=4000):
     )
 
 
-def llamar_llm_texto(prompt_text, max_tokens=4000):
+def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None):
     """
     Despacha la consolidación al proveedor de texto configurado.
 
-    EXPERIMENT_TEXTO_PROVIDER:
+    IA_PROVEEDOR:
       - "glm"      (default): GLM-4.7 vía Z.ai Coding Plan.
       - "deepseek": DeepSeek V4 Flash vía api.deepseek.com (nativo, no OpenRouter).
 
+    system_prompt: bloque fijo que se envía como mensaje `system` separado para
+    aprovechar el prefix caching automático (DeepSeek disk cache / Z.ai cache).
+    Si es None, el prompt completo va como único user message (compat. hacia atrás).
+
     Devuelve (result_dict, error_str, label_modelo).
     """
-    provider = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider = os.getenv("IA_PROVEEDOR", "glm").lower()
     if provider == "deepseek":
         if call_deepseek is None:
             return None, "deepseek_client no disponible (import fallido)", None
@@ -436,6 +547,7 @@ def llamar_llm_texto(prompt_text, max_tokens=4000):
         timeout_texto = int(os.getenv("TIMEOUT_TEXTO", "300"))
         result, err = call_deepseek(
             prompt=prompt_text,
+            system_prompt=system_prompt,
             model=os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash"),
             max_tokens=mt,
             reasoning_effort=os.getenv("DEEPSEEK_REASONING_EFFORT", "max"),
@@ -443,7 +555,7 @@ def llamar_llm_texto(prompt_text, max_tokens=4000):
         )
         return result, err, "DeepSeek V4 Flash"
     # default: GLM
-    result, err = llamar_glm_47_api(prompt_text, GLM_MODEL, max_tokens=max_tokens)
+    result, err = llamar_glm_47_api(prompt_text, GLM_MODEL, max_tokens=max_tokens, system_prompt=system_prompt)
     return result, err, "GLM-4.7"
 
 def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b64, desc_producto):
@@ -461,7 +573,7 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         "errores_api": []
     }
 
-    vision_activa = os.getenv("EXPERIMENT_VISION_ACTIVE", "1") == "1"
+    vision_activa = os.getenv("VISION_ACTIVA", "1") == "1"
     if not vision_activa:
         imagenes_b64 = []
 
@@ -498,28 +610,51 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     else:
         nota_vision = "[Nota: Se encontraron imágenes pero ninguna contenía texto farmacéutico legible. Procede usando únicamente los datos de texto web.]"
 
-    # Paso 3: Consolidación con GLM-4.7
-    log(f"  [3/3] Consolidación con GLM-4.7...")
+    # Paso 3: Consolidación LLM
+    _proveedor_txt = os.getenv("IA_PROVEEDOR", "glm").lower()
+    _modelo_label = "DeepSeek V4 Flash" if _proveedor_txt == "deepseek" else "GLM-4.7"
+    log(f"  [3/3] Consolidación con {_modelo_label}...")
 
-    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / EXPERIMENT_PROMPT_FILE)
-    prompt_template_path = os.getenv("EXPERIMENT_PROMPT_FILE", "prompt_agente_v3_solidificado_final.txt")
+    # Cargar prompt (ruta desde .env → PROMPT_ARCHIVO / PROMPT_ARCHIVO).
+    # OPTIMIZACIÓN DE CACHÉ: se parte en SYSTEM (fijo por sesión → cacheable como
+    # bloque estable en el prefix caching de DeepSeek/Z.ai) y USER (contiene solo
+    # las variables que cambian por producto). El corte es en "**LOTE A PROCESAR:**".
+    prompt_template_path = os.getenv("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
     with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
         prompt_template = f_prompt.read()
 
-    prompt = prompt_template.replace(
-        "{taxonomias_existentes}", taxonomias_existentes
-    ).replace(
-        "{context_json_str}", context_json_str
-    ).replace(
-        "{nota_vision}", nota_vision
-    )
+    _SPLIT_MARKER = "**LOTE A PROCESAR:**"
+    _idx = prompt_template.find(_SPLIT_MARKER)
+    if _idx == -1:
+        # Fallback de seguridad: si el marcador desaparece, todo va como system.
+        system_prompt = prompt_template.replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = f"{context_json_str}\n\n{nota_vision}"
+    else:
+        system_prompt = prompt_template[:_idx].replace(
+            "{taxonomias_existentes}", taxonomias_existentes
+        )
+        user_content = prompt_template[_idx:].replace(
+            "{context_json_str}", context_json_str
+        ).replace(
+            "{nota_vision}", nota_vision
+        )
 
-    # Llamada al LLM de texto (GLM-4.7 o DeepSeek según EXPERIMENT_TEXTO_PROVIDER)
+    # Reconstrucción del prompt para trazabilidad (PromptEnviado).
+    # IMPORTANTE: el user_content (lote + nota de visión) va PRIMERO porque es el
+    # dato variable que cambia por producto y el que importa auditar. El
+    # system_prompt (manual + taxonomías ~80KB) va después; si el truncamiento a
+    # 50000 chars lo corta, no se pierde información relevante (las taxonomías
+    # son fijas y viven en prompt_agente_v3_solidificado_final.txt).
+    prompt = f"{user_content}\n\n=== SYSTEM PROMPT (fijo) ===\n{system_prompt}"
+
+    # Llamada al LLM de texto (GLM-4.7 o DeepSeek según IA_PROVEEDOR)
     metricas["llamadas_glm"] = 1
     # GLM usa 4000; DeepSeek con reasoning=max necesita budget amplio (lo decide el wrapper).
-    provider_txt_cfg = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider_txt_cfg = os.getenv("IA_PROVEEDOR", "glm").lower()
     mt_call = None if provider_txt_cfg == "deepseek" else 4000
-    result_glm, error_glm, lbl_modelo = llamar_llm_texto(prompt, max_tokens=mt_call)
+    result_glm, error_glm, lbl_modelo = llamar_llm_texto(
+        user_content, system_prompt=system_prompt, max_tokens=mt_call
+    )
 
     if error_glm:
         metricas["errores_api"].append(f"{lbl_modelo or 'LLM'} API Error: {error_glm}")
@@ -529,7 +664,7 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Procesar respuesta del LLM (protocolo OpenAI-compatible: content +
     # reasoning_content). Si content es None por agotamiento de tokens en el
     # razonamiento, usamos reasoning_content como fallback.
-    provider_txt = os.getenv("EXPERIMENT_TEXTO_PROVIDER", "glm").lower()
+    provider_txt = os.getenv("IA_PROVEEDOR", "glm").lower()
     if provider_txt == "deepseek":
         content, reasoning = deepseek_extract_content(result_glm)
         costo_txt = deepseek_estimate_cost(result_glm)
@@ -544,6 +679,32 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Costo equivalente
     metricas["costo_glm"] = costo_txt
 
+    # Trazabilidad LLM (persistida por el orquestador a OrquestadorLLMLog).
+    # Capturamos: prompt final, reasoning separado, tokens y metadata del modelo.
+    usage = (result_glm.get("usage") or {}) if isinstance(result_glm, dict) else {}
+    metricas["prompt_enviado"]      = prompt[:50000]                  # str (template final con contexto)
+    metricas["reasoning_content"]   = (reasoning or "")[:50000]       # str (chain-of-thought)
+    metricas["prompt_tokens"]       = usage.get("prompt_tokens", 0) or 0
+    metricas["completion_tokens"]   = usage.get("completion_tokens", 0) or 0
+    metricas["reasoning_tokens"]    = (
+        (usage.get("completion_tokens_details") or {}).get("reasoning_tokens", 0) or 0
+    )
+    # Tokens cacheados (para medir el ahorro del prefix caching).
+    # - DeepSeek: usage.prompt_cache_hit_tokens / prompt_cache_miss_tokens (plano).
+    # - Z.ai (GLM): usage.prompt_tokens_details.cached_tokens (anidado).
+    metricas["prompt_cache_hit_tokens"] = (
+        usage.get("prompt_cache_hit_tokens")
+        or (usage.get("prompt_tokens_details") or {}).get("cached_tokens")
+        or 0
+    )
+    metricas["prompt_cache_miss_tokens"] = usage.get("prompt_cache_miss_tokens") or 0
+    metricas["modelo_texto"]        = lbl_modelo or os.getenv("IA_MODELO", "")
+    metricas["prompt_archivo"]      = prompt_template_path
+    metricas["temperatura"]         = float(os.getenv("IA_TEMPERATURE", "0"))
+    metricas["num_fuentes"]         = len(fotos_a_guardar)  # placeholder; orquestador sobreescribe con len(fuentes)
+    metricas["num_imagenes"]        = len(imagenes_b64) if isinstance(imagenes_b64, list) else 0
+    metricas["num_imagenes_aprob"]  = len(fotos_a_guardar)
+
     # Parsear JSON
     try:
         parsed_json = extract_json_from_content(content)
@@ -554,6 +715,135 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         metricas["errores_api"].append(f"JSON Parse Error: {str(e)}")
         metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
         return None, metricas, content, fotos_a_guardar
+
+
+def procesar_lote_batch(productos_datos: list, taxonomias_existentes: str) -> tuple:
+    """Procesa un LOTE de N productos en UNA sola llamada LLM (modo batch).
+
+    Optimización validada por test A/B: 1 llamada con N productos es ~4.5x más
+    barata y ~6.6x más rápida que N llamadas de 1 producto, sin degradar calidad.
+
+    Args:
+        productos_datos: lista de dicts, cada uno con:
+            - codbarras, descripcion
+            - fuentes_web (lista de dicts como los de extraer_fuente_web)
+            - nota_vision_ocr (str: OCR de ese producto, ya construido por el
+              orquestador; o nota de "sin imágenes legibles")
+            - atributos_ya_encontrados (dict o None)
+            - ciclos_reproceso (int)
+        taxonomias_existentes: str con las taxonomías (va al system, cacheable).
+
+    Returns:
+        (parsed_list, metricas, raw_content) donde:
+        - parsed_list: lista de N dicts {registro:{codbarras}, atributos_nuevos_consolidados:{...}}
+          (None si falla el parse). Puede tener <N si el modelo omitió elementos.
+        - metricas: dict con costo/tokens COMPARTIDOS de la única llamada LLM.
+        - raw_content: str con la respuesta cruda.
+    """
+    metricas = {
+        "llamadas_glm": 0, "costo_gemini": 0.0, "costo_glm": 0.0,
+        "tiempo_inicio": time.time(), "errores_json": 0, "errores_api": [],
+        # tokens/costo de la llamada compartida (no por producto)
+        "prompt_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0,
+        "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 0,
+    }
+
+    # Armar context_block con N registros (cada uno con sus fuentes + su OCR).
+    context_block = []
+    for d in productos_datos:
+        context_block.append({
+            "registro": {
+                "codigo": d["codbarras"], "codbarras": d["codbarras"],
+                "descripcion_original": d["descripcion"],
+                "ciclos_reproceso": d.get("ciclos_reproceso", 0),
+            },
+            "atributos_ya_encontrados": d.get("atributos_ya_encontrados"),
+            "fuentes_web": d.get("fuentes_web", []),
+            "nota_vision_ocr": d.get("nota_vision_ocr", "[Nota: sin imágenes para este producto.]"),
+        })
+
+    # Cargar prompt v4 (multi-producto) y partir en system/user (mismo corte que v3).
+    prompt_template_path = os.getenv("PROMPT_ARCHIVO_BATCH", "prompt_agente_v4_batch.txt")
+    try:
+        with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
+            prompt_template = f_prompt.read()
+    except FileNotFoundError:
+        metricas["errores_api"].append(f"No se encuentra {prompt_template_path}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, ""
+
+    _SPLIT_MARKER = "**LOTE A PROCESAR:**"
+    _idx = prompt_template.find(_SPLIT_MARKER)
+    if _idx == -1:
+        system_prompt = prompt_template.replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = json.dumps(context_block, ensure_ascii=False)
+    else:
+        system_prompt = prompt_template[:_idx].replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = prompt_template[_idx:].replace(
+            "{context_json_str}", json.dumps(context_block, ensure_ascii=False)
+        )
+
+    # Una sola llamada LLM con todo el lote.
+    metricas["llamadas_glm"] = 1
+    provider = os.getenv("IA_PROVEEDOR", "glm").lower()
+    # Budget de salida proporcional a N productos: cada producto genera ~6-9K
+    # (razonamiento + JSON). Default por producto de 8192, techo 64000 (lejos del
+    # output máx 128K de DeepSeek/GLM). Si es muy chico, el JSON se corta → 0/N.
+    n_prod = max(len(productos_datos), 1)
+    if provider == "deepseek":
+        mt_call = min(n_prod * int(os.getenv("DEEPSEEK_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+    else:
+        mt_call = min(n_prod * int(os.getenv("GLM_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+    result, error, lbl_modelo = llamar_llm_texto(
+        user_content, system_prompt=system_prompt, max_tokens=mt_call
+    )
+    if error:
+        metricas["errores_api"].append(f"{lbl_modelo or 'LLM'} API Error: {error}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, ""
+
+    # Procesar respuesta: content + reasoning + costo compartido.
+    if provider == "deepseek":
+        content, reasoning = deepseek_extract_content(result)
+        costo_txt = deepseek_estimate_cost(result)
+    else:
+        content, reasoning = extract_content(result)
+        costo_txt = estimate_cost(result)
+    if not content and reasoning:
+        content = reasoning
+    content = content or ''
+
+    metricas["costo_glm"] = costo_txt
+    metricas["modelo_texto"] = lbl_modelo or os.getenv("IA_MODELO", "")
+    metricas["prompt_archivo"] = prompt_template_path
+    metricas["reasoning_content"] = (reasoning or "")[:50000]
+    metricas["prompt_enviado"] = f"{user_content}\n\n=== SYSTEM PROMPT (fijo) ===\n{system_prompt}"[:50000]
+    metricas["temperatura"] = float(os.getenv("IA_TEMPERATURE", "0"))
+
+    usage = (result.get("usage") or {}) if isinstance(result, dict) else {}
+    metricas["prompt_tokens"] = usage.get("prompt_tokens", 0) or 0
+    metricas["completion_tokens"] = usage.get("completion_tokens", 0) or 0
+    metricas["reasoning_tokens"] = (
+        (usage.get("completion_tokens_details") or {}).get("reasoning_tokens", 0) or 0
+    )
+    metricas["prompt_cache_hit_tokens"] = (
+        usage.get("prompt_cache_hit_tokens")
+        or (usage.get("prompt_tokens_details") or {}).get("cached_tokens")
+        or 0
+    )
+    metricas["prompt_cache_miss_tokens"] = usage.get("prompt_cache_miss_tokens") or 0
+
+    # Parsear (array de N elementos).
+    try:
+        parsed_list = extract_json_from_content(content)
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return parsed_list, metricas, content
+    except Exception as e:
+        metricas["errores_json"] = 1
+        metricas["errores_api"].append(f"JSON Parse Error: {str(e)}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, content
+
 
 def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/comparativa_batch1.json"):
     vcfg = _vision_config()
@@ -585,7 +875,7 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
     resultados_batch1 = {
         "configuracion": {
             "batch_size": 1,
-            "modelo_consolidacion": "GLM-4.7 (Z.ai API DIRECTA - GLM Coding Plan)",
+            "modelo_consolidacion": _modelo_label,
             "modelo_vision": vlabel,
             "fecha": time.strftime("%Y-%m-%d %H:%M:%S")
         },
@@ -646,7 +936,7 @@ def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/com
 
             if atrib:
                 score = calcular_score_calidad(atrib)
-                atrib['segmento_etario'] = normalizar_segmento_etario(atrib.get('segmento_etario'))
+                atrib['segmento_etario'] = deducir_segmento_etario(atrib.get('codigo_atc_profundo'))
                 # Capa 2 — post-validación determinista: si fabricante/marca están marcados
                 # como baja confianza (conflicto imagen↔texto u otra razón), el nivel global
                 # se capa a máximo 3. Backstop del fallo donde GLM documenta fabricante=3

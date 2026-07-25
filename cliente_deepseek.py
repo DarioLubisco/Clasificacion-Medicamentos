@@ -24,6 +24,9 @@ DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash")
 # Precios públicos de DeepSeek V4 Flash (USD por 1M tokens).
 DEEPSEEK_PRICE_IN_PER_1M = 0.27
 DEEPSEEK_PRICE_OUT_PER_1M = 1.10
+# Context Caching on Disk: los cache-hit tokens se cobran a ~1/10 del input.
+# https://api-docs.deepseek.com/guides/kv_cache/
+DEEPSEEK_PRICE_CACHE_HIT_PER_1M = 0.027
 
 
 def get_chat_endpoint(base_url: str = DEEPSEEK_BASE_URL) -> str:
@@ -131,14 +134,31 @@ def extract_content(result: Dict[str, Any]) -> Tuple[Optional[str], Optional[str
 
 def estimate_cost(result: Dict[str, Any],
                   price_in: float = DEEPSEEK_PRICE_IN_PER_1M,
-                  price_out: float = DEEPSEEK_PRICE_OUT_PER_1M) -> float:
-    """Costo USD a partir de usage."""
+                  price_out: float = DEEPSEEK_PRICE_OUT_PER_1M,
+                  price_cache_hit: float = DEEPSEEK_PRICE_CACHE_HIT_PER_1M) -> float:
+    """Costo USD a partir de usage.
+
+    Refleja el descuento del Context Caching on Disk de DeepSeek: los tokens en
+    `prompt_cache_hit_tokens` se cobran a ~1/10 del input; los
+    `prompt_cache_miss_tokens` a precio pleno. Si la API no reporta desglose
+    (campo ausente / respuesta antigua), cae al cálculo legacy con prompt_tokens
+    entero a precio pleno.
+    """
     if not result:
         return 0.0
     usage = result.get("usage", {}) or {}
-    p_tok = usage.get("prompt_tokens", 0) or 0
     c_tok = usage.get("completion_tokens", 0) or 0
-    # completion_tokens YA incluye reasoning_tokens.
+
+    cache_hit = usage.get("prompt_cache_hit_tokens") or 0
+    cache_miss = usage.get("prompt_cache_miss_tokens") or 0
+    if cache_hit or cache_miss:
+        # La API reporta desglose explícito de caché.
+        return (cache_hit * price_cache_hit / 1e6
+                + cache_miss * price_in / 1e6
+                + c_tok * price_out / 1e6)
+
+    # Fallback legacy: sin desglose de caché, todo el input a precio pleno.
+    p_tok = usage.get("prompt_tokens", 0) or 0
     return (p_tok * price_in / 1e6) + (c_tok * price_out / 1e6)
 
 

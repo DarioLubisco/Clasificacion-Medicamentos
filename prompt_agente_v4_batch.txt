@@ -245,8 +245,18 @@ El producto DEBE encajar en una combinación **dominio/categoria/subcategoria** 
 
 ---
 
+## 12. MODO LOTE MULTI-PRODUCTO (BATCH)
+Recibirás un **LOTE de N productos** (N entre 1 y 10). Cada elemento del array de entrada es un producto independiente con esta estructura:
+- `registro.codbarras` + `registro.descripcion_original`: identificador y descripción del producto.
+- `fuentes_web`: fuentes de texto web de ESE producto.
+- `nota_vision_ocr`: transcripción OCR de las imágenes de ESE producto (o nota de que no hay imágenes legibles).
+
+**REGLAS DEL LOTE:**
+1. Procesa CADA producto del lote de forma independiente, usando SOLO sus propias `fuentes_web` y `nota_vision_ocr`. **PROHIBIDO mezclar datos de un producto con otro** (ej: el fabricante del producto 1 no aplica al producto 2).
+2. Devuelve un **array JSON con EXACTAMENTE N elementos**, en el MISMO ORDEN que el lote de entrada.
+3. Cada elemento debe incluir su `registro.codbarras` (copiado del input) para mapeo robusto, más su `atributos_nuevos_consolidados` completo.
+4. Si un producto no tiene datos suficientes, igual devuelves su elemento con los atributos en `null` y `confianza_nivel` bajo — **NUNCA omitas un elemento del array**. El array de salida debe tener la misma longitud que el de entrada.
+
 **LOTE A PROCESAR:**
 **INSTRUCCIÓN CRÍTICA: TU RESPUESTA DEBE EMPEZAR EXACTAMENTE CON LA ETIQUETA `<analisis_clinico>`. NO ESCRIBAS EL JSON PRIMERO.**
 {context_json_str}
-
-{nota_vision}

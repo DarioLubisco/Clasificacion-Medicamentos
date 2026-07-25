@@ -1,9 +1,10 @@
 """
-Orquestador n8n → pipeline local (scraper + evaluate_local).
+Orquestador del pipeline farmacéutico (scraper + evaluate_local).
 
 Recibe el payload de Config.AutomationTriggers (mismo contrato que el antiguo
-synapse-api /api/orquestador/start), procesa un lote incremental y devuelve
-resultados al webhook n8n `osint-resultados`.
+synapse-api /api/orquestador/start), procesa un lote incremental y escribe los
+resultados DIRECTO a SQL Server (UPDATE sobre Procurement.por_aprobacion_equivalencias).
+Sin intermediario n8n: la escritura la hace este proceso con pyodbc + commit.
 """
 from __future__ import annotations
 
@@ -17,22 +18,23 @@ from pathlib import Path
 from typing import Any
 
 import pyodbc
-import requests
 
 from synapse_cred import load_synapse_credentials
 
 load_synapse_credentials()
 
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).resolve().parent / ".env")
+
 import evaluate_local as ev
 import orquestador_scraper as scrap
-from limpiador_farmaceutico_regex import procesar_farmacos
+from normalizador_farmaceutico import procesar_farmacos
+from MDM_Unified_Mapper import MasterCatalog
+from alertas import log_evento
+from n8n_error_reporter import report_valueserp_access_failure, report_external_error, report_scraper_critical
 
 REPO_DIR = Path(__file__).resolve().parent
 BATCH_SIZE = int(os.getenv("ORQUESTADOR_BATCH_SIZE", "5"))
-N8N_WEBHOOK_URL = os.getenv(
-    "N8N_WEBHOOK_URL",
-    "https://n8n.farmaciaamericana.es/webhook/osint-resultados",
-)
 MAX_REINTENTOS = int(os.getenv("ORQUESTADOR_MAX_REINTENTOS", "3"))
 SCORE_CIERRE = int(os.getenv("ORQUESTADOR_SCORE_CIERRE", "88"))
 SCORE_CIERRE_NO_MED = int(os.getenv("ORQUESTADOR_SCORE_CIERRE_NO_MED", "70"))
@@ -43,6 +45,10 @@ SCRAPING_DELAY = float(os.getenv("SCRAPING_DELAY", "0.5"))
 
 def _conn_str() -> str:
     server = os.getenv("DB_SERVER", "100.94.5.108,49751")
+    # Si el server tiene instance name pero sin puerto, forzar puerto 49751
+    if "\\\\" in server and "," not in server:
+        port = os.getenv("DB_PORT", "49751")
+        server = f"{server},{port}"
     database = os.getenv("DB_DATABASE", "EnterpriseAdmin_AMC")
     user = os.getenv("DB_USER", "sa")
     password = os.getenv("DB_PASSWORD", "")
@@ -75,82 +81,259 @@ def check_threshold(trigger: dict[str, Any]) -> bool:
 
 
 def fetch_productos_abiertos(limit: int) -> list[dict[str, Any]]:
+    """RECLAMA (claim) hasta `limit` productos ABIERTOS para procesamiento.
+
+    Patrón claim atómico para PARALELISMO SEGURO: marca los productos como
+    'EN_PROCESO' y los devuelve en una sola sentencia UPDATE...OUTPUT atómica.
+    Otra instancia que corra en paralelo ya no verá estos productos (dejan de
+    ser 'ABIERTO'), evitando que dos procesos trabajen el mismo codbarras.
+
+    El claim se libera NATURALMENTE cuando write_rows_to_db() actualiza
+    estado_ciclo a su valor final (CERRADO/AGOTADO/ABIERTO). Si el proceso
+    muere antes, los productos quedan 'EN_PROCESO' y los rescata
+    _reabrir_stuck() en la próxima corrida.
+    """
     conn = get_db_connection()
     try:
         cur = conn.cursor()
+        # CTE con TOP+ORDER BY (SQL Server no permite ORDER BY directo en
+        # UPDATE TOP). El UPDATE sobre la CTE toma locks exclusivos fila a fila;
+        # dos instancias concurrentes no reclaman la misma fila.
         cur.execute(
             f"""
-            SELECT TOP ({limit})
-                codigo, codbarras, descrip1art,
-                ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
-                principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
-                fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
-                requiere_recipe, blister, generico, cantidad_presentacion,
-                contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des
-            FROM Procurement.por_aprobacion_equivalencias
-            WHERE estado_ciclo = 'ABIERTO'
-            ORDER BY ISNULL(LastUpdated, '1900-01-01') ASC
+            WITH candidatos AS (
+                SELECT TOP ({int(limit)})
+                    codbarras, descrip1art,
+                    ISNULL(ciclos_reproceso, 0) AS ciclos_reproceso,
+                    principio_activo_Des, concentracion_Des, forma_farmaceutica_Des,
+                    fabricante_Des, marca_Des, codigo_atc_Des, clasificacion_insumo_Des,
+                    generico, cantidad_presentacion,
+                    contenido_neto, contenido_neto_unidad_Des, segmento_etario, origen_Des,
+                    estado_ciclo, LastUpdated
+                FROM Procurement.por_aprobacion_equivalencias
+                WHERE estado_ciclo = 'ABIERTO'
+                ORDER BY
+                    ISNULL(ciclos_reproceso, 0) ASC,
+                    CASE WHEN LEN(codbarras) = 13 AND codbarras NOT LIKE 'BLI_%' THEN 0 ELSE 1 END,
+                    ISNULL(LastUpdated, '1900-01-01') ASC
+            )
+            UPDATE candidatos
+               SET estado_ciclo = 'EN_PROCESO', LastUpdated = GETDATE()
+            OUTPUT
+                inserted.codbarras, inserted.descrip1art, inserted.ciclos_reproceso,
+                inserted.principio_activo_Des, inserted.concentracion_Des,
+                inserted.forma_farmaceutica_Des, inserted.fabricante_Des, inserted.marca_Des,
+                inserted.codigo_atc_Des, inserted.clasificacion_insumo_Des,
+                inserted.generico, inserted.cantidad_presentacion,
+                inserted.contenido_neto, inserted.contenido_neto_unidad_Des,
+                inserted.segmento_etario, inserted.origen_Des
             """
         )
         rows = cur.fetchall()
+        conn.commit()
     finally:
         conn.close()
 
     productos = []
     keys = [
         "principio_activo", "concentracion", "forma_farmaceutica", "fabricante", "marca",
-        "codigo_atc", "clasificacion_insumo_Des", "requiere_recipe", "blister", "generico",
+        "codigo_atc", "clasificacion_insumo_Des", "generico",
         "cantidad_presentacion", "contenido_neto", "contenido_neto_unidad_Des",
         "segmento_etario", "origen",
     ]
     for row in rows:
         ya = {}
         for idx, key in enumerate(keys):
-            val = row[4 + idx]
+            val = row[3 + idx]
             if val is not None and str(val).strip() != "":
                 ya[key] = val
         productos.append({
-            "codigo": row[0],
-            "codbarras": row[1],
-            "descripcion": row[2],
-            "ciclos_reproceso": int(row[3]),
+            "codbarras": row[0],
+            "descripcion": row[1],
+            "ciclos_reproceso": int(row[2]),
             "atributos_ya_encontrados": ya,
         })
     return productos
 
 
-def scrape_producto(codbarras: str, descripcion: str) -> tuple[list, list]:
+def _reabrir_stuck() -> int:
+    """Reabre productos que quedaron 'EN_PROCESO' por una corrida que murió.
+
+    Se ejecuta al inicio de cada corrida, ANTES del claim. Reabre a 'ABIERTO'
+    los productos 'EN_PROCESO' cuyo LastUpdated es más antiguo que el umbral
+    configurado (ORQUESTADOR_STUCK_MINUTOS, default 60). El umbral es generoso
+    para NO reabrir un producto que otra instancia está procesando legítimamente
+    (tus productos tardan 2-4 min; 60 min da holgura segura).
+
+    Returns: número de filas reabiertas.
+    """
+    minutos = int(os.getenv("ORQUESTADOR_STUCK_MINUTOS", "60"))
+    conn = get_db_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            """
+            UPDATE Procurement.por_aprobacion_equivalencias
+               SET estado_ciclo = 'ABIERTO'
+             WHERE estado_ciclo = 'EN_PROCESO'
+               AND LastUpdated < DATEADD(minute, -?, GETDATE())
+            """,
+            minutos,
+        )
+        n = cur.rowcount
+        conn.commit()
+        if n:
+            log_evento("INFO", "ORQUESTADOR",
+                       f"Cleanup: {n} producto(s) EN_PROCESO trabados (> {minutos} min) reabiertos a ABIERTO.",
+                       alerta_telegram=False)
+        return n
+    finally:
+        conn.close()
+
+
+def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = None) -> tuple[list, list, list]:
+    """Scrapea un producto. Devuelve (fuentes_extraidas, imagenes_aprobadas, urls_encontradas).
+
+    Flujo optimizado (2026-07-20):
+      1. Busca solo con el EAN (no descripción) — más URLs de farmacias, menos ruido.
+      2. Para cada fuente, extrae 1 imagen → pre-filtro inline → cuenta si pasa.
+      3. Para cuando tenga 4 aprobadas o agote 10 fuentes.
+      4. Si tras 10 fuentes no llega a 4, devuelve lo que tenga.
+    """
     fuentes_extraidas: list = []
-    todas_imagenes: list = []
+    urls_aprobadas_para_ocr: list = []
+    urls_encontradas: list = []
     is_internal = codbarras.startswith("BLI_") or len(codbarras) != 13
+    umbral = int(os.getenv("VISION_UMBRAL", "3"))
+    target_aprobadas = int(os.getenv("VISION_MAX_OCR", "4"))
+    imgs_por_fuente = 1  # 1 imagen por fuente (mejor score de proximidad)
 
-    if not is_internal:
-        urls = scrap.buscar_en_internet(f'"{codbarras}" {descripcion}', max_fuentes=MAX_FUENTES_WEB)
-        for idx, url in enumerate(urls, 1):
-            fuente = scrap.extraer_fuente_web(url, idx, descripcion)
-            if fuente:
-                fuentes_extraidas.append(fuente)
-                todas_imagenes.extend(fuente.get("imagenes_encontradas", []))
-                if len(set(todas_imagenes)) >= MAX_FOTOS_TOTALES:
-                    break
-            time.sleep(SCRAPING_DELAY)
+    if is_internal:
+        log_evento(
+            "WARN", "SCRAPER",
+            f"Scraping saltado: código interno (len={len(codbarras)}). "
+            f"El pipeline correrá sin imágenes ni fuentes web.",
+            codbarras=codbarras, trigger_id=trigger_id,
+            detalle={"motivo": "codigo_interno", "len": len(codbarras)},
+        )
+        return [], [], []
 
-    return fuentes_extraidas, list(dict.fromkeys(todas_imagenes))[:MAX_FOTOS_TOTALES]
+    # Query SOLO con EAN — no descripción. ValueSERP devuelve más URLs de farmacias.
+    query = f'"{codbarras}"'
+    urls = scrap.buscar_en_internet(query, max_fuentes=MAX_FUENTES_WEB)
+
+    for idx, url in enumerate(urls, 1):
+        if len(urls_aprobadas_para_ocr) >= target_aprobadas:
+            break
+
+        fuente = scrap.extraer_fuente_web(url, idx, descripcion)
+        if fuente:
+            fuentes_extraidas.append(fuente)
+            urls_encontradas.append(url)
+
+            # Pre-filtro inline: evaluar cada imagen extraída de inmediato.
+            # Si pasa el umbral (≥3), se cuenta para OCR. Si no, se descarta.
+            # Esto permite parar al llegar a 4 aprobadas sin evaluar todas las fuentes.
+            for img_url in fuente.get("imagenes_encontradas", [])[:imgs_por_fuente]:
+                try:
+                    _, fotos_a_guardar, _ = ev.filtrar_imagenes_legibles([img_url], descripcion)
+                    if fotos_a_guardar and fotos_a_guardar[0]["score"] >= umbral:
+                        urls_aprobadas_para_ocr.append(img_url)
+                        print(f"    [Pre-Filtro] Foto #{len(urls_aprobadas_para_ocr)}/{target_aprobadas} "
+                              f"aprobada (Puntaje: {fotos_a_guardar[0]['score']})")
+                        if len(urls_aprobadas_para_ocr) >= target_aprobadas:
+                            print(f"    [Pre-Filtro] Target alcanzado: {target_aprobadas} fotos aprobadas")
+                            break
+                    elif fotos_a_guardar:
+                        print(f"    [Pre-Filtro] Foto descartada (Puntaje: {fotos_a_guardar[0]['score']})")
+                except Exception as e:
+                    print(f"    [Pre-Filtro] Error evaluando imagen: {e}")
+        time.sleep(SCRAPING_DELAY)
+
+    # Diagnóstico fino del resultado del scraping. Antes todo se reportaba como
+    # "scraper no trajo fuentes ni imágenes" (WARN), lo cual era un falso positivo:
+    # cuando ValueSERP sí devolvía URLs pero la extracción HTML fallaba (SSL, 403, etc.),
+    # el producto igual clasificaba bien con score 80+. Eso llenaba el log de alertas
+    # ruidosas que no indicaban problemas reales.
+    if not urls:
+        log_evento(
+            "WARN", "SCRAPER",
+            f"ValueSERP no devolvió URLs para {codbarras}. Posible caída de API o red.",
+            codbarras=codbarras, trigger_id=trigger_id,
+            detalle={"motivo": "valueserp_vacio", "query": query[:200]},
+        )
+    elif urls and not fuentes_extraidas:
+        log_evento(
+            "INFO", "SCRAPER",
+            f"{codbarras}: {len(urls)} URLs halladas pero 0 extrajeron contenido "
+            f"(SSL/403/timeout en descarga HTML). El pipeline continúa con solo descripción.",
+            codbarras=codbarras, trigger_id=trigger_id,
+            detalle={"motivo": "html_descarga_fallo", "urls": urls[:5]},
+            alerta_telegram=False,  # INFO no Telegram; común cuando farmacias caen
+        )
+
+    return (
+        fuentes_extraidas,
+        urls_aprobadas_para_ocr,
+        urls_encontradas,
+    )
 
 
-def _sql_val(val: Any) -> Any:
-    if val is None or str(val).strip() in ("", "None"):
+def _buscar_id_taxonomia(
+    conn_str: str,
+    dominio: str | None,
+    categoria: str | None,
+    subcategoria: str | None,
+) -> int | None:
+    """Lookup del id_taxonomia en Procurement.Taxonomia por match exacto de
+    dominio + categoria + subcategoria (todas activas, activo=1).
+    Devuelve None si falta algún campo, no hay match, o hay error de conexión.
+    """
+    if not (dominio and categoria and subcategoria):
         return None
-    return val
+    try:
+        conn = pyodbc.connect(conn_str, timeout=10)
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT TOP 1 id_taxonomia FROM Procurement.Taxonomia "
+                "WHERE dominio = ? AND categoria = ? AND subcategoria = ? "
+                "AND activo = 1",
+                dominio, categoria, subcategoria,
+            )
+            row = cur.fetchone()
+            return int(row[0]) if row else None
+        finally:
+            conn.close()
+    except Exception:
+        # Lookup es best-effort: si falla no rompe el batch (la taxonomía
+        # queda en las columnas VARCHAR como respaldo).
+        return None
 
 
-def atributos_a_fila_sql(
-    codbarras: str,
-    codigo: str,
+def _sql_lit(val: Any, is_string: bool = True) -> str:
+    """Format a Python value as a SQL literal (NULL if empty). Mirrors fmt() in the boss script."""
+    if val is None or val == "None" or str(val).strip() == "":
+        return "NULL"
+    val_str = str(val).strip()
+    if val_str.lower() == "true":
+        return "1"
+    if val_str.lower() == "false":
+        return "0"
+    if is_string:
+        return "'" + val_str.replace("'", "''") + "'"
+    return val_str
+
+
+def build_update_clauses(
     atrib: dict[str, Any],
     ciclos_reproceso: int,
-    modelo: str,
-) -> dict[str, Any]:
+    descripcion: str = "",
+    catalog: Any = None,
+) -> tuple[list[str], int, str, int]:
+    """Build SET clauses for the UPDATE, aligned to the real table schema
+    (same columns as tests/test_ciclo_completo_100.py). No invented _Des columns,
+    no requiere_recipe. Returns (clauses, score, estado_ciclo, ciclos_final)."""
     limpieza = procesar_farmacos(atrib.get("principio_activo"), atrib.get("concentracion"))
     if limpieza["exito"]:
         atrib["principio_activo"] = limpieza["principio_activo"]
@@ -161,11 +344,49 @@ def atributos_a_fila_sql(
         atrib["concentracion"] = None
         observaciones = limpieza.get("observaciones") or ""
 
-    atrib["segmento_etario"] = ev.normalizar_segmento_etario(atrib.get("segmento_etario"))
-    score = ev.calcular_score_calidad(atrib)
-    es_med = not bool(atrib.get("clasificacion_insumo_Des"))
+    # Deducir segmento_etario desde ATC profundo (no viene del LLM)
+    atrib["segmento_etario"] = ev.deducir_segmento_etario(atrib.get("codigo_atc_profundo"))
 
-    if score >= SCORE_CIERRE or (not es_med and score >= SCORE_CIERRE_NO_MED):
+    # Post-proceso: extraer marca del nombre si el LLM no la extrajo
+    if not atrib.get("marca"):
+        _desc = (descripcion or atrib.get("descripcion_original") or atrib.get("descripcion") or "").upper()
+        _pa = (atrib.get("principio_activo") or "").upper()
+        _ff = (atrib.get("forma_farmaceutica") or "").upper()
+        _conc = (atrib.get("concentracion") or "").upper()
+        _genericos = {"MG", "ML", "G", "GR", "KG", "TAB", "TABLETA", "TABLETAS", "CAP",
+                      "CÁPSULA", "CÁPSULAS", "CAPSULA", "CAPSULAS", "SUSPENSIÓN", "SUSPENSION",
+                      "JARABE", "CREMA", "GEL", "SOLUCIÓN", "SOLUCION", "POLVO", "AMP",
+                      "AMPOLLA", "AMPOLLAS", "X", "UNO", "UNIDAD", "UNIDADES", "FRASCO",
+                      "CAJA", "BLISTER", "SOBRE", "SOBRES", "OVULO", "ÓVULO", "OVULOS",
+                      "ÓVULOS", "SUP", "ORAL", "TOPICO", "TÓPICO", "OFTÁLMICO", "OFTALMICO",
+                      "INHALADOR", "INYECTABLE", "INTRAMUSCULAR", "INTRAVENOSA", "PEDIÁTRICA",
+                      "PEDIATRICA", "ADULTO", "PEDIÁTRICO", "PEDIATRICO", "JARABE"}
+        _desc_words = _desc.replace(",", " ").replace(".", " ").split()
+        for w in reversed(_desc_words):
+            w_clean = w.strip()
+            if not w_clean or w_clean in _genericos or w_clean.replace("/", "").replace("-", "").isdigit():
+                continue
+            if len(w_clean) < 3:
+                continue
+            if w_clean in _pa or w_clean in _ff or w_clean in _conc:
+                continue
+            atrib["marca"] = w_clean.title()
+            break
+    score = ev.calcular_score_calidad(atrib)
+    dominio = atrib.get('dominio') or 'MEDICAMENTO_ALOPATICO'
+
+    # Umbrales de cierre por dominio
+    UMBRAL_CIERRE = {
+        'MEDICAMENTO_ALOPATICO': 88,
+        'SUPLEMENTO_VITAMINICO': 75,
+        'PRODUCTO_NATURAL_HOMEOPATICO': 75,
+        'COSMETICO_CUIDADO_PERSONAL': 80,
+        'MATERIAL_MEDICO_INSUMO': 75,
+        'MISCELANEO': 70,
+    }
+    umbral = UMBRAL_CIERRE.get(dominio, SCORE_CIERRE)
+
+    if score >= umbral:
         estado_ciclo = "CERRADO"
         ciclos_final = ciclos_reproceso
     elif ciclos_reproceso >= MAX_REINTENTOS:
@@ -175,45 +396,499 @@ def atributos_a_fila_sql(
         estado_ciclo = "ABIERTO"
         ciclos_final = ciclos_reproceso + 1
 
-    return {
-        "codigo": codigo or codbarras,
-        "codbarras": codbarras,
-        "principio_activo_Des": _sql_val(atrib.get("principio_activo")),
-        "concentracion_Des": _sql_val(atrib.get("concentracion")),
-        "forma_farmaceutica_Des": _sql_val(atrib.get("forma_farmaceutica")),
-        "codigo_atc_Des": _sql_val(atrib.get("codigo_atc")),
-        "codigo_atc_profundo_Des": _sql_val(atrib.get("codigo_atc_profundo")),
-        "modelo_ia_Des": modelo,
-        "requiere_recipe_Des": 1 if atrib.get("requiere_recipe") else 0,
-        "generico_Des": 1 if atrib.get("generico") else 0,
-        "segmento_etario_Des": atrib.get("segmento_etario"),
-        "origen_Des": _sql_val(atrib.get("origen")),
-        "fabricante_Des": _sql_val(atrib.get("fabricante")),
-        "marca_Des": _sql_val(atrib.get("marca")),
-        "contenido_neto_Des": _sql_val(atrib.get("contenido_neto")),
-        "cantidad_presentacion_Des": atrib.get("cantidad_presentacion"),
-        "score_calidad": score,
-        "estado_ciclo": estado_ciclo,
-        "ciclos_reproceso": ciclos_final,
-        "observaciones_ia": observaciones[:500] if observaciones else None,
-        "origen_dato": "IA_INVESTIGATED_V11_ORCHESTRATOR",
-        "es_medicamento": 0 if atrib.get("clasificacion_insumo_Des") else 1,
-    }
+    clauses = [
+        f"principio_activo_Des = {_sql_lit(atrib.get('principio_activo'))}",
+        f"concentracion_Des = {_sql_lit(atrib.get('concentracion'))}",
+        f"forma_farmaceutica_Des = {_sql_lit(atrib.get('forma_farmaceutica'))}",
+        f"fabricante_Des = {_sql_lit(atrib.get('fabricante'))}",
+        f"marca_Des = {_sql_lit(atrib.get('marca'))}",
+        f"codigo_atc_Des = {_sql_lit(atrib.get('codigo_atc'))}",
+        f"clasificacion_insumo_Des = {_sql_lit(atrib.get('clasificacion_insumo_Des'))}",
+        # Campos nuevos sincronizados con prompt V3 (antes se descartaban).
+        f"codigo_atc_profundo_Des = {_sql_lit(atrib.get('codigo_atc_profundo'))}",
+        f"confianza_atc = {_sql_lit(atrib.get('confianza_atc'), False)}",
+        f"dominio = {_sql_lit(atrib.get('dominio'))}",
+        f"categoria = {_sql_lit(atrib.get('categoria'))}",
+        f"subcategoria = {_sql_lit(atrib.get('subcategoria'))}",
+        f"registro_sanitario = {_sql_lit(atrib.get('registro_sanitario'))}",
+        f"especificacion_tecnica = {_sql_lit(atrib.get('especificacion_tecnica'))}",
+        f"volumen_unidad = {_sql_lit(atrib.get('volumen_unidad'), False)}",
+        f"volumen_unidad_medida = {_sql_lit(atrib.get('volumen_unidad_medida'))}",
+        f"generico = {_sql_lit(atrib.get('generico'), False)}",
+        f"cantidad_presentacion = {_sql_lit(atrib.get('cantidad_presentacion'), False)}",
+        f"contenido_neto = {_sql_lit(atrib.get('contenido_neto'), False)}",
+        f"contenido_neto_unidad_Des = {_sql_lit(atrib.get('contenido_neto_unidad_Des'))}",
+        f"segmento_etario = {_sql_lit(atrib.get('segmento_etario'))}",
+        f"origen_Des = {_sql_lit(atrib.get('origen'))}",
+        f"score_calidad = {score}",
+        f"estado_ciclo = '{estado_ciclo}'",
+        f"ciclos_reproceso = {ciclos_final}",
+        f"observaciones_ia = {_sql_lit(observaciones[:500] if observaciones else None)}",
+        "origen_dato = 'IA_INVESTIGATED_V11_ORCHESTRATOR'",
+        f"es_medicamento = {1 if (atrib.get('dominio') or '') in ('MEDICAMENTO_ALOPATICO','PRODUCTO_NATURAL_HOMEOPATICO','SUPLEMENTO_VITAMINICO') else 0}",
+        "LastUpdated = GETDATE()",
+    ]
+
+    # MDM catalog mapping (numeric IDs), mirrors boss script
+    if catalog:
+        clauses.extend([
+            f"principio_activo = {_sql_lit(catalog.find_id('principio_activo', atrib.get('principio_activo')), False)}",
+            f"concentracion = {_sql_lit(catalog.find_id('concentracion', atrib.get('concentracion')), False)}",
+            f"forma_farmaceutica = {_sql_lit(catalog.find_id('forma_farmaceutica', atrib.get('forma_farmaceutica')), False)}",
+            f"fabricante = {_sql_lit(catalog.find_id('fabricante', atrib.get('fabricante')), False)}",
+            f"marca = {_sql_lit(catalog.find_id('marca', atrib.get('marca')), False)}",
+            f"codigo_atc = {_sql_lit(catalog.find_id('codigo_atc', atrib.get('codigo_atc')), False)}",
+            f"clasificacion_insumo = {_sql_lit(catalog.find_id('clasificacion_insumo', atrib.get('clasificacion_insumo_Des')), False)}",
+            f"origen = {_sql_lit(catalog.find_id('origen', atrib.get('origen')), False)}",
+            f"contenido_neto_unidad = {_sql_lit(catalog.find_id('contenido_neto_unidad', atrib.get('contenido_neto_unidad_Des')), False)}",
+        ])
+
+    # id_taxonomia: lookup en Procurement.Taxonomia por (dominio, categoria, subcategoria).
+    # Best-effort: si no hay match exacto o falla, queda NULL (las columnas
+    # VARCHAR dominio/categoria/subcategoria sirven como respaldo textual).
+    id_tax = _buscar_id_taxonomia(
+        _conn_str(),
+        atrib.get("dominio"), atrib.get("categoria"), atrib.get("subcategoria"),
+    )
+    if id_tax:
+        clauses.append(f"id_taxonomia = {id_tax}")
+
+    return clauses, score, estado_ciclo, ciclos_final
+
+
+def write_rows_to_db(rows: list[dict[str, Any]], trigger_id: int | None = None) -> int:
+    """Write UPDATE rows directly to SQL Server. Each row has 'codbarras' + 'clauses'.
+    Returns number of rows written. Alerta si una fila afecta 0 (EAN no hallado)
+    o si el UPDATE falla con excepción."""
+    if not rows:
+        return 0
+    conn = get_db_connection()
+    written = 0
+    ceros = []   # codbarras cuyo UPDATE afectó 0 filas
+    try:
+        cur = conn.cursor()
+        for row in rows:
+            set_sql = ", ".join(row["clauses"])
+            ean = row["codbarras"].replace("'", "''")
+            update = f"UPDATE Procurement.por_aprobacion_equivalencias SET {set_sql} WHERE codbarras = '{ean}';"
+            try:
+                cur.execute(update)
+                afectadas = cur.rowcount if cur.rowcount and cur.rowcount > 0 else 0
+                if afectadas == 0:
+                    ceros.append(row["codbarras"])
+                written += afectadas
+            except Exception as exc_row:
+                # Error de SQL en UNA fila: registrar y continuar con las demás (no abortar el lote).
+                log_evento(
+                    "ERROR", "WRITER",
+                    f"UPDATE falló para {row['codbarras']}: {exc_row}",
+                    codbarras=row["codbarras"], trigger_id=trigger_id,
+                    detalle={"sql": update[:500]},
+                )
+        conn.commit()
+    except Exception as exc_batch:
+        # Error de conexión/transacción: alertar y propagar para que el lote se sepa caído.
+        log_evento(
+            "ERROR", "WRITER",
+            f"Error de escritura en bloque (commit/conn): {exc_batch}",
+            trigger_id=trigger_id,
+            detalle={"rows_esperadas": len(rows)},
+        )
+        raise
+    finally:
+        conn.close()
+
+    if ceros:
+        log_evento(
+            "WARN", "WRITER",
+            f"{len(ceros)} producto(s) no encontrados en la tabla (UPDATE afectó 0 filas): "
+            f"{', '.join(ceros[:10])}{'…' if len(ceros) > 10 else ''}",
+            trigger_id=trigger_id,
+            detalle={"codbarras_no_encontrados": ceros},
+        )
+    return written
+
+
+def _persistir_trazabilidad(
+    codbarras: str,
+    trigger_id: int | None,
+    metricas: dict,
+    raw_content: str,
+    fotos: list[dict],
+    fuentes: list[dict],
+    urls_encontradas: list[str],
+    atrib: dict,
+    score: int | None,
+    estado: str | None,
+) -> None:
+    """Persiste TODO lo que el pipeline calcula pero antes descartaba:
+      - LLM: prompt final, respuesta cruda, chain-of-thought, tokens, costo,
+        confianza, alertas (tabla nueva OrquestadorLLMLog).
+      - Imágenes: URL + score legibilidad + LogID (Imagenes_Productos_Crudas).
+      - Scraping crudo: URL origen + texto extraído (scraping_farmacias_raw).
+
+    Best-effort: si falla algún INSERT, se loguea a OrquestadorLog y se continúa.
+    La persistencia de trazabilidad NUNCA debe romper el batch principal.
+    """
+    try:
+        conn = pyodbc.connect(_conn_str(), timeout=15)
+    except Exception as exc:
+        log_evento("WARN", "TRAZABILIDAD",
+                   f"No se pudo conectar para persistir trazabilidad de {codbarras}: {exc}",
+                   codbarras=codbarras, trigger_id=trigger_id,
+                   alerta_telegram=False)
+        return
+
+    try:
+        cur = conn.cursor()
+
+        # 1) Fila principal en OrquestadorLLMLog
+        costo_vision = float(metricas.get("costo_gemini") or 0)
+        costo_texto = float(metricas.get("costo_glm") or 0)
+        # Serializar listas/dicts a JSON string
+        errores = metricas.get("errores_api") or []
+        errores_str = json.dumps(errores, ensure_ascii=False)[:2000] if errores else None
+        baja_conf = atrib.get("atributos_baja_confianza") if atrib else None
+        baja_conf_str = json.dumps(list(baja_conf), ensure_ascii=False)[:500] if baja_conf else None
+        alertas = (atrib.get("alertas_auditoria") if atrib else None) or None
+        confianza = atrib.get("confianza_nivel") if atrib else None
+
+        # Tokens cacheados para medir el ahorro del prefix caching (cambio de caché).
+        # Se persisten en PromptCacheHitTokens / PromptCacheMissTokens.
+        cache_hit = int(metricas.get("prompt_cache_hit_tokens") or 0) or None
+        cache_miss = int(metricas.get("prompt_cache_miss_tokens") or 0) or None
+
+        # 1) Fila principal en OrquestadorLLMLog.
+        # Intento primero CON las columnas de caché (requieren el ALTER de
+        # db/orquestador_llmlog_cache_columns.sql). Si la DB aún no las tiene,
+        # el INSERT falla y se reintenta SIN esas columnas (compat. hacia atrás).
+        _base_cols = """(TriggerID, Codbarras, ModeloTexto, ModeloVision, Temperatura,
+                PromptArchivo, PromptEnviado, RespuestaCruda, ReasoningContent,
+                PromptTokens, CompletionTokens, ReasoningTokens,
+                CostoVisionUSD, CostoTextoUSD, CostoTotalUSD,
+                ConfianzaNivel, AtributosBajaConf, AlertasAuditoria,
+                TiempoTotalSeg, NumFuentes, NumImagenes, NumImagenesAprob,
+                Errores, ScoreFinal, EstadoCiclo)"""
+        _base_vals = (
+            trigger_id, codbarras,
+            metricas.get("modelo_texto"),
+            metricas.get("modelo_vision") or os.getenv("VISION_MODELO"),
+            metricas.get("temperatura"),
+            metricas.get("prompt_archivo"),
+            metricas.get("prompt_enviado"),
+            raw_content or None,
+            metricas.get("reasoning_content") or None,
+            int(metricas.get("prompt_tokens") or 0) or None,
+            int(metricas.get("completion_tokens") or 0) or None,
+            int(metricas.get("reasoning_tokens") or 0) or None,
+            costo_vision or None,
+            costo_texto or None,
+            (costo_vision + costo_texto) or None,
+            int(confianza) if confianza is not None else None,
+            baja_conf_str,
+            (alertas[:1000] if isinstance(alertas, str) else None),
+            float(metricas.get("tiempo_total") or 0) or None,
+            len(fuentes),                           # fuentes que SÍ extrajeron HTML
+            int(metricas.get("num_imagenes") or 0),
+            int(metricas.get("num_imagenes_aprob") or 0),
+            errores_str,
+            score,
+            estado,
+        )
+        _inserted_with_cache = False
+        try:
+            cur.execute(
+                f"""INSERT INTO Procurement.OrquestadorLLMLog
+                    {_base_cols}, PromptCacheHitTokens, PromptCacheMissTokens)
+                    VALUES ({','.join(['?']*25)}, ?, ?)""",
+                _base_vals + (cache_hit, cache_miss),
+            )
+            _inserted_with_cache = True
+        except Exception as exc_cache:
+            # Columnas de caché ausentes: reintentar sin ellas para no romper el batch.
+            log_evento("DEBUG", "TRAZABILIDAD",
+                       f"INSERT con columnas de caché falló, reintentando sin ellas: {exc_cache}",
+                       codbarras=codbarras, alerta_telegram=False)
+            conn.rollback()
+            cur.execute(
+                f"""INSERT INTO Procurement.OrquestadorLLMLog
+                    {_base_cols})
+                    VALUES ({','.join(['?']*25)})""",
+                _base_vals,
+            )
+        # Recuperar el LogID autogenerado (para FK suave en las tablas hijas)
+        cur.execute("SELECT CAST(@@IDENTITY AS BIGINT)")
+        row = cur.fetchone()
+        log_id = int(row[0]) if row else None
+
+        # 2) Una fila por imagen aprobada en Imagenes_Productos_Crudas
+        if log_id and fotos:
+            for foto in fotos:
+                url = (foto.get("url_imagen") or "")[:5000]
+                score_leg = foto.get("score")
+                if url:
+                    cur.execute(
+                        """INSERT INTO Procurement.Imagenes_Productos_Crudas
+                           (codbarras, url_imagen, score_legibilidad, LogID)
+                           VALUES (?,?,?,?)""",
+                        codbarras, url,
+                        int(score_leg) if score_leg is not None else None,
+                        log_id,
+                    )
+
+        # 3) Una fila por fuente extraída en scraping_farmacias_raw
+        if log_id and fuentes:
+            from urllib.parse import urlparse
+            for fuente in fuentes:
+                url_origen = (fuente.get("url") or "")[:1000]
+                farmacia = urlparse(url_origen).netloc.replace("www.", "")[:100] if url_origen else None
+                texto = (fuente.get("texto_extraido") or "")
+                imagenes_fuente = fuente.get("imagenes_encontradas") or []
+                url_img_principal = (imagenes_fuente[0] if imagenes_fuente else "")[:1000]
+                if url_origen:
+                    cur.execute(
+                        """INSERT INTO Procurement.scraping_farmacias_raw
+                           (codbarras, farmacia_origen, url_origen, url_imagen,
+                            texto_extraido, LogID)
+                           VALUES (?,?,?,?,?,?)""",
+                        codbarras, farmacia, url_origen,
+                        url_img_principal or None,
+                        texto[:50000] or None,
+                        log_id,
+                    )
+
+        conn.commit()
+    except Exception as exc:
+        # Trazabilidad falló → no romper el batch. Loguear y seguir.
+        log_evento("WARN", "TRAZABILIDAD",
+                   f"Fallo persistiendo trazabilidad de {codbarras}: {exc}",
+                   codbarras=codbarras, trigger_id=trigger_id,
+                   alerta_telegram=False)
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _update_llm_log_score(codbarras: str, score: int, estado: str) -> None:
+    """Backfill del ScoreFinal/EstadoCiclo en la última fila de OrquestadorLLMLog
+    del codbarras dado. Se llama después de calcular el score final (post-validación),
+    ya que la persistencia inicial se hace antes de tener ese dato.
+    Best-effort: si falla, no afecta al batch."""
+    try:
+        conn = pyodbc.connect(_conn_str(), timeout=10)
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "UPDATE Procurement.OrquestadorLLMLog SET ScoreFinal = ?, EstadoCiclo = ? "
+                "WHERE LogID = (SELECT MAX(LogID) FROM Procurement.OrquestadorLLMLog WHERE Codbarras = ?)",
+                score, estado, codbarras,
+            )
+            conn.commit()
+        finally:
+            conn.close()
+    except Exception:
+        pass  # best-effort
+
+
+def _ocr_producto(imagenes_b64: list, desc: str) -> tuple[str, list, dict]:
+    """Pre-filtro + OCR de un producto. Devuelve (nota_vision_ocr, fotos_a_guardar, metricas_vision).
+
+    nota_vision_ocr es el texto a embeber en el context_block de ese producto.
+    Reutiliza filtrar_imagenes_legibles + transcribir_imagenes_vision (sin tocarlas).
+    """
+    m = {"costo_gemini": 0.0, "llamadas_gemini_prefiltro": 0, "llamadas_gemini_ocr": 0,
+         "num_imagenes": len(imagenes_b64) if isinstance(imagenes_b64, list) else 0,
+         "num_imagenes_aprob": 0}
+    vision_activa = os.getenv("VISION_ACTIVA", "1") == "1"
+    if not vision_activa or not imagenes_b64:
+        return ("[Nota: No se logró conseguir ninguna imagen de calidad suficiente. "
+                "Procede usando únicamente los datos de texto web.]", [], m)
+
+    fotos_aprobadas, fotos_a_guardar, costo_vision = ev.filtrar_imagenes_legibles(imagenes_b64, desc)
+    m["llamadas_gemini_prefiltro"] = len(imagenes_b64[: ev._vision_config()["max_prefiltro"]])
+    m["costo_gemini"] += costo_vision
+    m["num_imagenes_aprob"] = len(fotos_a_guardar)
+
+    if not fotos_aprobadas:
+        return ("[Nota: No se logró conseguir ninguna imagen de calidad suficiente. "
+                "Procede usando únicamente los datos de texto web.]", fotos_a_guardar, m)
+
+    transcripciones, costo_ocr = ev.transcribir_imagenes_vision(fotos_aprobadas, desc)
+    m["llamadas_gemini_ocr"] = len(fotos_aprobadas[: ev._vision_config()["max_ocr"]])
+    m["costo_gemini"] += costo_ocr
+
+    if transcripciones:
+        texto_ocr = "\n".join(transcripciones)
+        nota = (f"[Nota: Se procesaron {len(fotos_aprobadas)} imagen(es) pre-aprobadas mediante OCR. "
+                f"Texto extraído de las imágenes de ESTE producto:]\n\n"
+                f"--- INICIO OCR ---\n{texto_ocr}\n--- FIN OCR ---")
+    else:
+        nota = "[Nota: Se encontraron imágenes pero ninguna contenía texto farmacéutico legible.]"
+    return nota, fotos_a_guardar, m
+
+
+def _procesar_trigger_farmaceutico_batch(trigger: dict[str, Any], productos: list, taxonomias) -> dict[str, Any]:
+    """Modo BATCH: procesa los N productos en UNA sola llamada LLM.
+
+    Activado por ORQUESTADOR_BATCH_LLM=1. Flujo:
+      1. Scrape + OCR por producto (nota_vision_ocr propio de cada uno).
+      2. 1 llamada ev.procesar_lote_batch con los N registros.
+      3. Iterar el parsed_list (N atributos): clauses + trazabilidad + score.
+    """
+    os.chdir(REPO_DIR)
+    os.environ.setdefault("PROMPT_ARCHIVO_BATCH", "prompt_agente_v4_batch.txt")
+    os.environ.setdefault("VISION_ACTIVA", "1")
+    if taxonomias is None:
+        taxonomias = ev.obtener_taxonomias_estrictas()
+
+    catalog = None
+    try:
+        catalog = MasterCatalog(_conn_str())
+    except Exception as exc:
+        print(f"[MDM-BATCH] MasterCatalog no disponible: {exc}")
+
+    n = len(productos)
+    print(f"[MDM-BATCH] Modo batch: {n} productos en 1 llamada LLM")
+
+    # 1) Scrape + OCR por producto → armar productos_datos
+    productos_datos = []
+    fotos_por_producto: dict[str, list] = {}
+    fuentes_por_producto: dict[str, list] = {}
+    urls_por_producto: dict[str, list] = {}
+    metricas_vision_agg = {"costo_gemini": 0.0}
+    for item in productos:
+        codbarras = item["codbarras"]
+        desc = item["descripcion"]
+        print(f"[MDM-BATCH] Scrape+OCR {codbarras} — {desc[:50]}")
+        fuentes, imagenes, urls = scrape_producto(codbarras, desc, trigger_id=trigger.get("TriggerID"))
+        nota_ocr, fotos_guardar, mv = _ocr_producto(imagenes, desc)
+        fotos_por_producto[codbarras] = fotos_guardar
+        fuentes_por_producto[codbarras] = fuentes
+        urls_por_producto[codbarras] = urls
+        metricas_vision_agg["costo_gemini"] += mv["costo_gemini"]
+        productos_datos.append({
+            "codbarras": codbarras, "descripcion": desc,
+            "fuentes_web": fuentes, "nota_vision_ocr": nota_ocr,
+            "atributos_ya_encontrados": item.get("atributos_ya_encontrados"),
+            "ciclos_reproceso": item.get("ciclos_reproceso", 0),
+        })
+
+    # 2) 1 llamada LLM con el lote
+    parsed_list, metricas_llm, raw_content = ev.procesar_lote_batch(productos_datos, taxonomias)
+
+    # Combinar costo de visión en las métricas compartidas
+    metricas_llm["costo_gemini"] = metricas_llm.get("costo_gemini", 0) + metricas_vision_agg["costo_gemini"]
+
+    if not parsed_list:
+        print(f"[MDM-BATCH] Llamada LLM falló o sin JSON. Errores: {metricas_llm.get('errores_api')}")
+        # Persistir trazabilidad de falla por producto (métricas compartidas)
+        for item in productos:
+            codbarras = item["codbarras"]
+            _persistir_trazabilidad(
+                codbarras=codbarras, trigger_id=trigger.get("TriggerID"),
+                metricas=metricas_llm, raw_content=raw_content or "",
+                fotos=fotos_por_producto.get(codbarras, []),
+                fuentes=fuentes_por_producto.get(codbarras, []),
+                urls_encontradas=urls_por_producto.get(codbarras, []),
+                atrib={}, score=None, estado=None,
+            )
+        return {"status": "error", "reason": "llm_batch_failed",
+                "TriggerID": trigger.get("TriggerID"), "procesados": 0, "escritos": 0, "intentados": n}
+
+    # Normalizar parsed_list a lista de dicts
+    if isinstance(parsed_list, dict):
+        parsed_list = [parsed_list]
+
+    # 3) Mapear atributos por codbarras (el LLM incluye registro.codbarras en cada item)
+    atr_por_codbarras: dict[str, dict] = {}
+    atr_en_orden: list = []
+    for p in parsed_list:
+        if not isinstance(p, dict):
+            continue
+        cod = (p.get("registro") or {}).get("codbarras")
+        atrib = p.get("atributos_nuevos_consolidados", {}) or {}
+        atr_en_orden.append((cod, atrib))
+        if cod:
+            atr_por_codbarras[str(cod)] = atrib
+    # Fallback por orden para los que no trajeron codbarras
+    cods_input = [str(it["codbarras"]) for it in productos]
+    for i, cod in enumerate(cods_input):
+        if cod not in atr_por_codbarras and i < len(atr_en_orden):
+            atr_por_codbarras[cod] = atr_en_orden[i][1]
+
+    # 4) Prorratear costo/tokens de la llamada compartida entre los N productos
+    n_real = max(n, 1)
+    metricas_prorrateadas = dict(metricas_llm)
+    for k in ("costo_glm", "prompt_tokens", "completion_tokens", "reasoning_tokens",
+              "prompt_cache_hit_tokens", "prompt_cache_miss_tokens"):
+        if k in metricas_prorrateadas:
+            metricas_prorrateadas[k] = round((metricas_prorrateadas[k] or 0) / n_real, 4) if k == "costo_glm" \
+                else int((metricas_prorrateadas[k] or 0) / n_real)
+
+    filas: list[dict[str, Any]] = []
+    for item in productos:
+        codbarras = item["codbarras"]
+        atrib = atr_por_codbarras.get(str(codbarras), {})
+        _persistir_trazabilidad(
+            codbarras=codbarras, trigger_id=trigger.get("TriggerID"),
+            metricas=metricas_prorrateadas, raw_content=raw_content or "",
+            fotos=fotos_por_producto.get(codbarras, []),
+            fuentes=fuentes_por_producto.get(codbarras, []),
+            urls_encontradas=urls_por_producto.get(codbarras, []),
+            atrib=atrib, score=None, estado=None,
+        )
+        if not atrib:
+            print(f"  [MDM-BATCH] Sin atributos para {codbarras}")
+            continue
+        clauses, score, estado, ciclos = build_update_clauses(
+            atrib, item.get("ciclos_reproceso", 0), item.get("descripcion", ""), catalog)
+        costo = (metricas_prorrateadas.get("costo_gemini") or 0) + (metricas_prorrateadas.get("costo_glm") or 0)
+        print(f"  [MDM-BATCH] {codbarras}: score={score} estado={estado} costo≈${costo:.4f}")
+        filas.append({"codbarras": codbarras, "clauses": clauses})
+        _update_llm_log_score(codbarras, score, estado)
+
+    escritos = write_rows_to_db(filas, trigger_id=trigger.get("TriggerID"))
+    costo_total = (metricas_llm.get("costo_glm") or 0) + (metricas_llm.get("costo_gemini") or 0)
+    print(f"[MDM-BATCH] {escritos}/{n} filas escritas. Costo total del lote: ${costo_total:.4f}")
+    return {"status": "ok", "TriggerID": trigger.get("TriggerID"),
+            "procesados": len(filas), "escritos": escritos, "intentados": n}
 
 
 def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
     if not check_threshold(trigger):
         return {"status": "skipped", "reason": "threshold_not_met", "TriggerID": trigger.get("TriggerID")}
 
+    # Cleanup de productos trabados por corridas que murieron (claim colgado).
+    # Corre ANTES del claim para que esos productos vuelvan a estar disponibles.
+    _reabrir_stuck()
+
     productos = fetch_productos_abiertos(BATCH_SIZE)
     if not productos:
         return {"status": "skipped", "reason": "no_products", "TriggerID": trigger.get("TriggerID")}
 
+    # Feature flag de optimización: ORQUESTADOR_BATCH_LLM=1 procesa los N productos
+    # del lote en UNA sola llamada LLM (4.5x más barato, 6.6x más rápido; validado
+    # por test A/B). Default 0 = modo actual 1 producto/llamada (sin riesgo).
+    if os.getenv("ORQUESTADOR_BATCH_LLM", "0") == "1":
+        return _procesar_trigger_farmaceutico_batch(trigger, productos, taxonomias=None)
+
     os.chdir(REPO_DIR)
-    os.environ.setdefault("EXPERIMENT_PROMPT_FILE", "prompt_agente_v3_solidificado_final.txt")
-    os.environ.setdefault("EXPERIMENT_VISION_ACTIVE", "1")
+    os.environ.setdefault("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")
+    os.environ.setdefault("VISION_ACTIVA", "1")
     taxonomias = ev.obtener_taxonomias_estrictas()
-    modelo = ev.GLM_MODEL
+
+    # MDM catalog mapper (numeric IDs against master catalogs)
+    catalog = None
+    try:
+        catalog = MasterCatalog(_conn_str())
+    except Exception as exc:
+        print(f"[MDM] MasterCatalog no disponible, se escriben solo columnas _Des: {exc}")
 
     filas: list[dict[str, Any]] = []
     for item in productos:
@@ -221,10 +896,10 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         desc = item["descripcion"]
         print(f"[MDM] Procesando {codbarras} — {desc[:60]}")
 
-        fuentes, imagenes = scrape_producto(codbarras, desc)
+        fuentes, imagenes, urls_encontradas = scrape_producto(codbarras, desc, trigger_id=trigger.get("TriggerID"))
         context_block = [{
             "registro": {
-                "codigo": item["codigo"],
+                "codigo": codbarras,
                 "codbarras": codbarras,
                 "descripcion_original": desc,
                 "ciclos_reproceso": item["ciclos_reproceso"],
@@ -233,12 +908,29 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
             "fuentes_web": fuentes,
         }]
 
-        parsed, metricas, _raw, _fotos = ev.procesar_producto_batch1(
+        parsed, metricas, raw_content, fotos_guardar = ev.procesar_producto_batch1(
             json.dumps(context_block, ensure_ascii=False),
             taxonomias,
             imagenes,
             desc,
         )
+        # Persistir trazabilidad ANTES del early-continue: incluso si el parse
+        # falla, queremos registrar el intento (prompt, costo, raw, errores).
+        _persistir_trazabilidad(
+            codbarras=codbarras,
+            trigger_id=trigger.get("TriggerID"),
+            metricas=metricas,
+            raw_content=raw_content or "",
+            fotos=fotos_guardar,
+            fuentes=fuentes,
+            urls_encontradas=urls_encontradas,
+            atrib=(parsed[0].get("atributos_nuevos_consolidados", {}) if isinstance(parsed, list) and parsed
+                   else parsed.get("atributos_nuevos_consolidados", {}) if isinstance(parsed, dict)
+                   else {}),
+            score=None,  # se actualizará abajo cuando tengamos el score final
+            estado=None,
+        )
+
         if not parsed:
             print(f"  [MDM] Sin atributos para {codbarras}")
             continue
@@ -253,19 +945,33 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
         if not atrib:
             continue
 
-        filas.append(atributos_a_fila_sql(
-            codbarras, item["codigo"], atrib, item["ciclos_reproceso"], modelo,
-        ))
+        clauses, score, estado, ciclos = build_update_clauses(atrib, item["ciclos_reproceso"], item.get("descripcion", ""), catalog)
         costo = (metricas.get("costo_gemini") or 0) + (metricas.get("costo_glm") or 0)
-        print(f"  [MDM] OK score={filas[-1]['score_calidad']} costo=${costo:.4f}")
+        print(f"  [MDM] OK score={score} estado={estado} costo=${costo:.4f}")
+        filas.append({"codbarras": codbarras, "clauses": clauses})
 
-    if filas:
-        post_webhook(trigger.get("TriggerID"), filas)
+        # Backfill del score/estado en OrquestadorLLMLog: la persistencia se hace
+        # antes de calcular el score (para registrar incluso parseos fallidos).
+        # Acá ya tenemos el resultado final → actualizamos la última fila del codbarras.
+        _update_llm_log_score(codbarras, score, estado)
+
+    escritos = write_rows_to_db(filas, trigger_id=trigger.get("TriggerID"))
+    print(f"[MDM] {escritos} filas escritas directo a SQL (sin n8n)")
+
+    log_evento(
+        "INFO", "GENERAL",
+        f"Batch completado: {len(filas)} procesados, {escritos} escritos, "
+        f"{len(productos)} intentados.",
+        trigger_id=trigger.get("TriggerID"),
+        detalle={"procesados": len(filas), "escritos": escritos, "intentados": len(productos)},
+        alerta_telegram=False,  # INFO no flood Telegram; queda en tabla para auditoría
+    )
 
     return {
         "status": "ok",
         "TriggerID": trigger.get("TriggerID"),
         "procesados": len(filas),
+        "escritos": escritos,
         "intentados": len(productos),
     }
 
@@ -279,14 +985,6 @@ def procesar_trigger_mercado_vivo(trigger: dict[str, Any]) -> dict[str, Any]:
     os.chdir(REPO_DIR)
     etl_main()
     return {"status": "ok", "TriggerID": trigger.get("TriggerID"), "procesados": "etl"}
-
-
-def post_webhook(trigger_id: int | None, filas: list[dict[str, Any]]) -> None:
-    payload = {"TriggerID": trigger_id, "data": filas}
-    timeout_red = int(os.getenv("TIMEOUT_RED", "15"))
-    resp = requests.post(N8N_WEBHOOK_URL, json=payload, timeout=timeout_red)
-    resp.raise_for_status()
-    print(f"[MDM] Webhook enviado ({len(filas)} filas) → {resp.status_code}")
 
 
 def handle_trigger(trigger: dict[str, Any]) -> dict[str, Any]:
