@@ -1,4 +1,5 @@
 import os
+from dataclasses import dataclass, field
 from dotenv import load_dotenv
 load_dotenv()
 import os
@@ -87,8 +88,22 @@ def is_valid_url(url, title):
         return False
     return True
 
-def buscar_en_internet(query: str, max_fuentes=10) -> list:
-    fuentes = []
+
+@dataclass
+class SearchResult:
+    """Resultado de búsqueda web con metadatos para distinguir fallo de API vs. sin resultados."""
+
+    urls: list[str] = field(default_factory=list)
+    search_engine: str = SEARCH_ENGINE
+    http_status: int | None = None
+    organic_count: int = 0
+    api_message: str | None = None
+    request_success: bool | None = None
+    access_error: str | None = None
+
+
+def buscar_en_internet(query: str, max_fuentes=10) -> SearchResult:
+    fuentes: list[str] = []
     if SEARCH_ENGINE == "valueserp":
         print(f"  Buscando en Google (ValueSERP): '{query}'")
         params = {
@@ -98,11 +113,18 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
             "hl": "es",
             "num": max_fuentes
         }
+        last_status: int | None = None
+        last_api_message: str | None = None
+        last_access_error: str | None = None
         for intento in range(SCRAPING_REINTENTOS):
             try:
                 res = requests.get("https://api.valueserp.com/search", params=params, timeout=SCRAPING_TIMEOUT)
+                last_status = res.status_code
                 if res.status_code == 200:
                     data = res.json()
+                    request_info = data.get("request_info", {})
+                    if request_info.get("success") is False:
+                        last_api_message = str(request_info.get("message") or request_info)
                     organic_results = data.get("organic_results", [])
                     for r in organic_results:
                         url = r.get('link', '')
@@ -111,32 +133,60 @@ def buscar_en_internet(query: str, max_fuentes=10) -> list:
                             fuentes.append(url)
                             if len(fuentes) >= max_fuentes:
                                 break
-                    return fuentes
-                else:
-                    print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error API ValueSERP (HTTP {res.status_code}): {res.text[:120]}")
+                    return SearchResult(
+                        urls=fuentes,
+                        search_engine="valueserp",
+                        http_status=200,
+                        organic_count=len(organic_results),
+                        api_message=last_api_message,
+                        request_success=request_info.get("success", True),
+                    )
+                last_api_message = res.text[:500]
+                print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error API ValueSERP (HTTP {res.status_code}): {res.text[:120]}")
             except Exception as e:
+                last_access_error = str(e)
                 print(f"  [Intento {intento+1}/{SCRAPING_REINTENTOS}] Error de red/timeout en búsqueda (ValueSERP): {e}")
-            
+
             if intento < SCRAPING_REINTENTOS - 1:
                 wait_time = (intento + 1) * SCRAPING_DELAY * 6
                 print(f"  Esperando {wait_time} segundos antes de reintentar búsqueda...")
                 time.sleep(wait_time)
-        return fuentes
+        return SearchResult(
+            urls=fuentes,
+            search_engine="valueserp",
+            http_status=last_status,
+            organic_count=0,
+            api_message=last_api_message,
+            request_success=False if last_status != 200 else None,
+            access_error=last_access_error,
+        )
     else:
         print(f"  Buscando en DuckDuckGo: '{query}'")
         try:
             results = DDGS().text(query, max_results=10)
-            for r in results:
+            organic_results = list(results or [])
+            for r in organic_results:
                 url = r.get('href', '')
                 title = r.get('title', '')
                 if url and is_valid_url(url, title):
                     fuentes.append(url)
                     if len(fuentes) >= max_fuentes:
                         break
-            return fuentes
+            return SearchResult(
+                urls=fuentes,
+                search_engine="duckduckgo",
+                http_status=200,
+                organic_count=len(organic_results),
+                request_success=True,
+            )
         except Exception as e:
             print(f"  Error en busqueda web (DuckDuckGo): {e}")
-            return fuentes
+            return SearchResult(
+                urls=fuentes,
+                search_engine="duckduckgo",
+                access_error=str(e),
+                request_success=False,
+            )
 
 def extraer_fuente_web(url: str, idx: int, desc_maestra: str = None) -> dict:
     print(f"    Extrayendo Fuente {idx}: {url}")
@@ -224,7 +274,8 @@ def procesar_lote():
         todas_imagenes = []
 
         if not is_internal:
-            urls = buscar_en_internet(f'"{codbarras}"')
+            search = buscar_en_internet(f'"{codbarras}"')
+            urls = search.urls
             if not urls:
                 print("  Buscando por EAN falló, saltando búsqueda web para evitar falsos positivos.")
 

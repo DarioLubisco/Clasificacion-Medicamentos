@@ -42,7 +42,7 @@ def generar_dataset():
         print(f"\n[{i}/5] Scrapeando EAN {ean} - {desc[:50]}...")
         # Búsqueda EAN-exacto (entrecomillado). Si no hay resultados, NO cae a descripción
         # (misma política que procesar_lote para evitar falsos positivos).
-        urls_web = scrap.buscar_en_internet(f'"{ean}"', max_fuentes=5)
+        urls_web = scrap.buscar_en_internet(f'"{ean}"', max_fuentes=5).urls
         if not urls_web:
             print(f"  ⚠ Búsqueda EAN-exacto sin resultados para {ean}. Sin fuentes web.")
         fuentes_extraidas = []

@@ -19,7 +19,7 @@ for item in eans_test:
     todas_imagenes = []
     
     # Búsqueda web con comillas inyectadas en v11
-    urls_web = scrap.buscar_en_internet(f'"{item["ean"]}" {item["desc"]}', max_fuentes=10)
+    urls_web = scrap.buscar_en_internet(f'"{item["ean"]}" {item["desc"]}', max_fuentes=10).urls
     for idx, url in enumerate(urls_web):
         fuente_data = scrap.extraer_fuente_web(url, idx+1)
         if fuente_data:

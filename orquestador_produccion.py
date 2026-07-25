@@ -220,7 +220,8 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
 
     # Query SOLO con EAN — no descripción. ValueSERP devuelve más URLs de farmacias.
     query = f'"{codbarras}"'
-    urls = scrap.buscar_en_internet(query, max_fuentes=MAX_FUENTES_WEB)
+    search = scrap.buscar_en_internet(query, max_fuentes=MAX_FUENTES_WEB)
+    urls = search.urls
 
     for idx, url in enumerate(urls, 1):
         if len(urls_aprobadas_para_ocr) >= target_aprobadas:
@@ -250,17 +251,44 @@ def scrape_producto(codbarras: str, descripcion: str, trigger_id: int | None = N
                     print(f"    [Pre-Filtro] Error evaluando imagen: {e}")
         time.sleep(SCRAPING_DELAY)
 
-    # Diagnóstico fino del resultado del scraping. Antes todo se reportaba como
-    # "scraper no trajo fuentes ni imágenes" (WARN), lo cual era un falso positivo:
-    # cuando ValueSERP sí devolvía URLs pero la extracción HTML fallaba (SSL, 403, etc.),
-    # el producto igual clasificaba bien con score 80+. Eso llenaba el log de alertas
-    # ruidosas que no indicaban problemas reales.
+    # Diagnóstico fino del resultado del scraping.
+    # No alertar cuando no hay URLs: es resultado normal del proceso (EAN sin presencia web
+    # o resultados filtrados por blocklist). Solo alertar ante fallo real de acceso a ValueSERP.
     if not urls:
+        if search.search_engine == "valueserp":
+            report_valueserp_access_failure(
+                trigger_id=trigger_id,
+                ean=codbarras,
+                http_status=search.http_status,
+                organic_count=search.organic_count,
+                api_message=search.api_message,
+                request_success=search.request_success,
+                query=query,
+                access_error=search.access_error,
+            )
+        if search.organic_count == 0:
+            motivo = "sin_resultados_organicos"
+            mensaje = (
+                f"{codbarras}: sin resultados orgánicos en búsqueda web. "
+                f"El pipeline continúa con solo descripción."
+            )
+        else:
+            motivo = "resultados_filtrados"
+            mensaje = (
+                f"{codbarras}: {search.organic_count} resultados orgánicos pero ninguno pasó "
+                f"el filtro de URLs. El pipeline continúa con solo descripción."
+            )
         log_evento(
-            "WARN", "SCRAPER",
-            f"ValueSERP no devolvió URLs para {codbarras}. Posible caída de API o red.",
+            "INFO", "SCRAPER",
+            mensaje,
             codbarras=codbarras, trigger_id=trigger_id,
-            detalle={"motivo": "valueserp_vacio", "query": query[:200]},
+            detalle={
+                "motivo": motivo,
+                "query": query[:200],
+                "organic_count": search.organic_count,
+                "http_status": search.http_status,
+            },
+            alerta_telegram=False,
         )
     elif urls and not fuentes_extraidas:
         log_evento(

@@ -37,7 +37,7 @@ def main():
         dominios_usados = set()
 
         # Búsqueda web usando la descripción del producto
-        urls_web = scrap.buscar_en_internet(desc, max_fuentes=5)  # limit to 5 sources to be faster
+        urls_web = scrap.buscar_en_internet(desc, max_fuentes=5).urls  # limit to 5 sources to be faster
         for idx, url in enumerate(urls_web):
             fuente_data = scrap.extraer_fuente_web(url, idx+1, desc_maestra=desc)
             if fuente_data:
