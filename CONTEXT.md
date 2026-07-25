@@ -424,19 +424,19 @@ Estado: todos `active=true`. Cada worker dispara su propio proceso Python vía S
 
 > El workflow original `[PROD] Orquestador Clasificador (Ventanas)` (id `AAnxxGYtgg5sD0o8`, 3 ventanas, 1 hilo) **fue eliminado de n8n el 2026-07-24**. Su `.json` queda en git como respaldo dormido (`/home/synapse/source/N8N/workflows/AAnxxGYtgg5sD0o8.json`). Tenía la ventana 19:00 VET que entraba en pico de DeepSeek.
 
-### 5 ventanas diarias off-peak (hora Venezuela, `America/Caracas`)
+### 1 ventana larga continua off-peak (hora Venezuela, `America/Caracas`)
 
 n8n corre con `GENERIC_TIMEZONE=America/Caracas` (VET, UTC-4, **sin DST**). Los `scheduleTrigger` se programan en hora VET.
 
-| Ventana | Hora VET | Hora host (UTC-5) | DeepSeek |
-|---|---|---|---|
-| Madrugada | **06:00** | 05:00 | off-peak ✅ |
-| Mañana | **08:00** | 07:00 | off-peak ✅ |
-| Mediodía | **12:00** | 11:00 | off-peak ✅ |
-| Tarde | **16:00** | 15:00 | off-peak ✅ |
-| Cierre | **18:00** | 17:00 | off-peak ✅ (cierre interno 18:55 VET) |
+Cada worker tiene **1 scheduleTrigger a las 06:00 VET** que arranca un **loop continuo** hasta las **20:55 VET** (cierre antes del pico 21:00). Así se aprovechan las ~15h off-peak del bloque diurno de corrido, sin ventanas puntuales desperdiciadas.
 
-Cada worker: 5 ventanas × 8 workers = 40 arranques/día, 8 procesos concurrentes por ventana.
+| Disparo | Loop corre | Duración | DeepSeek |
+|---|---|---|---|
+| 06:00 VET | 06:00 → 20:55 VET | ~15h | off-peak ✅ |
+
+8 workers × 1 disparo/día = 8 procesos concurrentes que procesan en loop todo el bloque off-peak. (Se decidió **no** aprovechar la franja off-peak corta 00:00–02:00 VET por estar rodeada de pico.)
+
+> El `window_end` (cierre del loop) se calcula en el nodo `Iniciar Ventana` (`target.setHours(20, 55, 0, 0)`). El loop interno corta cuando quedan <5 min (`Check Tiempo Restante`) o cuando un batch devuelve `intentados=0`.
 
 ### Horarios peak/off-peak de DeepSeek (proveedor de texto activo)
 
@@ -474,16 +474,16 @@ Los `scheduleTrigger` de n8n **no recalculan la próxima ejecución** cuando se 
 ### Flujo de cada worker
 
 ```
-5× scheduleTrigger (06/08/12/16/18) → Iniciar Ventana → Seguir Procesando? ─no─→ Resumen Telegram
-                                                              │ sí
-                                                              ▼
-                                              ┌─<─<─ Parse y Acumular <─┐
-                                              │                         │
-                                              ▼                         │
-                                     Check Tiempo Restante               │
-                                              │ (>5 min)                 │
-                                              ▼                         │
-                                     Ejecutar Batch (SSH) ───────────────┘
+1× scheduleTrigger (06:00) → Iniciar Ventana → Seguir Procesando? ─no─→ Resumen Telegram
+                                                       │ sí
+                                                       ▼
+                                       ┌─<─<─ Parse y Acumular <─┐
+                                       │                         │
+                                       ▼                         │
+                              Check Tiempo Restante               │
+                                       │ (>5 min)                 │
+                                       ▼                         │
+                              Ejecutar Batch (SSH) ───────────────┘
 ```
 
 - `BATCH_SIZE=5` (lo decide `.env`, NO se toca desde n8n).
