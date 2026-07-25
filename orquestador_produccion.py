@@ -696,6 +696,170 @@ def _update_llm_log_score(codbarras: str, score: int, estado: str) -> None:
         pass  # best-effort
 
 
+def _ocr_producto(imagenes_b64: list, desc: str) -> tuple[str, list, dict]:
+    """Pre-filtro + OCR de un producto. Devuelve (nota_vision_ocr, fotos_a_guardar, metricas_vision).
+
+    nota_vision_ocr es el texto a embeber en el context_block de ese producto.
+    Reutiliza filtrar_imagenes_legibles + transcribir_imagenes_vision (sin tocarlas).
+    """
+    m = {"costo_gemini": 0.0, "llamadas_gemini_prefiltro": 0, "llamadas_gemini_ocr": 0,
+         "num_imagenes": len(imagenes_b64) if isinstance(imagenes_b64, list) else 0,
+         "num_imagenes_aprob": 0}
+    vision_activa = os.getenv("VISION_ACTIVA", "1") == "1"
+    if not vision_activa or not imagenes_b64:
+        return ("[Nota: No se logró conseguir ninguna imagen de calidad suficiente. "
+                "Procede usando únicamente los datos de texto web.]", [], m)
+
+    fotos_aprobadas, fotos_a_guardar, costo_vision = ev.filtrar_imagenes_legibles(imagenes_b64, desc)
+    m["llamadas_gemini_prefiltro"] = len(imagenes_b64[: ev._vision_config()["max_prefiltro"]])
+    m["costo_gemini"] += costo_vision
+    m["num_imagenes_aprob"] = len(fotos_a_guardar)
+
+    if not fotos_aprobadas:
+        return ("[Nota: No se logró conseguir ninguna imagen de calidad suficiente. "
+                "Procede usando únicamente los datos de texto web.]", fotos_a_guardar, m)
+
+    transcripciones, costo_ocr = ev.transcribir_imagenes_vision(fotos_aprobadas, desc)
+    m["llamadas_gemini_ocr"] = len(fotos_aprobadas[: ev._vision_config()["max_ocr"]])
+    m["costo_gemini"] += costo_ocr
+
+    if transcripciones:
+        texto_ocr = "\n".join(transcripciones)
+        nota = (f"[Nota: Se procesaron {len(fotos_aprobadas)} imagen(es) pre-aprobadas mediante OCR. "
+                f"Texto extraído de las imágenes de ESTE producto:]\n\n"
+                f"--- INICIO OCR ---\n{texto_ocr}\n--- FIN OCR ---")
+    else:
+        nota = "[Nota: Se encontraron imágenes pero ninguna contenía texto farmacéutico legible.]"
+    return nota, fotos_a_guardar, m
+
+
+def _procesar_trigger_farmaceutico_batch(trigger: dict[str, Any], productos: list, taxonomias) -> dict[str, Any]:
+    """Modo BATCH: procesa los N productos en UNA sola llamada LLM.
+
+    Activado por ORQUESTADOR_BATCH_LLM=1. Flujo:
+      1. Scrape + OCR por producto (nota_vision_ocr propio de cada uno).
+      2. 1 llamada ev.procesar_lote_batch con los N registros.
+      3. Iterar el parsed_list (N atributos): clauses + trazabilidad + score.
+    """
+    os.chdir(REPO_DIR)
+    os.environ.setdefault("PROMPT_ARCHIVO_BATCH", "prompt_agente_v4_batch.txt")
+    os.environ.setdefault("VISION_ACTIVA", "1")
+    if taxonomias is None:
+        taxonomias = ev.obtener_taxonomias_estrictas()
+
+    catalog = None
+    try:
+        catalog = MasterCatalog(_conn_str())
+    except Exception as exc:
+        print(f"[MDM-BATCH] MasterCatalog no disponible: {exc}")
+
+    n = len(productos)
+    print(f"[MDM-BATCH] Modo batch: {n} productos en 1 llamada LLM")
+
+    # 1) Scrape + OCR por producto → armar productos_datos
+    productos_datos = []
+    fotos_por_producto: dict[str, list] = {}
+    fuentes_por_producto: dict[str, list] = {}
+    urls_por_producto: dict[str, list] = {}
+    metricas_vision_agg = {"costo_gemini": 0.0}
+    for item in productos:
+        codbarras = item["codbarras"]
+        desc = item["descripcion"]
+        print(f"[MDM-BATCH] Scrape+OCR {codbarras} — {desc[:50]}")
+        fuentes, imagenes, urls = scrape_producto(codbarras, desc, trigger_id=trigger.get("TriggerID"))
+        nota_ocr, fotos_guardar, mv = _ocr_producto(imagenes, desc)
+        fotos_por_producto[codbarras] = fotos_guardar
+        fuentes_por_producto[codbarras] = fuentes
+        urls_por_producto[codbarras] = urls
+        metricas_vision_agg["costo_gemini"] += mv["costo_gemini"]
+        productos_datos.append({
+            "codbarras": codbarras, "descripcion": desc,
+            "fuentes_web": fuentes, "nota_vision_ocr": nota_ocr,
+            "atributos_ya_encontrados": item.get("atributos_ya_encontrados"),
+            "ciclos_reproceso": item.get("ciclos_reproceso", 0),
+        })
+
+    # 2) 1 llamada LLM con el lote
+    parsed_list, metricas_llm, raw_content = ev.procesar_lote_batch(productos_datos, taxonomias)
+
+    # Combinar costo de visión en las métricas compartidas
+    metricas_llm["costo_gemini"] = metricas_llm.get("costo_gemini", 0) + metricas_vision_agg["costo_gemini"]
+
+    if not parsed_list:
+        print(f"[MDM-BATCH] Llamada LLM falló o sin JSON. Errores: {metricas_llm.get('errores_api')}")
+        # Persistir trazabilidad de falla por producto (métricas compartidas)
+        for item in productos:
+            codbarras = item["codbarras"]
+            _persistir_trazabilidad(
+                codbarras=codbarras, trigger_id=trigger.get("TriggerID"),
+                metricas=metricas_llm, raw_content=raw_content or "",
+                fotos=fotos_por_producto.get(codbarras, []),
+                fuentes=fuentes_por_producto.get(codbarras, []),
+                urls_encontradas=urls_por_producto.get(codbarras, []),
+                atrib={}, score=None, estado=None,
+            )
+        return {"status": "error", "reason": "llm_batch_failed",
+                "TriggerID": trigger.get("TriggerID"), "procesados": 0, "escritos": 0, "intentados": n}
+
+    # Normalizar parsed_list a lista de dicts
+    if isinstance(parsed_list, dict):
+        parsed_list = [parsed_list]
+
+    # 3) Mapear atributos por codbarras (el LLM incluye registro.codbarras en cada item)
+    atr_por_codbarras: dict[str, dict] = {}
+    atr_en_orden: list = []
+    for p in parsed_list:
+        if not isinstance(p, dict):
+            continue
+        cod = (p.get("registro") or {}).get("codbarras")
+        atrib = p.get("atributos_nuevos_consolidados", {}) or {}
+        atr_en_orden.append((cod, atrib))
+        if cod:
+            atr_por_codbarras[str(cod)] = atrib
+    # Fallback por orden para los que no trajeron codbarras
+    cods_input = [str(it["codbarras"]) for it in productos]
+    for i, cod in enumerate(cods_input):
+        if cod not in atr_por_codbarras and i < len(atr_en_orden):
+            atr_por_codbarras[cod] = atr_en_orden[i][1]
+
+    # 4) Prorratear costo/tokens de la llamada compartida entre los N productos
+    n_real = max(n, 1)
+    metricas_prorrateadas = dict(metricas_llm)
+    for k in ("costo_glm", "prompt_tokens", "completion_tokens", "reasoning_tokens",
+              "prompt_cache_hit_tokens", "prompt_cache_miss_tokens"):
+        if k in metricas_prorrateadas:
+            metricas_prorrateadas[k] = round((metricas_prorrateadas[k] or 0) / n_real, 4) if k == "costo_glm" \
+                else int((metricas_prorrateadas[k] or 0) / n_real)
+
+    filas: list[dict[str, Any]] = []
+    for item in productos:
+        codbarras = item["codbarras"]
+        atrib = atr_por_codbarras.get(str(codbarras), {})
+        _persistir_trazabilidad(
+            codbarras=codbarras, trigger_id=trigger.get("TriggerID"),
+            metricas=metricas_prorrateadas, raw_content=raw_content or "",
+            fotos=fotos_por_producto.get(codbarras, []),
+            fuentes=fuentes_por_producto.get(codbarras, []),
+            urls_encontradas=urls_por_producto.get(codbarras, []),
+            atrib=atrib, score=None, estado=None,
+        )
+        if not atrib:
+            print(f"  [MDM-BATCH] Sin atributos para {codbarras}")
+            continue
+        clauses, score, estado, ciclos = build_update_clauses(
+            atrib, item.get("ciclos_reproceso", 0), item.get("descripcion", ""), catalog)
+        costo = (metricas_prorrateadas.get("costo_gemini") or 0) + (metricas_prorrateadas.get("costo_glm") or 0)
+        print(f"  [MDM-BATCH] {codbarras}: score={score} estado={estado} costo≈${costo:.4f}")
+        filas.append({"codbarras": codbarras, "clauses": clauses})
+        _update_llm_log_score(codbarras, score, estado)
+
+    escritos = write_rows_to_db(filas, trigger_id=trigger.get("TriggerID"))
+    costo_total = (metricas_llm.get("costo_glm") or 0) + (metricas_llm.get("costo_gemini") or 0)
+    print(f"[MDM-BATCH] {escritos}/{n} filas escritas. Costo total del lote: ${costo_total:.4f}")
+    return {"status": "ok", "TriggerID": trigger.get("TriggerID"),
+            "procesados": len(filas), "escritos": escritos, "intentados": n}
+
+
 def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
     if not check_threshold(trigger):
         return {"status": "skipped", "reason": "threshold_not_met", "TriggerID": trigger.get("TriggerID")}
@@ -707,6 +871,12 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
     productos = fetch_productos_abiertos(BATCH_SIZE)
     if not productos:
         return {"status": "skipped", "reason": "no_products", "TriggerID": trigger.get("TriggerID")}
+
+    # Feature flag de optimización: ORQUESTADOR_BATCH_LLM=1 procesa los N productos
+    # del lote en UNA sola llamada LLM (4.5x más barato, 6.6x más rápido; validado
+    # por test A/B). Default 0 = modo actual 1 producto/llamada (sin riesgo).
+    if os.getenv("ORQUESTADOR_BATCH_LLM", "0") == "1":
+        return _procesar_trigger_farmaceutico_batch(trigger, productos, taxonomias=None)
 
     os.chdir(REPO_DIR)
     os.environ.setdefault("PROMPT_ARCHIVO", "prompt_agente_v3_solidificado_final.txt")

@@ -716,6 +716,135 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
         metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
         return None, metricas, content, fotos_a_guardar
 
+
+def procesar_lote_batch(productos_datos: list, taxonomias_existentes: str) -> tuple:
+    """Procesa un LOTE de N productos en UNA sola llamada LLM (modo batch).
+
+    Optimización validada por test A/B: 1 llamada con N productos es ~4.5x más
+    barata y ~6.6x más rápida que N llamadas de 1 producto, sin degradar calidad.
+
+    Args:
+        productos_datos: lista de dicts, cada uno con:
+            - codbarras, descripcion
+            - fuentes_web (lista de dicts como los de extraer_fuente_web)
+            - nota_vision_ocr (str: OCR de ese producto, ya construido por el
+              orquestador; o nota de "sin imágenes legibles")
+            - atributos_ya_encontrados (dict o None)
+            - ciclos_reproceso (int)
+        taxonomias_existentes: str con las taxonomías (va al system, cacheable).
+
+    Returns:
+        (parsed_list, metricas, raw_content) donde:
+        - parsed_list: lista de N dicts {registro:{codbarras}, atributos_nuevos_consolidados:{...}}
+          (None si falla el parse). Puede tener <N si el modelo omitió elementos.
+        - metricas: dict con costo/tokens COMPARTIDOS de la única llamada LLM.
+        - raw_content: str con la respuesta cruda.
+    """
+    metricas = {
+        "llamadas_glm": 0, "costo_gemini": 0.0, "costo_glm": 0.0,
+        "tiempo_inicio": time.time(), "errores_json": 0, "errores_api": [],
+        # tokens/costo de la llamada compartida (no por producto)
+        "prompt_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0,
+        "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 0,
+    }
+
+    # Armar context_block con N registros (cada uno con sus fuentes + su OCR).
+    context_block = []
+    for d in productos_datos:
+        context_block.append({
+            "registro": {
+                "codigo": d["codbarras"], "codbarras": d["codbarras"],
+                "descripcion_original": d["descripcion"],
+                "ciclos_reproceso": d.get("ciclos_reproceso", 0),
+            },
+            "atributos_ya_encontrados": d.get("atributos_ya_encontrados"),
+            "fuentes_web": d.get("fuentes_web", []),
+            "nota_vision_ocr": d.get("nota_vision_ocr", "[Nota: sin imágenes para este producto.]"),
+        })
+
+    # Cargar prompt v4 (multi-producto) y partir en system/user (mismo corte que v3).
+    prompt_template_path = os.getenv("PROMPT_ARCHIVO_BATCH", "prompt_agente_v4_batch.txt")
+    try:
+        with open(prompt_template_path, "r", encoding="utf-8") as f_prompt:
+            prompt_template = f_prompt.read()
+    except FileNotFoundError:
+        metricas["errores_api"].append(f"No se encuentra {prompt_template_path}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, ""
+
+    _SPLIT_MARKER = "**LOTE A PROCESAR:**"
+    _idx = prompt_template.find(_SPLIT_MARKER)
+    if _idx == -1:
+        system_prompt = prompt_template.replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = json.dumps(context_block, ensure_ascii=False)
+    else:
+        system_prompt = prompt_template[:_idx].replace("{taxonomias_existentes}", taxonomias_existentes)
+        user_content = prompt_template[_idx:].replace(
+            "{context_json_str}", json.dumps(context_block, ensure_ascii=False)
+        )
+
+    # Una sola llamada LLM con todo el lote.
+    metricas["llamadas_glm"] = 1
+    provider = os.getenv("IA_PROVEEDOR", "glm").lower()
+    # Budget de salida proporcional a N productos: cada producto genera ~6-9K
+    # (razonamiento + JSON). Default por producto de 8192, techo 64000 (lejos del
+    # output máx 128K de DeepSeek/GLM). Si es muy chico, el JSON se corta → 0/N.
+    n_prod = max(len(productos_datos), 1)
+    if provider == "deepseek":
+        mt_call = min(n_prod * int(os.getenv("DEEPSEEK_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+    else:
+        mt_call = min(n_prod * int(os.getenv("GLM_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+    result, error, lbl_modelo = llamar_llm_texto(
+        user_content, system_prompt=system_prompt, max_tokens=mt_call
+    )
+    if error:
+        metricas["errores_api"].append(f"{lbl_modelo or 'LLM'} API Error: {error}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, ""
+
+    # Procesar respuesta: content + reasoning + costo compartido.
+    if provider == "deepseek":
+        content, reasoning = deepseek_extract_content(result)
+        costo_txt = deepseek_estimate_cost(result)
+    else:
+        content, reasoning = extract_content(result)
+        costo_txt = estimate_cost(result)
+    if not content and reasoning:
+        content = reasoning
+    content = content or ''
+
+    metricas["costo_glm"] = costo_txt
+    metricas["modelo_texto"] = lbl_modelo or os.getenv("IA_MODELO", "")
+    metricas["prompt_archivo"] = prompt_template_path
+    metricas["reasoning_content"] = (reasoning or "")[:50000]
+    metricas["prompt_enviado"] = f"{user_content}\n\n=== SYSTEM PROMPT (fijo) ===\n{system_prompt}"[:50000]
+    metricas["temperatura"] = float(os.getenv("IA_TEMPERATURE", "0"))
+
+    usage = (result.get("usage") or {}) if isinstance(result, dict) else {}
+    metricas["prompt_tokens"] = usage.get("prompt_tokens", 0) or 0
+    metricas["completion_tokens"] = usage.get("completion_tokens", 0) or 0
+    metricas["reasoning_tokens"] = (
+        (usage.get("completion_tokens_details") or {}).get("reasoning_tokens", 0) or 0
+    )
+    metricas["prompt_cache_hit_tokens"] = (
+        usage.get("prompt_cache_hit_tokens")
+        or (usage.get("prompt_tokens_details") or {}).get("cached_tokens")
+        or 0
+    )
+    metricas["prompt_cache_miss_tokens"] = usage.get("prompt_cache_miss_tokens") or 0
+
+    # Parsear (array de N elementos).
+    try:
+        parsed_list = extract_json_from_content(content)
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return parsed_list, metricas, content
+    except Exception as e:
+        metricas["errores_json"] = 1
+        metricas["errores_api"].append(f"JSON Parse Error: {str(e)}")
+        metricas["tiempo_total"] = time.time() - metricas["tiempo_inicio"]
+        return None, metricas, content
+
+
 def main(input_path="scratch/eval_comparativa_10.json", output_path="scratch/comparativa_batch1.json"):
     vcfg = _vision_config()
     vlabel = _vision_label(vcfg)
