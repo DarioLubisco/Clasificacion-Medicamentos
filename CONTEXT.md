@@ -407,70 +407,91 @@ ORDER BY
 
 ### Configuración activa
 
-**Workflow n8n**: `[PROD] Orquestador Clasificador (Ventanas)` (id `AAnxxGYtgg5sD0o8`).
-Archivo: `/home/synapse/source/N8N/workflows/AAnxxGYtgg5sD0o8.json`.
-Estado: `active=true`, registrado en el active-workflow-runner al boot de n8n.
+**8 workflows n8n en paralelo** (W1–W8), cada uno un worker independiente:
 
-### 3 ventanas diarias (hora Venezuela, `America/Caracas`)
+| Worker | id n8n |
+|---|---|
+| W1 | `lhyC7T3DGv3JARMl` |
+| W2 | `F9N2WFUy5resyC0s` |
+| W3 | `VEIWQVVCYSIZyKd8` |
+| W4 | `mGXtApnQSccxmVsP` |
+| W5 | `aYOTAgqaV7YaLZcJ` |
+| W6 | `Bd842ucLzPPsssHM` |
+| W7 | `59iyej0RpP0omFX5` |
+| W8 | `G0R0E1w2TSvIcJUa` |
 
-n8n corre con `GENERIC_TIMEZONE=America/Caracas`, así que los `scheduleTrigger` se programan directo en hora VET.
+Estado: todos `active=true`. Cada worker dispara su propio proceso Python vía SSH. El **claim atómico `EN_PROCESO`** (ver `orquestador_produccion.py: fetch_productos_abiertos`) garantiza que los 8 tomen códigos de barras distintos — no se pisan.
 
-| Ventana | Horario VET | Horario China (UTC+8) | Multiplicador Z.ai |
+> El workflow original `[PROD] Orquestador Clasificador (Ventanas)` (id `AAnxxGYtgg5sD0o8`, 3 ventanas, 1 hilo) **fue eliminado de n8n el 2026-07-24**. Su `.json` queda en git como respaldo dormido (`/home/synapse/source/N8N/workflows/AAnxxGYtgg5sD0o8.json`). Tenía la ventana 19:00 VET que entraba en pico de DeepSeek.
+
+### 5 ventanas diarias off-peak (hora Venezuela, `America/Caracas`)
+
+n8n corre con `GENERIC_TIMEZONE=America/Caracas` (VET, UTC-4, **sin DST**). Los `scheduleTrigger` se programan en hora VET.
+
+| Ventana | Hora VET | Hora host (UTC-5) | DeepSeek |
 |---|---|---|---|
-| Mañana | **07:00–09:00** | 19:00–21:00 | **1×** (off-peak promo Sep-2026) |
-| Mediodía | **12:00–14:00** | 00:00–02:00 | **1×** (off-peak promo Sep-2026) |
-| Noche | **18:25–20:25** | 06:25–08:25 | **1×** (off-peak promo Sep-2026) |
+| Madrugada | **06:00** | 05:00 | off-peak ✅ |
+| Mañana | **08:00** | 07:00 | off-peak ✅ |
+| Mediodía | **12:00** | 11:00 | off-peak ✅ |
+| Tarde | **16:00** | 15:00 | off-peak ✅ |
+| Cierre | **18:00** | 17:00 | off-peak ✅ (cierre interno 18:55 VET) |
 
-**Total**: 6 horas/día → ~180 productos/día (6h × 60min ÷ 2min/producto).
+Cada worker: 5 ventanas × 8 workers = 40 arranques/día, 8 procesos concurrentes por ventana.
 
-### Horarios peak/off-peak de Z.ai (GLM Coding Plan)
+### Horarios peak/off-peak de DeepSeek (proveedor de texto activo)
 
-**Peak Z.ai**: 14:00–18:00 hora China (UTC+8) = **02:00–06:00 VET** (franja evitada).
+`IA_PROVEEDOR=deepseek`, `DEEPSEEK_MODEL=deepseek-v4-flash`. DeepSeek introdujo pricing pico/valle con V4 (mediados de 2025). El pico cobra **~2×**.
 
-| Modelo | Off-peak (promo Sep-2026) | Off-peak (normal) | Peak (14:00–18:00 CST) |
-|---|---|---|---|
-| **GLM-5.2** | **1×** (promo) | 2× | 3× |
-| **GLM-5-Turbo** | **1×** (promo) | 2× | 3× |
-| **GLM-4.7** | 1× (siempre) | 1× | 1× |
+| Franja (Beijing, UTC+8) | Franja host (UTC-5) | Costo |
+|---|---|---|
+| 09:00–12:00 y 14:00–18:00 (pico) | **20:00–23:00** y **01:00–05:00** | **2×** 🔴 |
+| resto (off-peak) | 05:00–20:00 y 23:00–01:00 | 1× ✅ |
 
-> **Promoción**: hasta finales de septiembre 2026, GLM-5.2 y GLM-5-Turbo consumen solo 1× en off-peak (en vez de 2×). Las 3 ventanas del orquestador caen en off-peak → máximo ahorro de quota.
+Las 5 ventanas del orquestador caen todas en off-peak. Concurrencia DeepSeek: **2.500** (v4-flash) / 500 (v4-pro) — no es cuello de botella para 8 workers.
 
-**Franja evitada**: 02:00–06:00 VET (corresponde a 14:00–18:00 China = peak Z.ai 3×).
+### ⚠️ Reset obligatorio al cambiar una ventana horaria (bug conocido de n8n)
+
+Los `scheduleTrigger` de n8n **no recalculan la próxima ejecución** cuando se edita su hora si el workflow sigue `active=true`. Sintoma: la ventana vieja sigue disparando (o no dispara la nueva) hasta que n8n se reinicia.
+
+**Procedimiento al cambiar cualquier ventana horaria:**
+1. Editar el/los `scheduleTrigger` (o reemplazar workers).
+2. **Desactivar** los workflows afectados (`deactivateWorkflow`).
+3. **Reactivarlos** (`activateWorkflow`). Esto re-registra el cron en el active-workflow-runner.
+4. Si el desactivar/reactivar no alcanza, **reiniciar el contenedor n8n**:
+   ```bash
+   docker restart n8n-N8N
+   ```
+5. Verificar la próxima ejecución esperada en la UI de n8n (pestaña del trigger).
+
+> Nota: como `America/Caracas` no tiene DST, el cambio de horario de verano/invierno **no** afecta a n8n. Este reset solo aplica cuando **un humano edita** una ventana.
 
 ### Bot de notificaciones Telegram
 
-- **Bot**: `AMC Admin Bot` (credential `4I2mxF1bCgABeO4Y`, token `TELEGRAM_AMC_ADMIN_BOT`)
-- **Chat**: `ERROR_CHAT_ID` = `-1003531406167`
-- **chatId fijo** en los nodos (no usa `$env` — eso causaba error de chat_id vacío)
+- **Bot**: credential `RkijxthBpMtc1pDO` (`[PROD] Telegram - Bot Pago Movil`)
+- **Chat**: `ERROR_CHAT_ID` (vía `$env`)
+- Cada worker envía su propio resumen etiquetado (`W1`...`W8`) al final de cada ventana.
 
-### Flujo del workflow
+### Flujo de cada worker
 
 ```
-3× scheduleTrigger → Iniciar Ventana (Code) → Loop Batches (splitInBatches)
-                                                       │
-                                              ┌────────┴────────┐
-                                              │                 │
-                                       branch 0 (done)    branch 1 (loop)
-                                              │                 │
-                                              ▼                 ▼
-                                     Resumen Telegram    Check Tiempo Restante
-                                                                 │
-                                                                 ▼
-                                                        Ejecutar Batch (SSH)
-                                                                 │
-                                                                 ▼
-                                                        Parse y Acumular
-                                                                 │
-                                                                 ▼
-                                                       (vuelve a Loop Batches)
+5× scheduleTrigger (06/08/12/16/18) → Iniciar Ventana → Seguir Procesando? ─no─→ Resumen Telegram
+                                                              │ sí
+                                                              ▼
+                                              ┌─<─<─ Parse y Acumular <─┐
+                                              │                         │
+                                              ▼                         │
+                                     Check Tiempo Restante               │
+                                              │ (>5 min)                 │
+                                              ▼                         │
+                                     Ejecutar Batch (SSH) ───────────────┘
 ```
 
 - `BATCH_SIZE=5` (lo decide `.env`, NO se toca desde n8n).
-- Una invocación SSH = 1 batch de 5 productos (~10-12 min).
-- El loop corta cuando `Check Tiempo Restante` detecta <15 min restantes o cuando el batch devuelve `intentados=0` (no quedan productos ABIERTO).
-- Estado acumulado (`iteraciones`, `procesados_total`, `escritos_total`) viaja en el `json` del item entre iteraciones.
+- Una invocación SSH = 1 batch de `BATCH_SIZE` productos.
+- El loop corta cuando quedan <5 min de ventana (cierre 18:55 VET) o cuando el batch devuelve `intentados=0` (no quedan ABIERTO).
+- Estado acumulado viaja en el `json` del item entre iteraciones.
 
-### Comando SSH que ejecuta n8n
+### Comando SSH que ejecuta cada worker
 
 ```bash
 cd "/home/synapse/source/repos/Clasificacion Medicamentos" \
@@ -486,8 +507,8 @@ El último renglón del stdout debe ser un JSON `{status, procesados, escritos, 
 
 3 canales independientes:
 
-1. **`alertas.py`** (Python, dentro del script): WARN/ERROR del orquestador (scraper caído, INSERT fallido, etc.) → `TELEGRAM_AMC_NOTIFICACION_BOT` + `ERROR_CHAT_ID`. Ya probado.
-2. **Error Trigger del workflow n8n**: cualquier fallo del SSH/script en el workflow → bot `RkijxthBpMtc1pDO` + `ERROR_CHAT_ID`.
+1. **`alertas.py`** (Python, dentro del script): WARN/ERROR del orquestador → `TELEGRAM_AMC_NOTIFICACION_BOT` + `ERROR_CHAT_ID`.
+2. **Error Trigger de cada worker n8n**: cualquier fallo del SSH/script → bot `RkijxthBpMtc1pDO` + `ERROR_CHAT_ID`, etiquetado con el worker (W1...W8).
 3. **Resumen al final de cada ventana** (nodo Telegram): iters, procesados, escritos, motivo de parada → mismo bot+chat.
 
 ### Credenciales involucradas
@@ -498,6 +519,6 @@ El último renglón del stdout debe ser un JSON `{status, procesados, escritos, 
 
 ### Qué NO hace el workflow
 
-- **No maneja la transición `pendiente → ABIERTO`** (ver §10.2). El gap arquitectónico sigue: los 13.219 `pendiente` no entran al schedule hasta que un agente externo los promueva.
-- **No monitorea cuota Z.ai**: si se agota el budget mensual del Coding Plan, los batches van a fallar y el workflow entra en retry. El Error Trigger avisará por Telegram.
-- **No prueba SSH+Telegram end-to-end antes de activarse**: la lógica de los Code nodes fue validada con `node -e`, pero la ejecución real del SSH y el envío del mensaje Telegram solo se prueban cuando se dispara la primera ventana.
+- **No maneja la transición `pendiente → ABIERTO`** (ver §10.2). El gap arquitectónico sigue.
+- **No monitorea cuota de APIs** (DeepSeek/ValueSERP/MiMo): si se agotan créditos, los batches fallan y el Error Trigger avisa por Telegram.
+- **No prueba SSH+Telegram end-to-end antes de activarse**: la primera ventana real es la prueba de fuego.
