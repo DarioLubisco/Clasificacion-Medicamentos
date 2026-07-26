@@ -490,6 +490,10 @@ _MERGE_FIELDS = [
     "fabricante", "marca", "codigo_atc", "cantidad_presentacion",
     "contenido_neto", "origen", "segmento_etario",
     "dominio", "categoria", "subcategoria",
+    "registro_sanitario", "especificacion_tecnica",
+    "volumen_unidad", "volumen_unidad_medida",
+    "contenido_neto_unidad_Des", "codigo_atc_profundo",
+    "confianza_atc", "clasificacion_insumo_Des", "generico",
 ]
 
 # Mapeo campo_atributo → columna_DB
@@ -507,6 +511,15 @@ _FIELD_TO_COL = {
     "dominio": "dominio",
     "categoria": "categoria",
     "subcategoria": "subcategoria",
+    "registro_sanitario": "registro_sanitario",
+    "especificacion_tecnica": "especificacion_tecnica",
+    "volumen_unidad": "volumen_unidad",
+    "volumen_unidad_medida": "volumen_unidad_medida",
+    "contenido_neto_unidad_Des": "contenido_neto_unidad_Des",
+    "codigo_atc_profundo": "codigo_atc_profundo_Des",
+    "confianza_atc": "confianza_atc",
+    "clasificacion_insumo_Des": "clasificacion_insumo_Des",
+    "generico": "generico",
 }
 
 
