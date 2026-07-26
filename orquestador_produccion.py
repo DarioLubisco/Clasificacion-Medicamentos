@@ -484,6 +484,107 @@ def build_update_clauses(
     return clauses, score, estado_ciclo, ciclos_final
 
 
+# Campos que se consolidan entre pases (no se sobreescriben con null)
+_MERGE_FIELDS = [
+    "principio_activo", "concentracion", "forma_farmaceutica",
+    "fabricante", "marca", "codigo_atc", "cantidad_presentacion",
+    "contenido_neto", "origen", "segmento_etario",
+    "dominio", "categoria", "subcategoria",
+]
+
+# Mapeo campo_atributo → columna_DB
+_FIELD_TO_COL = {
+    "principio_activo": "principio_activo_Des",
+    "concentracion": "concentracion_Des",
+    "forma_farmaceutica": "forma_farmaceutica_Des",
+    "fabricante": "fabricante_Des",
+    "marca": "marca_Des",
+    "codigo_atc": "codigo_atc_Des",
+    "cantidad_presentacion": "cantidad_presentacion",
+    "contenido_neto": "contenido_neto",
+    "origen": "origen_Des",
+    "segmento_etario": "segmento_etario",
+    "dominio": "dominio",
+    "categoria": "categoria",
+    "subcategoria": "subcategoria",
+}
+
+
+def _merge_atributos(
+    actual: dict, nuevo: dict, conf_actual: int | None, conf_nuevo: int | None
+) -> tuple[dict, str]:
+    """Consolida atributos entre pases. Retorna (merged_dict, log_string).
+
+    Reglas:
+      - null→valor: escribir nuevo
+      - null→null: no escribir, registrar
+      - valor→null: conservar actual, registrar
+      - valor→valor: gana mayor confianza_nivel; si igual, conservar primero
+    """
+    merged = {}
+    events = []
+    conf_a = conf_actual or 0
+    conf_n = conf_nuevo or 0
+
+    for campo in _MERGE_FIELDS:
+        col = _FIELD_TO_COL[campo]
+        va = actual.get(col)
+        vn = nuevo.get(campo)
+
+        sa = str(va).strip().lower() if va is not None else None
+        sn = str(vn).strip().lower() if vn is not None else None
+
+        if sa is None and sn is not None:
+            merged[campo] = vn
+            events.append(f"{campo}: null→{vn!r} (P+1)")
+        elif sa is None and sn is None:
+            merged[campo] = None
+            events.append(f"{campo}: null→null")
+        elif sa is not None and sn is None:
+            merged[campo] = va  # conservar
+            events.append(f"{campo}: {va!r}→null (conservado)")
+        elif sa == sn:
+            merged[campo] = vn  # igual, usar nuevo (sin evento)
+        elif conf_n > conf_a:
+            merged[campo] = vn
+            events.append(f"{campo}: {va!r}→{vn!r} (conf {conf_n}>{conf_a})")
+        else:
+            merged[campo] = va  # conservar
+            events.append(f"{campo}: {va!r} vs {vn!r} (conservado, conf {conf_a}>={conf_n})")
+
+    return merged, " | ".join(events)
+
+
+def _leer_estado_actual(codbarras: str) -> tuple[dict, int | None]:
+    """Lee el estado actual de un producto en por_aprobacion_equivalencias.
+    Retorna (dict de campos, confianza_nivel del último log o None)."""
+    cols = list(_FIELD_TO_COL.values()) + ["score_calidad"]
+    col_sql = ", ".join(cols)
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute(
+            f"SELECT {col_sql} FROM Procurement.por_aprobacion_equivalencias WHERE codbarras = ?",
+            codbarras,
+        )
+        row = cur.fetchone()
+        if not row:
+            return {}, None
+        actual = dict(zip(cols, row))
+        # Leer confianza_nivel del último log
+        cur.execute(
+            "SELECT TOP 1 ConfianzaNivel FROM Procurement.OrquestadorLLMLog "
+            "WHERE Codbarras = ? ORDER BY LogID DESC",
+            codbarras,
+        )
+        log_row = cur.fetchone()
+        conf_actual = int(log_row[0]) if log_row and log_row[0] is not None else None
+        conn.close()
+        return actual, conf_actual
+    except Exception:
+        return {}, None
+
+
 def write_rows_to_db(rows: list[dict[str, Any]], trigger_id: int | None = None) -> int:
     """Write UPDATE rows directly to SQL Server. Each row has 'codbarras' + 'clauses'.
     Returns number of rows written. Alerta si una fila afecta 0 (EAN no hallado)
@@ -548,6 +649,7 @@ def _persistir_trazabilidad(
     atrib: dict,
     score: int | None,
     estado: str | None,
+    merge_log: str = "",
 ) -> None:
     """Persiste TODO lo que el pipeline calcula pero antes descartaba:
       - LLM: prompt final, respuesta cruda, chain-of-thought, tokens, costo,
@@ -596,7 +698,7 @@ def _persistir_trazabilidad(
                 CostoVisionUSD, CostoTextoUSD, CostoTotalUSD,
                 ConfianzaNivel, AtributosBajaConf, AlertasAuditoria,
                 TiempoTotalSeg, NumFuentes, NumImagenes, NumImagenesAprob,
-                Errores, ScoreFinal, EstadoCiclo"""
+                Errores, ScoreFinal, EstadoCiclo, MergeLog"""
         _base_vals = (
             trigger_id, codbarras,
             metricas.get("modelo_texto"),
@@ -622,13 +724,14 @@ def _persistir_trazabilidad(
             errores_str,
             score,
             estado,
+            merge_log[:2000] if merge_log else None,
         )
         _inserted_with_cache = False
         try:
             cur.execute(
                 f"""INSERT INTO Procurement.OrquestadorLLMLog
                     {_base_cols}, PromptCacheHitTokens, PromptCacheMissTokens)
-                    VALUES ({','.join(['?']*25)}, ?, ?)""",
+                    VALUES ({','.join(['?']*26)}, ?, ?)""",
                 _base_vals + (cache_hit, cache_miss),
             )
             _inserted_with_cache = True
@@ -641,7 +744,7 @@ def _persistir_trazabilidad(
             cur.execute(
                 f"""INSERT INTO Procurement.OrquestadorLLMLog
                     {_base_cols})
-                    VALUES ({','.join(['?']*25)})""",
+                    VALUES ({','.join(['?']*26)})""",
                 _base_vals,
             )
         # Recuperar el LogID autogenerado (para FK suave en las tablas hijas)
@@ -863,19 +966,30 @@ def _procesar_trigger_farmaceutico_batch(trigger: dict[str, Any], productos: lis
     for item in productos:
         codbarras = item["codbarras"]
         atrib = atr_por_codbarras.get(str(codbarras), {})
+        if not atrib:
+            print(f"  [MDM-BATCH] Sin atributos para {codbarras}")
+            continue
+
+        # Merge: leer estado actual y consolidar con nuevos atributos
+        conf_nuevo = atrib.get("confianza_nivel")
+        estado_actual, conf_actual = _leer_estado_actual(codbarras)
+        if estado_actual:
+            atrib_merged, merge_log = _merge_atributos(estado_actual, atrib, conf_actual, conf_nuevo)
+        else:
+            atrib_merged = atrib
+            merge_log = ""
+
         _persistir_trazabilidad(
             codbarras=codbarras, trigger_id=trigger.get("TriggerID"),
             metricas=metricas_prorrateadas, raw_content=raw_content or "",
             fotos=fotos_por_producto.get(codbarras, []),
             fuentes=fuentes_por_producto.get(codbarras, []),
             urls_encontradas=urls_por_producto.get(codbarras, []),
-            atrib=atrib, score=None, estado=None,
+            atrib=atrib, score=None, estado=None, merge_log=merge_log,
         )
-        if not atrib:
-            print(f"  [MDM-BATCH] Sin atributos para {codbarras}")
-            continue
+
         clauses, score, estado, ciclos = build_update_clauses(
-            atrib, item.get("ciclos_reproceso", 0), item.get("descripcion", ""), catalog)
+            atrib_merged, item.get("ciclos_reproceso", 0), item.get("descripcion", ""), catalog)
         costo = (metricas_prorrateadas.get("costo_gemini") or 0) + (metricas_prorrateadas.get("costo_glm") or 0)
         print(f"  [MDM-BATCH] {codbarras}: score={score} estado={estado} costo≈${costo:.4f}")
         filas.append({"codbarras": codbarras, "clauses": clauses})
@@ -942,8 +1056,22 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
             imagenes,
             desc,
         )
-        # Persistir trazabilidad ANTES del early-continue: incluso si el parse
-        # falla, queremos registrar el intento (prompt, costo, raw, errores).
+        # Extraer atributos
+        if isinstance(parsed, list) and parsed:
+            atrib = parsed[0].get("atributos_nuevos_consolidados", {})
+        elif isinstance(parsed, dict):
+            atrib = parsed.get("atributos_nuevos_consolidados", {})
+        else:
+            atrib = {}
+
+        merge_log = ""
+        if atrib:
+            # Merge: leer estado actual y consolidar
+            conf_nuevo = atrib.get("confianza_nivel")
+            estado_actual, conf_actual = _leer_estado_actual(codbarras)
+            if estado_actual:
+                atrib, merge_log = _merge_atributos(estado_actual, atrib, conf_actual, conf_nuevo)
+
         _persistir_trazabilidad(
             codbarras=codbarras,
             trigger_id=trigger.get("TriggerID"),
@@ -952,25 +1080,14 @@ def procesar_trigger_farmaceutico(trigger: dict[str, Any]) -> dict[str, Any]:
             fotos=fotos_guardar,
             fuentes=fuentes,
             urls_encontradas=urls_encontradas,
-            atrib=(parsed[0].get("atributos_nuevos_consolidados", {}) if isinstance(parsed, list) and parsed
-                   else parsed.get("atributos_nuevos_consolidados", {}) if isinstance(parsed, dict)
-                   else {}),
-            score=None,  # se actualizará abajo cuando tengamos el score final
+            atrib=atrib,
+            score=None,
             estado=None,
+            merge_log=merge_log,
         )
 
-        if not parsed:
-            print(f"  [MDM] Sin atributos para {codbarras}")
-            continue
-
-        if isinstance(parsed, list) and parsed:
-            atrib = parsed[0].get("atributos_nuevos_consolidados", {})
-        elif isinstance(parsed, dict):
-            atrib = parsed.get("atributos_nuevos_consolidados", {})
-        else:
-            atrib = {}
-
         if not atrib:
+            print(f"  [MDM] Sin atributos para {codbarras}")
             continue
 
         clauses, score, estado, ciclos = build_update_clauses(atrib, item["ciclos_reproceso"], item.get("descripcion", ""), catalog)
