@@ -428,7 +428,7 @@ def filtrar_imagenes_legibles(imagenes_b64, descripcion_producto):
             ],
         }]
         try:
-            content, costo_llamada, err, _meta = _llamar_vision_api(messages, temperature=0.0, max_tokens=16)
+            content, costo_llamada, err, _meta = _llamar_vision_api(messages, temperature=0.0, max_tokens=int(os.getenv("VISION_MAX_TOKENS_PREFILTRO", "16")))
             costo_total += costo_llamada
             if err:
                 print(f"    [Pre-Filtro] Error evaluando imagen: {err}")
@@ -480,7 +480,7 @@ def transcribir_imagenes_vision(fotos_aprobadas, desc_producto):
             ],
         }]
         try:
-            text_out, costo_llamada, err, _meta = _llamar_vision_api(messages, temperature=0.0, max_tokens=4096)
+            text_out, costo_llamada, err, _meta = _llamar_vision_api(messages, temperature=0.0, max_tokens=int(os.getenv("VISION_MAX_TOKENS_OCR", "4096")))
             costo_ocr += costo_llamada
             if err:
                 print(f"    [OCR {tag}] Error en imagen {idx}: {err}")
@@ -523,7 +523,7 @@ def llamar_glm_47_api(prompt_text, model_id, max_tokens=16384, system_prompt=Non
     )
 
 
-def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None):
+def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None, timeout_override=None, reasoning_effort_override=None):
     """
     Despacha la consolidación al proveedor de texto configurado.
 
@@ -535,6 +535,9 @@ def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None):
     aprovechar el prefix caching automático (DeepSeek disk cache / Z.ai cache).
     Si es None, el prompt completo va como único user message (compat. hacia atrás).
 
+    timeout_override: si se pasa, usa este timeout en vez de TIMEOUT_TEXTO del .env.
+    Útil para batch mode donde el prompt es más grande y necesita más tiempo.
+
     Devuelve (result_dict, error_str, label_modelo).
     """
     provider = os.getenv("IA_PROVEEDOR", "glm").lower()
@@ -544,13 +547,14 @@ def llamar_llm_texto(prompt_text, max_tokens=16384, system_prompt=None):
         # DeepSeek V4 thinking mode: max_tokens amplio (reasoning + JSON).
         # temperature/top_p son NO-OP en thinking mode — no se pasan.
         mt = max_tokens or int(os.getenv("DEEPSEEK_MAX_TOKENS", "16384"))
-        timeout_texto = int(os.getenv("TIMEOUT_TEXTO", "300"))
+        timeout_texto = timeout_override or int(os.getenv("TIMEOUT_TEXTO", "300"))
+        re_effort = reasoning_effort_override or os.getenv("DEEPSEEK_REASONING_EFFORT", "max")
         result, err = call_deepseek(
             prompt=prompt_text,
             system_prompt=system_prompt,
             model=os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash"),
             max_tokens=mt,
-            reasoning_effort=os.getenv("DEEPSEEK_REASONING_EFFORT", "max"),
+            reasoning_effort=re_effort,
             timeout=timeout_texto,
         )
         return result, err, "DeepSeek V4 Flash"
@@ -688,8 +692,8 @@ def procesar_producto_batch1(context_json_str, taxonomias_existentes, imagenes_b
     # Trazabilidad LLM (persistida por el orquestador a OrquestadorLLMLog).
     # Capturamos: prompt final, reasoning separado, tokens y metadata del modelo.
     usage = (result_glm.get("usage") or {}) if isinstance(result_glm, dict) else {}
-    metricas["prompt_enviado"]      = prompt[:50000]                  # str (template final con contexto)
-    metricas["reasoning_content"]   = (reasoning or "")[:50000]       # str (chain-of-thought)
+    metricas["prompt_enviado"]      = prompt[:int(os.getenv("TRAZABILIDAD_MAX_CHARS", "50000"))]                  # str (template final con contexto)
+    metricas["reasoning_content"]   = (reasoning or "")[:int(os.getenv("TRAZABILIDAD_MAX_CHARS", "50000"))]       # str (chain-of-thought)
     metricas["prompt_tokens"]       = usage.get("prompt_tokens", 0) or 0
     metricas["completion_tokens"]   = usage.get("completion_tokens", 0) or 0
     metricas["reasoning_tokens"]    = (
@@ -793,15 +797,20 @@ def procesar_lote_batch(productos_datos: list, taxonomias_existentes: str) -> tu
     metricas["llamadas_glm"] = 1
     provider = os.getenv("IA_PROVEEDOR", "glm").lower()
     # Budget de salida proporcional a N productos: cada producto genera ~6-9K
-    # (razonamiento + JSON). Default por producto de 8192, techo 64000 (lejos del
-    # output máx 128K de DeepSeek/GLM). Si es muy chico, el JSON se corta → 0/N.
+    # (razonamiento + JSON). Si es muy chico, el JSON se corta → 0/N.
     n_prod = max(len(productos_datos), 1)
+    ceiling = int(os.getenv("BATCH_MAX_TOKENS_CEILING", "76800"))
     if provider == "deepseek":
-        mt_call = min(n_prod * int(os.getenv("DEEPSEEK_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+        mt_call = min(n_prod * int(os.getenv("DEEPSEEK_MAX_TOKENS_POR_PRODUCTO", "28800")), ceiling)
     else:
-        mt_call = min(n_prod * int(os.getenv("GLM_MAX_TOKENS_POR_PRODUCTO", "8192")), 64000)
+        mt_call = min(n_prod * int(os.getenv("GLM_MAX_TOKENS_POR_PRODUCTO", "28800")), ceiling)
+    # Timeout dinámico: base + N segundos por producto adicional
+    timeout_batch = int(os.getenv("TIMEOUT_TEXTO_BATCH", "1200")) + (n_prod - 1) * int(os.getenv("TIMEOUT_BATCH_PER_PRODUCT_SEC", "120"))
+    re_batch = os.getenv("DEEPSEEK_REASONING_EFFORT_BATCH", os.getenv("DEEPSEEK_REASONING_EFFORT", "max"))
     result, error, lbl_modelo = llamar_llm_texto(
-        user_content, system_prompt=system_prompt, max_tokens=mt_call
+        user_content, system_prompt=system_prompt, max_tokens=mt_call,
+        timeout_override=timeout_batch,
+        reasoning_effort_override=re_batch,
     )
     if error:
         metricas["errores_api"].append(f"{lbl_modelo or 'LLM'} API Error: {error}")

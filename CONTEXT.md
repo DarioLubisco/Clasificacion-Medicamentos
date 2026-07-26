@@ -1,6 +1,6 @@
 # CONTEXT.md — Reglas Inquebrantables del Proyecto
 > **OBLIGATORIO**: Leer este archivo ANTES de hacer cualquier cambio en el proyecto.
-> Última actualización: 2026-07-15
+> Última actualización: 2026-07-25
 
 ---
 
@@ -216,15 +216,15 @@ Para evitar pérdida de información o alucinaciones por dilución de atención 
 
 ```python
 # Tamaño de lote (Batch Size) para la llamada al LLM principal
-BATCH_SIZE = 1  # Procesamiento estricto "uno por uno"
+BATCH_SIZE = 5  # Batch mode: 5 productos por llamada LLM
 ```
 
-Esta variable define que cada producto se procesa en su propia llamada individual del LLM.
-
-- **Tamaño de lote**: BATCH_SIZE = 1 (procesamiento uno por uno).
-- **Modelo de texto activo**: `EXPERIMENT_TEXTO_PROVIDER` = `glm` (default) o `deepseek`.
-- **DeepSeek**: `reasoning_effort` = `max` (thinking enabled), `max_tokens` = 16384.
-  `temperature` y `top_p` son NO-OP en thinking mode — no se envían.
+- **Batch mode activo**: `ORQUESTADOR_BATCH_LLM=1` en `.env`. Procesa 5 productos en 1 llamada LLM.
+- **Tamaño de lote**: `ORQUESTADOR_BATCH_SIZE=5` (configurable en `.env`).
+- **Modelo de texto activo**: `IA_PROVEEDOR=deepseek`.
+- **DeepSeek**: `reasoning_effort=max`, `DEEPSEEK_MAX_TOKENS_POR_PRODUCTO=28800`, `BATCH_MAX_TOKENS_CEILING=76800`.
+- **Timeout batch**: `TIMEOUT_TEXTO_BATCH=1200` + `TIMEOUT_BATCH_PER_PRODUCT_SEC=120` por producto adicional.
+- **Prompt batch**: `prompt_agente_v4_batch.txt` (copia del v3 + sección batch multi-producto).
 - **GLM-4.7**: razona por defecto en el endpoint de Z.ai. `max_tokens` = 4000. `timeout` = 300s.
 - **Visión (MiMo)**: `max_imagenes_prefiltro` = 10, `max_imagenes_ocr` = 4, `umbral_legibilidad` = 3.
 - **Pre-filtro**: score 0-5 puro (SIN cross-check semántico — capa 1 revertida el 2026-07-15).
@@ -428,15 +428,15 @@ Estado: todos `active=true`. Cada worker dispara su propio proceso Python vía S
 
 n8n corre con `GENERIC_TIMEZONE=America/Caracas` (VET, UTC-4, **sin DST**). Los `scheduleTrigger` se programan en hora VET.
 
-Cada worker tiene **1 scheduleTrigger a las 06:00 VET** que arranca un **loop continuo** hasta las **20:55 VET** (cierre antes del pico 21:00). Así se aprovechan las ~15h off-peak del bloque diurno de corrido, sin ventanas puntuales desperdiciadas.
+Cada worker tiene **1 scheduleTrigger a las 06:00 VET** que arranca un **loop continuo** hasta las **20:00 VET** (cierre 1h antes del pico 21:00). Así se aprovechan las ~14h off-peak del bloque diurno de corrido.
 
 | Disparo | Loop corre | Duración | DeepSeek |
 |---|---|---|---|
-| 06:00 VET | 06:00 → 20:55 VET | ~15h | off-peak ✅ |
+| 06:00 VET | 06:00 → 20:00 VET | ~14h | off-peak ✅ |
 
-8 workers × 1 disparo/día = 8 procesos concurrentes que procesan en loop todo el bloque off-peak. (Se decidió **no** aprovechar la franja off-peak corta 00:00–02:00 VET por estar rodeada de pico.)
+8 workers × 1 disparo/día = 8 procesos concurrentes que procesan en loop todo el bloque off-peak. Con batch=5, cada ciclo procesa 5 productos por worker (40 simultáneos).
 
-> El `window_end` (cierre del loop) se calcula en el nodo `Iniciar Ventana` (`target.setHours(20, 55, 0, 0)`). El loop interno corta cuando quedan <5 min (`Check Tiempo Restante`) o cuando un batch devuelve `intentados=0`.
+> El `window_end` se calcula en `Iniciar Ventana` (`target.setHours(20, 0, 0, 0)`). El loop corta cuando quedan <5 min o cuando el batch devuelve `intentados=0`.
 
 ### Horarios peak/off-peak de DeepSeek (proveedor de texto activo)
 

@@ -320,7 +320,7 @@ def _buscar_id_taxonomia(
     if not (dominio and categoria and subcategoria):
         return None
     try:
-        conn = pyodbc.connect(conn_str, timeout=10)
+        conn = pyodbc.connect(conn_str, timeout=int(os.getenv("TIMEOUT_DB_TAXONOMIA", "10")))
         try:
             cur = conn.cursor()
             cur.execute(
@@ -559,7 +559,7 @@ def _persistir_trazabilidad(
     La persistencia de trazabilidad NUNCA debe romper el batch principal.
     """
     try:
-        conn = pyodbc.connect(_conn_str(), timeout=15)
+        conn = pyodbc.connect(_conn_str(), timeout=int(os.getenv("TIMEOUT_DB_TRAZABILIDAD", "15")))
     except Exception as exc:
         log_evento("WARN", "TRAZABILIDAD",
                    f"No se pudo conectar para persistir trazabilidad de {codbarras}: {exc}",
@@ -596,7 +596,7 @@ def _persistir_trazabilidad(
                 CostoVisionUSD, CostoTextoUSD, CostoTotalUSD,
                 ConfianzaNivel, AtributosBajaConf, AlertasAuditoria,
                 TiempoTotalSeg, NumFuentes, NumImagenes, NumImagenesAprob,
-                Errores, ScoreFinal, EstadoCiclo)"""
+                Errores, ScoreFinal, EstadoCiclo"""
         _base_vals = (
             trigger_id, codbarras,
             metricas.get("modelo_texto"),
@@ -709,7 +709,7 @@ def _update_llm_log_score(codbarras: str, score: int, estado: str) -> None:
     ya que la persistencia inicial se hace antes de tener ese dato.
     Best-effort: si falla, no afecta al batch."""
     try:
-        conn = pyodbc.connect(_conn_str(), timeout=10)
+        conn = pyodbc.connect(_conn_str(), timeout=int(os.getenv("TIMEOUT_DB_SCORE_UPDATE", "10")))
         try:
             cur = conn.cursor()
             cur.execute(
