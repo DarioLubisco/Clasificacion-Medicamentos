@@ -233,6 +233,24 @@ BATCH_SIZE = 5  # Batch mode: 5 productos por llamada LLM
 - **Extract JSON**: `extract_json_from_content()` busca `[\s*{` (array JSON real) en vez del primer `[` suelto, manejando envolturas `<analisis_clinico>` y markdown.
 - **Prompt**: regla de consenso de 2+ imágenes independientes sobreescribe el EAN en todos los atributos. Jerarquía de caps: cuando aplican múltiples caps (consenso, fabricante/marca), prevalece el más restrictivo (número menor).
 
+### Merge entre pases (reprocesamiento)
+
+Cuando un producto se reprocesa (score<umbral → ABIERTO → siguiente ciclo), los atributos se **consolidan** en vez de sobreescribir. Implementado en `_merge_atributos()` y `_leer_estado_actual()` (orquestador_produccion.py).
+
+**22 campos protegidos** (`_MERGE_FIELDS`): principio_activo, concentracion, forma_farmaceutica, fabricante, marca, codigo_atc, cantidad_presentacion, contenido_neto, origen, segmento_etario, dominio, categoria, subcategoria, registro_sanitario, especificacion_tecnica, volumen_unidad, volumen_unidad_medida, contenido_neto_unidad_Des, codigo_atc_profundo, confianza_atc, clasificacion_insumo_Des, generico.
+
+**Reglas de merge:**
+| Campo actual | Campo nuevo | Acción |
+|---|---|---|
+| null | tiene valor | Escribir nuevo |
+| null | null | No escribir, registrar |
+| tiene valor | null | Conservar actual |
+| tiene valor | tiene valor | Gana mayor `confianza_nivel`; si igual, conservar primero |
+
+**MergeLog**: columna `MergeLog NVARCHAR(2000)` en OrquestadorLLMLog. Cadena de eventos por campo: `campo: valor_actual→valor_nuevo (P+1)` o `(conservado, conf X>=Y)`.
+
+**No se mergean** (siempre se sobreescriben): `score_calidad`, `estado_ciclo`, `ciclos_reproceso`, `observaciones_ia`, `origen_dato`, `es_medicamento`, `LastUpdated`.
+
 
 ---
 
